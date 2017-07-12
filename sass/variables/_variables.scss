@@ -1,2 +1,57 @@
-@import "fonts";
-@import "typographics";
+/**
+Text
+ */
+@import "text/typography";
+@import "text/fonts";
+
+/**
+Boxes
+ */
+@import "boxes/media-queries";
+@import "boxes/grid";
+@import "boxes/components";
+
+/**
+Colors
+ */
+@import "colors/colors";
+@import "colors/list-group";
+@import "colors/wells";
+@import "colors/form-states-alert";
+
+
+/**
+Base elements
+ */
+@import "base/thumbnail";
+@import "base/tables";
+@import "base/types";
+
+/**
+Dynamic elements
+ */
+@import "dynamic/modals";
+@import "dynamic/carousel";
+@import "dynamic/tooltips";
+@import "dynamic/dropdowns";
+@import "dynamic/popover";
+@import "dynamic/progress-bar";
+
+
+/**
+Text blocks
+ */
+@import "text-blocks/alerts";
+@import "text-blocks/jumbotron";
+@import "text-blocks/panels";
+@import "text-blocks/label";
+
+/**
+Form and nav elements
+ */
+@import "forms-navs/buttons";
+@import "forms-navs/close";
+@import "forms-navs/forms";
+@import "forms-navs/navbar";
+@import "forms-navs/navigation";
+
