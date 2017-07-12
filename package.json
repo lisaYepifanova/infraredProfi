@@ -1,0 +1,42 @@
+{
+  "name": "infrared_profi",
+  "version": "1.0.0",
+  "description": "Infrared Profi site",
+  "main": "js/index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lisa Yepifanova",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "latest",
+    "breakpoint-sass": "latest",
+    "caniuse-db": "latest",
+    "css-mqpacker": "latest",
+    "cssnano": "latest",
+    "doiuse": "latest",
+    "grunt": "latest",
+    "grunt-contrib-clean": "latest",
+    "grunt-contrib-copy": "latest",
+    "grunt-contrib-cssmin": "^2.2.0",
+    "grunt-contrib-imagemin": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-contrib-sass": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-newer": "latest",
+    "grunt-notify": "latest",
+    "grunt-sass": "latest",
+    "grunt-shell": "latest",
+    "load-grunt-config": "latest",
+    "load-grunt-tasks": "^3.5.2",
+    "node-normalize-scss": "latest",
+    "node-sass": "latest",
+    "node-sass-asset-functions": "latest",
+    "node-sass-glob-once": "latest",
+    "sass-toolkit": "latest"
+  }
+}
