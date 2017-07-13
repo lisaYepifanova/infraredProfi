@@ -1,0 +1,62 @@
+.homepage-carousel .item {
+  height: $homepage-carousel-height;
+  overflow: hidden;
+}
+
+@for $i from 1 through $num-of-slides  {
+  .carousel-image-slide#{$i - 1} {
+    background-image: nth($slide, $i);
+  }
+}
+
+.carousel-image {
+  background-size: cover;
+  height: 100%;
+  background-position: center center;
+}
+
+.carousel-indicators {
+  margin-left: 0;
+  right: 0;
+  left: 30%;
+  width: 70%;
+  padding-right: $right-panel-width;
+
+  @media all and (min-width: 480px){
+    left: 50%;
+    width: 50%;
+  }
+}
+
+.carousel-indicators li:last-child:after {
+  display: none;
+}
+
+.carousel-indicators li,
+.carousel-indicators .active {
+  border: $carousel-indicator-border;
+  width: $carousel-indicator-width;
+  height: $carousel-indicator-height;
+  margin: $carousel-indicator-margin;
+
+  box-shadow: inset 0 0 $carousel-indicator-border-shadow 0 $carousel-indicator-shadow-color,
+              0 0 $carousel-indicator-border-shadow 0 $carousel-indicator-shadow-color;
+
+  @media all and (min-width: 720px) {
+    width: $carousel-indicator-width * 1.5;
+    height: $carousel-indicator-height * 1.5;
+    border-radius: $carousel-indicator-border-radius;
+  }
+
+  &:after {
+    content: "";
+    width: $carousel-indicator-line-width;
+    height: $carousel-indicator-line-height;
+    display: block;
+    position: relative;
+    right: -100%;
+    top: 50%;
+    background-color: $carousel-indicator-border-color;
+    transform: translateY(-50%);
+  }
+}

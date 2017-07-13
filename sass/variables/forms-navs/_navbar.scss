@@ -3,13 +3,14 @@
 //##
 
 // Basics of a navbar
+
 $navbar-height:                    50px !default;
 
 $navbar-collapse-max-height:       340px !default;
 
 $navbar-default-color:             #777 !default;
-$navbar-default-bg:                #f8f8f8 !default;
-$navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
+$navbar-default-bg: #f1f1f1;
+$navbar-default-border:            transparent;
 
 // Navbar links
 $navbar-default-link-color:                #777 !default;
