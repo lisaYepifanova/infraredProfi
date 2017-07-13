@@ -3,6 +3,10 @@ Icons
  */
 $menu-icon: url("../img/icons/menu.png");
 
+$properties-icons:  url("../img/icons/properties/coins.png"),
+                    url("../img/icons/properties/gears.png"),
+                    url("../img/icons/properties/leaves.png"),
+                    url("../img/icons/properties/lock.png");
 /**
 Carousel images
  */
@@ -10,3 +14,8 @@ $slide: url("../img/slider/slider0.png"),
         url("../img/slider/slider1.png"),
         url("../img/slider/slider2.png"),
         url("../img/slider/slider3.jpg");
+
+/**
+Properties
+ */
+$poperties-image: url("../img/properties-image.jpg");

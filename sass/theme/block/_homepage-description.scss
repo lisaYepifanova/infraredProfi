@@ -1,5 +1,5 @@
 .homepage-description {
-  padding-right: $right-panel-width;
+  padding-right: $nav-panel-width;
 }
 
 .homepage-description-text {
@@ -8,6 +8,7 @@
 
 .sign-wrapper {
   float: right;
+  max-width: 270px;
   width: 50%;
 
   img {

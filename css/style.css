@@ -9,6 +9,9 @@ Icons
 Carousel images
  */
 /**
+Properties
+ */
+/**
 Text
  */
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900");
@@ -1184,7 +1187,7 @@ h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.2;
   color: inherit; }
   h1 small,
   h1 .small, h2 small,
@@ -5914,6 +5917,7 @@ Blocks
 
 .sign-wrapper {
   float: right;
+  max-width: 270px;
   width: 50%; }
   .sign-wrapper img {
     width: 60%; }
@@ -5922,16 +5926,16 @@ Blocks
   height: 20rem;
   overflow: hidden; }
 
-.carousel-image-slide0 {
+.carousel-image-slide1 {
   background-image: url("../img/slider/slider0.png"); }
 
-.carousel-image-slide1 {
+.carousel-image-slide2 {
   background-image: url("../img/slider/slider1.png"); }
 
-.carousel-image-slide2 {
+.carousel-image-slide3 {
   background-image: url("../img/slider/slider2.png"); }
 
-.carousel-image-slide3 {
+.carousel-image-slide4 {
   background-image: url("../img/slider/slider3.jpg"); }
 
 .carousel-image {
@@ -5948,7 +5952,8 @@ Blocks
   @media all and (min-width: 480px) {
     .carousel-indicators {
       left: 50%;
-      width: 50%; } }
+      width: 50%;
+      padding-right: 0; } }
 
 .carousel-indicators li:last-child:after {
   display: none; }
@@ -5978,6 +5983,88 @@ Blocks
     background-color: #fff;
     transform: translateY(-50%); }
 
+.homepage-properties {
+  width: 100%;
+  padding: 0; }
+  .homepage-properties .homepage-properties-row {
+    display: table;
+    width: 100%; }
+  .homepage-properties .left-side {
+    background: url("../img/properties-image.jpg") no-repeat center center;
+    background-size: cover;
+    display: table-cell;
+    float: none;
+    width: 50%; }
+    @media (max-width: 768px) {
+      .homepage-properties .left-side {
+        height: 300px; } }
+  .homepage-properties .right-side {
+    width: 50%;
+    padding-right: 3.5rem;
+    padding-left: 3.4rem; }
+    @media (min-width: 768px) {
+      .homepage-properties .right-side {
+        width: 375px;
+        padding-left: 5rem; } }
+    @media (min-width: 992px) {
+      .homepage-properties .right-side {
+        width: 485px; } }
+    @media (min-width: 1200px) {
+      .homepage-properties .right-side {
+        width: 585px;
+        padding-right: 0; } }
+  @media (max-width: 767px) {
+    .homepage-properties .right-side,
+    .homepage-properties .left-side {
+      width: 100%;
+      display: block; } }
+  .homepage-properties .property-item-description {
+    font-size: 16px; }
+  @media (max-width: 768px) {
+    .homepage-properties .property-item {
+      margin-top: 1rem; } }
+  .homepage-properties .property-item-title {
+    font-weight: bold;
+    position: relative; }
+  .homepage-properties .property-item1 .property-item-title {
+    margin-top: 0; }
+  .homepage-properties .property-item1 .property-item-title:before {
+    background-image: url("../img/icons/properties/coins.png");
+    content: "";
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    position: absolute;
+    left: -42.4px;
+    background-size: cover; }
+  .homepage-properties .property-item2 .property-item-title:before {
+    background-image: url("../img/icons/properties/gears.png");
+    content: "";
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    position: absolute;
+    left: -42.4px;
+    background-size: cover; }
+  .homepage-properties .property-item3 .property-item-title:before {
+    background-image: url("../img/icons/properties/leaves.png");
+    content: "";
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    position: absolute;
+    left: -42.4px;
+    background-size: cover; }
+  .homepage-properties .property-item4 .property-item-title:before {
+    background-image: url("../img/icons/properties/lock.png");
+    content: "";
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    position: absolute;
+    left: -42.4px;
+    background-size: cover; }
+
 /**
 Images
  */
@@ -5986,6 +6073,9 @@ Icons
  */
 /**
 Carousel images
+ */
+/**
+Properties
  */
 /**
 Text

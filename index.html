@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -86,19 +87,14 @@
     <div id="homepageCarousel" class="carousel slide homepage-carousel" data-interval="3000" data-ride="carousel">
       <!-- Carousel indicators -->
       <ol class="carousel-indicators">
-        <li data-target="#homepageCarousel" data-slide-to="0" class="carousel-round active"></li>
-        <li data-target="#homepageCarousel" data-slide-to="1" class="carousel-round"></li>
+        <li data-target="#homepageCarousel" data-slide-to="1" class="carousel-round active"></li>
         <li data-target="#homepageCarousel" data-slide-to="2" class="carousel-round"></li>
         <li data-target="#homepageCarousel" data-slide-to="3" class="carousel-round"></li>
+        <li data-target="#homepageCarousel" data-slide-to="4" class="carousel-round"></li>
       </ol>
       <!-- Carousel items -->
       <div class="carousel-inner">
         <div class="item active">
-          <div class="carousel-image carousel-image-slide0">
-          </div>
-        </div>
-
-        <div class="item">
           <div class="carousel-image carousel-image-slide1">
           </div>
         </div>
@@ -113,9 +109,15 @@
           </div>
         </div>
 
+        <div class="item">
+          <div class="carousel-image carousel-image-slide4">
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
+
   <div class="homepage-description container box-vpadding">
     <h3 class="homepage-description-title text-center">PHILOSOPHY</h3>
     <span class="homepage-description-text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
@@ -127,26 +129,77 @@
       <img src="img/sign.png">
     </div>
   </div>
-  <div class="service-properties">
 
+  <div class="homepage-properties">
+    <div class="homepage-properties-row">
+      <div class="properties-side left-side"></div>
+      <div class="properties-side right-side">
+        <div class="property-item property-item1">
+          <h4 class="property-item-title">Экономичность</h4>
+          <p class="property-item-description">
+            В стандартных помещениях с высотой потолков менее
+            3-х метров, принято использовать 100 Вт
+            электричества для обогрева одного м2. Но использование
+            ЭКО позволяет снизить расход до 50 Вт с той же
+            эффективностью. Это помогает сэкономить до 50 % в
+            оплате за тепло.
+
+          </p>
+        </div>
+        <div class="property-item property-item2">
+          <h4 class="property-item-title">Практичность и надежность</h4>
+          <p class="property-item-description">
+            Панели отопления ЭКО могут использоваться в любых
+            непроизводственных помещениях, будь то офис, детская
+            комната, ванная или целый дом. Керамическим обогревателям
+            не страшны ни пыль, ни влага. А простой монтаж ЭКО займет
+            у Вас не больше часа.
+
+          </p>
+        </div>
+        <div class="property-item property-item3">
+          <h4 class="property-item-title">Экологичность</h4>
+          <p class="property-item-description">
+            Керамические панели отопления не нарушат атмосферу
+            Вашего дома, ведь они не сушат воздух и не сжигают
+            кислород. А также не выделяют неприятного запаха и
+            вредных веществ. Именно поэтому Вы можете использовать
+            ЭКО в своем доме без опасений.
+          </p>
+        </div>
+        <div class="property-item property-item4">
+          <h4 class="property-item-title">Безопасность</h4>
+          <p class="property-item-description">
+            Электро-керамические обогреватели изготавливаются
+            только из натуральных жаропрочных материалов, которые
+            обладают высокой пожаробезопасностью. При производстве
+            ЭКО были учтены все требования к прибору для защиты от
+            поражения электрическим током.
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
+
   <div class="product-categories-wrapper">
     <div classes="product-categories container">
     </div>
   </div>
-  <div class="contacts container">
+
+  <div id="contactsBlock" class="contacts container">
   </div>
+
+
 </main>
 
-<footer class="footer text-center">
+<footer id="footer" class="footer text-center">
   <h5>footer title</h5>
 </footer>
 
-
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
-<script src="js/build.js"></script>
 <script src="js/vendor.js"></script>
+<script src="js/build.js"></script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>

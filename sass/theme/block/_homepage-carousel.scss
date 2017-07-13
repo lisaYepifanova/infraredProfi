@@ -4,7 +4,7 @@
 }
 
 @for $i from 1 through $num-of-slides  {
-  .carousel-image-slide#{$i - 1} {
+  .carousel-image-slide#{$i} {
     background-image: nth($slide, $i);
   }
 }
@@ -20,11 +20,12 @@
   right: 0;
   left: 30%;
   width: 70%;
-  padding-right: $right-panel-width;
+  padding-right: $nav-panel-width;
 
   @media all and (min-width: 480px){
     left: 50%;
     width: 50%;
+    padding-right: 0;
   }
 }
 
