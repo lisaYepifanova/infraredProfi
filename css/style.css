@@ -15,6 +15,9 @@ Homepage Properties
 Homepage Products Gallery
  */
 /**
+Contacts icons
+ */
+/**
 Text
  */
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900");
@@ -6239,17 +6242,42 @@ Blocks
       cursor: pointer; }
 
 .contact-item {
-  width: 8rem;
-  height: 8rem;
   border: 1px solid rgba(0, 0, 0, 0.41);
   margin: auto;
   box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.41); }
 
 .contact-item-wrapper {
-  margin-bottom: 1rem; }
+  margin-bottom: 0; }
+  @media all and (max-width: 480px) {
+    .contact-item-wrapper {
+      margin-bottom: 1rem; } }
 
 .contacts {
   padding-right: 3.5rem; }
+
+.contact-item1 {
+  background: url("../img/icons/contacts/mail.png") no-repeat center center;
+  background-size: 40px auto;
+  height: 100%;
+  width: 100%; }
+
+.contact-item2 {
+  background: url("../img/icons/contacts/phone.png") no-repeat center center;
+  background-size: 40px auto;
+  height: 100%;
+  width: 100%; }
+
+.contact-item3 {
+  background: url("../img/icons/contacts/location.png") no-repeat center center;
+  background-size: 40px auto;
+  height: 100%;
+  width: 100%; }
+
+.contact-item4 {
+  background: url("../img/icons/contacts/chat.png") no-repeat center center;
+  background-size: 40px auto;
+  height: 100%;
+  width: 100%; }
 
 /**
 Images
@@ -6265,6 +6293,9 @@ Homepage Properties
  */
 /**
 Homepage Products Gallery
+ */
+/**
+Contacts icons
  */
 /**
 Text
