@@ -21,7 +21,7 @@
 
   .right-side {
     width: 50%;
-    padding-right: $nav-panel-width;
+    padding-right: $nav-panel-width + 0.5rem;
     padding-left: $homepage-properties-padding-mob;
 
     @media (min-width: $screen-sm-min) {

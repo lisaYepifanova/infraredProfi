@@ -1,14 +1,14 @@
-/**
-Icons
- */
 $menu-icon: url("../img/icons/menu.png");
 
+/**
+Homepage Properties Icons
+ */
 $properties-icons:  url("../img/icons/properties/coins.png"),
                     url("../img/icons/properties/gears.png"),
                     url("../img/icons/properties/leaves.png"),
                     url("../img/icons/properties/lock.png");
 /**
-Carousel images
+Homepage Carousel images
  */
 $slide: url("../img/slider/slider0.png"),
         url("../img/slider/slider1.png"),
@@ -16,6 +16,16 @@ $slide: url("../img/slider/slider0.png"),
         url("../img/slider/slider3.jpg");
 
 /**
-Properties
+Homepage Properties
  */
 $poperties-image: url("../img/properties-image.jpg");
+
+/**
+Homepage Products Gallery
+ */
+$homepage-products-bg: url("../img/homepage-products/products-bg.jpg");
+$homepage-product-items:  url("../img/homepage-products/product-item-1.jpg"),
+                          url("../img/homepage-products/product-item-2.jpg"),
+                          url("../img/homepage-products/product-item-3.jpg"),
+                          url("../img/homepage-products/product-item-4.jpg"),
+                          url("../img/homepage-products/product-item-5.jpg");
