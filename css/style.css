@@ -6091,127 +6091,165 @@ Blocks
     padding: 0.25rem;
     height: 15rem; }
   .homepage-products .item-1 {
-    height: 100%; }
+    height: 100%;
+    background: url("../img/homepage-products/product-item-1.jpg") no-repeat center center;
+    background-size: cover; }
     .homepage-products .item-1 .item-image {
-      background: url("../img/homepage-products/product-item-1.jpg") no-repeat center center;
-      background-size: cover;
       height: 100%;
       width: 100%; }
+      .homepage-products .item-1 .item-image:hover {
+        background-color: rgba(54, 54, 54, 0.8); }
+        .homepage-products .item-1 .item-image:hover .link-to-product {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #d2d2d2;
+          font-weight: bold;
+          font-size: 20px;
+          text-decoration: none;
+          position: relative; }
+          .homepage-products .item-1 .item-image:hover .link-to-product .arrow {
+            font-size: 48px;
+            font-weight: normal;
+            padding: 0 6px 6px 6px; }
     .homepage-products .item-1 .link-to-product {
       display: none;
       cursor: pointer; }
-    .homepage-products .item-1:hover {
-      background-color: #363636; }
-      .homepage-products .item-1:hover .link-to-product {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #d2d2d2; }
-      .homepage-products .item-1:hover .item-image {
-        opacity: 0.2;
-        transition: opacity 0.5s; }
   .homepage-products .item-wrapper {
     padding: 0.25rem;
     height: 15rem; }
   .homepage-products .item-2 {
-    height: 100%; }
+    height: 100%;
+    background: url("../img/homepage-products/product-item-2.jpg") no-repeat center center;
+    background-size: cover; }
     .homepage-products .item-2 .item-image {
-      background: url("../img/homepage-products/product-item-2.jpg") no-repeat center center;
-      background-size: cover;
       height: 100%;
       width: 100%; }
+      .homepage-products .item-2 .item-image:hover {
+        background-color: rgba(54, 54, 54, 0.8); }
+        .homepage-products .item-2 .item-image:hover .link-to-product {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #d2d2d2;
+          font-weight: bold;
+          font-size: 20px;
+          text-decoration: none;
+          position: relative; }
+          .homepage-products .item-2 .item-image:hover .link-to-product .arrow {
+            font-size: 48px;
+            font-weight: normal;
+            padding: 0 6px 6px 6px; }
     .homepage-products .item-2 .link-to-product {
       display: none;
       cursor: pointer; }
-    .homepage-products .item-2:hover {
-      background-color: #363636; }
-      .homepage-products .item-2:hover .link-to-product {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #d2d2d2; }
-      .homepage-products .item-2:hover .item-image {
-        opacity: 0.2;
-        transition: opacity 0.5s; }
   .homepage-products .item-wrapper {
     padding: 0.25rem;
     height: 15rem; }
   .homepage-products .item-3 {
-    height: 100%; }
+    height: 100%;
+    background: url("../img/homepage-products/product-item-3.jpg") no-repeat center center;
+    background-size: cover; }
     .homepage-products .item-3 .item-image {
-      background: url("../img/homepage-products/product-item-3.jpg") no-repeat center center;
-      background-size: cover;
       height: 100%;
       width: 100%; }
+      .homepage-products .item-3 .item-image:hover {
+        background-color: rgba(54, 54, 54, 0.8); }
+        .homepage-products .item-3 .item-image:hover .link-to-product {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #d2d2d2;
+          font-weight: bold;
+          font-size: 20px;
+          text-decoration: none;
+          position: relative; }
+          .homepage-products .item-3 .item-image:hover .link-to-product .arrow {
+            font-size: 48px;
+            font-weight: normal;
+            padding: 0 6px 6px 6px; }
     .homepage-products .item-3 .link-to-product {
       display: none;
       cursor: pointer; }
-    .homepage-products .item-3:hover {
-      background-color: #363636; }
-      .homepage-products .item-3:hover .link-to-product {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #d2d2d2; }
-      .homepage-products .item-3:hover .item-image {
-        opacity: 0.2;
-        transition: opacity 0.5s; }
   .homepage-products .item-wrapper {
     padding: 0.25rem;
     height: 15rem; }
   .homepage-products .item-4 {
-    height: 100%; }
+    height: 100%;
+    background: url("../img/homepage-products/product-item-4.jpg") no-repeat center center;
+    background-size: cover; }
     .homepage-products .item-4 .item-image {
-      background: url("../img/homepage-products/product-item-4.jpg") no-repeat center center;
-      background-size: cover;
       height: 100%;
       width: 100%; }
+      .homepage-products .item-4 .item-image:hover {
+        background-color: rgba(54, 54, 54, 0.8); }
+        .homepage-products .item-4 .item-image:hover .link-to-product {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #d2d2d2;
+          font-weight: bold;
+          font-size: 20px;
+          text-decoration: none;
+          position: relative; }
+          .homepage-products .item-4 .item-image:hover .link-to-product .arrow {
+            font-size: 48px;
+            font-weight: normal;
+            padding: 0 6px 6px 6px; }
     .homepage-products .item-4 .link-to-product {
       display: none;
       cursor: pointer; }
-    .homepage-products .item-4:hover {
-      background-color: #363636; }
-      .homepage-products .item-4:hover .link-to-product {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #d2d2d2; }
-      .homepage-products .item-4:hover .item-image {
-        opacity: 0.2;
-        transition: opacity 0.5s; }
   .homepage-products .item-wrapper {
     padding: 0.25rem;
     height: 15rem; }
   .homepage-products .item-5 {
-    height: 100%; }
+    height: 100%;
+    background: url("../img/homepage-products/product-item-5.jpg") no-repeat center center;
+    background-size: cover; }
     .homepage-products .item-5 .item-image {
-      background: url("../img/homepage-products/product-item-5.jpg") no-repeat center center;
-      background-size: cover;
       height: 100%;
       width: 100%; }
+      .homepage-products .item-5 .item-image:hover {
+        background-color: rgba(54, 54, 54, 0.8); }
+        .homepage-products .item-5 .item-image:hover .link-to-product {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #d2d2d2;
+          font-weight: bold;
+          font-size: 20px;
+          text-decoration: none;
+          position: relative; }
+          .homepage-products .item-5 .item-image:hover .link-to-product .arrow {
+            font-size: 48px;
+            font-weight: normal;
+            padding: 0 6px 6px 6px; }
     .homepage-products .item-5 .link-to-product {
       display: none;
       cursor: pointer; }
-    .homepage-products .item-5:hover {
-      background-color: #363636; }
-      .homepage-products .item-5:hover .link-to-product {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #d2d2d2; }
-      .homepage-products .item-5:hover .item-image {
-        opacity: 0.2;
-        transition: opacity 0.5s; }
+
+.contact-item {
+  width: 8rem;
+  height: 8rem;
+  border: 1px solid rgba(0, 0, 0, 0.41);
+  margin: auto;
+  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.41); }
+
+.contact-item-wrapper {
+  margin-bottom: 1rem; }
+
+.contacts {
+  padding-right: 3.5rem; }
 
 /**
 Images

@@ -1,0 +1,16 @@
+.contact-item {
+  width: $contact-item-size;
+  height: $contact-item-size;
+  border: 1px solid rgba(0, 0, 0, 0.41);
+  margin: auto;
+  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.41);
+
+}
+
+.contact-item-wrapper {
+  margin-bottom: 1rem;
+}
+
+.contacts {
+  padding-right: $nav-panel-width;
+}
