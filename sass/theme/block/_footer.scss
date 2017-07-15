@@ -11,6 +11,8 @@ footer {
 
   .footer-link {
 cursor: pointer;
+    color: $text-color;
+    text-decoration: none;
 
     @media all and (max-width: 319px) {
       width: 100%;

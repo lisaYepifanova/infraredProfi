@@ -5883,7 +5883,6 @@ footer {
   border: 1px solid transparent; }
 
 h1 {
-  font-family: 'Oswald', sans-serif;
   color: #ED6E23;
   opacity: 0.8;
   font-size: 3.5rem; }
@@ -6295,7 +6294,9 @@ footer .footer-links {
   padding-right: 3.5rem; }
 
 footer .footer-link {
-  cursor: pointer; }
+  cursor: pointer;
+  color: #333333;
+  text-decoration: none; }
   @media all and (max-width: 319px) {
     footer .footer-link {
       width: 100%; } }
