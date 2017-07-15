@@ -1,0 +1,71 @@
+.homepage-products-wrapper {
+  background: $homepage-products-bg no-repeat center center;
+  background-size: cover;
+}
+
+.homepage-products-bg {
+  background-color: rgba(54, 54, 54, 0.5);
+}
+
+.homepage-products-row {
+  width: 100%;
+}
+
+.homepage-products {
+  padding-right: $nav-panel-width - 1rem;
+
+  @media (min-width: $screen-lg-min) {
+    padding-right: 0;
+  }
+
+  @for $i from 1 through 5 {
+
+    .item-wrapper {
+      padding: $homepage-products-item-padding;
+      height: $homepage-products-item-height;
+    }
+
+    .item-#{$i} {
+      height: 100%;
+      background: nth($homepage-product-items, $i) no-repeat center center;
+      background-size: cover;
+
+      .item-image {
+
+        height: 100%;
+        width: 100%;
+
+        &:hover {
+          background-color: rgba(54, 54, 54, 0.8);
+
+          .link-to-product {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: $link-to-product-color;
+            font-weight: bold;
+            font-size: $homepage-links-font-size;
+            text-decoration: none;
+            position: relative;
+
+            .arrow {
+              font-size: 3*$font-size-base;
+              font-weight: normal;
+              padding: 0 6px 6px 6px;
+            }
+          }
+
+        }
+      }
+
+      .link-to-product {
+        display: none;
+        cursor: pointer;
+      }
+
+    }
+  }
+}

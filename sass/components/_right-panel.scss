@@ -1,0 +1,12 @@
+.right-panel {
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  width: $nav-panel-width;
+  z-index: 1;
+}
+
+.navbar-right-panel {
+  height: 100%;
+}

@@ -1,0 +1,83 @@
+.homepage-properties {
+  width: 100%;
+  padding: 0;
+
+  .homepage-properties-row {
+    display: table;
+    width: 100%;
+  }
+
+  .left-side {
+    background: $poperties-image no-repeat center center;
+    background-size: cover;
+    display: table-cell;
+    float: none;
+    width: 50%;
+
+    @media (max-width: $screen-sm-min) {
+      height: $homepage-properties-image-height;
+    }
+  }
+
+  .right-side {
+    width: 50%;
+    padding-right: $nav-panel-width + 0.5rem;
+    padding-left: $homepage-properties-padding-mob;
+
+    @media (min-width: $screen-sm-min) {
+      width: $container-sm/2;
+      padding-left: $homepage-properties-padding-desc;
+    }
+
+    @media (min-width: $screen-md-min) {
+      width: $container-md/2;
+    }
+    @media (min-width: $screen-lg-min) {
+      width: $container-lg/2;
+      padding-right: 0;
+    }
+
+  }
+  .right-side,
+  .left-side {
+    @media (max-width: $screen-sm-min - 1) {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  .property-item-description {
+    font-size: $homepage-properties-description-font;
+  }
+
+  .property-item {
+    @media (max-width: $screen-sm-min) {
+      margin-top: $homepage-properties-item-top-margin;
+    }
+  }
+
+  .property-item-title {
+    font-weight: bold;
+    position: relative;
+  }
+
+  
+  .property-item1 {
+    .property-item-title {
+      margin-top: 0;
+    }
+  }
+  
+  @for $i from 1 through 4  {
+  .property-item#{$i} .property-item-title:before {
+    background-image: nth($properties-icons, $i);
+    content: "";
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    position: absolute;
+    left: -32px * 1.325;
+    background-size: cover;
+  }
+}
+}
