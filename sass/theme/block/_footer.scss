@@ -1,0 +1,23 @@
+footer {
+
+
+  .footer-links-wrapper {
+    margin-top: 12px;
+  }
+
+  .footer-links {
+    padding-right: $nav-panel-width;
+  }
+
+  .footer-link {
+cursor: pointer;
+
+    @media all and (max-width: 319px) {
+      width: 100%;
+    }
+    @media all and (min-width: 320px) and (max-width: 480px) {
+      width: 50%;
+    }
+
+  }
+}

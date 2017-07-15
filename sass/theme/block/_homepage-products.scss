@@ -1,9 +1,10 @@
 .homepage-products-wrapper {
   background: $homepage-products-bg no-repeat center center;
   background-size: cover;
-  background-color: rgba(0, 0, 0, .3);
-  opacity: 0.8;
-  transition: opacity 0.3s;
+}
+
+.homepage-products-bg {
+  background-color: rgba(54, 54, 54, 0.5);
 }
 
 .homepage-products-row {

@@ -29,7 +29,7 @@
             setItemSize(0.85);
         }
 
-        if ($(window).width() > 320 && $(window).width() < 480) {
+        if ($(window).width() > 319 && $(window).width() < 480) {
             $(contactCol).css('width', '48%');
             $(contactCol).css('height', itemSize(0.75));
             setItemSize(0.75);

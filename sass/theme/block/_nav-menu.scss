@@ -1,0 +1,75 @@
+.modal {
+  padding-right: 0 !important;
+}
+
+  body.modal-open {
+    overflow: visible;
+  }
+
+.aside-nav-menu {
+  .menu-item {
+    width: 98%;
+    //margin: 8px 0;
+    display: inline-block;
+
+    @media all and (min-width: 480px){
+      width: 49%;
+    }
+  }
+
+  .menu-item-link {
+    cursor: pointer;
+    color: $text-color;
+    text-decoration: none;
+  }
+
+  .menu-items-wrapper {
+    margin: auto 2rem;
+    padding-bottom: 55px;
+  }
+
+  .modal-dialog {
+    float: right;
+    height: 100%;
+    margin: 0;
+
+  }
+
+  .modal-content {
+    background-color: $navbar-default-bg;
+    height: 100%;
+    border-radius: 0;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .modal-header {
+    height: 3.5rem;
+  }
+
+  .modal-body {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+
+  button.close {
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    cursor: pointer;
+    z-index: 1;
+    font-size: 6rem;
+    font-weight: 300;
+    color: rgb(255,255,255);
+    opacity: 1;
+  }
+
+  .lang-link {
+    margin-right: 12px;
+    color: $text-color;
+  }
+}

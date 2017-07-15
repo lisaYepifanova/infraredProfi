@@ -24,7 +24,7 @@
 
 <aside class="right-panel">
   <div class="navbar navbar-default navbar-right-panel" role="navigation">
-    <a href="" class="menu-link"></a>
+    <a href="#asideNavMenu" class="menu-link" data-toggle="modal"></a>
   </div>
 </aside>
 
@@ -183,53 +183,55 @@
 
 
   <div class="homepage-products-wrapper">
-    <div class="homepage-products container box-same-vpadding">
-      <div class="homepage-products-row row">
-        <div class="item-wrapper col-sm-6">
-          <div class="homepage-product-item item-1">
-            <div class="item-image">
-              <a class="link-to-product">Product1
-                <span class="arrow">›</span>
-              </a>
+    <div class="homepage-products-bg">
+      <div class="homepage-products container box-same-vpadding">
+        <div class="homepage-products-row row">
+          <div class="item-wrapper col-sm-6">
+            <div class="homepage-product-item item-1">
+              <div class="item-image">
+                <a class="link-to-product">Product1
+                  <span class="arrow">›</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="item-wrapper col-sm-6">
+            <div class="homepage-product-item item-2 ">
+              <div class="item-image">
+                <a class="link-to-product">Product2
+                  <span class="arrow">›</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
-        <div class="item-wrapper col-sm-6">
-          <div class="homepage-product-item item-2 ">
-            <div class="item-image">
-              <a class="link-to-product">Product2
-                <span class="arrow">›</span>
-              </a>
+        <div class="homepage-products-row row">
+          <div class="item-wrapper col-sm-3">
+            <div class="homepage-product-item item-3 ">
+              <div class="item-image">
+                <a class="link-to-product">Product3
+                  <span class="arrow">›</span>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="homepage-products-row row">
-        <div class="item-wrapper col-sm-3">
-          <div class="homepage-product-item item-3 ">
-            <div class="item-image">
-              <a class="link-to-product">Product3
-                <span class="arrow">›</span>
-              </a>
-            </div>
-          </div>
-        </div>
 
-        <div class="item-wrapper col-sm-3">
-          <div class="homepage-product-item item-4 ">
-            <div class="item-image">
-              <a class="link-to-product">Product4
-                <span class="arrow">›</span>
-              </a>
+          <div class="item-wrapper col-sm-3">
+            <div class="homepage-product-item item-4 ">
+              <div class="item-image">
+                <a class="link-to-product">Product4
+                  <span class="arrow">›</span>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="item-wrapper col-sm-6">
-          <div class="homepage-product-item item-5 ">
-            <div class="item-image">
-              <a class="link-to-product">Product5
-                <span class="arrow">›</span>
-              </a>
+          <div class="item-wrapper col-sm-6">
+            <div class="homepage-product-item item-5 ">
+              <div class="item-image">
+                <a class="link-to-product">Product5
+                  <span class="arrow">›</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -266,8 +268,42 @@
 </main>
 
 <footer id="footer" class="footer text-center">
-  <h5>footer title</h5>
+  <div class="footer-links-wrapper container">
+    <div class="footer-links row">
+      <p class="footer-link col-xs-3">О нас</p>
+      <p class="footer-link col-xs-3">FAQ</p>
+      <p class="footer-link col-xs-3">Инструкция</p>
+      <p class="footer-link col-xs-3">Стать дилером</p>
+    </div>
+  </div>
 </footer>
+
+<!-- Modal -->
+<div id="asideNavMenu" class="modal fade in aside-nav-menu" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">›</button>
+          <h5 class="modal-title">
+            <a class="lang-link">RU</a>
+            <a class="lang-link">ENG</a>
+            <a class="lang-link">GRM</a>
+          </h5>
+        </div>
+        <div class="modal-body">
+          <div class="menu-items-wrapper">
+            <h4 class="menu-item text-center"><a class="menu-item-link">Главная</a></h4>
+            <h4 class="menu-item text-center"><a class="menu-item-link">Продукты</a></h4>
+            <h4 class="menu-item text-center"><a class="menu-item-link">Галерея</a></h4>
+            <h4 class="menu-item text-center"><a class="menu-item-link">О компании</a></h4>
+            <h4 class="menu-item text-center"><a class="menu-item-link">Стать дилером</a></h4>
+            <h4 class="menu-item text-center"><a class="menu-item-link">Контакты</a></h4>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>

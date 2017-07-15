@@ -3986,7 +3986,7 @@ tbody.collapse.in {
       margin-right: 0; } }
 
 .navbar-default {
-  background-color: #f1f1f1;
+  background-color: #dddddd;
   border-color: transparent; }
   .navbar-default .navbar-brand {
     color: #777; }
@@ -4002,7 +4002,7 @@ tbody.collapse.in {
       background-color: transparent; }
   .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     color: #555;
-    background-color: #e0e0e0; }
+    background-color: #cccccc; }
   .navbar-default .navbar-nav > .disabled > a, .navbar-default .navbar-nav > .disabled > a:hover, .navbar-default .navbar-nav > .disabled > a:focus {
     color: #ccc;
     background-color: transparent; }
@@ -4016,7 +4016,7 @@ tbody.collapse.in {
   .navbar-default .navbar-form {
     border-color: transparent; }
   .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-    background-color: #e0e0e0;
+    background-color: #cccccc;
     color: #555; }
   @media (max-width: 767px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -4026,7 +4026,7 @@ tbody.collapse.in {
         background-color: transparent; }
     .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
       color: #555;
-      background-color: #e0e0e0; }
+      background-color: #cccccc; }
     .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {
       color: #ccc;
       background-color: transparent; } }
@@ -5892,10 +5892,11 @@ Reusable, discrete UI elements.
   width: 2rem;
   height: 1.8rem;
   background-size: 100% 100%;
-  transform: translateX(-50%) translateY(50%);
+  transform: translateX(-50%) translateY(-50%);
   position: absolute;
   top: 50%;
-  left: 50%; }
+  left: 50%;
+  cursor: pointer; }
 
 .right-panel {
   position: fixed;
@@ -6077,10 +6078,10 @@ Blocks
 
 .homepage-products-wrapper {
   background: url("../img/homepage-products/products-bg.jpg") no-repeat center center;
-  background-size: cover;
-  background-color: rgba(0, 0, 0, 0.3);
-  opacity: 0.8;
-  transition: opacity 0.3s; }
+  background-size: cover; }
+
+.homepage-products-bg {
+  background-color: rgba(54, 54, 54, 0.5); }
 
 .homepage-products-row {
   width: 100%; }
@@ -6278,6 +6279,81 @@ Blocks
   background-size: 40px auto;
   height: 100%;
   width: 100%; }
+
+footer .footer-links-wrapper {
+  margin-top: 12px; }
+
+footer .footer-links {
+  padding-right: 3.5rem; }
+
+footer .footer-link {
+  cursor: pointer; }
+  @media all and (max-width: 319px) {
+    footer .footer-link {
+      width: 100%; } }
+  @media all and (min-width: 320px) and (max-width: 480px) {
+    footer .footer-link {
+      width: 50%; } }
+
+.modal {
+  padding-right: 0 !important; }
+
+body.modal-open {
+  overflow: visible; }
+
+.aside-nav-menu .menu-item {
+  width: 98%;
+  display: inline-block; }
+  @media all and (min-width: 480px) {
+    .aside-nav-menu .menu-item {
+      width: 49%; } }
+
+.aside-nav-menu .menu-item-link {
+  cursor: pointer;
+  color: #333333;
+  text-decoration: none; }
+
+.aside-nav-menu .menu-items-wrapper {
+  margin: auto 2rem;
+  padding-bottom: 55px; }
+
+.aside-nav-menu .modal-dialog {
+  float: right;
+  height: 100%;
+  margin: 0; }
+
+.aside-nav-menu .modal-content {
+  background-color: #dddddd;
+  height: 100%;
+  border-radius: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative; }
+
+.aside-nav-menu .modal-header {
+  height: 3.5rem; }
+
+.aside-nav-menu .modal-body {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-content: center; }
+
+.aside-nav-menu button.close {
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+  font-size: 6rem;
+  font-weight: 300;
+  color: white;
+  opacity: 1; }
+
+.aside-nav-menu .lang-link {
+  margin-right: 12px;
+  color: #333333; }
 
 /**
 Images

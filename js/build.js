@@ -29,7 +29,7 @@
             setItemSize(0.85);
         }
 
-        if ($(window).width() > 320 && $(window).width() < 480) {
+        if ($(window).width() > 319 && $(window).width() < 480) {
             $(contactCol).css('width', '48%');
             $(contactCol).css('height', itemSize(0.75));
             setItemSize(0.75);
@@ -54,7 +54,13 @@
         contactItemResize()
     });
 
-}());;;// Avoid `console` errors in browsers that lack a console.
+}());;$(function () {
+    var includes = $('[data-include]');
+    jQuery.each(includes, function () {
+        var file = 'htmlDocs/' + $(this).data('include') + '.html';
+        $(this).load(file);
+    });
+});;;// Avoid `console` errors in browsers that lack a console.
 (function() {
     var method;
     var noop = function () {};
