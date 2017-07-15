@@ -5885,7 +5885,10 @@ footer {
 h1 {
   color: #ED6E23;
   opacity: 0.8;
-  font-size: 3.5rem; }
+  font-size: 2.5rem; }
+  @media all and (min-width: 480px) {
+    h1 {
+      font-size: 3.5rem; } }
 
 /**
 Reusable, discrete UI elements.
