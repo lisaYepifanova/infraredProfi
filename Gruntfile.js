@@ -34,6 +34,7 @@ module.exports = function (grunt) {
             'node_modules/sass-toolkit/stylesheets',
             'node_modules/breakpoint-sass/stylesheets',
             'node_modules/bootstrap-sass/assets',
+            'node_modules/autoprefixer/data'
 
         ],
 
@@ -76,6 +77,18 @@ module.exports = function (grunt) {
                     'css/style.min.css': 'css/style.css',
                 }
             }
+        },
+
+        autoprefixer: {
+            options: {
+                browsers: ['last 2 versions', 'ie 9', 'ie 10', 'ie 11'],
+                cascade: false
+            },
+            dist: {
+                files: {
+                    'css/style.css': 'css/style.css'
+                }
+            }
         }
     });
 
@@ -83,8 +96,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     //grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-sass');
+    grunt.loadNpmTasks('grunt-autoprefixer');
     //grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-    grunt.registerTask('default', ['concat', 'uglify', /*'imagemin',*/ 'sass'/**, 'cssmin'*/]);
+    grunt.registerTask('default', ['concat', 'uglify', /*'imagemin',*/ 'sass'/**, 'cssmin'*/, 'autoprefixer']);
 
 };

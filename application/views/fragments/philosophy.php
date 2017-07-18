@@ -1,4 +1,4 @@
-  <div class="philosophy container box-vpadding">
+  <div class="philosophy container box-vmargin">
     <h3 class="philosophy-title text-center">PHILOSOPHY</h3>
     <span class="philosophy-text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
                     praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias

@@ -2,30 +2,38 @@
 
   <h1 class="page-header container">ABOUT US</h1>
 
-  <div class="about-us-right-image container">
+  <div class="about-us-right-image container box-same-vmargin">
     <div class="row">
       <div class="about-us-text col-xs-5">
         <h4 class="about-us-text-title">MISSION</h4>
         <p class="about-us-text-description">
             <?php
-                echo $data['mission_text'];
+                echo $data['texts']['mission_text'];
             ?>
         </p>
       </div>
 
-      <div class="about-us-image col-xs-7"></div>
+      <div class="about-us-image col-xs-7">
+        <?php
+          echo '<img src="'.IMAGEPATH.$data['images']['mission_img'].'" alt="">';
+        ?>
+      </div>
     </div>
   </div>
 
-  <div class="about-us-left-image container">
+  <div class="about-us-left-image container box-same-vmargin">
     <div class="row">
-      <div class="about-us-image col-xs-7"></div>
+      <div class="about-us-image col-xs-7">
+        <?php
+          echo '<img src="'.IMAGEPATH.$data['images']['vision_img'].'" alt="">';
+        ?>
+      </div>
 
       <div class="about-us-text col-xs-5">
         <h4 class="about-us-text-title">VISION</h4>
         <p class="about-us-text-description">
           <?php
-                echo $data['vision_text'];
+                echo $data['texts']['vision_text'];
             ?>
         </p>
       </div>

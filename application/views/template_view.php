@@ -40,7 +40,7 @@ $pageTitle = "Infrared Profi";
 include 'application/views/'.$content_view;
 ?>
 
-<div class="contacts container box-same-vpadding">
+<div class="contacts container box-same-vmargin">
     <div class="row">
         <?php
           $index = 1;

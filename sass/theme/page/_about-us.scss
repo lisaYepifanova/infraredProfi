@@ -1,0 +1,12 @@
+.about-us-image img {
+  width: 100%;
+  height: auto;
+}
+
+.about-us-paragraph {
+  margin-bottom: 2rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

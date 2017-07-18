@@ -51,7 +51,7 @@
   <div class="homepage-properties">
     <div class="homepage-properties-row">
       <div class="properties-side left-side"></div>
-      <div class="properties-side right-side box-mid-padding">
+      <div class="properties-side right-side box-mid-margin">
 
         <?php
             $index = 1;
@@ -72,7 +72,7 @@
 
   <div class="homepage-products-wrapper">
     <div class="homepage-products-bg">
-      <div class="homepage-products container box-same-vpadding">
+      <div class="homepage-products container box-same-vmargin">
         <div class="homepage-products-row row">
           <?php
             $index = 1;
