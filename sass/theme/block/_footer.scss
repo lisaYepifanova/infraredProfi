@@ -1,8 +1,8 @@
 footer {
 
-
   .footer-links-wrapper {
-    margin-top: 12px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 
   .footer-links {
@@ -10,9 +10,11 @@ footer {
   }
 
   .footer-link {
-cursor: pointer;
+    cursor: pointer;
     color: $text-color;
     text-decoration: none;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
 
     @media all and (max-width: 319px) {
       width: 100%;
