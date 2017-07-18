@@ -37,20 +37,24 @@ class Model_Default extends Model
           ),
           'contacts' => array(
             array(
-              'icon' => '',
-              'value' => 'test@gmail.com'
+              'icon' => 'icons/contacts/mail.png',
+              'value' => 'test@gmail.com',
+              'link' => 'mailto:test@gmail.com'
             ),
             array(
-              'icon' => '',
-              'value' => '+30661234567'
+              'icon' => 'icons/contacts/phone.png',
+              'value' => '+30661234567',
+              'link' => 'tel:+30661234567'
             ),
             array(
-              'icon' => '',
-              'value' => 'location'
+              'icon' => 'icons/contacts/location.png',
+              'value' => 'location',
+              'link' => '/contact'
             ),
             array(
-              'icon' => '',
-              'value' => 'Became a dealer'
+              'icon' => 'icons/contacts/chat.png',
+              'value' => 'Became a dealer',
+              'link' => '/registration'
             ),
           ),
           'modal_menu' => array(

@@ -47,7 +47,8 @@ include 'application/views/'.$content_view;
           foreach ($default['contacts'] as $row) {
             echo '<div class="contact-item-wrapper col-xs-3  text-center">
                     <div class="contact-item contact-item'.$index.'">
-                      <p class="contact-item-value">'.$row['value'].'</p>
+                      <img class="content-item-icon" src="'.IMAGEPATH.$row['icon'].'" alt="contact">
+                      <a href="'.$row['link'].'" class="contact-item-value">'.$row['value'].'</a>
                     </div>
                   </div>';
             $index = $index + 1;
@@ -96,7 +97,7 @@ include 'application/views/'.$content_view;
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
 <script src="../js/vendor.js"></script>
-<script src="../js/build.js"></script>
+<script src="../js/build.min.js"></script>
 <script src="../js/vendor/google-analytics.js"></script>
 
 </body>
