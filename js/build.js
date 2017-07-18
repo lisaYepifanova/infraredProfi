@@ -1,4 +1,7 @@
-(function () {
+$('.carousel').carousel({
+ interval: 2000,
+ });
+;(function () {
 
     var contactCol = ".contacts .contact-item-wrapper";
     var contactItem = ".contacts .contact-item";
@@ -18,9 +21,12 @@
 
     function contactItemResize() {
 
-        $(contactCol).css('width', itemSize(0.85));
-        $(contactCol).css('height', itemSize(0.85));
-        setItemSize(0.85);
+        $(contactCol).css('width', itemSize(0.9));
+        $(contactCol).css('height', itemSize(0.9));
+        $(contactCol).css('padding-left', '0.5rem');
+        $(contactCol).css('padding-right', '0.5rem');
+
+        setItemSize(0.9);
 
         if ($(window).width() < 320) {
             $(contactCol).css('width', '96%');
@@ -30,21 +36,21 @@
         }
 
         if ($(window).width() > 319 && $(window).width() < 480) {
-            $(contactCol).css('width', '48%');
-            $(contactCol).css('height', itemSize(0.75));
-            setItemSize(0.75);
+            $(contactCol).css('width', '49%');
+            $(contactCol).css('height', itemSize(1));
+            setItemSize(1);
         }
 
-        if ($(window).width() > 480 && $(window).width() < 560) {
+        if ($(window).width() > 479 && $(window).width() < 560) {
             $(contactCol).css('width', '24%');
-            $(contactCol).css('height', itemSize(0.9));
-            setItemSize(0.9);
+            $(contactCol).css('height', itemSize(1));
+            setItemSize(1);
         }
 
-        if ($(window).width() > 560) {
-            $(contactCol).css('width', '25%');
-            $(contactCol).css('height', itemSize(0.75));
-            setItemSize(0.75);
+        if ($(window).width() > 559) {
+            $(contactCol).css('width', '24%');
+            $(contactCol).css('height', itemSize(1));
+            setItemSize(1);
         }
     }
 
@@ -57,7 +63,7 @@
 }());;$(function () {
     var includes = $('[data-include]');
     jQuery.each(includes, function () {
-        var file = 'htmlDocs/' + $(this).data('include') + '.html';
+        var file = 'views/' + $(this).data('include') + '.html';
         $(this).load(file);
     });
 });;;// Avoid `console` errors in browsers that lack a console.
