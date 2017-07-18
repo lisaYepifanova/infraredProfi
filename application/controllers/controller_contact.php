@@ -1,13 +1,17 @@
 <?php
-class Controller_Contacts extends Controller
+class Controller_Contact extends Controller
 {
     function __construct()
     {
+        $this->model = new Model_Contact();
         $this->view = new View();
+        $this->default_model = new Model_Default();
     }
 
     function action_index()
     {
-        $this->view->generate('contacts_view.php', 'template_view.php');
+        $default = $this->default_model->get_data();
+        $data = $this->model->get_data();
+        $this->view->generate('contact_view.php', 'template_view.php',$data, $default);
     }
 }

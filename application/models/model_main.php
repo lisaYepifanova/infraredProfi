@@ -1,24 +1,103 @@
 <?php
-class Model_Faq extends Model
+class Model_Main extends Model
 {
     public function get_data()
     {
         return array(
-          array(
-            'question' => 'Question1 ... ?',
-            'answer' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua.'
-          ),
-          array(
-            'question' => 'Question2 ... ?',
-            'answer' => 'Ut enim ad minim veniam, quis nostrud exercitation ullamco
-          laboris nisi ut aliquip ex ea commodo consequat.'
-          ),
-          array(
-            'question' => 'Question3 ... ?',
-            'answer' => 'Duis aute irure dolor in reprehenderit in voluptate velit
-          esse cillum dolore eu fugiat nulla pariatur.'
-          )
+            'header' => array(
+              'title' => 'INNOVATION FUR JEDES HEIZKONZEPT',
+              'slider' => array (
+                  array(
+                    'img' => ''
+                  ),
+                  array(
+                    'img' => ''
+                  ),
+                  array(
+                    'img' => ''
+                  ),
+                  array(
+                    'img' => ''
+                  )
+                )
+            ),
+            'property' => array(
+              'img' => '',
+              'items' => array(
+                array(
+                  'icon' => '',
+                  'title' => 'Экономичность',
+                  'description' => 'В стандартных помещениях с высотой потолков менее
+            3-х метров, принято использовать 100 Вт
+            электричества для обогрева одного м2. Но использование
+            ЭКО позволяет снизить расход до 50 Вт с той же
+            эффективностью. Это помогает сэкономить до 50 % в
+            оплате за тепло.'
+                ),
+                array(
+                  'icon' => '',
+                  'title' => 'Практичность и надежность',
+                  'description' => 'Панели отопления ЭКО могут использоваться в любых
+            непроизводственных помещениях, будь то офис, детская
+            комната, ванная или целый дом. Керамическим обогревателям
+            не страшны ни пыль, ни влага. А простой монтаж ЭКО займет
+            у Вас не больше часа.'
+                ),
+                array(
+                  'icon' => '',
+                  'title' => 'Экологичность',
+                  'description' => '            Керамические панели отопления не нарушат атмосферу
+            Вашего дома, ведь они не сушат воздух и не сжигают
+            кислород. А также не выделяют неприятного запаха и
+            вредных веществ. Именно поэтому Вы можете использовать
+            ЭКО в своем доме без опасений.'
+                ),
+                array(
+                  'icon' => '',
+                  'title' => 'Безопасность',
+                  'description' => 'Электро-керамические обогреватели изготавливаются
+            только из натуральных жаропрочных материалов, которые
+            обладают высокой пожаробезопасностью. При производстве
+            ЭКО были учтены все требования к прибору для защиты от
+            поражения электрическим током.'
+                )
+              )
+            ),
+            'gallery' => array(
+              'block_bg' => '',
+              'items' => array(
+                array(
+                  'title' => 'Product1',
+                  'link' => '/product1',
+                  'img' => '',
+                  'size' => '0.5'
+                ),
+                array(
+                  'title' => 'Product2',
+                  'link' => '/product2',
+                  'img' => '',
+                  'size' => '0.5'
+                ),
+                array(
+                  'title' => 'Product3',
+                  'link' => '/product3',
+                  'img' => '',
+                  'size' => '0.25'
+                ),
+                array(
+                  'title' => 'Product4',
+                  'link' => '/product4',
+                  'img' => '',
+                  'size' => '0.25'
+                ),
+                array(
+                  'title' => 'Product5',
+                  'link' => '/product5',
+                  'img' => '',
+                  'size' => '0.5'
+                )
+              )
+            )
         );
     }
 }
