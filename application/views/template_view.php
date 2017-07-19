@@ -30,6 +30,12 @@ $pageTitle = "Infrared Profi";
   your browser</a> to improve your experience.</p>
 <![endif]-->
 
+<div class="site-logo-wrapper">
+  <?php
+    echo '<a href="/"><img src="'.IMAGEPATH.$default['site_logo'].'"></a>'
+  ?>
+</div>
+
 <aside class="right-panel">
   <div class="navbar navbar-default navbar-right-panel" role="navigation">
     <a href="#asideNavMenu" class="menu-link" data-toggle="modal"></a>
@@ -40,12 +46,12 @@ $pageTitle = "Infrared Profi";
 include 'application/views/'.$content_view;
 ?>
 
-<div class="contacts container box-same-vmargin">
+<div class="contacts container box-same-vmargin right-padding">
     <div class="row">
         <?php
           $index = 1;
           foreach ($default['contacts'] as $row) {
-            echo '<div class="contact-item-wrapper col-xs-3  text-center">
+            echo '<div class="contact-item-wrapper col-xs-3  text-center ">
                     <div class="contact-item contact-item'.$index.'">
                       <img class="content-item-icon" src="'.IMAGEPATH.$row['icon'].'" alt="contact">
                       <a href="'.$row['link'].'" class="contact-item-value">'.$row['value'].'</a>

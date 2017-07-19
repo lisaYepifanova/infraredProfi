@@ -5,19 +5,19 @@ class Model_Main extends Model
     {
         return array(
             'header' => array(
-              'title' => 'INNOVATION FUR JEDES HEIZKONZEPT',
+              'title' => 'INNOVATION FÜR <br>JEDES HEIZKONZEPT',
               'slider' => array (
                   array(
-                    'img' => ''
+                    'img' => 'slider/slider0.png'
                   ),
                   array(
-                    'img' => ''
+                    'img' => 'slider/slider1.png'
                   ),
                   array(
-                    'img' => ''
+                    'img' => 'slider/slider2.png'
                   ),
                   array(
-                    'img' => ''
+                    'img' => 'slider/slider3.jpg'
                   )
                 )
             ),
