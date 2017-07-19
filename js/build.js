@@ -35,20 +35,20 @@ $('.carousel').carousel({
             setItemSize(0.85);
         }
 
-        if ($(window).width() > 319 && $(window).width() < 480) {
+        if ($(window).width() > 319 && $(window).width() < 721) {
             $(contactCol).css('width', '48%');
             $(contactCol).css('height', itemSize(1));
             setItemSize(1);
         }
 
         if ($(window).width() > 479 && $(window).width() < 560) {
-            $(contactCol).css('width', '24%');
+            /*$(contactCol).css('width', '24%');
             $(contactCol).css('height', itemSize(1));
-            setItemSize(1);
+            setItemSize(1);*/
         }
 
-        if ($(window).width() > 559) {
-            $(contactCol).css('width', '24%');
+        if ($(window).width() > 720) {
+            $(contactCol).css('width', '24.8%');
             $(contactCol).css('height', itemSize(1));
             setItemSize(1);
         }
