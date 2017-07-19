@@ -5,12 +5,12 @@
       <!-- Carousel indicators -->
       <ol class="carousel-indicators">
           <?php
-            $index = 1;
+            $index = 0;
 
             foreach ($data['header']['slider'] as $row) {
                 echo '<li data-target="#homepageCarousel" data-slide-to="'.$index.'"
                 class="carousel-round ';
-                if ($index==1) {
+                if ($index==0) {
                 echo ' active';
               }
               echo '"></li>';
@@ -24,16 +24,16 @@
 
 
           <?php
-            $index = 1;
+            $index = 0;
 
             foreach ($data['header']['slider'] as $row) {
               echo '<div class="item';
-              if ($index==1) {
+              if ($index==0) {
                 echo ' active ';
               }
 
               echo '">
-                  <div class="carousel-image carousel-image-slide'.$index.'">
+                  <div class="carousel-image carousel-image-slide'.$index.'" style="background-image: url('.IMAGEPATH.$row['img'].') ">
                   </div>
                   </div>';
               $index = $index + 1;
@@ -42,7 +42,15 @@
 
       </div>
     </div>
+    <div class="homepage-header-title-wrapper container">
+      <h2 class="homepage-header-title">
+        <?php
+          echo $data['header']['title'];
+        ?>
+      </h2>
+    </div>
   </div>
+
 
   <?php
     include("application/views/fragments/philosophy.php");
@@ -72,7 +80,7 @@
 
   <div class="homepage-products-wrapper">
     <div class="homepage-products-bg">
-      <div class="homepage-products container box-same-vmargin">
+      <div class="homepage-products container box-same-vpadding">
         <div class="homepage-products-row row">
           <?php
             $index = 1;
