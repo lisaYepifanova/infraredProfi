@@ -1,9 +1,9 @@
 <?php
-class Controller_Product extends Controller
+class Controller_Registration extends Controller
 {
     function __construct()
     {
-        $this->model = new Model_Product();
+        $this->model = new Model_Registration();
         $this->view = new View();
         $this->default_model = new Model_Default();
     }
@@ -12,6 +12,6 @@ class Controller_Product extends Controller
     {
         $default = $this->default_model->get_data();
         $data = $this->model->get_data();
-        $this->view->generate('product_view.php', 'template_view.php', $data, $default);
+        $this->view->generate('registration_view.php', 'template_view.php', $data, $default);
     }
 }

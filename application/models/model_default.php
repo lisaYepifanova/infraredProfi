@@ -15,8 +15,12 @@ class Model_Default extends Model
               'link' => '/faq'
             ),
             array(
-              'title' => 'Стать дилером',
+              'title' => 'Инструкция',
               'link' => ''
+            ),
+            array(
+              'title' => 'Стать дилером',
+              'link' => '/registration'
             )
           ),
           'footer_service_links' => array(
@@ -66,7 +70,7 @@ class Model_Default extends Model
             ),
             array(
               'title' => 'Галерея',
-              'link' => ''
+              'link' => '/gallery'
             ),
             array(
               'title' => 'О компании',
@@ -74,13 +78,14 @@ class Model_Default extends Model
             ),
             array(
               'title' => 'Стать дилером',
-              'link' => ''
+              'link' => '/registration'
             ),
             array(
               'title' => 'Контакты',
               'link' => '/contact'
             ),
-          )
+          ),
+          'site_logo' => 'site_logo.png'
         );
     }
 }

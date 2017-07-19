@@ -1,8 +1,8 @@
 <main>
 
-  <h1 class="page-header container">FAQ</h1>
+  <h1 class="page-header container text-capitalize">FAQ</h1>
 
-  <div class="faq-content-wrapper container">
+  <div class="faq-content-wrapper container right-padding">
     <div class="faq-content">
 
         <?php

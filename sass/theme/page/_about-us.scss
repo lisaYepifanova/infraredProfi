@@ -10,3 +10,11 @@
     margin-bottom: 0;
   }
 }
+
+.about-us-text,
+.about-us-image {
+
+  @media all and (max-width: 768px) {
+    width: 100%;
+  }
+}

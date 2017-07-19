@@ -1,6 +1,6 @@
 <main>
 
-  <h1 class="page-header container">CONTACT</h1>
+  <h1 class="page-header container text-capitalize">CONTACT</h1>
 
   <iframe
       src=" <?php echo $data['map'] ?>"
