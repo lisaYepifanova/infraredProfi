@@ -1,6 +1,6 @@
 <main>
-  <h1 class="page-header container">DATENSCHUTZ</h1>
-  <div class="container">
+  <h1 class="page-header container hsmall text-capitalize">DATENSCHUTZ</h1>
+  <div class="container right-padding">
     <ol>
       <li><strong>Allgemeines zum Datenschutz</strong></li>
     </ol>

@@ -1,6 +1,6 @@
 <main>
-  <h1 class="page-header container">IMPRESSUM</h1>
-  <div class="container">
+  <h1 class="page-header container hsmall text-capitalize">IMPRESSUM</h1>
+  <div class="container right-padding">
     <h3><strong>Fomin &amp; Dementev GbR</strong></h3>
     <p>Adresse:<br> Ernst-Thälmann Str. &lrm;54<br> 15517 Fürstenwalde<br>
       Deutschland</p>

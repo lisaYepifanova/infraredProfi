@@ -1,6 +1,6 @@
 <main>
-  <h1 class="page-header container">DATENSCHUTZ</h1>
-  <div class="container">
+  <h1 class="page-header container text-capitalize">DATENSCHUTZ</h1>
+  <div class="container right-padding">
     <p><strong>I. Geltungsbereich</strong></p>
     <p>Wir liefern ausschließlich zu nachstehenden Bedingungen. Abweichende oder
       weitergehende Geschäftsbedingungen des Käufers werden nicht anerkannt,
