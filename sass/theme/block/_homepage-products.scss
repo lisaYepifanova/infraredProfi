@@ -23,7 +23,8 @@
 
     .item-wrapper {
       padding: $homepage-products-item-padding;
-      height: $homepage-products-item-height;
+      height: calc((100vh - 12rem - 0.25rem)/2);
+      min-height: $homepage-products-item-height;
     }
 
     .item-#{$i} {
