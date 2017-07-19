@@ -6,11 +6,13 @@
     <div class="faq-content">
 
         <?php
+        $index = 1;
         foreach ($data as $row) {
             echo '<div class="faq-item">
-        <h4 class="faq-item-title">'.$row['question'].'</h4>
-        <p class="faq-item-answer">'.$row['answer'].'</p>
-      </div>';
+                    <h4 class="faq-item-title" class="collapsed" data-toggle="collapse" data-target="#answer-'.$index.'" aria-expanded="false"><span class="glyphicon glyphicon-chevron-down arrow-down"></span>'.$row['question'].'</h4>
+                    <p id="answer-'.$index.'" class="faq-item-answer collapse" aria-expanded="false" style="height: 0px;">'.$row['answer'].'</p>
+                  </div>';
+            $index = $index + 1;
         }
         ?>
 

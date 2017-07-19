@@ -1,0 +1,19 @@
+<?php
+
+class Controller_agb extends Controller
+{
+
+    function __construct()
+    {
+        $this->view = new View();
+        $this->default_model = new Model_Default();
+    }
+
+    function action_index()
+    {
+        $data = "";
+        $default = $this->default_model->get_data();
+        $this->view->generate('agb_view.php', 'template_view.php', $data, $default);
+    }
+
+}

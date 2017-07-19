@@ -7,6 +7,14 @@ footer {
 
   .footer-links {
     padding-right: $nav-panel-width;
+    max-width: 720px;
+    margin: auto;
+  }
+
+  .footer-service-links {
+    opacity: 0.5;
+    margin: 1rem auto 0 auto;
+    max-width: 30rem;
   }
 
   .footer-link {

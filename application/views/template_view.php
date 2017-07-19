@@ -66,6 +66,13 @@ include 'application/views/'.$content_view;
           }
         ?>
     </div>
+    <div class="footer-links footer-service-links row">
+      <?php
+          foreach ($default['footer_service_links'] as $row) {
+            echo '<a href="'.$row['link'].'" class="footer-link col-xs-4">'.$row['title'].'</a>';
+          }
+        ?>
+    </div>
   </div>
 </footer>
 
@@ -97,7 +104,7 @@ include 'application/views/'.$content_view;
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
 <script src="../js/vendor.js"></script>
-<script src="../js/build.min.js"></script>
+<script src="../js/build.js"></script>
 <script src="../js/vendor/google-analytics.js"></script>
 
 </body>

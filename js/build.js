@@ -90,6 +90,23 @@ $('.carousel').carousel({
 }());
 
 // Place any jQuery/helper plugins in here.
+;function arrowsRotation() {
+    $('.faq-item-title').on('click', function () {
+        if($(this).hasClass('opened')) {
+            $(this).addClass('closed');
+            $(this).removeClass('opened');
+        } else {
+            $(this).addClass('opened');
+            $(this).removeClass('closed');
+        }
+
+    });
+}
+
+$(document).ready(function () {
+    arrowsRotation();
+});
+
 ;var hammer = new Hammer(document.querySelector('.carousel'));
 var $carousel = $(".carousel").carousel({"interval": 0});
 hammer.get("swipe");

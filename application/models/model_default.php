@@ -15,24 +15,22 @@ class Model_Default extends Model
               'link' => '/faq'
             ),
             array(
-              'title' => 'Инструкция',
-              'link' => ''
-            ),
-            array(
               'title' => 'Стать дилером',
               'link' => ''
+            )
+          ),
+          'footer_service_links' => array(
+            array(
+              'title' => 'Datenschutz',
+              'link' => '/datenschutz'
             ),
             array(
-              'title' => 'Page1',
-              'link' => ''
+              'title' => 'AGB',
+              'link' => '/agb'
             ),
             array(
-              'title' => 'Page2',
-              'link' => ''
-            ),
-            array(
-              'title' => 'Page3',
-              'link' => ''
+              'title' => 'Impressum',
+              'link' => '/impressum'
             ),
           ),
           'contacts' => array(
@@ -63,8 +61,8 @@ class Model_Default extends Model
               'link' => '/'
             ),
             array(
-              'title' => 'Продукты',
-              'link' => ''
+              'title' => 'Технология',
+              'link' => '/technology'
             ),
             array(
               'title' => 'Галерея',
