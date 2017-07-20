@@ -70,7 +70,7 @@ class Model_Default extends Model
             ),
             array(
               'title' => 'Галерея',
-              'link' => '/gallery'
+              'link' => '/products'
             ),
             array(
               'title' => 'О компании',

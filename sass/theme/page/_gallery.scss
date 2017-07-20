@@ -1,0 +1,35 @@
+.product-img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100%;
+  height: 240px;
+}
+
+.product-item {
+  position: relative;
+  margin-bottom: 2rem;
+  display: block;
+  cursor: pointer;
+  -webkit-transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @media all and (max-width: 560px) {
+    width: 100%;
+  }
+}
+
+.product-name {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  text-shadow: 2px 2px 3px black;
+  color: $footer-bg;
+}

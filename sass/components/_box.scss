@@ -53,16 +53,29 @@
 .contacts.right-padding {
   @media all and (min-width: 992px) and (max-width: 1080px) {
     padding-right: $nav-panel-width;
-  };
+  }
+;
   @media all and (max-width: 767px) {
     padding-right: $nav-panel-width;
-  };
+  }
+;
 
   @media all and (min-width: 721px) and (max-width: 768px) {
     padding-right: 4rem;
-  };
+  }
+;
 
   @media all and (min-width: 821px) and (max-width: 850px) {
     padding-right: 4rem;
-  };
+  }
+;
+}
+
+.gallery.right-padding {
+  padding-right: $nav-panel-width;
+
+  @media all and (max-width: 767px) {
+    padding-right: $nav-panel-width + 1rem;
+  }
+
 }
