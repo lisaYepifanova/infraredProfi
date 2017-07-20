@@ -5816,6 +5816,12 @@ h1 {
 img {
   max-width: 100%; }
 
+td {
+  border: 1px solid #b8b0b0;
+  padding: 4px; }
+  td:first-child {
+    font-weight: bold; }
+
 /**
 Reusable, discrete UI elements.
  */
@@ -6457,10 +6463,26 @@ body.modal-open {
 .product .carousel {
   margin-top: 20px; }
 
+.product .large-item {
+  height: 300px; }
+
+.product .thumb-image {
+  height: 100px; }
+
+.product .large-item,
+.product .thumb-image {
+  width: 100%;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat; }
+
 .product .item .thumb {
-  width: 25%;
+  width: 31.2%;
   cursor: pointer;
-  float: left; }
+  float: left;
+  margin-right: 3.2%; }
+  .product .item .thumb:last-child {
+    margin-right: 0; }
 
 .product .item .thumb img {
   width: 100%;
@@ -6541,6 +6563,21 @@ Pages
   text-align: center;
   text-shadow: 2px 2px 3px black;
   color: #ED6E23; }
+
+.product-menu-wrapper {
+  display: block; }
+  @media all and (max-width: 767px) {
+    .product-menu-wrapper {
+      display: none; } }
+
+.product-colour-wrapper .colour-item {
+  display: inline-block;
+  width: 64px;
+  margin-right: 8px;
+  text-align: center; }
+
+.product-colour-wrapper .colour-block {
+  height: 32px; }
 
 /**
 Images

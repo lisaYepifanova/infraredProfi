@@ -16,7 +16,8 @@ module.exports = function (grunt) {
                 dest: 'js/build.js',
             },
             extras: {
-                src: ['node_modules/bootstrap-sass/assets/javascripts/bootstrap.js'],
+                src: ['node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
+                'node_modules/bootstrap/dist/js/bootstrap.js'],
                 dest: 'js/vendor.js',
             }
         },

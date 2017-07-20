@@ -1,7 +1,7 @@
 <main>
   <div class="homepage-header">
     <div id="homepageCarousel" class="carousel slide homepage-carousel"
-         data-interval="3000" data-ride="carousel">
+         data-interval="2000" data-ride="carousel">
       <!-- Carousel indicators -->
       <ol class="carousel-indicators">
           <?php

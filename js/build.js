@@ -1,7 +1,6 @@
-$('.carousel').carousel({
- interval: 2000,
- });
-;(function () {
+$('#homepageCarousel').carousel({
+ interval: 3000,
+ });;(function () {
 
     var contactCol = ".contacts .contact-item-wrapper";
     var contactItem = ".contacts .contact-item";
@@ -90,6 +89,10 @@ $('.carousel').carousel({
 }());
 
 // Place any jQuery/helper plugins in here.
+;$('.product-carousel').carousel({
+    interval: 6000,
+    pause: "hover"
+});
 ;$(function () {
 
     function recalcPosition($topPos) {
