@@ -17,28 +17,42 @@ class Route
             $action_name = $routes[2];
         }
 
+        if ($routes[1] == 'products') {
+            $controller_name = 'products';
+            $action_name = 'index';
+            $last = end($routes);
+
+            if ($last == 'item') {
+                $controller_name = 'product';
+            }
+        }
+
         $model_name = 'model_'.$controller_name;
         $controller_name = 'controller_'.$controller_name;
         $action_name = 'action_'.$action_name;
 
 
-        $model_file = strtolower(preg_replace("/-/","_", $model_name)).'.php';
+        $model_file = strtolower(preg_replace("/-/", "_", $model_name)).'.php';
         $model_path = "application/models/".$model_file;
         if (file_exists($model_path)) {
             include "application/models/".$model_file;
         }
 
-        $controller_file = strtolower(preg_replace("/-/","_", $controller_name)).'.php';
+        $controller_file = strtolower(
+            preg_replace("/-/", "_", $controller_name)
+          ).'.php';
         $controller_path = "application/controllers/".$controller_file;
         if (file_exists($controller_path)) {
             include "application/controllers/".$controller_file;
         } else {
             $controller_name = 'controller_404';
-            $controller_file = strtolower(preg_replace("/-/","_", $controller_name)).'.php';
+            $controller_file = strtolower(
+                preg_replace("/-/", "_", $controller_name)
+              ).'.php';
             include "application/controllers/".$controller_file;
         }
 
-        $controller_name_changed = preg_replace("/-/","_", $controller_name);
+        $controller_name_changed = preg_replace("/-/", "_", $controller_name);
         $controller = new $controller_name_changed;
         $action = $action_name;
 
@@ -46,12 +60,16 @@ class Route
             $controller->$action();
         } else {
             //if($controller_name == 'controller_404') {
-                $controller_name = 'controller_404';
-                include "application/controllers/controller_404.php";
-                $controller_name_changed = preg_replace("/-/","_", $controller_name);
-        $controller = new $controller_name_changed;
-                $action = 'action_index';
-                $controller->$action();
+            $controller_name = 'controller_404';
+            include "application/controllers/controller_404.php";
+            $controller_name_changed = preg_replace(
+              "/-/",
+              "_",
+              $controller_name
+            );
+            $controller = new $controller_name_changed;
+            $action = 'action_index';
+            $controller->$action();
             //}
 
         }
@@ -62,7 +80,7 @@ class Route
     {
         $host = 'http://'.$_SERVER['HTTP_HOST'].'/';
         header('Location:'.$host.'404');
-die();
+        die();
 
     }
 }
