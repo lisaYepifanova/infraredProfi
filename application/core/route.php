@@ -45,11 +45,12 @@ class Route
         if (method_exists($controller, $action)) {
             $controller->$action();
         } else {
-            if($controller_name == 'controller_404') {
-                $controller = new preg_replace("/-/","_", $controller_name);
+            //if($controller_name == 'controller_404') {
+                $cont = 'controller_404';
+                $controller = new $cont;
                 $action = 'action_index';
                 $controller->$action();
-            }
+            //}
 
         }
 
