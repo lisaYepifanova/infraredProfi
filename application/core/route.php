@@ -46,8 +46,10 @@ class Route
             $controller->$action();
         } else {
             //if($controller_name == 'controller_404') {
-                $cont = 'controller_404';
-                $controller = new $cont;
+                $controller_name = 'controller_404';
+                include "application/controllers/controller_404.php";
+                $controller_name_changed = preg_replace("/-/","_", $controller_name);
+        $controller = new $controller_name_changed;
                 $action = 'action_index';
                 $controller->$action();
             //}
