@@ -5962,7 +5962,9 @@ Blocks
   padding-right: 3.5rem; }
 
 .philosophy-text {
-  display: block; }
+  display: block;
+  font-size: 18px;
+  line-height: 2; }
 
 .sign-wrapper {
   float: right;

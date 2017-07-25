@@ -1,10 +1,18 @@
   <div class="philosophy container box-vmargin">
     <h3 class="philosophy-title text-center">PHILOSOPHY</h3>
-    <span class="philosophy-text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                    praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
-                    excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
-                    officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem
-                    rerum facilis est et expedita distinctio.</span>
+
+    <?php
+      include 'application/connection.php';
+      $q = "SELECT * FROM philosophy";
+      $query = $mysqli->query($q);
+
+
+      if ($query) {
+            while ($r = mysqli_fetch_assoc($query)) {
+                echo '<span class="philosophy-text">'.$r['text'].'</span>';
+            }
+        }
+    ?>
     <div class="sign-wrapper text-center">
       <img src="../img/sign.png">
     </div>
