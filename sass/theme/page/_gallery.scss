@@ -13,6 +13,7 @@
   cursor: pointer;
   -webkit-transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
   transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
+  text-decoration: none;
 
   &:hover {
     transform: scale(1.1);
@@ -24,12 +25,13 @@
 }
 
 .product-name {
-  position: absolute;
+  //position: absolute;
   z-index: 2;
   bottom: 0;
   left: 0;
   right: 0;
-  text-align: center;
-  text-shadow: 2px 2px 3px black;
-  color: $footer-bg;
+  //text-align: center;
+  //text-shadow: 2px 2px 3px black;
+  color: $text-color;
+
 }

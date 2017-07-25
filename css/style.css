@@ -5822,6 +5822,15 @@ td {
   td:first-child {
     font-weight: bold; }
 
+a:focus {
+  /* outline: 5px auto -webkit-focus-ring-color; */
+  /* outline-offset: -2px; */
+  outline-color: transparent; }
+
+a:hover {
+  color: #333333;
+  text-decoration: none; }
+
 /**
 Reusable, discrete UI elements.
  */
@@ -6516,6 +6525,27 @@ body.modal-open {
   position: relative;
   display: block; }
 
+.carousel-showmanymoveone {
+  /* override position and transform in 3.3.x */ }
+  .carousel-showmanymoveone .carousel-inner .item.left.active {
+    -ms-transform: translateX(-34%);
+    transform: translateX(-34%); }
+  .carousel-showmanymoveone .carousel-inner .item.right.active {
+    -ms-transform: translateX(34%);
+    transform: translateX(34%); }
+  .carousel-showmanymoveone .carousel-inner .item.next {
+    -ms-transform: translateX(34%);
+    transform: translateX(34%); }
+  .carousel-showmanymoveone .carousel-inner .item.prev {
+    -ms-transform: translateX(-34%);
+    transform: translateX(-34%); }
+  .carousel-showmanymoveone .carousel-inner .item.right,
+  .carousel-showmanymoveone .carousel-inner .item.left {
+    -ms-transform: translateX(0);
+    transform: translateX(0); }
+  .carousel-showmanymoveone .carousel-control.left, .carousel-showmanymoveone .carousel-control.right {
+    background-image: none; }
+
 /**
 Pages
  */
@@ -6564,7 +6594,8 @@ Pages
   margin-bottom: 2rem;
   display: block;
   cursor: pointer;
-  transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1); }
+  transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
+  text-decoration: none; }
   .product-item:hover {
     -ms-transform: scale(1.1);
     transform: scale(1.1); }
@@ -6573,14 +6604,11 @@ Pages
       width: 100%; } }
 
 .product-name {
-  position: absolute;
   z-index: 2;
   bottom: 0;
   left: 0;
   right: 0;
-  text-align: center;
-  text-shadow: 2px 2px 3px black;
-  color: #ED6E23; }
+  color: #333333; }
 
 .product-menu-wrapper {
   display: block; }
@@ -6596,6 +6624,9 @@ Pages
 
 .product-colour-wrapper .colour-block {
   height: 32px; }
+
+.product-title {
+  text-transform: uppercase; }
 
 /**
 Images

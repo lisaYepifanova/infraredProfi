@@ -18,7 +18,8 @@
 
         <!-- Gallery carousel -->
         <div class="carousel-wrapper">
-          <div id="carousel" class="carousel slide product-carousel">
+          <div id="carousel"
+               class="carousel slide product-carousel product-carousel-top">
             <div class="carousel-inner">
                 <?php
                 $activeIndex = true;
@@ -34,27 +35,27 @@
             </div>
           </div>
           <div class="clearfix">
-            <div id="thumbcarousel" class="carousel slide product-carousel">
+            <div id="thumbcarousel"
+                 class="carousel slide product-carousel carousel-showmanymoveone">
               <div class="carousel-inner">
                   <?php
                   $activeIndex = true;
                   $itemIndex = 0;
                   foreach ($data['gallery'] as $row) {
-                      if ($itemIndex % 3 == 0) {
-                          echo '<div class="item ';
-                          if ($activeIndex) {
-                              echo 'active';
-                              $activeIndex = false;
-                          }
-                          echo '">';
+                      echo '<div class="item ';
+                      if ($activeIndex) {
+                          echo 'active';
+                          $activeIndex = false;
                       }
+                      echo '">';
+
                       echo '<div data-target="#carousel" data-slide-to="';
                       echo $itemIndex;
-                      echo '" class="thumb thumb-image" style="background-image:url('.IMAGEPATH.$row['path'].')"></div>';
+                      echo '" class="thumb thumb-image " style="background-image:url('.IMAGEPATH.$row['path'].')"></div>';
                       $itemIndex = $itemIndex + 1;
-                      if ($itemIndex % 3 == 0) {
-                          echo '</div>';
-                      }
+
+                      echo '</div>';
+
                   }
                   ?>
 
@@ -74,7 +75,7 @@
         <!-- Name of the product-->
         <div class="product-title-wrapper">
             <?php
-            echo '<h2 class="product-title">'.$data[0]['title'].'</h2>';
+            echo '<h3 class="product-title">'.$data[0]['title'].'</h3>';
             ?>
         </div>
 
@@ -104,10 +105,12 @@
           <table>
               <?php
               foreach ($data[0] as $key => $value) {
-                if ($key!=='id' && $key!=='name' && $key!=='parent_id' && $key!=='image' && $key!=='title' && $key!=='description') {
-                  echo ' <tr><td>'.ucfirst(str_replace("_", " ", $key)).'</td>';
-                  echo ' <td>'.$value.'</td></tr>';
-                }
+                  if ($key !== 'id' && $key !== 'name' && $key !== 'parent_id' && $key !== 'image' && $key !== 'title' && $key !== 'description') {
+                      echo ' <tr><td>'.ucfirst(
+                          str_replace("_", " ", $key)
+                        ).'</td>';
+                      echo ' <td>'.$value.'</td></tr>';
+                  }
 
               }
               ?>
