@@ -14,12 +14,16 @@ $pageTitle = "Infrared Profi";
       echo $pageTitle;
       ?>
   </title>
+    <?php
+      echo '
+      <link rel="apple-touch-icon" href="'.ROOTPATH.'apple-touch-icon.png">
+      <link rel="stylesheet" href="'.CSSPATH.'normalize.css">
+      <link rel="stylesheet" href="'.CSSPATH.'style.css">
+      <script src="'.JSPATH.'vendor/modernizr-2.8.3.min.js"></script>';
+    ?>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/normalize.css">
-  <link rel="stylesheet" href="../css/style.css">
-  <script src="../js/vendor/modernizr-2.8.3.min.js"></script>
+
   <script type="text/javascript"
           src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
 </head>
@@ -108,10 +112,15 @@ include 'application/views/'.$content_view;
   </div>
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-<script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
-<script src="../js/vendor.js"></script>
-<script src="../js/build.js"></script>
-<script src="../js/vendor/google-analytics.js"></script>
+
+<?php
+  echo '
+  <script>window.jQuery || document.write(\'<script src="'.JSPATH.'vendor/jquery-1.12.0.min.js"><\/script>\')</script>
+  <script src="'.JSPATH.'vendor.js"></script>
+  <script src="'.JSPATH.'build.js"></script>
+  <script src="'.JSPATH.'vendor/google-analytics.js"></script>';
+?>
+
 
 </body>
 </html>

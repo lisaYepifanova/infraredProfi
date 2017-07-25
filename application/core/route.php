@@ -4,6 +4,8 @@ class Route
 {
     static function start()
     {
+        include 'application/connection.php';
+
         $controller_name = 'Main';
         $action_name = 'index';
 
@@ -18,13 +20,32 @@ class Route
         }
 
         if ($routes[1] == 'products') {
-            $controller_name = 'products';
-            $action_name = 'index';
             $last = end($routes);
 
-            if ($last == 'item') {
+            $result_category = $mysqli->query(
+              "SELECT * FROM categories WHERE name LIKE '%".$last."%'"
+            );
+
+            $result_product = $mysqli->query(
+              "SELECT * FROM products WHERE name LIKE '%".$last."%'"
+            );
+
+            /*$result_thermostat = $mysqli->query(
+              "SELECT * FROM thermostats WHERE thermostat_name LIKE '%".$last."%'"
+            );*/
+
+            $action_name = 'index';
+            if ($result_category->num_rows !== 0 || empty($routes[2])) {
+                $controller_name = 'products';
+            } else if ($result_product->num_rows !== 0) {
                 $controller_name = 'product';
+            } /*else if ($result_thermostat->num_rows !== 0) {
+                $controller_name = 'thermostat';
+            }*/
+            else {
+                $controller_name = '404';
             }
+
         }
 
         $model_name = 'model_'.$controller_name;

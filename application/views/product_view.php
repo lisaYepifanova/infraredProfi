@@ -28,7 +28,7 @@
                         echo ' active';
                         $activeIndex = false;
                     }
-                    echo '" style="background-image: url('.IMAGEPATH.$row.')"></div>';
+                    echo '" style="background-image: url('.IMAGEPATH.$row['path'].')"></div>';
                 }
                 ?>
             </div>
@@ -50,7 +50,7 @@
                       }
                       echo '<div data-target="#carousel" data-slide-to="';
                       echo $itemIndex;
-                      echo '" class="thumb thumb-image" style="background-image:url('.IMAGEPATH.$row.')"></div>';
+                      echo '" class="thumb thumb-image" style="background-image:url('.IMAGEPATH.$row['path'].')"></div>';
                       $itemIndex = $itemIndex + 1;
                       if ($itemIndex % 3 == 0) {
                           echo '</div>';
@@ -74,14 +74,14 @@
         <!-- Name of the product-->
         <div class="product-title-wrapper">
             <?php
-            echo '<h2 class="product-title">'.$data['name'].'</h2>';
+            echo '<h2 class="product-title">'.$data[0]['title'].'</h2>';
             ?>
         </div>
 
         <!-- Description of the product-->
         <div class="product-description-wrapper">
             <?php
-            echo '<p class="product-description">'.$data['description'].'</p>';
+            echo '<p class="product-description">'.$data[0]['description'].'</p>';
             ?>
         </div>
 
@@ -91,8 +91,8 @@
           <div class="colour-palette">
               <?php
               foreach ($data['colours'] as $row) {
-                  echo '<div class="colour-item"><div class="colour-block" style="background-color:'.$row['colour_code'].'"></div>';
-                  echo '<p class="colour-name">'.mb_convert_case($row['colour_code'], MB_CASE_TITLE, "UTF-8").'</p></div>';
+                  echo '<div class="colour-item"><div class="colour-block" style="background-color:'.$row['code'].'"></div>';
+                  echo '<p class="colour-name">'.$row['name'].'</p></div>';
               }
               ?>
           </div>
@@ -103,9 +103,12 @@
           <h3 class="technische-daten-title">TECHNISCHE DATEN</h3>
           <table>
               <?php
-              foreach ($data['technische_daten'] as $key => $value) {
-                  echo ' <tr><td>'.$value['name'].'</td>';
-                  echo ' <td>'.$value['value'].'</td></tr>';
+              foreach ($data[0] as $key => $value) {
+                if ($key!=='id' && $key!=='name' && $key!=='parent_id' && $key!=='image' && $key!=='title' && $key!=='description') {
+                  echo ' <tr><td>'.ucfirst(str_replace("_", " ", $key)).'</td>';
+                  echo ' <td>'.$value.'</td></tr>';
+                }
+
               }
               ?>
           </table>
