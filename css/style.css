@@ -6487,6 +6487,18 @@ body.modal-open {
 .modal.fade:not(.in) .modal-dialog {
   transform: translate3d(25%, 0, 0); }
 
+.modal-footer {
+  text-align: left; }
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  margin-right: 10px; }
+  .social-link img {
+    width: 100%;
+    height: 100%; }
+
 .product .carousel {
   margin-top: 20px; }
 
@@ -6579,8 +6591,80 @@ Pages
   .about-us-image {
     width: 100%; } }
 
-.description-img-comparison-wrapper {
-  background-color: #bcbdc1; }
+.comparison-row {
+  display: -ms-flexbox;
+  display: flex; }
+  @media all and (max-width: 767px) {
+    .comparison-row {
+      display: block; } }
+  .comparison-row:nth-child(2) {
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse; }
+  .comparison-row:first-child {
+    margin: 0 0 8rem 0; }
+  .comparison-row img {
+    margin: 2rem auto; }
+
+.comparison-text-wrapper {
+  margin: auto;
+  height: 485px;
+  overflow-y: auto;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 2rem;
+  /*
+
+  ::-webkit-scrollbar-button {
+    background-image: url('');
+    background-repeat: no-repeat;
+    width: 6px;
+    height: 0px
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #e0dbd0;
+    border-radius: 12px;
+    box-shadow: 0px 0px 3px #4b4b4b inset;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    background-color: #838985;
+    box-shadow: 0px 1px 1px #fff inset;
+    background-image: url('../img/scroll.png');
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  ::-webkit-resizer {
+    background-image: url('');
+    background-repeat: no-repeat;
+    width: 7px;
+    height: 0px
+  }
+
+  ::-webkit-scrollbar {
+    width: 11px;
+  }*/ }
+  @media all and (max-width: 767px) {
+    .comparison-text-wrapper {
+      max-height: 485px;
+      height: auto; } }
+  .comparison-text-wrapper .comparison-text {
+    margin: auto;
+    max-height: 100%;
+    text-align: left; }
+
+.comparison-title {
+  text-align: left; }
+
+.house-img {
+  margin: 2rem auto; }
+
+.house-description {
+  text-align: left;
+  padding: 0 8px; }
 
 .product-img {
   background-size: cover;

@@ -113,6 +113,14 @@ include 'application/views/'.$content_view;
             ?>
           </div>
         </div>
+        <div class="modal-footer">
+            <?php
+              echo '<a href="https://www.facebook.com/" class="social-link"><img src="'.IMAGEPATH.'fb.png"></a>
+          <a href="https://twitter.com/" class="social-link"><img src="'.IMAGEPATH.'twitter.png"></a>';
+            ?>
+
+
+        </div>
       </div>
     </div>
   </div>

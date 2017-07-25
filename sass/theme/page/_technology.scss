@@ -1,3 +1,94 @@
 .description-img-comparison-wrapper {
-  background-color: #bcbdc1;
+  //background-color: #bcbdc1;
+}
+
+.comparison-row {
+
+  display: flex;
+
+  @media all and (max-width: 767px) {
+    display: block;
+  }
+
+  &:nth-child(2) {
+    flex-direction: row-reverse;
+  }
+
+  &:first-child {
+    margin: 0 0 8rem 0;
+  }
+
+  img {
+    //height: 75%;
+    margin: 2rem auto;
+  }
+
+}
+
+.comparison-text-wrapper {
+  margin: auto;
+  height: 485px;
+  overflow-y: auto;
+  display: flex;
+  padding: 0 2rem;
+
+    @media all and (max-width: 767px) {
+    max-height: 485px;
+      height: auto;
+  }
+
+
+  .comparison-text {
+    margin: auto;
+    max-height: 100%;
+    text-align: left;
+  }
+  /*
+
+  ::-webkit-scrollbar-button {
+    background-image: url('');
+    background-repeat: no-repeat;
+    width: 6px;
+    height: 0px
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #e0dbd0;
+    border-radius: 12px;
+    box-shadow: 0px 0px 3px #4b4b4b inset;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    background-color: #838985;
+    box-shadow: 0px 1px 1px #fff inset;
+    background-image: url('../img/scroll.png');
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  ::-webkit-resizer {
+    background-image: url('');
+    background-repeat: no-repeat;
+    width: 7px;
+    height: 0px
+  }
+
+  ::-webkit-scrollbar {
+    width: 11px;
+  }*/
+}
+
+.comparison-title {
+  text-align: left;
+}
+
+.house-img {
+  margin: 2rem auto;
+}
+
+.house-description {
+  text-align: left;
+  padding: 0 8px;
 }

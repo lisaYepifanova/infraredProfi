@@ -27,8 +27,47 @@ class Model_Technology extends Model
 
           'description_image' => array('technology/sonne.png'),
           'description_after' => array(''),
-          'comparison_img' => array('technology/comparison.png'),
+          'comparison_infra' => 'technology/infra.png',
+            'infra_title' => 'ИНФРАКРАСНАЯ ПАНЕЛЬ',
+          'infra_text' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+          'comparison_convect' => 'technology/convect.png',
+          'convect_title' => 'КОНВЕКЦИОННАЯ БАТАРЕЯ',
+          'convect_text' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                           nisi ut aliquip ex ea commodo consequat.
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                           nisi ut aliquip ex ea commodo consequat.
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                           nisi ut aliquip ex ea commodo consequat.
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                           nisi ut aliquip ex ea commodo consequat.
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                           nisi ut aliquip ex ea commodo consequat.',
           'scheme_img' => array('technology/scheme.png'),
+          'infra_house_title' => 'Infrared panels',
+          'infra_house_image' =>  'technology/infra_house.png',
+          'infra_house_description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </br>
+                                        1)Lorem ipsum dolor sit amet</br>
+                                         2) Lorem ipsum dolor sit amet </br>
+                                         3)Lorem ipsum dolor sit amet.</br>
+                                         4) Lorem ipsum dolor sit amet',
+
+          'convect_house_title' => 'Convection',
+          'convect_house_image' =>  'technology/convect_house.png',
+          'convect_house_description' => 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </br>
+                                        1)Lorem ipsum dolor sit amet.</br>
+                                         2) Lorem ipsum dolor sit amet </br>
+                                         3)Lorem ipsum dolor sit amet</br>
+                                         4) Lorem ipsum dolor sit amet',
         ];
     }
 }

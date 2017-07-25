@@ -30,18 +30,52 @@
   <div class="description-img-comparison-wrapper ">
     <div class="description-img-comparison box-mid-margin text-center container right-padding">
         <?php
-        foreach ($data['comparison_img'] as $row) {
-            echo '<img class="comparison-img" src="'.IMAGEPATH.$row.'">';
-        }
+          echo '<div class="row comparison-row">';
+          /*image*/
+          echo '<div class="comparison-img col-sm-6">
+                <h3 class="comparison-title">'.$data['infra_title'].'</h3>';
+            echo '<img class="" src="'.IMAGEPATH.$data['comparison_infra'].'">';
+            echo '</div>';
+
+            /*text*/
+            echo '<div class="comparison-text-wrapper col-sm-6">
+                    <p class="comparison-text">'.$data['infra_text'].'</p></div>';
+            echo '</div>';
+
+            echo '<div class="row comparison-row">';
+
+
+            /*image*/
+            echo '<div class="comparison-img col-sm-6">
+                  <h3 class="comparison-title">'.$data['convect_title'].'</h3>';
+
+            echo '<img class="" src="'.IMAGEPATH.$data['comparison_convect'].'">';
+            echo '</div>';
+            /*text*/
+            echo '<div class="comparison-text-wrapper col-sm-6">
+                    <p class="comparison-text">'.$data['convect_text'].'</p></div>';
+
+
+
+            echo '</div>';
+
         ?>
     </div>
   </div>
   <div class="container right-padding">
     <div class="description-img-scheme box-mid-margin text-center">
         <?php
-        foreach ($data['scheme_img'] as $row) {
-            echo '<img class="scheme-img" src="'.IMAGEPATH.$row.'">';
-        }
+          echo '<div class="infrared-house-wrapper col-sm-6">';
+            echo '<h3 class="infra-house-title">'.$data['infra_house_title'].'</h3>';
+            echo '<img src="'.IMAGEPATH.$data['infra_house_image'].'" class="infra-house-img house-img">';
+            echo '<p class="infra-house-description house-description">'.$data['infra_house_description'].'</p>';
+          echo '</div>';
+
+          echo '<div class="convect-house-wrapper col-sm-6">';
+            echo '<h3 class="convect-house-title">'.$data['convect_house_title'].'</h3>';
+            echo '<img src="'.IMAGEPATH.$data['convect_house_image'].'" class="convect-house-img house-img">';
+            echo '<p class="convect-house-description house-description">'.$data['convect_house_description'].'</p>';
+          echo '</div>';
         ?>
     </div>
   </div>
