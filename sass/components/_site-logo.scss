@@ -5,9 +5,10 @@
     display: block;
     position: fixed;
     top: 1rem;
-    width: 110px;
+    width: calc((100vw - 1000px)/2 - 2*20px);
     z-index: 1;
-    left: calc(((100vw - 1000px)/2 - 110px)/2);
+    left: 20px;
+    text-align: center;
 
     a {
       display: block;
@@ -15,6 +16,7 @@
 
     img {
       width: 100%;
+      max-width: 280px;
     }
   }
 }

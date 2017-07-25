@@ -14,7 +14,7 @@
               }
 
 
-              echo '<a href="'.$link.'" class="col-xs-6 col-sm-4 col-md-3 product-item">';
+              echo '<a href="'.$link.'" class="col-xs-6 col-sm-4 col-md-4 product-item">';
               echo '<div class="product-img" style="background-image:url('.IMAGEPATH.$row['image'].')"></div>';
               echo '<h4 class="product-name">'.$row['title'].'</h4>';
               echo '</a>';

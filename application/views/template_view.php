@@ -42,7 +42,13 @@ $pageTitle = "Infrared Profi";
 
 <aside class="right-panel">
   <div class="navbar navbar-default navbar-right-panel" role="navigation">
-    <a href="#asideNavMenu" class="menu-link" data-toggle="modal"></a>
+    <div class="menu-link-button">
+      <a href="#asideNavMenu" class="menu-link" data-toggle="modal">
+        <span class="menu-link-line line1"></span>
+        <span class="menu-link-line line2"></span>
+        <span class="menu-link-line line3"></span>
+      </a>
+    </div>
   </div>
 </aside>
 

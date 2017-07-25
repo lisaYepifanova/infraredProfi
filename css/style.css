@@ -5828,18 +5828,33 @@ Reusable, discrete UI elements.
 .navbar {
   border-radius: 0; }
 
-.menu-link {
-  background-image: url("../img/icons/menu.png");
-  display: block;
-  width: 2rem;
-  height: 1.8rem;
-  background-size: 100% 100%;
+.menu-link-button {
   -ms-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 50%; }
+
+.menu-link {
+  display: block;
+  width: 2rem;
+  position: relative;
+  background-size: 100% 100%;
   cursor: pointer; }
+  .menu-link .menu-link-line {
+    display: block;
+    width: 2rem;
+    height: 0.5rem;
+    background-size: 100% 100%;
+    background-color: red; }
+  .menu-link .line1,
+  .menu-link .line2 {
+    margin-bottom: 0.25rem; }
+  .menu-link .line2 {
+    margin-bottom: 0.25rem; }
+
+.modal-open {
+  padding-right: 0 !important; }
 
 .right-panel {
   position: fixed;
@@ -5926,13 +5941,15 @@ Reusable, discrete UI elements.
       display: block;
       position: fixed;
       top: 1rem;
-      width: 110px;
+      width: calc((100vw - 1000px)/2 - 2*20px);
       z-index: 1;
-      left: calc(((100vw - 1000px)/2 - 110px)/2); }
+      left: 20px;
+      text-align: center; }
       .site-logo-wrapper a {
         display: block; }
       .site-logo-wrapper img {
-        width: 100%; } }
+        width: 100%;
+        max-width: 280px; } }
 
 @media all and (max-width: 380px) {
   .hsmall {
@@ -6026,8 +6043,7 @@ Blocks
       width: 100%; } }
 
 .homepage-header-title {
-  color: #ED6E23;
-  text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.9); }
+  color: #ED6E23; }
 
 .homepage-properties {
   width: 100%;
