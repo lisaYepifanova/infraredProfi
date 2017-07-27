@@ -5853,9 +5853,9 @@ Reusable, discrete UI elements.
   .menu-link .menu-link-line {
     display: block;
     width: 2rem;
-    height: 0.5rem;
+    height: 6px;
     background-size: 100% 100%;
-    background-color: red; }
+    background-color: #ED6E23; }
   .menu-link .line1,
   .menu-link .line2 {
     margin-bottom: 0.25rem; }
@@ -6532,6 +6532,19 @@ body.modal-open {
 
 .product-menu {
   position: fixed; }
+  .product-menu li {
+    list-style: none; }
+  .product-menu ul {
+    padding-left: 1.3rem; }
+  .product-menu a {
+    cursor: pointer;
+    color: #333333;
+    text-decoration: none; }
+  .product-menu .glyphicon {
+    margin-left: -16px;
+    color: #ED6E23; }
+  .product-menu .bold-item {
+    font-weight: bold; }
 
 .product-menu-wrapper {
   position: relative;
@@ -6577,6 +6590,17 @@ Pages
   -ms-transform: scaleY(-1);
   transform: scaleY(-1); }
 
+.panel-default {
+  border: 0; }
+
+.panel-default {
+  border-color: transparent; }
+
+.panel-group .panel {
+  margin-bottom: 24px;
+  border: 0;
+  box-shadow: none; }
+
 .about-us-image img {
   width: 100%;
   height: auto; }
@@ -6601,12 +6625,12 @@ Pages
     -ms-flex-direction: row-reverse;
     flex-direction: row-reverse; }
   .comparison-row:first-child {
-    margin: 0 0 8rem 0; }
+    margin: 0 0 6rem 0; }
   .comparison-row img {
     margin: 2rem auto; }
 
 .comparison-text-wrapper {
-  margin: auto;
+  margin: 6rem auto 0 auto;
   height: 485px;
   overflow-y: auto;
   display: -ms-flexbox;
@@ -6687,30 +6711,84 @@ Pages
     .product-item {
       width: 100%; } }
 
-.product-name {
+.product-name,
+.product-description {
   z-index: 2;
   bottom: 0;
   left: 0;
   right: 0;
-  color: #333333; }
+  color: #333333;
+  text-align: center; }
 
 .product-menu-wrapper {
-  display: block; }
+  display: block;
+  position: absolute; }
   @media all and (max-width: 767px) {
     .product-menu-wrapper {
       display: none; } }
 
 .product-colour-wrapper .colour-item {
   display: inline-block;
-  width: 64px;
+  width: 82px;
   margin-right: 8px;
   text-align: center; }
 
 .product-colour-wrapper .colour-block {
-  height: 32px; }
+  height: 32px;
+  background-position: center;
+  background-size: cover; }
 
 .product-title {
   text-transform: uppercase; }
+
+.product-full-description {
+  text-align: left; }
+
+.similar-product-image {
+  height: 120px;
+  background-position: center;
+  background-size: cover; }
+
+.similar-product-item {
+  display: inline-block;
+  cursor: pointer; }
+
+.similar-product-title,
+.similar-product-description {
+  color: #333333;
+  text-decoration: none;
+  text-align: center; }
+
+.similar-product-title {
+  font-weight: bold; }
+
+.product-technische-daten {
+  float: right; }
+  .product-technische-daten .tab-button {
+    width: 8rem;
+    text-align: center;
+    background-color: white;
+    color: #333333; }
+  .product-technische-daten li.active .tab-button {
+    color: white;
+    background-color: #ED6E23; }
+  .product-technische-daten .nav-pills > li.active > a:hover,
+  .product-technische-daten .nav-pills > li.active > a:focus {
+    opacity: 0.9;
+    color: white;
+    background-color: #ED6E23; }
+  .product-technische-daten .tab-content {
+    margin: 2rem 0; }
+
+.technische-container {
+  background-color: #cccccc;
+  padding: 2rem 0; }
+
+.product-similar {
+  float: right; }
+
+.product-main {
+  float: right; }
 
 /**
 Images

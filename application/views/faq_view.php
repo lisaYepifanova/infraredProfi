@@ -7,10 +7,11 @@
 
         <?php
         $index = 1;
+        echo '<div class="panel-group" id="accordion">';
         foreach ($data as $row) {
-            echo '<div class="faq-item">
-                    <h4 class="faq-item-title" class="collapsed" data-toggle="collapse" data-target="#answer-'.$index.'" aria-expanded="false"><span class="glyphicon glyphicon-chevron-down arrow-down"></span>'.$row['question'].'</h4>
-                    <p id="answer-'.$index.'" class="faq-item-answer collapse" aria-expanded="false" style="height: 0px;">'.$row['answer'].'</p>
+            echo '<div class="faq-item panel panel-default">
+                    <h4 class="faq-item-title collapsed" data-parent="#accordion" data-toggle="collapse" data-target="#answer-'.$index.'" aria-expanded="false"><span class="glyphicon glyphicon-chevron-down arrow-down"></span>'.$row['question'].'</h4>
+                    <p id="answer-'.$index.'" class="faq-item-answer panel-collapse collapse" aria-expanded="false" style="height: 0px;">'.$row['answer'].'</p>
                   </div>';
             $index = $index + 1;
         }

@@ -17,7 +17,7 @@ $('.carousel-showmanymoveone .item').each(function(){
   }
 });
 ;$('#homepageCarousel').carousel({
- interval: 3000,
+ interval: 5000,
  });;(function () {
 
     var contactCol = ".contacts .contact-item-wrapper";
@@ -124,7 +124,7 @@ $('.carousel-showmanymoveone .item').each(function(){
             $('.product-menu').addClass('fixed').removeAttr("style").css({'position': 'fixed'});
         }
         else if ($top > $pip - $height) {
-            $('.product-menu').removeClass('fixed').css({'position': 'absolute', 'bottom': '0'});
+            $('.product-menu').removeClass('fixed').css({'position': 'absolute', 'bottom': '16px'});
         }
         else {
             $('.product-menu').removeClass('fixed').removeAttr("style").css({'position': 'fixed'});
@@ -134,9 +134,11 @@ $('.carousel-showmanymoveone .item').each(function(){
     function productMenuScroll() {
         $topPos = $('.product-menu').offset().top; //pixels from the menu to the top
 
-        $rightHeight = $('.product-main').css('height');
-        console.log($rightHeight);
-        $('.product-menu-wrapper').css('height', $rightHeight);
+        //$rightHeight = $('.product-main').css('height');
+        //console.log($rightHeight);
+
+        $menuHeight = $('.product').css('height');
+        $('.product-menu-wrapper').css('height', $menuHeight);
         recalcPosition($topPos);
         $(window).scroll(function () {
             recalcPosition($topPos);

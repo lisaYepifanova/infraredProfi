@@ -21,7 +21,7 @@ class Model_Products extends Model
 
         $res = array();
 
-        $query = $mysqli->query("SELECT name, image, title FROM categories  WHERE parent_id=".$id);
+        $query = $mysqli->query("SELECT name, image, title, short_description FROM categories  WHERE parent_id=".$id);
 
         if ($query) {
             while ($r = mysqli_fetch_assoc($query)) {
@@ -29,7 +29,7 @@ class Model_Products extends Model
             }
         }
 
-        $query = $mysqli->query("SELECT name, image, title FROM products  WHERE parent_id=".$id);
+        $query = $mysqli->query("SELECT name, image, title, short_description FROM products  WHERE parent_id=".$id);
 
         if ($query) {
             while ($r = mysqli_fetch_assoc($query)) {

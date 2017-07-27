@@ -1,13 +1,16 @@
 <?php
+
 class Model_Product extends Model
 {
     public function get_data()
     {
         include 'application/connection.php';
+
+
         $routes = explode('/', $_SERVER['REQUEST_URI']);
         $last = end($routes);
 
-        $res = array();
+        $res = [];
 
         $q = "SELECT * FROM products  WHERE name='".$last."'";
         $query = $mysqli->query($q);
@@ -39,6 +42,10 @@ class Model_Product extends Model
             }
         }
 
+        include 'application/menu.php';
+        $menu = menu();
+
+        $res['menu'] = $menu;
         return $res;
     }
 }

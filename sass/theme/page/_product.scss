@@ -1,7 +1,8 @@
 .product-menu-wrapper {
   display: block;
+  position: absolute;
 
-  @media all and (max-width: 767px){
+  @media all and (max-width: 767px) {
     display: none;
   }
 }
@@ -9,16 +10,84 @@
 .product-colour-wrapper {
   .colour-item {
     display: inline-block;
-    width: 64px;
+    width: 82px;
     margin-right: 8px;
     text-align: center;
   }
 
   .colour-block {
     height: 32px;
+    background-position: center;
+    background-size: cover;
   }
 }
 
 .product-title {
   text-transform: uppercase;
+}
+
+.product-full-description {
+  text-align: left;
+}
+
+.similar-product-image {
+  height: 120px;
+  background-position: center;
+  background-size: cover;
+}
+
+.similar-product-item {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.similar-product-title,
+.similar-product-description {
+  color: $text-color;
+  text-decoration: none;
+  text-align: center;
+}
+
+.similar-product-title {
+  font-weight: bold;
+}
+
+.product-technische-daten {
+  float: right;
+
+  .tab-button {
+    width: 8rem;
+    text-align: center;
+    background-color: white;
+    color: $text-color;
+  }
+
+  li.active .tab-button {
+    color: white;
+    background-color: $footer-bg;
+  }
+
+  .nav-pills > li.active > a:hover,
+  .nav-pills > li.active > a:focus {
+    opacity: 0.9;
+    color: white;
+    background-color: $footer-bg;
+  }
+
+  .tab-content {
+    margin: 2rem 0;
+  }
+}
+
+.technische-container {
+  background-color: #cccccc;
+  padding: 2rem 0;
+}
+
+.product-similar {
+  float: right;
+}
+
+.product-main {
+  float: right;
 }

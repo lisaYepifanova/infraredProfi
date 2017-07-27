@@ -17,3 +17,19 @@
 .faq-item-title.opened .glyphicon {
   transform: scaleY(-1);
 }
+
+.panel-default {
+    border: 0;
+}
+
+.panel-default {
+    border-color: transparent;
+}
+
+.panel-group .panel {
+  margin-bottom: 24px;
+  border: 0;
+  box-shadow: none;
+}
+
+

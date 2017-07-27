@@ -1,5 +1,28 @@
 .product-menu {
   position: fixed;
+
+  li {
+    list-style: none;
+  }
+
+  ul {
+    padding-left: 1.3rem;
+  }
+
+  a {
+    cursor: pointer;
+    color: $text-color;
+    text-decoration: none;
+  }
+
+  .glyphicon {
+    margin-left: -16px;
+    color: $footer-bg;
+  }
+
+  .bold-item {
+    font-weight: bold;
+  }
 }
 .product-menu-wrapper {
   position: relative;
