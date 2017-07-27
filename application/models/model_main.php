@@ -3,7 +3,7 @@ class Model_Main extends Model
 {
     public function get_data()
     {
-        return array(
+        $res = array(
             'header' => array(
               'title' => 'INNOVATION FÜR <br>JEDES HEIZKONZEPT',
               'slider' => array (
@@ -64,40 +64,21 @@ class Model_Main extends Model
               )
             ),
             'gallery' => array(
-              'block_bg' => '',
-              'items' => array(
-                array(
-                  'title' => 'Product1',
-                  'link' => '/product1',
-                  'img' => '',
-                  'size' => '0.5'
-                ),
-                array(
-                  'title' => 'Product2',
-                  'link' => '/product2',
-                  'img' => '',
-                  'size' => '0.5'
-                ),
-                array(
-                  'title' => 'Product3',
-                  'link' => '/product3',
-                  'img' => '',
-                  'size' => '0.25'
-                ),
-                array(
-                  'title' => 'Product4',
-                  'link' => '/product4',
-                  'img' => '',
-                  'size' => '0.25'
-                ),
-                array(
-                  'title' => 'Product5',
-                  'link' => '/product5',
-                  'img' => '',
-                  'size' => '0.5'
-                )
-              )
+              'block_bg' => ''
             )
         );
+
+        include 'application/connection.php';
+
+
+        $query = $mysqli->query("SELECT name, image, title FROM categories  WHERE parent_id=0");
+
+        if ($query) {
+            while ($r = mysqli_fetch_assoc($query)) {
+                $res['gallery']['items'][] = $r;
+            }
+        }
+
+        return $res;
     }
 }

@@ -166,8 +166,50 @@ $(document).ready(function () {
     arrowsRotation();
 });
 
-;var hammer = new Hammer(document.querySelector('.carousel'));
+;(function () {
+    function sizeRect(i) {
+
+        console.log($row_num);
+
+
+        $('.row-' + i).on('click', function () {
+            $('tr').removeClass('active-row');
+            $('div').removeClass('active-rectangle');
+
+            $('#row' + i + '.rectangle').addClass('active-rectangle');
+            $('.row-' + i).addClass('active-row');
+        });
+
+        $('#row' + i).on('click', function () {
+            $('tr').removeClass('active-row');
+            $('div').removeClass('active-rectangle');
+            $('.row-' + i).addClass('active-row');
+            $('#row' + i + '.rectangle').addClass('active-rectangle');
+        });
+    }
+
+    $row_num = $('.product-sizes tr').length;
+
+    for (i = 1; i < $row_num; i++) {
+        sizeRect(i);
+    }
+
+
+}());;var hammer = new Hammer(document.querySelector('.carousel'));
 var $carousel = $(".carousel").carousel({"interval": 0});
+hammer.get("swipe");
+hammer.on("swipeleft", function () {
+    $carousel.carousel("next");
+});
+hammer.on("swiperight", function () {
+    $carousel.carousel("prev");
+});
+
+
+
+
+var hammer = new Hammer(document.querySelector('#thumbcarousel'));
+var $carousel = $("#thumbcarousel").carousel({"interval": 0});
 hammer.get("swipe");
 hammer.on("swipeleft", function () {
     $carousel.carousel("next");

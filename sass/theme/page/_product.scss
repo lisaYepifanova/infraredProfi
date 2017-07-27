@@ -49,17 +49,23 @@
 }
 
 .similar-product-title {
-  font-weight: bold;
+  //font-weight: bold;
 }
 
 .product-technische-daten {
   float: right;
+  padding-left: 0;
 
   .tab-button {
     width: 8rem;
     text-align: center;
     background-color: white;
     color: $text-color;
+
+    @media all and (max-width: 360px) {
+      padding: 5px;
+      width: 7rem;
+    }
   }
 
   li.active .tab-button {
@@ -76,11 +82,37 @@
 
   .tab-content {
     margin: 2rem 0;
+    padding-right: 1rem;
   }
+
+  @media all and (max-width: 380px) {
+
+    table {
+      font-size: 14px;
+
+      th, td {
+        padding: 2px;
+      }
+    }
+  }
+
+}
+
+.technische-row {
+  margin: 2rem 0;
+
+  @media all and (min-width: 992px) and (max-width: 1024px) {
+    padding-right: 2rem;
+  }
+
+  @media all and (max-width: 1024px) {
+    padding-right: 2rem;
+  }
+
 }
 
 .technische-container {
-  background-color: #cccccc;
+  background-color: #b9b8b8;
   padding: 2rem 0;
 }
 
@@ -90,4 +122,111 @@
 
 .product-main {
   float: right;
+
+  .carousel-wrapper {
+    padding-right: 1rem;
+  }
+}
+
+.product-sizes {
+  float: right;
+  position: relative;
+
+  @media all and (max-width: 767px) {
+    width: 90%;
+  }
+
+  &:first-child {
+    @media all and (max-width: 991px) {
+      margin-bottom: 4rem;
+      padding: 0;
+    }
+  }
+
+  @media all and (max-width: 767px) {
+    max-width: 90%;
+    float: left;
+  }
+
+  @media all and (max-width: 460px) {
+    table th {
+      word-break: break-all;
+    }
+  }
+
+  table {
+    font-size: 12px;
+
+  }
+
+  th, td {
+    border: 1px solid grey;
+    text-align: center;
+  }
+
+  th {
+    padding: 0 4px;
+
+    @media all and (min-width: 768px) and (max-width: 980px) {
+
+    }
+  }
+
+}
+
+.product-sizes table,
+.product-technische-daten table {
+  tr {
+    border: 2px white solid;
+    color: white;
+    border-left: none;
+    border-right: none;
+    cursor: pointer;
+
+    &:first-child {
+      border-top: none;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  td, th {
+    border: none;
+  }
+}
+
+.rectangle {
+  position: absolute;
+  border: 1px solid white;
+  background-color: $footer-bg;
+  opacity: 0.6;
+  color: white;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.sizes-rectangles {
+  height: 320px;
+}
+
+.active-row {
+  background-color: $footer-bg;
+}
+
+.active-rectangle {
+  opacity: 1;
+}
+
+.size-title {
+  color: white;
+  float: right;
+  margin-bottom: 2rem;
+  padding-left: 0;
+
+  @media all and (max-width: 767px) {
+    max-width: 90%;
+    float: left;
+  }
 }

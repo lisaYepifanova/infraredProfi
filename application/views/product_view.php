@@ -167,56 +167,130 @@
 
   <div class="technische-container">
     <div class="container">
+      <h4 class="size-title col-xs-9 ">SIZE</h4>
+
+      <div class="row technische-row">
+        <div class="product-sizes col-xs-9 col-md-5">
+
+            <?php
+
+            echo '<table>';
+            echo '<tr>
+                    <th>Ammessung (cantemiters)</th>
+                    <th>Leistung (watt)</th> 
+                    <th>Gewicht (kilograms)</th>
+                    <th>Warmeflache (square meter)</th>
+                  </tr>';
+            $ind = 1;
+            foreach ($data['sizes'] as $row) {
+                echo '<tr class="row-'.$ind.'">
+                    <td>'.$row['sizex'].'x'.$row['sizey'];
+                $ind = $ind + 1;
+                if ($row['sizez'] !== '0') {
+                    echo 'x'.$row['sizez'];
+                }
+                echo '</td>
+                    <td>'.$row['leistung'].'</td> 
+                    <td>'.$row['gewicht'].'</td>
+                    <td>'.$row['warmeflache'].'</td>
+                  </tr>';
+            }
+
+            echo '</table>';
+            ?>
+
+        </div>
+        <div class="product-sizes sizes-rectangles col-xs-9 col-md-4">
+
+          <div id="row7" class="rectangle"
+               style="width:180px;height:90px;bottom:0;left:0;">
+            180x90
+          </div>
+
+          <div id="row6" class="rectangle"
+               style="width:75px;height:180px;bottom:0;left:180px;">
+            180x75
+          </div>
+          <div id="row5" class="rectangle"
+               style="width:150px;height:90px;bottom:90px;left:0;">
+            150x90
+          </div>
+          <div id="row4" class="rectangle"
+               style="width:150px;height:40px;bottom:180px;left:0;">
+            150x40
+          </div>
+          <div id="row3" class="rectangle"
+               style="width:90px;height:60px;bottom:220px;left:0;">
+            60x90
+          </div>
+
+          <div id="row2" class="rectangle"
+               style="width:60px;height:60px;bottom:220px;left:90px;">60x60
+          </div>
+
+          <div id="row1" class="rectangle"
+               style="width:90px;height:40px;bottom:280px;left:0;">
+            40x90
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="container">
       <div class="row technische-row">
         <!--Technische daten table-->
-        <div class="product-technische-daten-wrapper">
-          <div class="product-technische-daten product-main col-sm-9">
+        <div class="product-technische-daten product-main col-xs-12 col-sm-9">
 
-            <ul class="nav nav-pills">
-              <li class="active">
-                <a class="tab-button" href="#1a" data-toggle="tab">QUALITY</a>
-              </li>
-              <li><a class="tab-button" href="#2a" data-toggle="tab">DOWNLOAD</a>
-              </li>
-            </ul>
+          <ul class="nav nav-pills">
+            <li class="active">
+              <a class="tab-button" href="#1a" data-toggle="tab">QUALITY</a>
+            </li>
+            <li><a class="tab-button" href="#2a"
+                   data-toggle="tab">DOWNLOAD</a>
+            </li>
+          </ul>
 
-            <div class="tab-content clearfix">
-              <div class="tab-pane active" id="1a">
-               <!-- <h3 class="technische-daten-title">TECHNISCHE DATEN</h3> -->
+          <div class="tab-content clearfix">
+            <div class="tab-pane active" id="1a">
+              <!-- <h3 class="technische-daten-title">TECHNISCHE DATEN</h3> -->
 
-                <table>
-                    <?php
-                    foreach ($data[0] as $key => $value) {
-                        if ($key !== 'id' && $key !== 'name' && $key !== 'parent_id' && $key !== 'image' && $key !== 'title' && $key !== 'description') {
-                            echo ' <tr><td>'.ucfirst(
-                                str_replace("_", " ", $key)
-                              ).'</td>';
-                            echo ' <td>'.$value.'</td></tr>';
-                        }
-                    }
-                    ?>
-                </table>
-              </div>
-              <div class="tab-pane" id="2a">
-                <h3>Documents</h3>
-              </div>
+              <table>
+                  <?php
+                  foreach ($data[0] as $key => $value) {
+                      if ($key == 'vorne' or $key == 'hintent' or $key == 'warmeeffekt' or $key == 'schutzgrad' or $key == 'zertifikate') {
+                          echo ' <tr><td>'.ucfirst(
+                              str_replace("_", " ", $key)
+                            ).'</td>';
+                          echo ' <td>'.$value.'</td></tr>';
+                      }
+                  }
+                  ?>
+              </table>
             </div>
-
-
+            <div class="tab-pane" id="2a">
+              <h3>Documents</h3>
+            </div>
           </div>
+
+
         </div>
       </div>
     </div>
   </div>
+  </div>
+
+
   <div class="container">
-    <div class="row technische-row">
-      <div class="product-similar col-sm-9">
+    <div class="row similar-row">
+      <div class="product-similar col-xs-12 col-sm-9">
         <!--Similar product-->
 
         <div class="similar-products-wrapper">
           <div class="similar-products">
             <h3 class="similar-products-title">PRODUCTE</h3>
-            <div class="row">
+            <div class="row right-padding">
                 <?php
                 include 'application/connection.php';
                 $routes = explode('/', $_SERVER['REQUEST_URI']);
@@ -231,12 +305,12 @@
                 if ($query) {
                     $ind = 1;
                     while ($r = mysqli_fetch_assoc($query) and $ind < 4) {
-                        echo '<a class="col-sm-4 similar-product-item" href="'.str_replace(
+                        echo '<a class="col-sm-4 col-xs-12 similar-product-item" href="'.str_replace(
                             $last,
                             $r['name'],
                             $_SERVER['REQUEST_URI']
                           ).'"><div class="similar-product-image" style="background-image: url('.IMAGEPATH.$r['image'].')"></div>';
-                        echo '<div class="similar-product-title">'.$r['title'].'</div>';
+                        echo '<h4 class="similar-product-title">'.$r['title'].'</h4>';
                         echo '<div class="similar-product-description">'.$r['short_description'].'</div></a>';
                         $ind = $ind + 1;
                     }

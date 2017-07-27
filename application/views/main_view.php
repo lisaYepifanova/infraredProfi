@@ -87,11 +87,15 @@
 
             foreach ($data['gallery']['items'] as $row) {
               echo '<div class="item-wrapper col-sm-';
-              $size = $row['size']*12;
+              if(($index-3)%5 == 0 or ($index-4)%5==0) {
+                $size = 3;
+              } else {
+                $size = 6;
+              }
               echo $size.'">
                 <div class="homepage-product-item item-'.$index.'">
                   <div class="item-image">
-                    <a href="'.$row['link'].'" class="link-to-product">'.$row['title'].'
+                    <a href="/products/'.$row['name'].'" class="link-to-product">'.$row['title'].'
                       <span class="arrow">›</span>
                     </a>
                   </div>

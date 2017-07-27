@@ -42,10 +42,23 @@ class Model_Product extends Model
             }
         }
 
+        $sizes_category = $res[0]['category_size_id'];
+        $q = 'SELECT * FROM sizes WHERE category_size_id="'.$sizes_category.'"';
+
+        $query = $mysqli->query($q);
+        $sizes = [];
+        if ($query) {
+            while ($s = mysqli_fetch_assoc($query)) {
+                $sizes[] = $s;
+            }
+        }
+
         include 'application/menu.php';
         $menu = menu();
 
         $res['menu'] = $menu;
+        $res['sizes'] = $sizes;
+
         return $res;
     }
 }
