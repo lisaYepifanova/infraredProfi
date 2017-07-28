@@ -6533,7 +6533,8 @@ body.modal-open {
 .product-menu {
   position: fixed; }
   .product-menu li {
-    list-style: none; }
+    list-style: none;
+    margin-bottom: 10px; }
   .product-menu ul {
     padding-left: 1.3rem; }
   .product-menu a {

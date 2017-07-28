@@ -1,5 +1,21 @@
 <?php
 
+function neighbourItems($current_query, $table) {
+    include 'application/connection.php';
+    $current = mysqli_fetch_assoc($current_query);
+    $neighbour_query = $mysqli->query(
+      "SELECT id, name, title, parent_id FROM ".$table." WHERE parent_id='".$current['parent_id']."'"
+    );
+    $neighbour_set = [];
+    if ($neighbour_query) {
+        while ($neighbour = mysqli_fetch_assoc($neighbour_query)) {
+            $neighbour_set[] = $neighbour;
+        }
+    }
+
+    return $neighbour_set;
+}
+
 function menu()
 {
     include 'application/connection.php';
@@ -29,18 +45,22 @@ function menu()
     }
 
     //products in current dir
-    $current_query = $mysqli->query(
+    $current_query_prod = $mysqli->query(
       "SELECT id, name, title, parent_id FROM products WHERE name='".$last."'"
     );
-    $current = mysqli_fetch_assoc($current_query);
-    $neighbour_query = $mysqli->query(
-      "SELECT id, name, title, parent_id FROM products WHERE parent_id='".$current['parent_id']."'"
+
+    $current_query_therm = $mysqli->query(
+      "SELECT id, name, title, parent_id FROM thermostat WHERE name='".$last."'"
     );
-    if ($neighbour_query) {
-        while ($neighbour = mysqli_fetch_assoc($neighbour_query)) {
-            $neighbour_set[] = $neighbour;
-        }
+
+    if ($current_query_prod->num_rows !== 0) {
+        $neighbour_set = neighbourItems($current_query_prod, 'products');
+    } else if ($current_query_therm->num_rows !== 0) {
+        $neighbour_set = neighbourItems($current_query_therm, 'thermostat');
     }
+
+
+
 
     $ind = $neighbour_set[0]['parent_id'];
     $category_set = '';

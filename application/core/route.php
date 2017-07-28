@@ -30,18 +30,18 @@ class Route
               "SELECT * FROM products WHERE name LIKE '%".$last."%'"
             );
 
-            /*$result_thermostat = $mysqli->query(
-              "SELECT * FROM thermostats WHERE thermostat_name LIKE '%".$last."%'"
-            );*/
+            $result_thermostat = $mysqli->query(
+              "SELECT * FROM thermostat WHERE name LIKE '%".$last."%'"
+            );
 
             $action_name = 'index';
             if ($result_category->num_rows !== 0 || empty($routes[2])) {
                 $controller_name = 'products';
             } else if ($result_product->num_rows !== 0) {
                 $controller_name = 'product';
-            } /*else if ($result_thermostat->num_rows !== 0) {
+            } else if ($result_thermostat->num_rows !== 0) {
                 $controller_name = 'thermostat';
-            }*/
+            }
             else {
                 $controller_name = '404';
             }

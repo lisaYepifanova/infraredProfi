@@ -7,7 +7,6 @@ if ($l<4) {
 }
 
 $('.carousel-showmanymoveone .item').each(function(){
-  console.log('images' + $l);
   var next = $(this).next();
   if (!next.length) {
     next = $(this).siblings(':first');

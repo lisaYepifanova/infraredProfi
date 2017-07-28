@@ -37,6 +37,13 @@ class Model_Products extends Model
             }
         }
 
+        $query = $mysqli->query("SELECT name, image, title, short_description FROM thermostat  WHERE parent_id=".$id);
+
+        if ($query) {
+            while ($r = mysqli_fetch_assoc($query)) {
+                $res[] = $r;
+            }
+        }
 
         return $res;
     }

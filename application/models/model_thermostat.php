@@ -6,13 +6,12 @@ class Model_Thermostat extends Model
     {
         include 'application/connection.php';
 
-
         $routes = explode('/', $_SERVER['REQUEST_URI']);
         $last = end($routes);
 
         $res = [];
 
-        $q = "SELECT * FROM products WHERE name='".$last."'";
+        $q = "SELECT * FROM thermostat WHERE name='".$last."'";
         $query = $mysqli->query($q);
 
         if ($query) {
@@ -21,7 +20,7 @@ class Model_Thermostat extends Model
             }
         }
 
-        $img_q = "SELECT * FROM images  WHERE prod_id=".$res[0]['id'];
+        $img_q = "SELECT * FROM thermostats_images  WHERE prod_id=".$res[0]['id'];
         $query = $mysqli->query($img_q);
 
         if ($query) {
@@ -29,9 +28,6 @@ class Model_Thermostat extends Model
                 $res['gallery'][] = $r;
             }
         }
-
-
-
 
         include 'application/menu.php';
         $menu = menu();

@@ -1,9 +1,5 @@
 (function () {
     function sizeRect(i) {
-
-        console.log($row_num);
-
-
         $('.row-' + i).on('click', function () {
             $('tr').removeClass('active-row');
             $('div').removeClass('active-rectangle');

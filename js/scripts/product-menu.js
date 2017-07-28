@@ -6,7 +6,6 @@ $(function () {
         $mtop = $('.contacts').css('margin-top');
         $height = $('.product-menu').outerHeight(); //height of the menu
         $pip = $pip - parseInt($mtop) * 2;
-        console.log($pip);
         if ($top > $topPos && $top < $pip - $height) {
             $('.product-menu').addClass('fixed').removeAttr("style").css({'position': 'fixed'});
         }
@@ -22,7 +21,6 @@ $(function () {
         $topPos = $('.product-menu').offset().top; //pixels from the menu to the top
 
         //$rightHeight = $('.product-main').css('height');
-        //console.log($rightHeight);
 
         $menuHeight = $('.product').css('height');
         $('.product-menu-wrapper').css('height', $menuHeight);
@@ -32,7 +30,26 @@ $(function () {
         });
     }
 
+    function setMenuWidth() {
+        $menuWidth = parseInt($('.container').css('width')) * 0.25;
+            $('.product-menu').css('width', $menuWidth + 'px');
+    }
+
     window.onload = function () {
         productMenuScroll();
+        setMenuWidth();
+
+        $(window).scroll(function () {
+            $menuHeight = $('.product').css('height');
+        $('.product-menu-wrapper').css('height', $menuHeight);
+            setMenuWidth();
+        });
+
+        $(window).resize(function () {
+            $menuHeight = $('.product').css('height');
+        $('.product-menu-wrapper').css('height', $menuHeight);
+            setMenuWidth();
+        });
+
     }
 });
