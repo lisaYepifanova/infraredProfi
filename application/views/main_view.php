@@ -93,7 +93,7 @@
                 $size = 6;
               }
               echo $size.'">
-                <div class="homepage-product-item item-'.$index.'">
+                <div class="homepage-product-item item-'.$index.'" style="background-image: url('.IMAGEPATH.$row['image'].')">
                   <div class="item-image">
                     <a href="/products/'.$row['name'].'" class="link-to-product">'.$row['title'].'
                       <span class="arrow">›</span>

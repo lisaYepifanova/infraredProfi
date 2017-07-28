@@ -6534,9 +6534,10 @@ body.modal-open {
   position: fixed; }
   .product-menu li {
     list-style: none;
-    margin-bottom: 10px; }
+    margin-bottom: 8px; }
   .product-menu ul {
-    padding-left: 1.3rem; }
+    padding-left: 1.3rem;
+    margin-top: 8px; }
   .product-menu a {
     cursor: pointer;
     color: #333333;
@@ -6872,15 +6873,46 @@ Pages
 .active-rectangle {
   opacity: 1; }
 
-.size-title {
+.size-title,
+.product-thermostat {
   color: white;
   float: right;
   margin-bottom: 2rem;
   padding-left: 0; }
   @media all and (max-width: 767px) {
-    .size-title {
+    .size-title,
+    .product-thermostat {
       max-width: 90%;
       float: left; } }
+
+.product-thermostat {
+  margin-bottom: 0; }
+
+@media all and (max-width: 767px) {
+  .product-thermostat-item {
+    margin-bottom: 2rem;
+    text-align: center; } }
+
+.product-thermostat-image {
+  margin-bottom: 1rem;
+  width: 80%; }
+  @media all and (max-width: 767px) {
+    .product-thermostat-image {
+      max-width: 300px;
+      margin: 0 auto 1rem auto; } }
+
+.thermostat-product-image {
+  background-size: cover;
+  background-position: center; }
+
+.thermostat-product-title,
+.thermostat-product-description {
+  text-decoration: none;
+  color: #333333; }
+
+.similar-products-wrapper,
+.thermostats-row {
+  margin: 2rem 0; }
 
 /**
 Images

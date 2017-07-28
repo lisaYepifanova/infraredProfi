@@ -14,6 +14,6 @@
         }
     ?>
     <div class="sign-wrapper text-center">
-      <img src="../img/sign.png">
+      <img src="../img/sign.png" alt="sign">
     </div>
   </div>

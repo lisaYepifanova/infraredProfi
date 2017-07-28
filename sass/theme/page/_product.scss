@@ -219,7 +219,8 @@
   opacity: 1;
 }
 
-.size-title {
+.size-title,
+.product-thermostat {
   color: white;
   float: right;
   margin-bottom: 2rem;
@@ -229,4 +230,42 @@
     max-width: 90%;
     float: left;
   }
+}
+
+.product-thermostat {
+  margin-bottom: 0;
+}
+
+.product-thermostat-item {
+  text-align: center;
+
+  @media all and (max-width: 767px) {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+}
+
+.product-thermostat-image {
+  margin-bottom: 1rem;
+  width: 80%;
+   @media all and (max-width: 767px) {
+    max-width: 300px;
+     margin: 0 auto 1rem auto;
+  }
+}
+
+.thermostat-product-image {
+  background-size: cover;
+  background-position: center;
+}
+
+.thermostat-product-title,
+.thermostat-product-description {
+  text-decoration: none;
+  color: $text-color;
+}
+
+.similar-products-wrapper,
+.thermostats-row {
+  margin: 2rem 0;
 }

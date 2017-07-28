@@ -91,7 +91,10 @@
                   <?php
                   $activeIndex = true;
                   $itemIndex = 0;
-                  if (!empty($data['gallery']) and count($data['gallery'])>1) {
+                  if (!empty($data['gallery']) and count(
+                      $data['gallery']
+                    ) > 1
+                  ) {
                       foreach ($data['gallery'] as $row) {
                           echo '<div class="item ';
                           if ($activeIndex) {
@@ -114,7 +117,7 @@
               </div>
 
                 <?php
-                if (!empty($data['gallery']) and count($data['gallery'])>3) {
+                if (!empty($data['gallery']) and count($data['gallery']) > 3) {
                     ?>
                   <a class="left carousel-control" href="#thumbcarousel"
                      role="button" data-slide="prev">
@@ -277,8 +280,36 @@
 
         </div>
       </div>
+      <div class="row technishe-row">
+        <div class="product-thermostat col-xs-12 col-sm-9">
+            <?php
+            include 'application/connection.php';
+
+            $query = $mysqli->query(
+              "SELECT * FROM product_thermostat"
+            );
+
+            if ($query) {
+                while ($row = mysqli_fetch_assoc($query)) {
+                    echo '
+                      <div class="col-xs-12 col-sm-6 product-thermostat-item">
+                        <div class="product-thermostat-image"><img src="'.IMAGEPATH.$row['image'].'"></div>
+                        <div class="product-thermostat-title">
+                        '.$row['title'].'
+                        </div>
+                        <div class="product-thermostat-description">
+                        '.$row['description'].'
+                        </div>
+                      </div>';
+                }
+            }
+            ?>
+
+        </div>
+      </div>
+
+
     </div>
-  </div>
   </div>
 
 
@@ -315,6 +346,33 @@
                         $ind = $ind + 1;
                     }
                 }
+
+
+                ?>
+            </div>
+          </div>
+        </div>
+
+        <div class="row thermostats-row">
+      <div class="product-thermostats">
+        <!--Similar product-->
+
+        <div class="thermostats-products-wrapper">
+          <div class="thermostats-products">
+            <h3 class="thermostats-products-title">FUR STEUERUNG UNSERE HEIZUNGSSYSTEME EMPFEHLEN WIR WARM UPT</h3>
+            <div class="row right-padding">
+                <?php
+                include 'application/connection.php';
+                $q = "SELECT * FROM thermostat";
+                $query = $mysqli->query($q);
+
+        if ($query) {
+            while ($row = mysqli_fetch_assoc($query)) {
+                echo '<a class="col-sm-4 col-xs-12 thermostat-product-item" href="/products/thermostats/'.$row['name'].'"><div class="thermostat-product-image"><img src="'.IMAGEPATH.$row['image'].'" alt="thermostat"></div>';
+                        echo '<h4 class="thermostat-product-title">'.$row['title'].'</h4>';
+                        echo '<div class="thermostat-product-description">'.$row['short_description'].'</div></a>';
+            }
+        }
 
 
                 ?>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="de">
 <?php
 $pageTitle = "Infrared Profi";
 ?>
@@ -36,7 +36,7 @@ $pageTitle = "Infrared Profi";
 
 <div class="site-logo-wrapper">
   <?php
-    echo '<a href="/"><img src="'.IMAGEPATH.$default['site_logo'].'"></a>'
+    echo '<a href="/"><img src="'.IMAGEPATH.$default['site_logo'].'" alt="logo"></a>'
   ?>
 </div>
 
@@ -99,7 +99,6 @@ include 'application/views/'.$content_view;
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">›</button>
           <h5 class="modal-title">
-            <a class="lang-link">RU</a>
             <a class="lang-link">ENG</a>
             <a class="lang-link">GRM</a>
           </h5>
@@ -115,8 +114,8 @@ include 'application/views/'.$content_view;
         </div>
         <div class="modal-footer">
             <?php
-              echo '<a href="https://www.facebook.com/" class="social-link"><img src="'.IMAGEPATH.'fb.png"></a>
-          <a href="https://twitter.com/" class="social-link"><img src="'.IMAGEPATH.'twitter.png"></a>';
+              echo '<a href="https://www.facebook.com/" class="social-link"><img src="'.IMAGEPATH.'fb.png" alt="facebook link"></a>
+          <a href="https://twitter.com/" class="social-link"><img src="'.IMAGEPATH.'twitter.png" alt="twitter link"></a>';
             ?>
 
 
