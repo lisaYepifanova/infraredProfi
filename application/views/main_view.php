@@ -1,6 +1,6 @@
 <main>
   <div class="homepage-header">
-    <div id="homepageCarousel" class="carousel slide homepage-carousel"
+    <div id="homepageCarousel" class="carousel slide homepage-carousel swipe-carousel"
          data-interval="2000" data-ride="carousel">
       <!-- Carousel indicators -->
       <ol class="carousel-indicators">

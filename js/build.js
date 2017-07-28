@@ -1,18 +1,24 @@
-$('#thumbcarousel').carousel({
-  interval: 5000
-})
+$l = $('.carousel-showmanymoveone .item').length;
+
+
+$('#thumbcarousel').carousel({interval: false});
+if ($l<4) {
+  $('#thumbcarousel').carousel({interval: false});
+}
 
 $('.carousel-showmanymoveone .item').each(function(){
+  console.log('images' + $l);
   var next = $(this).next();
   if (!next.length) {
     next = $(this).siblings(':first');
   }
   next.children(':first-child').clone().appendTo($(this));
 
+
   if (next.next().length>0) {
     next.next().children(':first-child').clone().appendTo($(this));
   }
-  else {
+  else if ($l>3){
     $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
   }
 });
@@ -195,25 +201,30 @@ $(document).ready(function () {
     }
 
 
-}());;var hammer = new Hammer(document.querySelector('.carousel'));
-var $carousel = $(".carousel").carousel({"interval": 0});
-hammer.get("swipe");
-hammer.on("swipeleft", function () {
-    $carousel.carousel("next");
-});
-hammer.on("swiperight", function () {
-    $carousel.carousel("prev");
-});
+}());;function hammerSwipe($selector) {
+    var hammer = new Hammer(document.querySelector($selector));
+    var $carousel = $($selector).carousel({"interval": 5000});
+    hammer.get("swipe");
+    hammer.on("swipeleft", function () {
+        $carousel.carousel("next");
+    });
+    hammer.on("swiperight", function () {
+        $carousel.carousel("prev");
+    });
+}
 
+hammerSwipe('.swipe-carousel');
 
+$l = $('.carousel-showmanymoveone .item').length;
+if ($l > 3) {
+    var hammer = new Hammer(document.querySelector('#thumbcarousel'));
+    var $carousel = $("#thumbcarousel").carousel({"interval": 0});
+    hammer.get("swipe");
 
-
-var hammer = new Hammer(document.querySelector('#thumbcarousel'));
-var $carousel = $("#thumbcarousel").carousel({"interval": 0});
-hammer.get("swipe");
-hammer.on("swipeleft", function () {
-    $carousel.carousel("next");
-});
-hammer.on("swiperight", function () {
-    $carousel.carousel("prev");
-});
+    hammer.on("swipeleft", function () {
+        $carousel.carousel("next");
+    });
+    hammer.on("swiperight", function () {
+        $carousel.carousel("prev");
+    });
+}

@@ -67,7 +67,7 @@
         <!-- Gallery carousel -->
         <div class="carousel-wrapper">
           <div id="carousel"
-               class="carousel slide product-carousel product-carousel-top">
+               class="carousel slide product-carousel product-carousel-top swipe-carousel">
             <div class="carousel-inner">
                 <?php
                 $activeIndex = true;
@@ -91,7 +91,7 @@
                   <?php
                   $activeIndex = true;
                   $itemIndex = 0;
-                  if (!empty($data['gallery'])) {
+                  if (!empty($data['gallery']) and count($data['gallery'])>1) {
                       foreach ($data['gallery'] as $row) {
                           echo '<div class="item ';
                           if ($activeIndex) {
@@ -114,7 +114,7 @@
               </div>
 
                 <?php
-                if (!empty($data['gallery'])) {
+                if (!empty($data['gallery']) and count($data['gallery'])>3) {
                     ?>
                   <a class="left carousel-control" href="#thumbcarousel"
                      role="button" data-slide="prev">
