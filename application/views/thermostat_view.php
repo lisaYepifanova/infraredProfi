@@ -161,6 +161,21 @@
           </div>
         </div>
 
+        <div class="technische-thermostat-daten">
+          <table>
+                  <?php
+                  foreach ($data[0] as $key => $value) {
+                      if (($key !== 'id' and $key !== 'name' and $key !== 'title' and $key !== 'short_description' and $key !== 'image' and $key !== 'parent_id' and $key !== 'description') and $value !== null) {
+                          echo ' <tr><td>'.ucfirst(
+                              str_replace("_", " ", $key)
+                            ).'</td>';
+                          echo ' <td>'.$value.'</td></tr>';
+                      }
+                  }
+                  ?>
+              </table>
+        </div>
+
       </div>
     </div>
   </div>
@@ -207,8 +222,6 @@
         </div>
       </div>
     </div>
-  </div>
-  </div>
   </div>
 
 </main>

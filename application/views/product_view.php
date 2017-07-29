@@ -293,7 +293,7 @@
                 while ($row = mysqli_fetch_assoc($query)) {
                     echo '
                       <div class="col-xs-12 col-sm-6 product-thermostat-item">
-                        <div class="product-thermostat-image"><img src="'.IMAGEPATH.$row['image'].'"></div>
+                        <div class="product-thermostat-image"><img src="'.IMAGEPATH.$row['image'].'" alt="thermostat"></div>
                         <div class="product-thermostat-title">
                         '.$row['title'].'
                         </div>

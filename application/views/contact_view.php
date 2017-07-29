@@ -4,5 +4,5 @@
 
   <iframe
       src=" <?php echo $data['map'] ?>"
-      class="gmap" frameborder="0" allowfullscreen></iframe>
+      class="gmap"  allowfullscreen></iframe>
 </main>
