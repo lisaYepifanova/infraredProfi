@@ -6436,7 +6436,7 @@ Blocks
     .contact-item {
       height: calc((950px - 150px)/4); } }
   .contact-item .content-item-icon {
-    width: 40px;
+    width: 32px;
     height: auto;
     position: absolute;
     top: 50%;
@@ -6615,6 +6615,12 @@ body.modal-open {
 
 .product-menu {
   position: fixed; }
+  @media all and (max-width: 1320px) {
+    .product-menu {
+      display: none; } }
+  @media all and (max-width: 1366px) {
+    .product-menu {
+      font-size: 14px; } }
   .product-menu li {
     list-style: none;
     margin-bottom: 8px; }
@@ -6872,7 +6878,7 @@ Pages
   text-align: left; }
 
 .similar-product-image {
-  height: 120px;
+  height: 164px;
   background-position: center;
   background-size: cover; }
 
@@ -6887,7 +6893,6 @@ Pages
   text-align: center; }
 
 .product-technische-daten {
-  float: right;
   padding-left: 0; }
   .product-technische-daten .tab-button {
     width: 8rem;
@@ -6915,6 +6920,17 @@ Pages
       .product-technische-daten table th, .product-technische-daten table td {
         padding: 2px; } }
 
+.size-row {
+  width: 100%; }
+  @media all and (min-width: 700px) {
+    .size-row {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -ms-flex-align: center;
+      align-items: center; } }
+
 .technische-row {
   margin: 2rem 0; }
   @media all and (min-width: 992px) and (max-width: 1024px) {
@@ -6926,18 +6942,15 @@ Pages
 
 .technische-container {
   background-color: #b9b8b8;
-  padding: 2rem 0; }
+  padding: 4rem 0; }
 
 .product-similar {
-  float: right; }
+  padding: 0 16px; }
 
-.product-main {
-  float: right; }
-  .product-main .carousel-wrapper {
-    padding-right: 1rem; }
+.product-main .carousel-wrapper {
+  padding-right: 1rem; }
 
 .product-sizes {
-  float: right;
   position: relative; }
   @media all and (max-width: 767px) {
     .product-sizes {
@@ -6948,8 +6961,7 @@ Pages
       padding: 0; } }
   @media all and (max-width: 767px) {
     .product-sizes {
-      max-width: 90%;
-      float: left; } }
+      max-width: 90%; } }
   @media all and (max-width: 460px) {
     .product-sizes table th {
       word-break: break-all; } }
@@ -7001,14 +7013,12 @@ Pages
 .size-title,
 .product-thermostat {
   color: white;
-  float: right;
   margin-bottom: 2rem;
   padding-left: 0; }
   @media all and (max-width: 767px) {
     .size-title,
     .product-thermostat {
-      max-width: 90%;
-      float: left; } }
+      max-width: 90%; } }
 
 .product-thermostat {
   margin-bottom: 0; }
@@ -7039,7 +7049,7 @@ Pages
 
 .similar-products-wrapper,
 .thermostats-row {
-  margin: 2rem 0; }
+  margin: 4rem 0; }
 
 /**
 Images

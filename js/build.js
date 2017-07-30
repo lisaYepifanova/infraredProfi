@@ -179,7 +179,7 @@ $('.homepage-gallery-carousel').carousel({
 
         //$rightHeight = $('.product-main').css('height');
 
-        $menuHeight = $('.product').css('height');
+        //$menuHeight = $('.product').css('height');
         $('.product-menu-wrapper').css('height', $menuHeight);
         recalcPosition($topPos);
         $(window).scroll(function () {
@@ -188,8 +188,15 @@ $('.homepage-gallery-carousel').carousel({
     }
 
     function setMenuWidth() {
-        $menuWidth = parseInt($('.container').css('width')) * 0.25;
-        $('.product-menu').css('width', $menuWidth + 'px');
+        $menuMaxWidth = (parseInt($(document).width()) - parseInt($('.container').width())) / 2;
+        $('.product-menu').css('max-width', $menuMaxWidth + 'px');
+        $menuWidth = parseInt($('.product-menu').css('width'));
+        $margin = ($menuMaxWidth - $menuWidth) / 2;
+        if (parseInt($(document).width()) > 1366) {
+            $('.product-menu').css('margin-left', $margin + 'px');
+            $('.product-menu').css('margin-right', $margin + 'px');
+        }
+
     }
 
     window.onload = function () {
@@ -198,14 +205,14 @@ $('.homepage-gallery-carousel').carousel({
             setMenuWidth();
 
             $(window).scroll(function () {
-                $menuHeight = $('.product').css('height');
-                $('.product-menu-wrapper').css('height', $menuHeight);
+                //$menuHeight = $('.product').css('height');
+                //$('.product-menu-wrapper').css('height', $menuHeight);
                 setMenuWidth();
             });
 
             $(window).resize(function () {
-                $menuHeight = $('.product').css('height');
-                $('.product-menu-wrapper').css('height', $menuHeight);
+                //$menuHeight = $('.product').css('height');
+               // $('.product-menu-wrapper').css('height', $menuHeight);
                 setMenuWidth();
             });
 

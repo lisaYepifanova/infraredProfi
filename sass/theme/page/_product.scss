@@ -31,7 +31,7 @@
 }
 
 .similar-product-image {
-  height: 120px;
+  height: 164px;
   background-position: center;
   background-size: cover;
 }
@@ -53,7 +53,6 @@
 }
 
 .product-technische-daten {
-  float: right;
   padding-left: 0;
 
   .tab-button {
@@ -98,8 +97,20 @@
 
 }
 
+.size-row {
+    width: 100%;
+
+  @media all and (min-width: 700px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
+
 .technische-row {
   margin: 2rem 0;
+
 
   @media all and (min-width: 992px) and (max-width: 1024px) {
     padding-right: 2rem;
@@ -113,15 +124,14 @@
 
 .technische-container {
   background-color: #b9b8b8;
-  padding: 2rem 0;
+  padding: 4rem 0;
 }
 
 .product-similar {
-  float: right;
+  padding: 0 16px;
 }
 
 .product-main {
-  float: right;
 
   .carousel-wrapper {
     padding-right: 1rem;
@@ -129,7 +139,6 @@
 }
 
 .product-sizes {
-  float: right;
   position: relative;
 
   @media all and (max-width: 767px) {
@@ -145,7 +154,6 @@
 
   @media all and (max-width: 767px) {
     max-width: 90%;
-    float: left;
   }
 
   @media all and (max-width: 460px) {
@@ -222,13 +230,11 @@
 .size-title,
 .product-thermostat {
   color: white;
-  float: right;
   margin-bottom: 2rem;
   padding-left: 0;
 
   @media all and (max-width: 767px) {
     max-width: 90%;
-    float: left;
   }
 }
 
@@ -267,5 +273,5 @@
 
 .similar-products-wrapper,
 .thermostats-row {
-  margin: 2rem 0;
+  margin: 4rem 0;
 }

@@ -1,10 +1,7 @@
 <main class="product">
 
   <h1 class="page-header container text-capitalize">PRODUCT</h1>
-
-  <div class=" container right-padding">
-    <div class="row">
-      <div class="product-menu-wrapper col-sm-3">
+<div class="product-menu-wrapper col-sm-3">
         <div class="product-menu floating">
           <ul>
               <?php
@@ -61,8 +58,10 @@
           </ul>
         </div>
       </div>
+  <div class=" container right-padding">
+    <div class="row">
 
-      <div class="product-main col-sm-9">
+      <div class="product-main col-sm-12">
 
         <!-- Gallery carousel -->
         <div class="carousel-wrapper">
@@ -170,40 +169,10 @@
 
   <div class="technische-container">
     <div class="container">
-      <h4 class="size-title col-xs-9 ">SIZE</h4>
+      <h4 class="size-title col-xs-12 ">SIZE</h4>
 
-      <div class="row technische-row">
-        <div class="product-sizes col-xs-9 col-md-5">
-
-            <?php
-
-            echo '<table>';
-            echo '<tr>
-                    <th>Ammessung (cantemiters)</th>
-                    <th>Leistung (watt)</th> 
-                    <th>Gewicht (kilograms)</th>
-                    <th>Warmeflache (square meter)</th>
-                  </tr>';
-            $ind = 1;
-            foreach ($data['sizes'] as $row) {
-                echo '<tr class="row-'.$ind.'">
-                    <td>'.$row['sizex'].'x'.$row['sizey'];
-                $ind = $ind + 1;
-                if ($row['sizez'] !== '0') {
-                    echo 'x'.$row['sizez'];
-                }
-                echo '</td>
-                    <td>'.$row['leistung'].'</td> 
-                    <td>'.$row['gewicht'].'</td>
-                    <td>'.$row['warmeflache'].'</td>
-                  </tr>';
-            }
-
-            echo '</table>';
-            ?>
-
-        </div>
-        <div class="product-sizes sizes-rectangles col-xs-9 col-md-4">
+      <div class="row technische-row size-row">
+        <div class="product-sizes sizes-rectangles col-xs-12  col-sm-6">
 
           <div id="row7" class="rectangle"
                style="width:180px;height:90px;bottom:0;left:0;">
@@ -236,6 +205,37 @@
             40x90
           </div>
         </div>
+        <div class="product-sizes col-xs-12  col-sm-6">
+
+            <?php
+
+            echo '<table>';
+            echo '<tr>
+                    <th>Ammessung (cantemiters)</th>
+                    <th>Leistung (watt)</th> 
+                    <th>Gewicht (kilograms)</th>
+                    <th>Warmeflache (square meter)</th>
+                  </tr>';
+            $ind = 1;
+            foreach ($data['sizes'] as $row) {
+                echo '<tr class="row-'.$ind.'">
+                    <td>'.$row['sizex'].'x'.$row['sizey'];
+                $ind = $ind + 1;
+                if ($row['sizez'] !== '0') {
+                    echo 'x'.$row['sizez'];
+                }
+                echo '</td>
+                    <td>'.$row['leistung'].'</td> 
+                    <td>'.$row['gewicht'].'</td>
+                    <td>'.$row['warmeflache'].'</td>
+                  </tr>';
+            }
+
+            echo '</table>';
+            ?>
+
+        </div>
+
 
 
       </div>
@@ -244,7 +244,7 @@
     <div class="container">
       <div class="row technische-row">
         <!--Technische daten table-->
-        <div class="product-technische-daten product-main col-xs-12 col-sm-9">
+        <div class="product-technische-daten product-main">
 
           <ul class="nav nav-pills">
             <li class="active">
@@ -281,7 +281,7 @@
         </div>
       </div>
       <div class="row technishe-row">
-        <div class="product-thermostat col-xs-12 col-sm-9">
+        <div class="product-thermostat">
             <?php
             include 'application/connection.php';
 
@@ -315,7 +315,7 @@
 
   <div class="container">
     <div class="row similar-row">
-      <div class="product-similar col-xs-12 col-sm-9">
+      <div class="product-similar">
         <!--Similar product-->
 
         <div class="similar-products-wrapper">

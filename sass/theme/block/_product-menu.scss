@@ -1,6 +1,14 @@
 .product-menu {
   position: fixed;
 
+  @media all and (max-width: 1320px) {
+    display: none;
+  }
+
+  @media all and (max-width: 1366px) {
+    font-size: 14px;
+  }
+
   li {
     list-style: none;
     margin-bottom: 8px;
