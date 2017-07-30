@@ -6160,7 +6160,7 @@ Blocks
     min-height: 15rem; }
   .homepage-products .item-1 {
     height: 100%;
-    background: url("../img/homepage-products/product-item-1.jpg") no-repeat center center;
+    background-position: center;
     background-size: cover; }
     .homepage-products .item-1 .item-image {
       height: 100%;
@@ -6194,7 +6194,7 @@ Blocks
     min-height: 15rem; }
   .homepage-products .item-2 {
     height: 100%;
-    background: url("../img/homepage-products/product-item-2.jpg") no-repeat center center;
+    background-position: center;
     background-size: cover; }
     .homepage-products .item-2 .item-image {
       height: 100%;
@@ -6228,7 +6228,7 @@ Blocks
     min-height: 15rem; }
   .homepage-products .item-3 {
     height: 100%;
-    background: url("../img/homepage-products/product-item-3.jpg") no-repeat center center;
+    background-position: center;
     background-size: cover; }
     .homepage-products .item-3 .item-image {
       height: 100%;
@@ -6262,7 +6262,7 @@ Blocks
     min-height: 15rem; }
   .homepage-products .item-4 {
     height: 100%;
-    background: url("../img/homepage-products/product-item-4.jpg") no-repeat center center;
+    background-position: center;
     background-size: cover; }
     .homepage-products .item-4 .item-image {
       height: 100%;
@@ -6296,7 +6296,7 @@ Blocks
     min-height: 15rem; }
   .homepage-products .item-5 {
     height: 100%;
-    background: url("../img/homepage-products/product-item-5.jpg") no-repeat center center;
+    background-position: center;
     background-size: cover; }
     .homepage-products .item-5 .item-image {
       height: 100%;
@@ -6619,24 +6619,26 @@ Pages
 
 .comparison-row {
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center; }
   @media all and (max-width: 767px) {
     .comparison-row {
       display: block; } }
-  .comparison-row:nth-child(2) {
-    -ms-flex-direction: row-reverse;
-    flex-direction: row-reverse; }
-  .comparison-row:first-child {
-    margin: 0 0 6rem 0; }
-  .comparison-row img {
-    margin: 2rem auto; }
+
+.description-img-comparison .row:nth-child(2n) {
+  margin: 0 0 2rem 0; }
+
+.description-img-comparison .row:nth-child(4n) {
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  margin: 0; }
 
 .comparison-text-wrapper {
-  margin: 6rem auto 0 auto;
-  height: 485px;
-  overflow-y: auto;
-  display: -ms-flexbox;
-  display: flex;
+  margin: 2rem auto;
+  max-height: 370px;
+  overflow-y: hidden;
+  position: relative;
   padding: 0 2rem;
   /*
 
@@ -6675,15 +6677,42 @@ Pages
   }*/ }
   @media all and (max-width: 767px) {
     .comparison-text-wrapper {
-      max-height: 485px;
-      height: auto; } }
+      max-height: 370px;
+      height: auto;
+      padding: 0; } }
   .comparison-text-wrapper .comparison-text {
-    margin: auto;
+    margin: 0;
     max-height: 100%;
     text-align: left; }
+  .comparison-text-wrapper .arrow-down {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    top: unset;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 1rem;
+    background: linear-gradient(rgba(255, 255, 255, 0.3), white);
+    color: #ED6E23;
+    font-size: 24px;
+    font-weight: bold; }
+
+.comparison-title-right {
+  float: right; }
+
+.comparison-title-left {
+  float: left; }
 
 .comparison-title {
   text-align: left; }
+  @media all and (max-width: 767px) {
+    .comparison-title {
+      float: none;
+      padding-left: 8px; } }
+  @media all and (max-width: 480px) {
+    .comparison-title {
+      font-size: 24px; } }
 
 .house-img {
   margin: 2rem auto; }
@@ -6691,6 +6720,19 @@ Pages
 .house-description {
   text-align: left;
   padding: 0 8px; }
+
+.comparison-img {
+  -ms-flex-item-align: baseline;
+  align-self: baseline;
+  margin: 2rem 0; }
+  @media all and (max-width: 767px) {
+    .comparison-img {
+      padding: 0; } }
+
+@media all and (max-width: 767px) {
+  .infrared-house-wrapper,
+  .convect-house-wrapper {
+    padding: 0; } }
 
 .product-img {
   background-size: cover;
@@ -6888,10 +6930,12 @@ Pages
 .product-thermostat {
   margin-bottom: 0; }
 
-@media all and (max-width: 767px) {
-  .product-thermostat-item {
-    margin-bottom: 2rem;
-    text-align: center; } }
+.product-thermostat-item {
+  text-align: center; }
+  @media all and (max-width: 767px) {
+    .product-thermostat-item {
+      margin-bottom: 2rem;
+      text-align: center; } }
 
 .product-thermostat-image {
   margin-bottom: 1rem;

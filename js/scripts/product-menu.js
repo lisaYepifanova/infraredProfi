@@ -32,24 +32,27 @@ $(function () {
 
     function setMenuWidth() {
         $menuWidth = parseInt($('.container').css('width')) * 0.25;
-            $('.product-menu').css('width', $menuWidth + 'px');
+        $('.product-menu').css('width', $menuWidth + 'px');
     }
 
     window.onload = function () {
-        productMenuScroll();
-        setMenuWidth();
-
-        $(window).scroll(function () {
-            $menuHeight = $('.product').css('height');
-        $('.product-menu-wrapper').css('height', $menuHeight);
+        if ($('.product-menu-wrapper').length !== 0) {
+            productMenuScroll();
             setMenuWidth();
-        });
 
-        $(window).resize(function () {
-            $menuHeight = $('.product').css('height');
-        $('.product-menu-wrapper').css('height', $menuHeight);
-            setMenuWidth();
-        });
+            $(window).scroll(function () {
+                $menuHeight = $('.product').css('height');
+                $('.product-menu-wrapper').css('height', $menuHeight);
+                setMenuWidth();
+            });
+
+            $(window).resize(function () {
+                $menuHeight = $('.product').css('height');
+                $('.product-menu-wrapper').css('height', $menuHeight);
+                setMenuWidth();
+            });
+
+        }
 
     }
 });

@@ -94,7 +94,7 @@ include 'application/views/'.$content_view;
 
 <!-- Modal -->
 <div id="asideNavMenu" class="modal fade in aside-nav-menu" style="display: none;">
-    <div class="modal-dialog">
+    <div class="modal-dialog aside-modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">›</button>

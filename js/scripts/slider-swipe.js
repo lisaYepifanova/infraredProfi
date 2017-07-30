@@ -9,8 +9,10 @@ function hammerSwipe($selector) {
         $carousel.carousel("prev");
     });
 }
+if ($('.swipe-carousel').length !== 0) {
+    hammerSwipe('.swipe-carousel');
+}
 
-hammerSwipe('.swipe-carousel');
 
 $l = $('.carousel-showmanymoveone .item').length;
 if ($l > 3) {
