@@ -21,9 +21,30 @@ $('.carousel-showmanymoveone .item').each(function(){
     $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
   }
 });
+;$('.item-wrapper a').each(function () {
+    $linkClass = $(this).attr('class').split(' ');
+    $lastLinkClass = $linkClass[$linkClass.length - 1];
+
+    $(this).on('click', function () {
+        $('.image-nav-menu .large-item').removeClass('active');
+
+        $linkClass = $(this).attr('class').split(' ');
+        $lastLinkClass = $linkClass[$linkClass.length - 1];
+
+        $('.homepage-gallery-carousel .item').each(function () {
+            if ($(this).children('.' + $lastLinkClass).length !== 0) {
+                $('.homepage-gallery-carousel .item').removeClass('active');
+                $(this).addClass('active');
+            }
+        });
+        $('.image-nav-menu .item.' + $lastLinkClass).addClass('active');
+    });
+});
 ;$('#homepageCarousel').carousel({
  interval: 5000,
- });;(function () {
+ });;$('#imageNavMenu .close').on('click', function () {
+    $("#imageNavMenu").modal('hide');
+});;(function () {
 
     var contactCol = ".contacts .contact-item-wrapper";
     var contactItem = ".contacts .contact-item";
@@ -122,6 +143,17 @@ $('.aside-modal-dialog').on('mouseleave', function(){
 ;$('.product-carousel').carousel({
     interval: 6000,
     pause: "hover"
+});
+
+
+$('#homepageGalleryCarousel').carousel({
+    pause:true,
+    interval:false
+});
+
+$('.homepage-gallery-carousel').carousel({
+    pause:true,
+    interval:false
 });
 ;$(function () {
 
@@ -236,6 +268,18 @@ $(document).ready(function () {
 }
 if ($('.swipe-carousel').length !== 0) {
     hammerSwipe('.swipe-carousel');
+}
+if ($('#homepageGalleryCarousel').length !== 0) {
+    var hammer = new Hammer(document.querySelector('#homepageGalleryCarousel'));
+    var $car = $("#homepageGalleryCarousel").carousel({"pause":true,"interval":false});
+    hammer.get("swipe");
+
+    hammer.on("swipeleft", function () {
+        $car.carousel("next");
+    });
+    hammer.on("swiperight", function () {
+        $car.carousel("prev");
+    });
 }
 
 

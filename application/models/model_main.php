@@ -63,21 +63,28 @@ class Model_Main extends Model
                 )
               )
             ),
-            'gallery' => array(
-              'block_bg' => ''
-            )
         );
 
         include 'application/connection.php';
 
 
-        $query = $mysqli->query("SELECT name, image, title FROM categories  WHERE parent_id=0");
+        $query = $mysqli->query("SELECT * FROM gallery_images");
 
         if ($query) {
             while ($r = mysqli_fetch_assoc($query)) {
-                $res['gallery']['items'][] = $r;
+                $res['gallery'][] = $r;
             }
         }
+
+        $query = $mysqli->query("SELECT * FROM gallery_bg");
+
+        if ($query) {
+            while ($r = mysqli_fetch_assoc($query)) {
+                $res['gallery_bg'] = $r;
+            }
+        }
+
+
 
         return $res;
     }

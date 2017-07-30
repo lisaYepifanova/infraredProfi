@@ -1,7 +1,15 @@
 .homepage-products-wrapper {
-  background: $homepage-products-bg no-repeat center center;
+  background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
   min-height: 100vh
+}
+
+.homepage-product-item {
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .homepage-products-bg {
@@ -23,7 +31,7 @@
 
     .item-wrapper {
       padding: $homepage-products-item-padding;
-      height: calc((100vh - 12rem - 0.25rem)/2);
+      height: calc((100vh - 12rem - 0.25rem) / 2);
       min-height: $homepage-products-item-height;
     }
 
@@ -70,4 +78,120 @@
 
     }
   }
+}
+
+#imageNavMenu {
+  display: flex;
+  align-items: center;
+  
+  .modal-dialog {
+    height: 90%;
+    width: 100%;
+  }
+
+  .close {
+    border: 1px solid black;
+    z-index: 9999;
+    border-radius: 16px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    opacity: 0.9;
+    text-shadow: none;
+  }
+
+  .modal-content {
+    height: 100%;
+  }
+
+  .modal-body {
+    position: relative;
+  }
+
+  .modal-body,
+  .carousel-wrapper {
+    height: 100%;
+  }
+
+  .carousel-wrapper {
+    .clearfix {
+      height: 25%;
+
+      #thumbcarousel,
+      .carousel-inner,
+      .item,
+      .thumb-image {
+        height: 100%;
+
+      }
+
+      .carousel {
+        .carousel {
+          margin-top: 20px;
+        }
+
+        .large-item {
+          height: 450px;
+        }
+
+        .thumb-image {
+          height: 150px;
+        }
+
+        .large-item,
+        .thumb-image {
+          width: 100%;
+          background-position: center center;
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+
+        .item .thumb {
+          width: 31.2%;
+          cursor: pointer;
+          float: left;
+          margin-right: 3.2%;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+        .item .thumb img {
+          width: 100%;
+          margin: 2px;
+        }
+        .item img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+#homepageGalleryCarousel {
+  height: 75%;
+  padding-bottom: 16px;
+
+  .carousel-inner > .item {
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .carousel-inner {
+    height: 100%;
+  }
+
+}
+
+.imageNavMenuLink {
+  height: 100%;
+  display: block;
+}
+
+.carousel-control {
+  opacity: 1;
 }

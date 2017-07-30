@@ -12,6 +12,18 @@ function hammerSwipe($selector) {
 if ($('.swipe-carousel').length !== 0) {
     hammerSwipe('.swipe-carousel');
 }
+if ($('#homepageGalleryCarousel').length !== 0) {
+    var hammer = new Hammer(document.querySelector('#homepageGalleryCarousel'));
+    var $car = $("#homepageGalleryCarousel").carousel({"pause":true,"interval":false});
+    hammer.get("swipe");
+
+    hammer.on("swipeleft", function () {
+        $car.carousel("next");
+    });
+    hammer.on("swiperight", function () {
+        $car.carousel("prev");
+    });
+}
 
 
 $l = $('.carousel-showmanymoveone .item').length;
