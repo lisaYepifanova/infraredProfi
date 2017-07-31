@@ -1,14 +1,10 @@
 <main class="product">
 
   <h1 class="page-header container text-capitalize">THERMOSTAT</h1>
-
-  <div class=" container right-padding">
-    <div class="row">
-      <div class="product-menu-wrapper col-sm-3">
+  <div class="product-menu-wrapper col-sm-3">
         <div class="product-menu floating">
           <ul>
               <?php
-
               $data;
               $debug = true;
               $routes = explode('/', $_SERVER['REQUEST_URI']);
@@ -61,8 +57,10 @@
           </ul>
         </div>
       </div>
+  <div class=" container right-padding">
+    <div class="row">
 
-      <div class="product-main col-sm-9">
+      <div class="product-main col-sm-12">
 
         <!-- Gallery carousel -->
         <div class="carousel-wrapper">
@@ -161,7 +159,37 @@
           </div>
         </div>
 
-        <div class="technische-thermostat-daten">
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+<div class="technische-thermostat-container technische-container">
+
+    <div class="container">
+      <div class="row">
+        <!--Technische daten table-->
+        <div class="product-technische-daten product-main">
+
+          <ul class="nav nav-pills">
+            <li class="active">
+              <a class="tab-button" href="#1a" data-toggle="tab">QUALITY</a>
+            </li>
+            <li><a class="tab-button" href="#2a"
+                   data-toggle="tab">DOWNLOAD</a>
+            </li>
+          </ul>
+
+          <div class="tab-content clearfix">
+            <div class="tab-pane active" id="1a">
+              <!-- <h3 class="technische-daten-title">TECHNISCHE DATEN</h3> -->
+
+               <div class="technische-thermostat-daten">
           <table>
                   <?php
                   foreach ($data[0] as $key => $value) {
@@ -175,15 +203,21 @@
                   ?>
               </table>
         </div>
+            </div>
+            <div class="tab-pane" id="2a">
+              <h3>Documents</h3>
+            </div>
+          </div>
 
+
+        </div>
       </div>
+
     </div>
   </div>
-
-
   <div class="container">
     <div class="row similar-row">
-      <div class="product-similar col-xs-12 col-sm-9">
+      <div class="product-similar col-xs-12">
         <!--Similar product-->
 
         <div class="similar-products-wrapper">

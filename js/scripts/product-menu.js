@@ -23,16 +23,20 @@ $(function () {
         //$rightHeight = $('.product-main').css('height');
 
         //$menuHeight = $('.product').css('height');
+        $pip = $('.contacts').offset().top;
+        $menuHeight = parseInt($(document).height()) - parseInt($pip);
+
+
         $('.product-menu-wrapper').css('height', $menuHeight);
-        recalcPosition($topPos);
+        //recalcPosition($topPos);
         $(window).scroll(function () {
-            recalcPosition($topPos);
+            //recalcPosition($topPos);
         });
     }
 
     function setMenuWidth() {
         $menuMaxWidth = (parseInt($(document).width()) - parseInt($('.container').width())) / 2;
-        $('.product-menu').css('max-width', $menuMaxWidth + 'px');
+        $('.product-menu').css('maxWidth', $menuMaxWidth + 'px');
         $menuWidth = parseInt($('.product-menu').css('width'));
         $margin = ($menuMaxWidth - $menuWidth) / 2;
         if (parseInt($(document).width()) > 1366) {
@@ -44,18 +48,21 @@ $(function () {
 
     window.onload = function () {
         if ($('.product-menu-wrapper').length !== 0) {
+            console.log('exist');
             productMenuScroll();
             setMenuWidth();
 
             $(window).scroll(function () {
                 //$menuHeight = $('.product').css('height');
                 //$('.product-menu-wrapper').css('height', $menuHeight);
+
                 setMenuWidth();
             });
 
             $(window).resize(function () {
                 //$menuHeight = $('.product').css('height');
                // $('.product-menu-wrapper').css('height', $menuHeight);
+
                 setMenuWidth();
             });
 
