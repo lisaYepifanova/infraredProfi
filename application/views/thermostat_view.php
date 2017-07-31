@@ -147,24 +147,17 @@
         <!--Colour-->
         <div class="product-colour-wrapper">
           <h3 class="colour-title">COLOUR</h3>
-          <div class="colour-palette">
+          <div class="colour-palette row">
               <?php
               if (!empty($data['colours'])) {
                   foreach ($data['colours'] as $row) {
-                      echo '<div class="colour-item"><div class="colour-block" style="background-image:url('.IMAGEPATH.$row['image'].')"></div>';
+                      echo '<div class="colour-item col-md-2 col-sm-4 col-xs-6"><div class="colour-block" style="background-image:url('.IMAGEPATH.$row['image'].')"></div>';
                       echo '<p class="colour-name">'.$row['name'].'</p></div>';
                   }
               }
               ?>
           </div>
         </div>
-
-
-
-
-
-
-
       </div>
     </div>
   </div>

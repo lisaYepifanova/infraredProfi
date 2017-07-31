@@ -6866,14 +6866,25 @@ Pages
 
 .product-colour-wrapper .colour-item {
   display: inline-block;
-  width: 82px;
   margin-right: 8px;
   text-align: center; }
+  @media all and (min-width: 992px) {
+    .product-colour-wrapper .colour-item:nth-child(6n-5) {
+      padding-left: 0; } }
+  @media all and (min-width: 768px) and (max-width: 991px) {
+    .product-colour-wrapper .colour-item:nth-child(3n-2) {
+      padding-left: 0; } }
+  @media all and (max-width: 767px) {
+    .product-colour-wrapper .colour-item:nth-child(2n-1) {
+      padding-left: 0; } }
 
 .product-colour-wrapper .colour-block {
   height: 32px;
   background-position: center;
   background-size: cover; }
+
+.colour-palette.row {
+  margin: 0; }
 
 .product-title {
   text-transform: uppercase; }

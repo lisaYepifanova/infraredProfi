@@ -10,9 +10,26 @@
 .product-colour-wrapper {
   .colour-item {
     display: inline-block;
-    width: 82px;
     margin-right: 8px;
     text-align: center;
+
+    @media all and (min-width: 992px) {
+      &:nth-child(6n-5) {
+        padding-left: 0;
+      }
+    }
+
+    @media all and (min-width: 768px) and (max-width: 991px) {
+      &:nth-child(3n-2) {
+        padding-left: 0;
+      }
+    }
+
+    @media all and (max-width: 767px) {
+      &:nth-child(2n-1) {
+        padding-left: 0;
+      }
+    }
   }
 
   .colour-block {
@@ -20,6 +37,10 @@
     background-position: center;
     background-size: cover;
   }
+}
+
+.colour-palette.row {
+  margin: 0;
 }
 
 .product-title {
