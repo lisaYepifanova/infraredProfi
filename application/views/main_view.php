@@ -8,7 +8,7 @@
           <?php
           $index = 0;
 
-          foreach ($data['header']['slider'] as $row) {
+          foreach ($data['header_slider'] as $row) {
               echo '<li data-target="#homepageCarousel" data-slide-to="'.$index.'"
                 class="carousel-round ';
               if ($index == 0) {
@@ -27,7 +27,7 @@
           <?php
           $index = 0;
 
-          foreach ($data['header']['slider'] as $row) {
+          foreach ($data['header_slider'] as $row) {
               echo '<div class="item';
               if ($index == 0) {
                   echo ' active ';
@@ -46,7 +46,7 @@
     <div class="homepage-header-title-wrapper container">
       <h2 class="homepage-header-title">
           <?php
-          echo $data['header']['title'];
+          echo $data['header_title'];
           ?>
       </h2>
     </div>
@@ -59,14 +59,16 @@
 
   <div class="homepage-properties">
     <div class="homepage-properties-row">
-      <div class="properties-side left-side"></div>
-      <div class="properties-side right-side box-mid-margin">
+      <div class="properties-side left-side" style="background-image: url(<?php echo IMAGEPATH.$data['property_image']?>)"></div>
+      <div class="properties-side right-side">
 
           <?php
           $index = 1;
+          echo '<h3 class="property-title">'.$data['property_title'].'</h3>';
 
-          foreach ($data['property']['items'] as $row) {
+          foreach ($data['property_items'] as $row) {
               echo '<div class="property-item property-item'.$index.'">
+              <div class="property-item-image" style="background-image: url('.IMAGEPATH.$row['icon'].')"></div>
               <h4 class="property-item-title">'.$row['title'].'</h4>
               <p class="property-item-description">'.$row['description'].'</p>
               </div>';

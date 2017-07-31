@@ -13,7 +13,6 @@ class Model_Contact extends Model
             }
         }
 
-
         $query = $mysqli->query("SELECT * FROM main_contact_page_info");
 
         if ($query) {
@@ -21,8 +20,6 @@ class Model_Contact extends Model
                 $res['main_info'][] = $r['info'];
             }
         }
-
-
 
         return $res;
     }

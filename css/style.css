@@ -6063,7 +6063,8 @@ Blocks
     display: table;
     width: 100%; }
   .homepage-properties .left-side {
-    background: url("../img/properties-image.jpg") no-repeat center center;
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
     display: table-cell;
     float: none;
@@ -6093,50 +6094,47 @@ Blocks
       display: block; } }
   .homepage-properties .property-item-description {
     font-size: 16px; }
-  @media (max-width: 768px) {
-    .homepage-properties .property-item {
-      margin-top: 1rem; } }
+  .homepage-properties .property-item {
+    position: relative; }
+    @media (max-width: 768px) {
+      .homepage-properties .property-item {
+        margin-top: 1rem; } }
   .homepage-properties .property-item-title {
     font-weight: bold;
     position: relative; }
-  .homepage-properties .property-item1 .property-item-title {
+  .homepage-properties .property-item1 .property-item-image {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    position: absolute;
+    left: -42.4px;
+    background-size: cover; }
+  .homepage-properties .property-item2 .property-item-image {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    position: absolute;
+    left: -42.4px;
+    background-size: cover; }
+  .homepage-properties .property-item3 .property-item-image {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    position: absolute;
+    left: -42.4px;
+    background-size: cover; }
+  .homepage-properties .property-item4 .property-item-image {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    position: absolute;
+    left: -42.4px;
+    background-size: cover; }
+  .homepage-properties .property-title {
     margin-top: 0; }
-  .homepage-properties .property-item1 .property-item-title:before {
-    background-image: url("../img/icons/properties/coins.png");
-    content: "";
-    width: 32px;
-    height: 32px;
-    display: inline-block;
-    position: absolute;
-    left: -42.4px;
-    background-size: cover; }
-  .homepage-properties .property-item2 .property-item-title:before {
-    background-image: url("../img/icons/properties/gears.png");
-    content: "";
-    width: 32px;
-    height: 32px;
-    display: inline-block;
-    position: absolute;
-    left: -42.4px;
-    background-size: cover; }
-  .homepage-properties .property-item3 .property-item-title:before {
-    background-image: url("../img/icons/properties/leaves.png");
-    content: "";
-    width: 32px;
-    height: 32px;
-    display: inline-block;
-    position: absolute;
-    left: -42.4px;
-    background-size: cover; }
-  .homepage-properties .property-item4 .property-item-title:before {
-    background-image: url("../img/icons/properties/lock.png");
-    content: "";
-    width: 32px;
-    height: 32px;
-    display: inline-block;
-    position: absolute;
-    left: -42.4px;
-    background-size: cover; }
+  .homepage-properties .property-title,
+  .homepage-properties .right-side {
+    margin-bottom: 36px; }
 
 .homepage-products-wrapper {
   background-repeat: no-repeat;
@@ -6347,6 +6345,7 @@ Blocks
     cursor: pointer;
     width: 24px;
     height: 24px;
+    line-height: 24px;
     position: absolute;
     top: 20px;
     right: 20px;

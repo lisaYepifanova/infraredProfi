@@ -8,7 +8,8 @@
   }
 
   .left-side {
-    background: $poperties-image no-repeat center center;
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
     display: table-cell;
     float: none;
@@ -51,6 +52,8 @@
   }
 
   .property-item {
+    position: relative;
+
     @media (max-width: $screen-sm-min) {
       margin-top: $homepage-properties-item-top-margin;
     }
@@ -64,14 +67,12 @@
   
   .property-item1 {
     .property-item-title {
-      margin-top: 0;
+      //margin-top: 0;
     }
   }
   
   @for $i from 1 through 4  {
-  .property-item#{$i} .property-item-title:before {
-    background-image: nth($properties-icons, $i);
-    content: "";
+  .property-item#{$i} .property-item-image {
     width: 32px;
     height: 32px;
     display: inline-block;
@@ -80,4 +81,12 @@
     background-size: cover;
   }
 }
+  .property-title {
+    margin-top: 0;
+  }
+
+  .property-title,
+  .right-side {
+    margin-bottom: 36px;
+  }
 }
