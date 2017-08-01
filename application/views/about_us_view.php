@@ -1,4 +1,4 @@
-<main>
+<main class="about-us-page">
 
   <h1 class="page-header container text-capitalize">ABOUT US</h1>
 

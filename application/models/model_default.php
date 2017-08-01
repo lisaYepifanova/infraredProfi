@@ -16,7 +16,7 @@ class Model_Default extends Model
             ),
             array(
               'title' => 'Инструкция',
-              'link' => ''
+              'link' => '/documents'
             ),
             array(
               'title' => 'Стать дилером',

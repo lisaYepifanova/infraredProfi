@@ -1,6 +1,7 @@
 <?php
 
-function neighbourItems($current_query, $table) {
+function neighbourItems($current_query, $table)
+{
     include 'application/connection.php';
     $current = mysqli_fetch_assoc($current_query);
     $neighbour_query = $mysqli->query(
@@ -28,6 +29,7 @@ function menu()
     $query = $mysqli->query(
       "SELECT id, name, title, parent_id FROM categories"
     );
+
     if ($query) {
         while ($r = mysqli_fetch_assoc($query)) {
             $r['iscategory'] = true;
@@ -55,12 +57,11 @@ function menu()
 
     if ($current_query_prod->num_rows !== 0) {
         $neighbour_set = neighbourItems($current_query_prod, 'products');
-    } else if ($current_query_therm->num_rows !== 0) {
-        $neighbour_set = neighbourItems($current_query_therm, 'thermostat');
+    } else {
+        if ($current_query_therm->num_rows !== 0) {
+            $neighbour_set = neighbourItems($current_query_therm, 'thermostat');
+        }
     }
-
-
-
 
     $ind = $neighbour_set[0]['parent_id'];
     $category_set = '';
@@ -76,7 +77,6 @@ function menu()
         $ind = $current_category['parent_id'];
     }
 
-
     //root items in menu
     $root_items = [];
     foreach ($res as $row) {
@@ -91,4 +91,3 @@ function menu()
 
     return $menu_res;
 }
-

@@ -61,7 +61,7 @@
   <div class=" container right-padding">
     <div class="row">
 
-      <div class="product-main col-sm-12">
+      <div class="product-main">
 
         <!-- Gallery carousel -->
         <div class="carousel-wrapper">
@@ -155,7 +155,7 @@
               <?php
               if (!empty($data['colours'])) {
                   foreach ($data['colours'] as $row) {
-                      echo '<div class="colour-item col-sm-2"><div class="colour-block" style="background-image:url('.IMAGEPATH.$row['image'].')"></div>';
+                      echo '<div class="colour-item  col-md-2 col-sm-4 col-xs-6"><div class="colour-block" style="background-image:url('.IMAGEPATH.$row['image'].')"></div>';
                       echo '<p class="colour-name">'.$row['name'].'</p></div>';
                   }
               }
@@ -169,7 +169,7 @@
 
   <div class="technische-container">
     <div class="container">
-      <h4 class="size-title col-xs-12 ">SIZE</h4>
+      <h4 class="size-title ">SIZE</h4>
 
       <div class="row technische-row size-row">
         <div class="product-sizes sizes-rectangles col-xs-12  col-sm-6">
@@ -280,7 +280,7 @@
 
         </div>
       </div>
-      <div class="row technishe-row">
+      <div class="row technische-row">
         <div class="product-thermostat">
             <?php
             include 'application/connection.php';

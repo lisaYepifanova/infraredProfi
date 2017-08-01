@@ -44,6 +44,7 @@ class Model_Thermostat extends Model
         $menu = menu();
 
         $res['menu'] = $menu;
+
         return $res;
     }
 }
