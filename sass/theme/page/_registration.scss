@@ -1,0 +1,155 @@
+.registration-top-block {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  text-align: center;
+  color: white;
+  background-color: $footer-bg;
+  margin: 2rem 0;
+}
+
+.registration-leistungen-wrapper {
+  text-align: center;
+  margin: 4rem 0;
+}
+
+.registration-leistungen {
+  width: 200px;
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  margin: 4rem auto;
+  position: relative;
+  @media all and (max-width: 619px) {
+    background-image: none !important;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.leistungen-item-description {
+  text-align: center;
+  opacity: 0.5;
+  width: 220px;
+  margin: 0 8px;
+
+  @media all and (max-width: 619px) {
+    width: 100%;
+  }
+
+  @media all and (min-width: 620px) and (max-width: 767px) {
+    width: 160px;
+    line-height: 1;
+  }
+}
+
+.leistungen-item-img {
+  width: 50px;
+  height: 50px;
+  background-position: center;
+  background-size: 70%;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-color: #d2d2d2;
+
+}
+
+.leistungen-item {
+
+  @media all and (max-width: 619px) {
+    position: relative;
+    margin: 1rem auto;
+    height: auto;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 400px;
+    width: auto;
+  }
+
+  position: absolute;
+  display: flex;
+  cursor: pointer;
+  justify-content: end;
+  align-items: center;
+  height: 40px;
+  width: 268px;
+
+  &:hover {
+    .leistungen-item-img {
+      background-color: $footer-bg;
+    }
+
+    .leistungen-item-description {
+      opacity: 1;
+    }
+  }
+
+  @media all and (min-width: 621px) and (max-width: 700px) {
+    width: 260px;
+  }
+
+  @media all and (min-width: 620px) {
+    &:nth-child(1) {
+      top: 0;
+      left: -100%;
+
+      flex-direction: row-reverse;
+    }
+
+    &:nth-child(2) {
+      top: 50%;
+      left: -126%;
+      transform: translateY(-50%);
+
+      flex-direction: row-reverse;
+    }
+
+    &:nth-child(3) {
+      bottom: 0;
+      left: -100%;
+      transform: translateY(0);
+
+      flex-direction: row-reverse;
+    }
+
+    &:nth-child(4) {
+      top: 0;
+      right: -100%;
+    }
+
+    &:nth-child(5) {
+      top: 50%;
+      right: -126%;
+      transform: translateY(-50%);
+    }
+
+    &:nth-child(6) {
+
+      bottom: 0;
+      right: -100%;
+      transform: translateY(0);
+    }
+  }
+
+
+   @media all and (min-width: 621px) and (max-width: 700px) {
+
+    &:nth-child(2) {
+      left: -116%;
+
+    }
+    &:nth-child(5) {
+      right: -116%;
+
+    }
+  }
+}
+
+.registration-description {
+  text-align: center;
+  margin: 6rem 0 4rem 0;
+}
+
+.registration-form-title {
+  margin-bottom: 4rem;
+}

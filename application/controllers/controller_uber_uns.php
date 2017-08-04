@@ -1,9 +1,9 @@
 <?php
-class Controller_Contact extends Controller
+class Controller_Uber_uns extends Controller
 {
     function __construct()
     {
-        $this->model = new Model_Contact();
+        $this->model = new Model_Uber_uns();
         $this->view = new View();
         $this->default_model = new Model_Default();
     }
@@ -12,6 +12,6 @@ class Controller_Contact extends Controller
     {
         $default = $this->default_model->get_data();
         $data = $this->model->get_data();
-        $this->view->generate('contact_view.php', 'template_view.php',$data, $default);
+        $this->view->generate('uber_uns_view.php', 'template_view.php', $data, $default);
     }
 }

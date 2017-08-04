@@ -1,10 +1,6 @@
 <main>
+  <h1 class="page-header container text-capitalize">KONTAKT</h1>
 
-  <h1 class="page-header container text-capitalize">CONTACT</h1>
-
-  <iframe
-      src=" <?php echo $data['map'] ?>"
-      class="gmap" allowfullscreen></iframe>
   <div class="container contacts-info-wrapper box-mid-margin right-padding">
 
     <div class="company-names">
@@ -34,4 +30,8 @@
       <div class="copyright-info-text"><?php echo $data['erklarung'] ?></div>
     </div>
   </div>
+
+  <iframe
+      src=" <?php echo $data['map'] ?>"
+      class="gmap" allowfullscreen></iframe>
 </main>

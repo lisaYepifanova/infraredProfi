@@ -259,21 +259,25 @@
             <div class="tab-pane active" id="1a">
               <!-- <h3 class="technische-daten-title">TECHNISCHE DATEN</h3> -->
 
-              <table>
+              <table class="features-product-table">
                   <?php
-                  foreach ($data[0] as $key => $value) {
-                      if ($key == 'vorne' or $key == 'hintent' or $key == 'warmeeffekt' or $key == 'schutzgrad' or $key == 'zertifikate') {
-                          echo ' <tr><td>'.ucfirst(
-                              str_replace("_", " ", $key)
-                            ).'</td>';
-                          echo ' <td>'.$value.'</td></tr>';
+                  foreach ($data['features'] as $row) {
+                          echo ' <tr><td>'.$row['feature'].'</td>';
+                          echo ' <td>'.$row['value'].'</td></tr>';
                       }
-                  }
+
                   ?>
               </table>
             </div>
             <div class="tab-pane" id="2a">
               <h3>Documents</h3>
+
+                <?php
+                  foreach ($data['doc'] as $doc) {
+
+                echo '<a class="document-link" href="'.DOCPATH.$doc['path'].'" download>'.$doc['name'].'</a>';
+            }
+                ?>
             </div>
           </div>
 

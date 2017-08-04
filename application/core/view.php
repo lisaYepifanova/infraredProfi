@@ -2,6 +2,7 @@
 define('IMAGEPATH', View::partPath().'../img/');
 define('CSSPATH', View::partPath().'../css/');
 define('JSPATH', View::partPath().'../js/');
+define('DOCPATH', View::partPath().'../doc/');
 define('ROOTPATH', View::partPath().'../');
 
 class View

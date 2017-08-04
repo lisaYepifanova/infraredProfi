@@ -25,7 +25,6 @@
 
   .menu-items-wrapper {
     margin: auto 2rem;
-    padding-bottom: 55px;
   }
 
   .modal-dialog {
@@ -58,7 +57,7 @@
 
   button.close {
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-65%);
     position: absolute;
     cursor: pointer;
     z-index: 1;

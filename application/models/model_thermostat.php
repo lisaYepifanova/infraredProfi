@@ -45,6 +45,25 @@ class Model_Thermostat extends Model
 
         $res['menu'] = $menu;
 
+
+
+        $query = $mysqli->query(
+          "SELECT * FROM product_document WHERE thermostat_id=".$res[0]['id']
+        );
+
+        if ($query) {
+            while ($r = mysqli_fetch_assoc($query)) {
+                $query_doc = $mysqli->query(
+                  "SELECT * FROM documents WHERE id=".$r['id']
+                );
+
+                if ($query_doc) {
+                    while ($rd = mysqli_fetch_assoc($query_doc)) {
+                        $res['doc'][] = $rd;
+                    }
+                }
+            }
+        }
         return $res;
     }
 }

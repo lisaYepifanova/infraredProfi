@@ -12,6 +12,10 @@
 
 }
 
+.description-img-comparison {
+  margin-top: 0;
+}
+
 .description-img-comparison .row {
 
   &:nth-child(2n) {
@@ -27,13 +31,13 @@
 
 .comparison-text-wrapper {
   margin: 2rem auto;
-  max-height: 370px;
+  max-height: 463px;
   overflow-y: hidden;
   position: relative;
   padding: 0 2rem;
 
   @media all and (max-width: 767px) {
-    max-height: 370px;
+    max-height: 463px;
     height: auto;
     padding: 0;
   }
@@ -140,4 +144,9 @@
   @media all and (max-width: 767px) {
     padding: 0;
   }
+}
+
+.convect-house-description,
+.infra-house-description {
+  max-height: 300px;
 }

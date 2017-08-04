@@ -1,9 +1,9 @@
 <?php
-class Controller_Products extends Controller
+class Controller_Kontakt extends Controller
 {
     function __construct()
     {
-        $this->model = new Model_Products();
+        $this->model = new Model_Kontakt();
         $this->view = new View();
         $this->default_model = new Model_Default();
     }
@@ -12,6 +12,6 @@ class Controller_Products extends Controller
     {
         $default = $this->default_model->get_data();
         $data = $this->model->get_data();
-        $this->view->generate('products_view.php', 'template_view.php', $data, $default);
+        $this->view->generate('kontakt_view.php', 'template_view.php',$data, $default);
     }
 }

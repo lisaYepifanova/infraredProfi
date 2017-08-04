@@ -1,23 +1,22 @@
 <?php
-
-class Model_Contact extends Model
+class Model_Download extends Model
 {
-    public function get_data()
+     public function get_data()
     {
         include 'application/connection.php';
-        $query = $mysqli->query("SELECT * FROM contact_page");
+        $query = $mysqli->query("SELECT * FROM documents");
 
         if ($query) {
             while ($r = mysqli_fetch_assoc($query)) {
-                $res = $r;
+                $res['documents'][] = $r;
             }
         }
 
-        $query = $mysqli->query("SELECT * FROM main_contact_page_info");
+        $query = $mysqli->query("SELECT * FROM document_categories");
 
         if ($query) {
             while ($r = mysqli_fetch_assoc($query)) {
-                $res['main_info'][] = $r['info'];
+                $res['categories'][] = $r;
             }
         }
 

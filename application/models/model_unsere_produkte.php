@@ -1,6 +1,6 @@
 <?php
 
-class Model_Products extends Model
+class Model_Unsere_produkte extends Model
 {
     public function get_data()
     {

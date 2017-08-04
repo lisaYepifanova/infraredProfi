@@ -3,5 +3,5 @@ $('.right-panel').on('mouseenter', function(){
 });
 
 $('.aside-modal-dialog').on('mouseleave', function(){
-    $('#asideNavMenu').modal('hide');
+    //$('#asideNavMenu').modal('hide');
 });

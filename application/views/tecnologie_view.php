@@ -1,6 +1,6 @@
 <main>
 
-  <h1 class="page-header container hsmall text-capitalize">TECHNOLOGY</h1>
+  <h1 class="page-header container hsmall text-capitalize">TECNOLOGIE</h1>
 
   <div class="container right-padding">
     <div class="technology-description box-mid-margin">
@@ -19,13 +19,15 @@
         ?>
     </div>
 
-    <div class="technology-description box-mid-margin">
-        <?php
-        foreach ($data['description_after'] as $row) {
-            echo '<p class="description-after-items">'.$row.'</p>';
-        }
-        ?>
-    </div>
+
+      <?php
+      if ($data['description_after'] !== '' and !empty($data['description_after'])) {
+          echo '<div class="technology-description box-mid-margin">
+                      <p class="description-after-items">'.$data['description_after'].'</p></div>';
+
+      }
+      ?>
+
   </div>
   <div class="description-img-comparison-wrapper ">
     <div
@@ -71,18 +73,21 @@
     </div>
   </div>
   <div class="container right-padding">
+    <h3 class="description-scheme-title text-center"><?php echo $data['scheme_title']; ?></h3>
     <div class="description-img-scheme box-mid-margin text-center">
         <?php
-        echo '<div class="infrared-house-wrapper col-sm-6">';
-        echo '<h3 class="infra-house-title">'.$data['infra_house_title'].'</h3>';
-        echo '<img src="'.IMAGEPATH.$data['infra_house_image'].'" class="infra-house-img house-img">';
-        echo '<p class="infra-house-description house-description">'.$data['infra_house_description'].'</p>';
-        echo '</div>';
-
         echo '<div class="convect-house-wrapper col-sm-6">';
         echo '<h3 class="convect-house-title">'.$data['convect_house_title'].'</h3>';
         echo '<img src="'.IMAGEPATH.$data['convect_house_image'].'" class="convect-house-img house-img">';
-        echo '<p class="convect-house-description house-description">'.$data['convect_house_description'].'</p>';
+        echo '<div class="convect-house-description house-description comparison-text-wrapper"><p class="comparison-text">'.$data['convect_house_description'].'</p>
+<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p></div></div>';
+        echo '</div>';
+
+        echo '<div class="infrared-house-wrapper col-sm-6 ">';
+        echo '<h3 class="infra-house-title">'.$data['infra_house_title'].'</h3>';
+        echo '<img src="'.IMAGEPATH.$data['infra_house_image'].'" class="infra-house-img house-img">';
+        echo '<div class="infra-house-description house-description comparison-text-wrapper"><p class="comparison-text">'.$data['infra_house_description'].'</p>
+<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p></div></div>';
         echo '</div>';
         ?>
     </div>

@@ -8,9 +8,9 @@
         $($element).find('.arrow-down').css('display', 'none');
     }
 
-    function overflowingEffect($element) {
+    function overflowingEffect($element, $text) {
         //if overflowing
-        if ($($element).prop('scrollHeight') > $($element).height() && $($element).css('max-height') !== 'none') {
+        if ($($element).prop('scrollHeight') > $($element).height()) {
             showArrow($element);
         } else {
             hideArrow($element);
@@ -19,29 +19,33 @@
 
     $arrow = '.arrow-down';
 
-    function technologyTextHover($element) {
+    function technologyTextHover($element, $child, $height) {
         if ($($element).length !== 0) {
 
-            console.log ($element + ' scroll ' + $($element).prop('scrollHeight'));
-            console.log ($element + ' height ' + $($element).height());
-            if ($($element).prop('scrollHeight') <= $($element).height() + 2) {
-                hideArrow($element);
-            }
-            overflowingEffect($element);
+            hideArrow($element);
+
+            setInterval(function () {
+                overflowingEffect($element, $child);
+            }, 500);
+
             $($element).on('mouseenter', function () {
-                $(this).css('max-height', 'none');
-                overflowingEffect(this, $arrow);
+                $maxH = parseInt($($element).prop('scrollHeight')) + 20;
+                $(this).animate({maxHeight: $maxH+'px'}, 1200);
             });
 
             $($element).on('mouseleave', function () {
-                $(this).css('max-height', '370px');
-                overflowingEffect(this, $arrow);
+                $(this).animate({maxHeight: $height}, 1200);
             });
         }
     }
 
-    technologyTextHover('.comparison-wrapper-1');
-    technologyTextHover('.comparison-wrapper-2');
+    $height = "463px";
+    technologyTextHover('.comparison-wrapper-1', '.comparison-wrapper-1 .comparison-text',$height);
+    technologyTextHover('.comparison-wrapper-2', '.comparison-wrapper-2 .comparison-text',$height);
+
+    $height = "300px";
+    technologyTextHover('.convect-house-description', '.convect-house-description .comparison-text',$height);
+    technologyTextHover('.infra-house-description', '.infra-house-description .comparison-text',$height);
 
 
 }());

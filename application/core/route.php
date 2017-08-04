@@ -19,7 +19,7 @@ class Route
             $action_name = $routes[2];
         }
 
-        if ($routes[1] == 'products') {
+        if ($routes[1] == 'unsere-produkte') {
             $last = end($routes);
 
             $result_category = $mysqli->query(
@@ -36,7 +36,7 @@ class Route
 
             $action_name = 'index';
             if ($result_category->num_rows !== 0 || empty($routes[2])) {
-                $controller_name = 'products';
+                $controller_name = 'unsere_produkte';
             } else if ($result_product->num_rows !== 0) {
                 $controller_name = 'product';
             } else if ($result_thermostat->num_rows !== 0) {

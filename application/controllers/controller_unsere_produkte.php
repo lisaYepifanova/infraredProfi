@@ -1,9 +1,9 @@
 <?php
-class Controller_About_us extends Controller
+class Controller_Unsere_produkte extends Controller
 {
     function __construct()
     {
-        $this->model = new Model_About_us();
+        $this->model = new Model_Unsere_produkte();
         $this->view = new View();
         $this->default_model = new Model_Default();
     }
@@ -12,6 +12,6 @@ class Controller_About_us extends Controller
     {
         $default = $this->default_model->get_data();
         $data = $this->model->get_data();
-        $this->view->generate('about_us_view.php', 'template_view.php', $data, $default);
+        $this->view->generate('unsere_produkte_view.php', 'template_view.php', $data, $default);
     }
 }

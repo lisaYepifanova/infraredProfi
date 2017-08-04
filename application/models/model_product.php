@@ -59,6 +59,36 @@ class Model_Product extends Model
         $res['menu'] = $menu;
         $res['sizes'] = $sizes;
 
+
+        //selecting indexes of documents
+        $query = $mysqli->query(
+          "SELECT * FROM product_document WHERE product_id=".$res[0]['id']
+        );
+
+        if ($query) {
+            while ($r = mysqli_fetch_assoc($query)) {
+                $query_doc = $mysqli->query(
+                  "SELECT * FROM documents WHERE id=".$r['id']
+                );
+
+                if ($query_doc) {
+                    while ($rd = mysqli_fetch_assoc($query_doc)) {
+                        $res['doc'][] = $rd;
+                    }
+                }
+            }
+        }
+
+        $q = 'SELECT * FROM product_features WHERE product_id="'.$res[0]['id'].'"';
+
+        $query = $mysqli->query($q);
+        if ($query) {
+            while ($s = mysqli_fetch_assoc($query)) {
+                $res['features'][] = $s;
+            }
+        }
+
+
         return $res;
     }
 }

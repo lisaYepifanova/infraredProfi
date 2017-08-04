@@ -1,8 +1,10 @@
+.registration-properties,
 .homepage-properties {
   width: 100%;
   padding: 0;
 
-  .homepage-properties-row {
+  .homepage-properties-row,
+  .registration-properties-row{
     display: table;
     width: 100%;
   }
@@ -82,11 +84,17 @@
   }
 }
   .property-title {
+    padding-top: 36px;
+    padding-bottom: 36px;
     margin-top: 0;
   }
 
-  .property-title,
   .right-side {
-    margin-bottom: 36px;
+    padding-bottom: 36px;
   }
+}
+
+.registration-properties .right-side {
+  background-color: $footer-bg;
+  color: white;
 }

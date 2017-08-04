@@ -99,8 +99,7 @@ include 'application/views/'.$content_view;
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">›</button>
           <h5 class="modal-title">
-            <a class="lang-link">ENG</a>
-            <a class="lang-link">GRM</a>
+            <a class="lang-link">DE</a>
           </h5>
         </div>
         <div class="modal-body">

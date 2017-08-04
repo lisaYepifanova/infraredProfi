@@ -17,7 +17,9 @@ module.exports = function (grunt) {
             },
             extras: {
                 src: ['node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
-                'node_modules/bootstrap/dist/js/bootstrap.js'],
+                'node_modules/bootstrap/dist/js/bootstrap.js',
+                'js/vendor/jquery.easing.1.3.js',
+                'js/vendor/jquery.easing.compatibility.js'],
                 dest: 'js/vendor.js',
             }
         },

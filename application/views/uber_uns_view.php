@@ -1,6 +1,6 @@
 <main class="about-us-page">
 
-  <h1 class="page-header container text-capitalize">ABOUT US</h1>
+  <h1 class="page-header container text-capitalize">ÜBER UNS</h1>
 
   <div class="about-us-right-image container box-same-vmargin right-padding">
     <div class="row">

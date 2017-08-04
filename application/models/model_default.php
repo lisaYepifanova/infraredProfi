@@ -7,20 +7,20 @@ class Model_Default extends Model
         return array(
           'footer_links' => array(
             array(
-              'title' => 'О нас',
-              'link' => '/about-us'
+              'title' => 'ÜBER UNS',
+              'link' => '/uber-uns'
             ),
             array(
               'title' => 'FAQ',
               'link' => '/faq'
             ),
             array(
-              'title' => 'Инструкция',
-              'link' => '/documents'
+              'title' => 'DOWNLOAD',
+              'link' => '/download'
             ),
             array(
-              'title' => 'Стать дилером',
-              'link' => '/registration'
+              'title' => 'FÜR HÄNDLER',
+              'link' => '/fur-handler'
             )
           ),
           'footer_service_links' => array(
@@ -50,39 +50,39 @@ class Model_Default extends Model
             ),
             array(
               'icon' => 'icons/contacts/location.png',
-              'value' => 'location',
-              'link' => '/contact'
+              'value' => 'KONTAKT',
+              'link' => '/kontakt'
             ),
             array(
               'icon' => 'icons/contacts/chat.png',
-              'value' => 'Became a dealer',
-              'link' => '/registration'
+              'value' => 'FÜR HÄNDLER',
+              'link' => '/fur-handler'
             ),
           ),
           'modal_menu' => array(
             array(
-              'title' => 'Главная',
+              'title' => 'HOME',
               'link' => '/'
             ),
             array(
-              'title' => 'Технология',
-              'link' => '/technology'
+              'title' => 'TECNOLOGIE',
+              'link' => '/tecnologie'
             ),
             array(
-              'title' => 'Галерея',
-              'link' => '/products'
+              'title' => 'UNSERE PRODUKTE',
+              'link' => '/unsere-produkte'
             ),
             array(
-              'title' => 'О компании',
-              'link' => '/about-us'
+              'title' => 'ÜBER UNS',
+              'link' => '/uber-uns'
             ),
             array(
-              'title' => 'Стать дилером',
-              'link' => '/registration'
+              'title' => 'FÜR HÄNDLER',
+              'link' => '/fur-handler'
             ),
             array(
-              'title' => 'Контакты',
-              'link' => '/contact'
+              'title' => 'KONTAKT',
+              'link' => '/kontakt'
             ),
           ),
           'site_logo' => 'site_logo.png'

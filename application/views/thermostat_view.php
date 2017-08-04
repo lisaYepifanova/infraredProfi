@@ -2,61 +2,61 @@
 
   <h1 class="page-header container text-capitalize">THERMOSTAT</h1>
   <div class="product-menu-wrapper col-sm-3">
-        <div class="product-menu floating">
-          <ul>
-              <?php
-              $data;
-              $debug = true;
-              $routes = explode('/', $_SERVER['REQUEST_URI']);
-              $last = end($routes);
+    <div class="product-menu floating">
+      <ul>
+          <?php
+          $data;
+          $debug = true;
+          $routes = explode('/', $_SERVER['REQUEST_URI']);
+          $last = end($routes);
 
-              foreach ($data['menu']['root'] as $row) {
-                  echo '<li>';
-                  if ($routes[2] == $row['name']) {
-                      echo '<span class="glyphicon glyphicon-chevron-right"></span>';
-                  }
-
-                  echo '<a class="product-menu-item ';
-                  if ($routes[2] == $row['name']) {
-                      echo 'bold-item';
-                  }
-                  echo '" href="/products/'.$row['name'].'">'.$row['title'].'</a>';
-                  if ($routes[2] == $row['name']) {
-                      $c = $data['menu']['category'];
-                      $link = "/products/".$row['name'];
-                      while ($c['next'] !== "") {
-                          echo '<ul>';
-                          echo '<li><a href="'.$link.'/'.$c['next']['name'].'">'.$c['next']['title'].'</a>';
-                          $link = $link.'/'.$c['next']['name'];
-                          $c = $c['next'];
-                      }
-
-                      echo '<ul>';
-                      $n = $data['menu']['neighbours'];
-                      foreach ($n as $row) {
-                          echo '<li>';
-
-                          if ($last == $row['name']) {
-                              echo '<span class="glyphicon glyphicon-chevron-right"></span>';
-                          }
-
-                          echo '<a href="'.$link.'/'.$row['name'].'">'.$row['title'].'</a></li>';
-                      }
-                      echo '</ul>';
-
-                      $c = $data['menu']['category'];
-                      while ($c['next'] !== "") {
-                          echo '</ul>';
-                          $c = $c['next'];
-                      }
-                  }
-                  echo '</li>';
+          foreach ($data['menu']['root'] as $row) {
+              echo '<li>';
+              if ($routes[2] == $row['name']) {
+                  echo '<span class="glyphicon glyphicon-chevron-right"></span>';
               }
-              ?>
 
-          </ul>
-        </div>
-      </div>
+              echo '<a class="product-menu-item ';
+              if ($routes[2] == $row['name']) {
+                  echo 'bold-item';
+              }
+              echo '" href="/products/'.$row['name'].'">'.$row['title'].'</a>';
+              if ($routes[2] == $row['name']) {
+                  $c = $data['menu']['category'];
+                  $link = "/products/".$row['name'];
+                  while ($c['next'] !== "") {
+                      echo '<ul>';
+                      echo '<li><a href="'.$link.'/'.$c['next']['name'].'">'.$c['next']['title'].'</a>';
+                      $link = $link.'/'.$c['next']['name'];
+                      $c = $c['next'];
+                  }
+
+                  echo '<ul>';
+                  $n = $data['menu']['neighbours'];
+                  foreach ($n as $row) {
+                      echo '<li>';
+
+                      if ($last == $row['name']) {
+                          echo '<span class="glyphicon glyphicon-chevron-right"></span>';
+                      }
+
+                      echo '<a href="'.$link.'/'.$row['name'].'">'.$row['title'].'</a></li>';
+                  }
+                  echo '</ul>';
+
+                  $c = $data['menu']['category'];
+                  while ($c['next'] !== "") {
+                      echo '</ul>';
+                      $c = $c['next'];
+                  }
+              }
+              echo '</li>';
+          }
+          ?>
+
+      </ul>
+    </div>
+  </div>
   <div class=" container right-padding">
     <div class="row">
 
@@ -89,7 +89,10 @@
                   <?php
                   $activeIndex = true;
                   $itemIndex = 0;
-                  if (!empty($data['gallery']) and count($data['gallery'])>1) {
+                  if (!empty($data['gallery']) and count(
+                      $data['gallery']
+                    ) > 1
+                  ) {
                       foreach ($data['gallery'] as $row) {
                           echo '<div class="item ';
                           if ($activeIndex) {
@@ -112,7 +115,7 @@
               </div>
 
                 <?php
-                if (!empty($data['gallery']) and count($data['gallery'])>3) {
+                if (!empty($data['gallery']) and count($data['gallery']) > 3) {
                     ?>
                   <a class="left carousel-control" href="#thumbcarousel"
                      role="button" data-slide="prev">
@@ -162,7 +165,7 @@
     </div>
   </div>
 
-<div class="technische-thermostat-container technische-container">
+  <div class="technische-thermostat-container technische-container">
 
     <div class="container">
       <div class="row">
@@ -182,23 +185,28 @@
             <div class="tab-pane active" id="1a">
               <!-- <h3 class="technische-daten-title">TECHNISCHE DATEN</h3> -->
 
-               <div class="technische-thermostat-daten">
-          <table>
-                  <?php
-                  foreach ($data[0] as $key => $value) {
-                      if (($key !== 'id' and $key !== 'name' and $key !== 'title' and $key !== 'short_description' and $key !== 'image' and $key !== 'parent_id' and $key !== 'description') and $value !== null) {
-                          echo ' <tr><td>'.ucfirst(
-                              str_replace("_", " ", $key)
-                            ).'</td>';
-                          echo ' <td>'.$value.'</td></tr>';
-                      }
-                  }
-                  ?>
-              </table>
-        </div>
+              <div class="technische-thermostat-daten">
+                <table>
+                    <?php
+                    foreach ($data[0] as $key => $value) {
+                        if (($key !== 'id' and $key !== 'name' and $key !== 'title' and $key !== 'short_description' and $key !== 'image' and $key !== 'parent_id' and $key !== 'description') and $value !== null) {
+                            echo ' <tr><td>'.ucfirst(
+                                str_replace("_", " ", $key)
+                              ).'</td>';
+                            echo ' <td>'.$value.'</td></tr>';
+                        }
+                    }
+                    ?>
+                </table>
+              </div>
             </div>
             <div class="tab-pane" id="2a">
               <h3>Documents</h3>
+                <?php
+                foreach ($data['doc'] as $doc) {
+                    echo '<a class="document-link" href="'.DOCPATH.$doc['path'].'" download>'.$doc['name'].'</a>';
+                }
+                ?>
             </div>
           </div>
 
