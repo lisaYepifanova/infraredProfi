@@ -14,14 +14,24 @@
 .about-us-text,
 .about-us-image {
 
-  @media all and (max-width: 768px) {
+  @media all and (max-width: 560px) {
     width: 100%;
   }
 }
 
 .about-us-page {
-  .row {
-    display: flex;
-    align-items: center;
+  @media all and (min-width: 561px) {
+    .row {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.about-us-right-image {
+  @media all and (min-width: 561px) {
+    .row {
+      flex-direction: row-reverse;
+    }
   }
 }

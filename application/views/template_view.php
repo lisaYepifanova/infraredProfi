@@ -63,9 +63,18 @@ include 'application/views/'.$content_view;
           foreach ($default['contacts'] as $row) {
             echo '<div class="contact-item-wrapper col-xs-3  text-center ">
                     <div class="contact-item contact-item'.$index.'">
-                      <img class="content-item-icon" src="'.IMAGEPATH.$row['icon'].'" alt="contact">
-                      <a href="'.$row['link'].'" class="contact-item-value">'.$row['value'].'</a>
-                    </div>
+                      <img class="content-item-icon" src="'.IMAGEPATH.$row['icon'].'" alt="contact">';
+                      if($row['name'] == 'phone') {
+                        echo '<div class="phone-wrapper">';
+                        foreach ($default['phones'] as $phone_row) {
+                          echo '<a href="tel:'.$phone_row['tel'].'" class="contact-item-value phone-value">'.$phone_row['text'].'</a>';
+                        }
+                        echo '</div>';
+                      } else {
+                        echo '<a href="'.$row['link'].'" class="contact-item-value">'.$row['value'].'</a>';
+                      }
+                      echo '
+                   </div>
                   </div>';
             $index = $index + 1;
           }

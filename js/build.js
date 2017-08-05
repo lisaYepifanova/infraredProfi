@@ -71,14 +71,14 @@ $('.carousel-showmanymoveone .item').each(function(){
 
         setItemSize(0.9);
 
-        if ($(window).width() < 320) {
+        if ($(window).width() < 390) {
             $(contactCol).css('width', '96%');
 
             $(contactCol).css('height', itemSize(1));
             setItemSize(0.85);
         }
 
-        if ($(window).width() > 319 && $(window).width() < 721) {
+        if ($(window).width() > 389 && $(window).width() < 721) {
             $(contactCol).css('width', '48%');
             $(contactCol).css('height', itemSize(1));
             setItemSize(1);
@@ -205,7 +205,7 @@ $('.homepage-gallery-carousel').carousel({
     }
 
     function setMenuWidth() {
-        $menuMaxWidth = (parseInt($(document).width()) - parseInt($('.container').width())) / 2;
+        $menuMaxWidth = (parseInt($(document).width()) - parseInt($('.container').width())) / 2 - 20;
         $('.product-menu').css('maxWidth', $menuMaxWidth + 'px');
         $menuWidth = parseInt($('.product-menu').css('width'));
         $margin = ($menuMaxWidth - $menuWidth) / 2;

@@ -1,63 +1,63 @@
 <main class="product">
 
   <h1 class="page-header container text-capitalize">PRODUCT</h1>
-<div class="product-menu-wrapper col-sm-3">
-        <div class="product-menu floating">
-          <ul>
-              <?php
+  <div class="product-menu-wrapper col-sm-3">
+    <div class="product-menu floating">
+      <ul>
+          <?php
 
-              $data;
-              $debug = true;
-              $routes = explode('/', $_SERVER['REQUEST_URI']);
-              $last = end($routes);
+          $data;
+          $debug = true;
+          $routes = explode('/', $_SERVER['REQUEST_URI']);
+          $last = end($routes);
 
-              foreach ($data['menu']['root'] as $row) {
-                  echo '<li>';
-                  if ($routes[2] == $row['name']) {
-                      echo '<span class="glyphicon glyphicon-chevron-right"></span>';
-                  }
-
-                  echo '<a class="product-menu-item ';
-                  if ($routes[2] == $row['name']) {
-                      echo 'bold-item';
-                  }
-                  echo '" href="/products/'.$row['name'].'">'.$row['title'].'</a>';
-                  if ($routes[2] == $row['name']) {
-                      $c = $data['menu']['category'];
-                      $link = "/products/".$row['name'];
-                      while ($c['next'] !== "") {
-                          echo '<ul>';
-                          echo '<li><a href="'.$link.'/'.$c['next']['name'].'">'.$c['next']['title'].'</a>';
-                          $link = $link.'/'.$c['next']['name'];
-                          $c = $c['next'];
-                      }
-
-                      echo '<ul>';
-                      $n = $data['menu']['neighbours'];
-                      foreach ($n as $row) {
-                          echo '<li>';
-
-                          if ($last == $row['name']) {
-                              echo '<span class="glyphicon glyphicon-chevron-right"></span>';
-                          }
-
-                          echo '<a href="'.$link.'/'.$row['name'].'">'.$row['title'].'</a></li>';
-                      }
-                      echo '</ul>';
-
-                      $c = $data['menu']['category'];
-                      while ($c['next'] !== "") {
-                          echo '</ul>';
-                          $c = $c['next'];
-                      }
-                  }
-                  echo '</li>';
+          foreach ($data['menu']['root'] as $row) {
+              echo '<li>';
+              if ($routes[2] == $row['name']) {
+                  echo '<span class="glyphicon glyphicon-chevron-right"></span>';
               }
-              ?>
 
-          </ul>
-        </div>
-      </div>
+              echo '<a class="product-menu-item ';
+              if ($routes[2] == $row['name']) {
+                  echo 'bold-item';
+              }
+              echo '" href="/products/'.$row['name'].'">'.$row['title'].'</a>';
+              if ($routes[2] == $row['name']) {
+                  $c = $data['menu']['category'];
+                  $link = "/products/".$row['name'];
+                  while ($c['next'] !== "") {
+                      echo '<ul>';
+                      echo '<li><a href="'.$link.'/'.$c['next']['name'].'">'.$c['next']['title'].'</a>';
+                      $link = $link.'/'.$c['next']['name'];
+                      $c = $c['next'];
+                  }
+
+                  echo '<ul>';
+                  $n = $data['menu']['neighbours'];
+                  foreach ($n as $row) {
+                      echo '<li>';
+
+                      if ($last == $row['name']) {
+                          echo '<span class="glyphicon glyphicon-chevron-right"></span>';
+                      }
+
+                      echo '<a href="'.$link.'/'.$row['name'].'">'.$row['title'].'</a></li>';
+                  }
+                  echo '</ul>';
+
+                  $c = $data['menu']['category'];
+                  while ($c['next'] !== "") {
+                      echo '</ul>';
+                      $c = $c['next'];
+                  }
+              }
+              echo '</li>';
+          }
+          ?>
+
+      </ul>
+    </div>
+  </div>
   <div class=" container right-padding">
     <div class="row">
 
@@ -150,7 +150,7 @@
 
         <!--Colour-->
         <div class="product-colour-wrapper">
-          <h3 class="colour-title">COLOUR</h3>
+          <h3 class="colour-title">FARBE:</h3>
           <div class="colour-palette row">
               <?php
               if (!empty($data['colours'])) {
@@ -172,70 +172,45 @@
       <h4 class="size-title ">SIZE</h4>
 
       <div class="row technische-row size-row">
-        <div class="product-sizes sizes-rectangles col-xs-12  col-sm-6">
 
-          <div id="row7" class="rectangle"
-               style="width:180px;height:90px;bottom:0;left:0;">
-            180x90
-          </div>
+          <?php
+          echo '<div class="product-sizes sizes-rectangles col-xs-12  col-sm-5">';
+          echo $data[0]['size_markup'];
+          echo '</div>';
+          ?>
 
-          <div id="row6" class="rectangle"
-               style="width:75px;height:180px;bottom:0;left:180px;">
-            180x75
-          </div>
-          <div id="row5" class="rectangle"
-               style="width:150px;height:90px;bottom:90px;left:0;">
-            150x90
-          </div>
-          <div id="row4" class="rectangle"
-               style="width:150px;height:40px;bottom:180px;left:0;">
-            150x40
-          </div>
-          <div id="row3" class="rectangle"
-               style="width:90px;height:60px;bottom:220px;left:0;">
-            60x90
-          </div>
-
-          <div id="row2" class="rectangle"
-               style="width:60px;height:60px;bottom:220px;left:90px;">60x60
-          </div>
-
-          <div id="row1" class="rectangle"
-               style="width:90px;height:40px;bottom:280px;left:0;">
-            40x90
-          </div>
-        </div>
-        <div class="product-sizes col-xs-12  col-sm-6">
-
+        <div class="product-sizes col-xs-12  col-sm-7">
             <?php
-
-            echo '<table>';
+            echo '<table cellpadding="4">';
             echo '<tr>
-                    <th>Ammessung (cantemiters)</th>
-                    <th>Leistung (watt)</th> 
-                    <th>Gewicht (kilograms)</th>
-                    <th>Warmeflache (square meter)</th>
+                    <th>Modell</th>
+                    <th>Abmessungen (mm)</th>
+                    <th>Beheizte Raumgröße (m² / m3)</th> 
+                    <th>Leistung (Watt +/-5%)</th>
+                    <th>Gewicht  (kg)</th>
                   </tr>';
             $ind = 1;
             foreach ($data['sizes'] as $row) {
-                echo '<tr class="row-'.$ind.'">
-                    <td>'.$row['sizex'].'x'.$row['sizey'];
+                echo '';
+                echo '<tr class="row-'.$ind.'">';
+                echo '<td>'.$row['modell'].'</td>';
+                echo '<td>'.$row['sizex'].'x'.$row['sizey'];
                 $ind = $ind + 1;
                 if ($row['sizez'] !== '0') {
                     echo 'x'.$row['sizez'];
                 }
-                echo '</td>
-                    <td>'.$row['leistung'].'</td> 
-                    <td>'.$row['gewicht'].'</td>
-                    <td>'.$row['warmeflache'].'</td>
-                  </tr>';
+                echo '</td>';
+
+                echo '<td>'.$row['raumgrose'].'</td> ';
+                echo '<td>'.$row['leistung'].'</td>';
+                echo '<td>'.$row['gewicht'].'</td>';
+                echo '</tr>';
             }
 
             echo '</table>';
             ?>
 
         </div>
-
 
 
       </div>
@@ -262,9 +237,9 @@
               <table class="features-product-table">
                   <?php
                   foreach ($data['features'] as $row) {
-                          echo ' <tr><td>'.$row['feature'].'</td>';
-                          echo ' <td>'.$row['value'].'</td></tr>';
-                      }
+                      echo ' <tr><td>'.$row['feature'].'</td>';
+                      echo ' <td>'.$row['value'].'</td></tr>';
+                  }
 
                   ?>
               </table>
@@ -273,10 +248,12 @@
               <h3>Documents</h3>
 
                 <?php
+                if (isset($data['doc'])) {
                   foreach ($data['doc'] as $doc) {
+                    echo '<a class="document-link" href="'.DOCPATH.$doc['path'].'" download>'.$doc['name'].'</a>';
+                }
+                }
 
-                echo '<a class="document-link" href="'.DOCPATH.$doc['path'].'" download>'.$doc['name'].'</a>';
-            }
                 ?>
             </div>
           </div>
@@ -287,15 +264,9 @@
       <div class="row technische-row">
         <div class="product-thermostat">
             <?php
-            include 'application/connection.php';
 
-            $query = $mysqli->query(
-              "SELECT * FROM product_thermostat"
-            );
-
-            if ($query) {
-                while ($row = mysqli_fetch_assoc($query)) {
-                    echo '
+            foreach ($data['principles'] as $row) {
+                echo '
                       <div class="col-xs-12 col-sm-6 product-thermostat-item">
                         <div class="product-thermostat-image"><img src="'.IMAGEPATH.$row['image'].'" alt="thermostat"></div>
                         <div class="product-thermostat-title">
@@ -305,8 +276,22 @@
                         '.$row['description'].'
                         </div>
                       </div>';
-                }
             }
+
+            foreach ($data['thermostats_info'] as $row) {
+                echo '
+                      <div class="col-xs-12 col-sm-6 product-thermostat-item">
+                        <div class="product-thermostat-image"><img src="'.IMAGEPATH.$row['image'].'" alt="thermostat"></div>
+                        <div class="product-thermostat-title">
+                        '.$row['title'].'
+                        </div>
+                        <div class="product-thermostat-description">
+                        '.$row['description'].'
+                        </div>
+                      </div>';
+            }
+
+
             ?>
 
         </div>
@@ -358,35 +343,37 @@
         </div>
 
         <div class="row thermostats-row">
-      <div class="product-thermostats">
-        <!--Similar product-->
+          <div class="product-thermostats">
+            <!--Similar product-->
 
-        <div class="thermostats-products-wrapper">
-          <div class="thermostats-products">
-            <h3 class="thermostats-products-title">FUR STEUERUNG UNSERE HEIZUNGSSYSTEME EMPFEHLEN WIR WARM UPT</h3>
-            <div class="row right-padding">
-                <?php
-                include 'application/connection.php';
-                $q = "SELECT * FROM thermostat";
-                $query = $mysqli->query($q);
+            <div class="thermostats-products-wrapper">
+              <div class="thermostats-products">
+                <h3 class="thermostats-products-title">FÜR STEUERUNG UNSERE
+                  HEIZUNGSSYSTEME EMPFEHLEN WIR WARM UP THERMOSTATE
+                </h3>
+                <div class="row right-padding">
+                    <?php
+                    include 'application/connection.php';
+                    $q = "SELECT * FROM thermostat";
+                    $query = $mysqli->query($q);
 
-        if ($query) {
-            while ($row = mysqli_fetch_assoc($query)) {
-                echo '<a class="col-sm-4 col-xs-12 thermostat-product-item" href="/products/thermostats/'.$row['name'].'"><div class="thermostat-product-image"><img src="'.IMAGEPATH.$row['image'].'" alt="thermostat"></div>';
-                        echo '<h4 class="thermostat-product-title">'.$row['title'].'</h4>';
-                        echo '<div class="thermostat-product-description">'.$row['short_description'].'</div></a>';
-            }
-        }
+                    if ($query) {
+                        while ($row = mysqli_fetch_assoc($query)) {
+                            echo '<a class="col-sm-4 col-xs-12 thermostat-product-item" href="/products/thermostats/'.$row['name'].'"><div class="thermostat-product-image"><img src="'.IMAGEPATH.$row['image'].'" alt="thermostat"></div>';
+                            echo '<h4 class="thermostat-product-title">'.$row['title'].'</h4>';
+                            echo '<div class="thermostat-product-description">'.$row['short_description'].'</div></a>';
+                        }
+                    }
 
 
-                ?>
+                    ?>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  </div>
   </div>
 
 </main>

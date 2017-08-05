@@ -113,7 +113,7 @@
 .size-row {
     width: 100%;
 
-  @media all and (min-width: 700px) {
+  @media all and (min-width: 1200px) {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -154,9 +154,15 @@
 .product-sizes {
   position: relative;
 
-  @media all and (max-width: 767px) {
+@media all and (max-width: 420px) {
+      padding-left: 2px;
+
+    }
+
+  @media all and (max-width: 1000px) {
     width: 90%;
   }
+
 
   &:first-child {
     @media all and (max-width: 991px) {
@@ -165,28 +171,45 @@
     }
   }
 
-  @media all and (max-width: 767px) {
-    max-width: 90%;
-  }
-
-  @media all and (max-width: 460px) {
-    table th {
+  @media all and (max-width: 530px) {
+    table th, td {
       word-break: break-all;
     }
   }
 
   table {
-    font-size: 12px;
+    font-size: 10px;
 
+table-layout: fixed;
+      width: 110%;
+
+    @media all and (min-width: 420px) {
+      font-size: 12px;
+
+    }
+
+    @media all and (min-width: 600px) {
+      font-size: 14px;
+
+    }
+
+    @media all and (min-width: 860px) {
+      font-size: 16px;
+
+    }
   }
 
   th, td {
     border: 1px solid grey;
     text-align: center;
+        padding: 0 2px;
+
+    @media all and (min-width: 768px) {
+      padding: 0 8px;
+    }
   }
 
   th {
-    padding: 0 4px;
 
     @media all and (min-width: 768px) and (max-width: 980px) {
 
@@ -312,7 +335,14 @@
 }
 
 .features-product-table {
+  table {
+    table-layout: fixed;
+    width: 100%;
+  }
+
+
   tr, td {
     cursor: default;
+    word-break: break-all;
   }
 }

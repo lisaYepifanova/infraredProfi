@@ -32,6 +32,7 @@
     <div class="registration-properties-row">
       <div class="properties-side left-side"
            style="background-image: url(<?php echo IMAGEPATH.$data['main_info']['angebot_bg'] ?>)"></div>
+      <div class="properties-side right-side-wrapper">
       <div class="properties-side right-side">
 
           <?php
@@ -51,6 +52,7 @@
 
       </div>
     </div>
+    </div>
   </div>
 
   <div class="registration-form container right-padding box-same-vmargin">
@@ -60,17 +62,17 @@
 
     <form role="form" action="" method="post">
       <div class="row">
-        <div class="form-group col-sm-4 col-xs-12">
+        <div class="form-group col-sm-6 col-xs-12">
           <label for="name">Ihr Name:</label>
           <input type="text" class="form-control" id="name" name="name">
         </div>
-        <div class="form-group col-sm-4 col-xs-12">
+        <div class="form-group col-sm-6 col-xs-12">
           <label for="telephone">Ihre Telefonnummer:</label>
           <input type="tel" class="form-control" id="telephone"
                  name="telephone">
         </div>
-
-        <div class="form-group col-sm-4 col-xs-12">
+      </div><div class="row">
+        <div class="form-group col-sm-6 col-xs-12">
           <label for="bundesland">Bundesland:</label>
           <select class="form-control" id="country" name="bundesland">
               <?php
@@ -81,8 +83,11 @@
 
           </select>
         </div>
-
-
+        <div class="form-group col-sm-6 col-xs-12">
+          <label for="email">Ihre Email:</label>
+          <input type="email" class="form-control" id="email"
+                 name="email">
+        </div>
       </div>
 
       <div class="row">

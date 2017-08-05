@@ -35,7 +35,7 @@ $(function () {
     }
 
     function setMenuWidth() {
-        $menuMaxWidth = (parseInt($(document).width()) - parseInt($('.container').width())) / 2;
+        $menuMaxWidth = (parseInt($(document).width()) - parseInt($('.container').width())) / 2 - 20;
         $('.product-menu').css('maxWidth', $menuMaxWidth + 'px');
         $menuWidth = parseInt($('.product-menu').css('width'));
         $margin = ($menuMaxWidth - $menuWidth) / 2;

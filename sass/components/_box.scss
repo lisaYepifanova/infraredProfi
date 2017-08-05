@@ -45,9 +45,9 @@
 }
 
 .right-padding {
-  //@media all and (max-width: 820px) {
+  @media all and (max-width: 820px) {
     padding-right: $nav-panel-width;
-  //};
+  };
 }
 
 .contacts.right-padding {
@@ -81,3 +81,6 @@
 }
 
 
+.properties-side.right-padding {
+  //padding-right: $nav-panel-width;
+}

@@ -60,7 +60,7 @@
   <div class="homepage-properties">
     <div class="homepage-properties-row">
       <div class="properties-side left-side" style="background-image: url(<?php echo IMAGEPATH.$data['property_image']?>)"></div>
-      <div class="properties-side right-side">
+      <div class="properties-side right-side right-padding">
 
           <?php
           $index = 1;

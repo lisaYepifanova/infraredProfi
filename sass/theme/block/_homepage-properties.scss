@@ -4,7 +4,7 @@
   padding: 0;
 
   .homepage-properties-row,
-  .registration-properties-row{
+  .registration-properties-row {
     display: table;
     width: 100%;
   }
@@ -36,8 +36,19 @@
       width: $container-md/2;
     }
     @media (min-width: $screen-lg-min) {
-      width: $container-lg/2;
-      padding-right: 0;
+      width: $container-lg/2 + 200px;
+    }
+
+    @media (min-width: $screen-lg-min) {
+      width: $container-lg/2 + 200px;
+    }
+
+    @media (min-width: 1800px) {
+      width: $container-lg/2 + 300px;
+    }
+
+    @media (min-width: 2000px) {
+      width: $container-lg/2 + 500px;
     }
 
   }
@@ -66,23 +77,23 @@
     position: relative;
   }
 
-  
   .property-item1 {
     .property-item-title {
       //margin-top: 0;
     }
   }
-  
-  @for $i from 1 through 4  {
-  .property-item#{$i} .property-item-image {
-    width: 32px;
-    height: 32px;
-    display: inline-block;
-    position: absolute;
-    left: -32px * 1.325;
-    background-size: cover;
+
+  @for $i from 1 through 4 {
+    .property-item#{$i} .property-item-image {
+      width: 32px;
+      height: 32px;
+      display: inline-block;
+      position: absolute;
+      left: -32px * 1.325;
+      background-size: cover;
+    }
   }
-}
+
   .property-title {
     padding-top: 36px;
     padding-bottom: 36px;
@@ -95,6 +106,9 @@
 }
 
 .registration-properties .right-side {
-  background-color: $footer-bg;
   color: white;
+}
+
+.registration-properties .right-side-wrapper {
+  background-color: $footer-bg;
 }

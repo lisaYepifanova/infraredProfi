@@ -89,6 +89,30 @@ class Model_Product extends Model
         }
 
 
+         $query = $mysqli->query(
+              "SELECT * FROM product_thermostat"
+            );
+
+            if ($query) {
+                while ($row = mysqli_fetch_assoc($query)) {
+                    if ($row['id'] !== '2' or ($row['id'] == '2' and $res[0]['has_thermostat'] == '1')) {
+                        $res['thermostats_info'][] = $row;
+                    }
+                }
+            }
+
+            $query = $mysqli->query(
+              "SELECT * FROM product_principle WHERE product_id=".$res[0]['id']
+            );
+
+            if ($query) {
+                while ($row = mysqli_fetch_assoc($query)) {
+                        $res['principles'][] = $row;
+
+                }
+            }
+
+
         return $res;
     }
 }

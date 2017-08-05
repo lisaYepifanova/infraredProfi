@@ -20,7 +20,20 @@
   border-radius: 50%;
   margin: 4rem auto;
   position: relative;
-  @media all and (max-width: 619px) {
+
+
+
+  @media all and (min-width: 960px) {
+    width: 250px;
+  height: 250px;
+  }
+
+  @media all and (min-width: 1200px) {
+    width: 400px;
+  height: 400px;
+  }
+
+  @media all and (max-width: 659px) {
     background-image: none !important;
     width: 100%;
     height: auto;
@@ -31,13 +44,17 @@
   text-align: center;
   opacity: 0.5;
   width: 220px;
-  margin: 0 8px;
+  margin: 0 16px;
+      height: 20px;
+    display: flex;
+      justify-content: center;
+    align-items: center;
 
-  @media all and (max-width: 619px) {
+  @media all and (max-width: 659px) {
     width: 100%;
   }
 
-  @media all and (min-width: 620px) and (max-width: 767px) {
+  @media all and (min-width: 660px) and (max-width: 767px) {
     width: 160px;
     line-height: 1;
   }
@@ -52,11 +69,15 @@
   background-repeat: no-repeat;
   background-color: #d2d2d2;
 
+  @media all and (min-width: 1200px) {
+    width: 75px;
+    height: 75px;
+  }
 }
 
 .leistungen-item {
 
-  @media all and (max-width: 619px) {
+  @media all and (max-width: 659px) {
     position: relative;
     margin: 1rem auto;
     height: auto;
@@ -84,21 +105,23 @@
     }
   }
 
-  @media all and (min-width: 621px) and (max-width: 700px) {
-    width: 260px;
-  }
 
-  @media all and (min-width: 620px) {
+
+  @media all and (min-width: 660px) {
     &:nth-child(1) {
       top: 0;
       left: -100%;
 
       flex-direction: row-reverse;
+
+      .leistungen-item-description {
+        transform: translate(10%,-50%);
+      }
     }
 
     &:nth-child(2) {
       top: 50%;
-      left: -126%;
+      left: -122%;
       transform: translateY(-50%);
 
       flex-direction: row-reverse;
@@ -110,30 +133,124 @@
       transform: translateY(0);
 
       flex-direction: row-reverse;
+
+      .leistungen-item-description {
+        transform: translate(10%, 50%);
+      }
     }
 
     &:nth-child(4) {
       top: 0;
       right: -100%;
+
+      .leistungen-item-description {
+        transform: translate(-10%, -50%);
+      }
     }
 
     &:nth-child(5) {
       top: 50%;
-      right: -126%;
+      right: -132%;
+      transform: translate(-10%, -50%);
+    }
+
+    &:nth-child(6) {
+      bottom: 0;
+      right: -100%;
+      transform: translateY(0);
+
+      .leistungen-item-description {
+        transform: translate(-10%, 50%);
+      }
+    }
+  }
+
+  @media all and (min-width: 960px) {
+       &:nth-child(1) {
+      top: 0;
+      left: -73%;
+
+      flex-direction: row-reverse;
+    }
+
+    &:nth-child(2) {
+      top: 50%;
+      left: -97%;
+      transform: translateY(-50%);
+
+      flex-direction: row-reverse;
+    }
+
+    &:nth-child(3) {
+      bottom: 0;
+      left: -73%;
+      transform: translateY(0);
+
+      flex-direction: row-reverse;
+    }
+
+    &:nth-child(4) {
+      top: 0;
+      right: -73%;
+    }
+
+    &:nth-child(5) {
+      top: 50%;
+      right: -97%;
       transform: translateY(-50%);
     }
 
     &:nth-child(6) {
-
       bottom: 0;
-      right: -100%;
+      right: -73%;
       transform: translateY(0);
     }
   }
 
+  @media all and (min-width: 1200px) {
+       &:nth-child(1) {
+      top: 2%;
+      left: -33%;
 
-   @media all and (min-width: 621px) and (max-width: 700px) {
+      flex-direction: row-reverse;
+    }
 
+    &:nth-child(2) {
+      top: 50%;
+      left: -57%;
+      transform: translateY(-50%);
+
+      flex-direction: row-reverse;
+    }
+
+    &:nth-child(3) {
+      bottom: 2%;
+      left: -33%;
+      transform: translateY(0);
+
+      flex-direction: row-reverse;
+    }
+
+    &:nth-child(4) {
+      top: 2%;
+      right: -33%;
+    }
+
+    &:nth-child(5) {
+      top: 50%;
+      right: -57%;
+      transform: translateY(-50%);
+    }
+
+    &:nth-child(6) {
+      bottom: 2%;
+      right: -33%;
+      transform: translateY(0);
+    }
+  }
+
+/*   @media all and (min-width: 660px) and (max-width: 700px) {
+      width: 260px;
     &:nth-child(2) {
       left: -116%;
 
@@ -142,7 +259,7 @@
       right: -116%;
 
     }
-  }
+  }*/
 }
 
 .registration-description {
