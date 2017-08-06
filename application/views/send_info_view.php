@@ -32,6 +32,7 @@
     <div class="registration-properties-row">
       <div class="properties-side left-side"
            style="background-image: url(<?php echo IMAGEPATH.$data['main_info']['angebot_bg'] ?>)"></div>
+      <div class="properties-side right-side-wrapper">
       <div class="properties-side right-side">
 
           <?php
@@ -50,6 +51,7 @@
           ?>
 
       </div>
+    </div>
     </div>
   </div>
 

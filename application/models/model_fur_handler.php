@@ -36,11 +36,11 @@ class Model_Fur_handler extends Model
         }
 
         $info = '<div style="font-size:16px;">
-                    <p><b>Имя: </b>".$name."</p>
-                    <p><b>Номер телефона: </b>".$telephone."</p>
-                    <p><b>Регион: </b>".$bundesland."</p>
-                    <p><b>Почта: </b>".$email."</p>
-                    <p><b>Дополнительно: </b>".$ihre_nachricht."</p></div>';
+                    <p><b>Имя: </b>'.$name.'</p>
+                    <p><b>Номер телефона: </b>'.$telephone.'</p>
+                    <p><b>Регион: </b>'.$bundesland.'</p>
+                    <p><b>Почта: </b>'.$email.'</p>
+                    <p><b>Дополнительно: </b>'.$ihre_nachricht.'</p></div>';
 
         $message_to_admin = "
             <html><head><title>Новый запрос от дилера</title></head>
