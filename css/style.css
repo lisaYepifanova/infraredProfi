@@ -5940,7 +5940,7 @@ Reusable, discrete UI elements.
   .container {
     width: 1000px; } }
 
-@media all and (max-width: 820px) {
+@media all and (max-width: 1100px) {
   .right-padding {
     padding-right: 3.5rem; } }
 
@@ -6705,7 +6705,7 @@ body.modal-open {
 .product .thumb-image {
   width: 100%;
   background-position: center center;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat; }
 
 .product .item .thumb {
@@ -6724,13 +6724,17 @@ body.modal-open {
   width: 100%; }
 
 .product-menu {
-  position: fixed; }
+  position: fixed;
+  width: 300px; }
   @media all and (max-width: 1320px) {
     .product-menu {
       display: none; } }
+  @media all and (max-width: 1500px) {
+    .product-menu {
+      width: 500px; } }
   @media all and (max-width: 1366px) {
     .product-menu {
-      font-size: 14px; } }
+      font-size: 12px; } }
   .product-menu li {
     list-style: none;
     margin-bottom: 8px; }
@@ -7087,8 +7091,10 @@ Pages
 .product-similar {
   padding: 0 16px; }
 
-.product-main .carousel-wrapper {
-  padding-right: 1rem; }
+.product-main {
+  padding-left: 15px; }
+  .product-main .carousel-wrapper {
+    padding-right: 1rem; }
 
 .product-sizes {
   position: relative; }
@@ -7109,6 +7115,9 @@ Pages
     font-size: 10px;
     table-layout: fixed;
     width: 110%; }
+    @media all and (min-width: 1000px) {
+      .product-sizes table {
+        width: 100%; } }
     @media all and (min-width: 420px) {
       .product-sizes table {
         font-size: 12px; } }
@@ -7166,15 +7175,18 @@ Pages
 .size-title,
 .product-thermostat {
   color: white;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   padding-left: 0; }
   @media all and (max-width: 767px) {
     .size-title,
     .product-thermostat {
       max-width: 90%; } }
 
-.product-thermostat {
+.product-thermostats {
   margin-bottom: 0; }
+  @media all and (max-width: 767px) {
+    .product-thermostats {
+      text-align: center; } }
 
 .product-thermostat-item {
   text-align: center; }
@@ -7185,11 +7197,16 @@ Pages
 
 .product-thermostat-image {
   margin-bottom: 1rem;
-  width: 80%; }
+  height: 300px;
+  width: 80%;
+  margin: 1rem auto; }
   @media all and (max-width: 767px) {
     .product-thermostat-image {
       max-width: 300px;
       margin: 0 auto 1rem auto; } }
+  .product-thermostat-image img {
+    height: 100%;
+    width: auto; }
 
 .thermostat-product-image {
   background-size: cover;
@@ -7213,10 +7230,16 @@ Pages
     margin: 0; }
 
 .thermostat-product-item {
-  transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1); }
+  transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: 2; }
+  @media all and (max-width: 767px) {
+    .thermostat-product-item {
+      margin: auto;
+      padding: 0 2rem; } }
   .thermostat-product-item:hover {
     -ms-transform: scale(1.1);
-    transform: scale(1.1); }
+    transform: scale(1.1);
+    z-index: 4; }
 
 .features-product-table table {
   table-layout: fixed;

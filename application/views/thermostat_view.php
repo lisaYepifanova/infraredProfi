@@ -20,10 +20,10 @@
               if ($routes[2] == $row['name']) {
                   echo 'bold-item';
               }
-              echo '" href="/products/'.$row['name'].'">'.$row['title'].'</a>';
+              echo '" href="/unsere-produkte/'.$row['name'].'">'.$row['title'].'</a>';
               if ($routes[2] == $row['name']) {
                   $c = $data['menu']['category'];
-                  $link = "/products/".$row['name'];
+                  $link = "/unsere-produkte/".$row['name'];
                   while ($c['next'] !== "") {
                       echo '<ul>';
                       echo '<li><a href="'.$link.'/'.$c['next']['name'].'">'.$c['next']['title'].'</a>';

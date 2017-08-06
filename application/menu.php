@@ -38,7 +38,7 @@ function menu()
     }
 
     //add product items to the list
-    $query = $mysqli->query("SELECT id name, title, parent_id FROM products");
+    $query = $mysqli->query("SELECT id, name, title, parent_id FROM products");
     if ($query) {
         while ($r = mysqli_fetch_assoc($query)) {
             $r['iscategory'] = false;

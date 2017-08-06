@@ -1,12 +1,17 @@
 .product-menu {
   position: fixed;
+  width: 300px;
 
   @media all and (max-width: 1320px) {
     display: none;
   }
 
+  @media all and (max-width: 1500px) {
+    width: 500px;
+  }
+
   @media all and (max-width: 1366px) {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   li {

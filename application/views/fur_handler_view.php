@@ -75,6 +75,7 @@
         <div class="form-group col-sm-6 col-xs-12">
           <label for="bundesland">Bundesland:</label>
           <select class="form-control" id="country" name="bundesland">
+            <option selected disabled></option>
               <?php
                 foreach ($data['bundesland'] as $row) {
                   echo '<option>'.$row['name'].'</option>';
@@ -93,7 +94,7 @@
       <div class="row">
         <div class="form-group col-xs-12">
           <label for="ihre_nachricht">Ihre Nachricht:</label>
-          <textarea class="form-control" rows="6" id="ihre_nachricht"
+          <textarea class="form-control" rows="4" id="ihre_nachricht"
                     name="ihre_nachricht"></textarea>
         </div>
       </div>

@@ -7,7 +7,7 @@
         <?php
           if (!empty($data)) {
             foreach ($data as $row) {
-              if ($_SERVER['REQUEST_URI'] == "/products/") {
+              if ($_SERVER['REQUEST_URI'] == "/unsere-produkte/") {
                 $link = $_SERVER['REQUEST_URI'].$row['name'];
               } else {
                 $link = $_SERVER['REQUEST_URI'].'/'.$row['name'];

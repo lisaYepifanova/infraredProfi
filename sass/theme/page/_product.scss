@@ -145,6 +145,7 @@
 }
 
 .product-main {
+  padding-left: 15px;
 
   .carousel-wrapper {
     padding-right: 1rem;
@@ -182,6 +183,11 @@
 
 table-layout: fixed;
       width: 110%;
+     @media all and (min-width: 1000px) {
+      width: 100%;
+
+    }
+
 
     @media all and (min-width: 420px) {
       font-size: 12px;
@@ -266,7 +272,7 @@ table-layout: fixed;
 .size-title,
 .product-thermostat {
   color: white;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   padding-left: 0;
 
   @media all and (max-width: 767px) {
@@ -274,8 +280,13 @@ table-layout: fixed;
   }
 }
 
-.product-thermostat {
+.product-thermostats {
   margin-bottom: 0;
+
+    @media all and (max-width: 767px) {
+    text-align: center;
+  }
+
 }
 
 .product-thermostat-item {
@@ -289,10 +300,19 @@ table-layout: fixed;
 
 .product-thermostat-image {
   margin-bottom: 1rem;
+  height: 300px;
   width: 80%;
-   @media all and (max-width: 767px) {
+  margin: 1rem auto;
+
+  @media all and (max-width: 767px) {
     max-width: 300px;
      margin: 0 auto 1rem auto;
+  }
+
+  img {
+    height: 100%;
+    width: auto;
+
   }
 }
 
@@ -328,9 +348,17 @@ table-layout: fixed;
 .thermostat-product-item {
   -webkit-transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
   transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: 2;
+
+  @media all and (max-width: 767px) {
+    //width: 90%;
+    margin: auto;
+        padding: 0 2rem;
+  }
 
   &:hover {
     transform: scale(1.1);
+    z-index: 4;
   }
 }
 

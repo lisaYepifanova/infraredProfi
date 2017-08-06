@@ -9,17 +9,24 @@ class Route
         $controller_name = 'Main';
         $action_name = 'index';
 
+        if (substr(
+            $_SERVER['REQUEST_URI'],
+            strlen($_SERVER['REQUEST_URI']) - 1
+          ) == "/"
+        ) {
+            $_SERVER['REQUEST_URI'] = substr(
+              $_SERVER['REQUEST_URI'],
+              0,
+              strlen($_SERVER['REQUEST_URI']) - 1
+            );
+        }
+        
         $routes = explode('/', $_SERVER['REQUEST_URI']);
 
         if (!empty($routes[1])) {
             $controller_name = $routes[1];
-        }
 
-        if (!empty($routes[2])) {
-            $action_name = $routes[2];
-        }
-
-        if ($routes[1] == 'unsere-produkte') {
+                    if ($routes[1] == 'unsere-produkte') {
             $last = end($routes);
 
             $result_category = $mysqli->query(
@@ -36,17 +43,27 @@ class Route
 
             $action_name = 'index';
             if ($result_category->num_rows !== 0 || empty($routes[2])) {
-                $controller_name = 'unsere_produkte';
-            } else if ($result_product->num_rows !== 0) {
-                $controller_name = 'product';
-            } else if ($result_thermostat->num_rows !== 0) {
-                $controller_name = 'thermostat';
-            }
-            else {
-                $controller_name = '404';
+                $controller_name = 'unsere-produkte';
+            } else {
+                if ($result_product->num_rows !== 0) {
+                    $controller_name = 'product';
+                } else {
+                    if ($result_thermostat->num_rows !== 0) {
+                        $controller_name = 'thermostat';
+                    } else {
+                        $controller_name = '404';
+                    }
+                }
             }
 
         }
+        }
+
+        if (!empty($routes[2])) {
+           // $action_name = $routes[2];
+        }
+
+
 
         $model_name = 'model_'.$controller_name;
         $controller_name = 'controller_'.$controller_name;

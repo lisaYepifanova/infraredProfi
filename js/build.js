@@ -218,7 +218,6 @@ $('.homepage-gallery-carousel').carousel({
 
     window.onload = function () {
         if ($('.product-menu-wrapper').length !== 0) {
-            console.log('exist');
             productMenuScroll();
             setMenuWidth();
 
