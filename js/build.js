@@ -354,16 +354,16 @@ if ($l > 3) {
 
             $($element).on('mouseenter', function () {
                 $maxH = parseInt($($element).prop('scrollHeight')) + 20;
-                $(this).animate({maxHeight: $maxH+'px'}, 1200);
+                $(this).animate({maxHeight: $maxH+'px'}, 1000);
             });
 
             $($element).on('mouseleave', function () {
-                $(this).animate({maxHeight: $height}, 1200);
+                $(this).animate({maxHeight: $height}, 1000);
             });
         }
     }
 
-    $height = "463px";
+    $height = "470px";
     technologyTextHover('.comparison-wrapper-1', '.comparison-wrapper-1 .comparison-text',$height);
     technologyTextHover('.comparison-wrapper-2', '.comparison-wrapper-2 .comparison-text',$height);
 

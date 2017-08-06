@@ -86,11 +86,12 @@
   @for $i from 1 through 4 {
     .property-item#{$i} .property-item-image {
       width: 32px;
-      height: 32px;
+      height: 36px;
       display: inline-block;
       position: absolute;
       left: -32px * 1.325;
-      background-size: cover;
+      background-size: contain;
+      background-repeat: no-repeat;
     }
   }
 

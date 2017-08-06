@@ -6,7 +6,7 @@ class Model_Tecnologie extends Model
     {
         return [
           'description_before' => array(
-            '<p>Was ist eigentlich Infrarot-Strahlungswärme? <br>
+            '<h3>WAS IST EIGENTLICH INFRAROT-STRAHLUNGSWÄRME?</h3> <p>
 (Auszug Vortrag Dr. Aron Flickstein)<br>
 Infrarote Strahlungswärme ist eine Welle des elektromagnetischen Spektrums, welche Energie aller Wellenlängen umfasst. Sie ist eine Energieform, die durch einen Umsetzungsprozess Gegenstände direkt erwärmt, ohne dabei die umgebende Luft zu erwärmen.. Strahlungswärme wird auch infrarote Energie genannt (IR). Der infrarote Anteil des elektromagnetischen Spektrums ist unterteilt in drei verschiedene Wellenlängen, gemessen in Mikrometern (µm):<br>
 0,07 – 1,50 = geringe IR-A Wellen <br>

@@ -4,7 +4,7 @@
 
 .comparison-row {
   display: flex;
-  align-items: center;
+  //align-items: center;
 
   @media all and (max-width: 767px) {
     display: block;
@@ -31,13 +31,12 @@
 
 .comparison-text-wrapper {
   margin: 2rem auto;
-  max-height: 463px;
+  max-height: 470px;
   overflow-y: hidden;
   position: relative;
   padding: 0 2rem;
 
   @media all and (max-width: 767px) {
-    max-height: 463px;
     height: auto;
     padding: 0;
   }

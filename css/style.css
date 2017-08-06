@@ -6163,35 +6163,39 @@ Blocks
   .registration-properties .property-item1 .property-item-image,
   .homepage-properties .property-item1 .property-item-image {
     width: 32px;
-    height: 32px;
+    height: 36px;
     display: inline-block;
     position: absolute;
     left: -42.4px;
-    background-size: cover; }
+    background-size: contain;
+    background-repeat: no-repeat; }
   .registration-properties .property-item2 .property-item-image,
   .homepage-properties .property-item2 .property-item-image {
     width: 32px;
-    height: 32px;
+    height: 36px;
     display: inline-block;
     position: absolute;
     left: -42.4px;
-    background-size: cover; }
+    background-size: contain;
+    background-repeat: no-repeat; }
   .registration-properties .property-item3 .property-item-image,
   .homepage-properties .property-item3 .property-item-image {
     width: 32px;
-    height: 32px;
+    height: 36px;
     display: inline-block;
     position: absolute;
     left: -42.4px;
-    background-size: cover; }
+    background-size: contain;
+    background-repeat: no-repeat; }
   .registration-properties .property-item4 .property-item-image,
   .homepage-properties .property-item4 .property-item-image {
     width: 32px;
-    height: 32px;
+    height: 36px;
     display: inline-block;
     position: absolute;
     left: -42.4px;
-    background-size: cover; }
+    background-size: contain;
+    background-repeat: no-repeat; }
   .registration-properties .property-title,
   .homepage-properties .property-title {
     padding-top: 36px;
@@ -6834,9 +6838,7 @@ Pages
 
 .comparison-row {
   display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center; }
+  display: flex; }
   @media all and (max-width: 767px) {
     .comparison-row {
       display: block; } }
@@ -6854,7 +6856,7 @@ Pages
 
 .comparison-text-wrapper {
   margin: 2rem auto;
-  max-height: 463px;
+  max-height: 470px;
   overflow-y: hidden;
   position: relative;
   padding: 0 2rem;
@@ -6895,7 +6897,6 @@ Pages
   }*/ }
   @media all and (max-width: 767px) {
     .comparison-text-wrapper {
-      max-height: 463px;
       height: auto;
       padding: 0; } }
   .comparison-text-wrapper .comparison-text {
@@ -6996,7 +6997,6 @@ Pages
 
 .product-colour-wrapper .colour-item {
   display: inline-block;
-  text-align: center;
   padding-left: 0; }
 
 .product-colour-wrapper .colour-block {

@@ -10,10 +10,7 @@
 .product-colour-wrapper {
   .colour-item {
     display: inline-block;
-    text-align: center;
-
     padding-left: 0;
-
   }
 
   .colour-block {
@@ -44,7 +41,6 @@
 .similar-product-item {
   display: inline-block;
   cursor: pointer;
-
   -webkit-transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
   transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
 
@@ -107,23 +103,20 @@
       }
     }
   }
-
 }
 
 .size-row {
-    width: 100%;
+  width: 100%;
 
   @media all and (min-width: 1200px) {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-
 }
 
 .technische-row {
   margin: 2rem 0;
-
 
   @media all and (min-width: 992px) and (max-width: 1024px) {
     padding-right: 2rem;
@@ -132,7 +125,6 @@
   @media all and (max-width: 1024px) {
     padding-right: 2rem;
   }
-
 }
 
 .technische-container {
@@ -155,15 +147,14 @@
 .product-sizes {
   position: relative;
 
-@media all and (max-width: 420px) {
-      padding-left: 2px;
+  @media all and (max-width: 420px) {
+    padding-left: 2px;
 
-    }
+  }
 
   @media all and (max-width: 1000px) {
     width: 90%;
   }
-
 
   &:first-child {
     @media all and (max-width: 991px) {
@@ -173,21 +164,21 @@
   }
 
   @media all and (max-width: 530px) {
-    table th, td {
+    table th,
+    td {
       word-break: break-all;
     }
   }
 
   table {
     font-size: 10px;
+    table-layout: fixed;
+    width: 110%;
 
-table-layout: fixed;
-      width: 110%;
-     @media all and (min-width: 1000px) {
+    @media all and (min-width: 1000px) {
       width: 100%;
 
     }
-
 
     @media all and (min-width: 420px) {
       font-size: 12px;
@@ -208,24 +199,17 @@ table-layout: fixed;
   th, td {
     border: 1px solid grey;
     text-align: center;
-        padding: 0 2px;
+    padding: 0 2px;
 
     @media all and (min-width: 768px) {
       padding: 0 8px;
     }
   }
-
-  th {
-
-    @media all and (min-width: 768px) and (max-width: 980px) {
-
-    }
-  }
-
 }
 
 .product-sizes table,
 .product-technische-daten table {
+
   tr {
     border: 2px white solid;
     color: white;
@@ -242,7 +226,8 @@ table-layout: fixed;
     }
   }
 
-  td, th {
+  td,
+  th {
     border: none;
   }
 }
@@ -283,10 +268,9 @@ table-layout: fixed;
 .product-thermostats {
   margin-bottom: 0;
 
-    @media all and (max-width: 767px) {
+  @media all and (max-width: 767px) {
     text-align: center;
   }
-
 }
 
 .product-thermostat-item {
@@ -299,20 +283,18 @@ table-layout: fixed;
 }
 
 .product-thermostat-image {
-  margin-bottom: 1rem;
   height: 300px;
   width: 80%;
   margin: 1rem auto;
 
   @media all and (max-width: 767px) {
     max-width: 300px;
-     margin: 0 auto 1rem auto;
+    margin: 0 auto 1rem auto;
   }
 
   img {
     height: 100%;
     width: auto;
-
   }
 }
 
@@ -332,7 +314,6 @@ table-layout: fixed;
   margin: 4rem 0;
 }
 
-
 .product-description-wrapper {
   margin-bottom: 4rem;
 }
@@ -351,9 +332,8 @@ table-layout: fixed;
   z-index: 2;
 
   @media all and (max-width: 767px) {
-    //width: 90%;
     margin: auto;
-        padding: 0 2rem;
+    padding: 0 2rem;
   }
 
   &:hover {
@@ -368,8 +348,8 @@ table-layout: fixed;
     width: 100%;
   }
 
-
-  tr, td {
+  tr,
+  td {
     cursor: default;
     word-break: break-all;
   }
