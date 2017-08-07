@@ -86,6 +86,7 @@ include 'application/views/'.$content_view;
   <div class="footer-links-wrapper container">
     <div class="footer-links row">
       <?php
+      if(!empty($default['footer_links']))
           foreach ($default['footer_links'] as $row) {
             echo '<a href="'.$row['link'].'" class="footer-link col-xs-3">'.$row['title'].'</a>';
           }

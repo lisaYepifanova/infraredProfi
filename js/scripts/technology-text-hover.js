@@ -47,5 +47,4 @@
     technologyTextHover('.convect-house-description', '.convect-house-description .comparison-text',$height);
     technologyTextHover('.infra-house-description', '.infra-house-description .comparison-text',$height);
 
-
 }());

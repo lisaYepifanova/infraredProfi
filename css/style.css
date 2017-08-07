@@ -6409,7 +6409,8 @@ Blocks
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
-  align-items: center; }
+  align-items: center;
+  overflow: visible; }
   #imageNavMenu .modal-dialog {
     height: 90%;
     width: 100%; }
@@ -6596,7 +6597,7 @@ footer .footer-links {
 
 footer .footer-service-links {
   opacity: 0.5;
-  margin: 1rem auto 0 auto;
+  margin: auto;
   max-width: 30rem; }
 
 footer .footer-link {
@@ -6678,8 +6679,11 @@ body.modal-open {
   margin-right: 12px;
   color: #333333; }
 
-.modal.fade:not(.in) .modal-dialog {
+#asideNavMenu.modal.fade:not(.in) .modal-dialog {
   transform: translate3d(25%, 0, 0); }
+
+#imageNavMenu.modal.fade:not(.in) .modal-dialog {
+  transform: translate3d(0, 0, 0); }
 
 .modal-footer {
   text-align: left; }
@@ -7009,6 +7013,22 @@ Pages
 
 .product-title {
   text-transform: uppercase; }
+
+.product-full-description-wrapper {
+  max-height: 200px;
+  overflow: hidden;
+  position: relative; }
+  .product-full-description-wrapper .arrow-down {
+    position: absolute;
+    bottom: 0;
+    top: unset;
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
+    background: linear-gradient(rgba(255, 255, 255, 0.3), white);
+    color: #ED6E23;
+    font-size: 24px;
+    font-weight: bold; }
 
 .product-full-description {
   text-align: left; }

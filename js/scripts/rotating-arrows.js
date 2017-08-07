@@ -1,5 +1,5 @@
-function arrowsRotation() {
-    $('.faq-item-title').on('click', function () {
+function arrowsRotation($arr) {
+    $($arr).on('click', function () {
         if($(this).hasClass('opened')) {
             $(this).addClass('closed');
             $(this).removeClass('opened');
@@ -12,6 +12,6 @@ function arrowsRotation() {
 }
 
 $(document).ready(function () {
-    arrowsRotation();
+    arrowsRotation('.faq-item-title');
 });
 

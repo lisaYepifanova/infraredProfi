@@ -73,10 +73,15 @@
   }
 }
 
-.modal.fade:not(.in) .modal-dialog {
+#asideNavMenu.modal.fade:not(.in) .modal-dialog {
     -webkit-transform: translate3d(-25%, 0, 0);
     transform: translate3d(25%, 0, 0);
 }
+
+#imageNavMenu.modal.fade:not(.in) .modal-dialog {
+    transform: translate3d(0, 0, 0);
+}
+
 
 .modal-footer {
   text-align: left;

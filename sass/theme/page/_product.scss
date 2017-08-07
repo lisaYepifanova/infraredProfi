@@ -27,6 +27,24 @@
 .product-title {
   text-transform: uppercase;
 }
+.product-full-description-wrapper {
+  max-height: 200px;
+  overflow: hidden;
+  position: relative;
+
+  .arrow-down{
+    position: absolute;
+    bottom: 0;
+    top: unset;
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
+    background: linear-gradient(rgba(255, 255, 255, 0.3), white);
+    color: #ED6E23;
+    font-size: 24px;
+    font-weight: bold;
+  }
+}
 
 .product-full-description {
   text-align: left;

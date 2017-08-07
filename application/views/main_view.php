@@ -140,7 +140,7 @@
 </main>
 
 
-<div id="imageNavMenu" class="modal fade in image-nav-menu container"
+<div id="imageNavMenu" class="modal fade image-nav-menu container"
              style="display: none;">
           <div class="modal-dialog aside-modal-dialog">
             <div class="modal-content">

@@ -6,22 +6,8 @@ class Model_Default extends Model
     {
         return [
           'footer_links' => [
-            [
-              'title' => 'ÜBER UNS',
-              'link' => '/uber-uns',
-            ],
-            [
-              'title' => 'FAQ',
-              'link' => '/faq',
-            ],
-            [
-              'title' => 'DOWNLOAD',
-              'link' => '/download',
-            ],
-            [
-              'title' => 'FÜR HÄNDLER',
-              'link' => '/fur-handler',
-            ],
+
+
           ],
           'footer_service_links' => [
             [
@@ -103,7 +89,11 @@ class Model_Default extends Model
             [
               'title' => 'FAQ',
               'link' => '/faq',
-            ]
+            ],
+               [
+              'title' => 'DOWNLOAD',
+              'link' => '/download',
+            ],
           ],
           'site_logo' => 'site_logo.png',
         ];

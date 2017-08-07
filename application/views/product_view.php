@@ -153,9 +153,11 @@
         </div>
 
         <!-- Description of the product-->
-        <div class="product-description-wrapper">
+        <div class="product-description-wrapper product-full-description-wrapper">
             <?php
-            echo '<p class="product-description product-full-description">'.$data[0]['description'].'</p>';
+
+            echo '<div class="product-description product-full-description">'.$data[0]['description'].'</div>';
+echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
             ?>
         </div>
 
@@ -185,162 +187,152 @@
       <div class="row technische-row size-row">
 
           <?php
-          echo '<div class="product-sizes sizes-rectangles col-xs-12 ';
-          if ($data[0]['has_height'] == '1') {
-            echo ' col-sm-4';
-        } else {
-            echo ' col-sm-5';
-        }
+          echo '<div class="product-sizes sizes-rectangles col-xs-12 col-sm-4';
           echo '">';
           echo $data[0]['size_markup'];
           echo '</div>';
           ?>
 
 
+          <?php
+          echo '<div class="product-sizes col-xs-12 right-padding col-sm-8';
+          echo '">';
+          ?>
 
-        <?php
-        echo '<div class="product-sizes col-xs-12 right-padding ';
-        if ($data[0]['has_height'] == '1') {
-            echo ' col-sm-8';
-        } else {
-            echo ' col-sm-7';
-        }
-        echo '">';
-        ?>
-
-            <?php
-            echo '<table cellpadding="4">';
-            echo '<tr>
+          <?php
+          echo '<table cellpadding="4">';
+          echo '<tr>
                     <th>Modell</th>
                     <th>Abmessungen (mm)</th>
                     <th>Beheizte Raumgröße (m² / m3)</th>';
 
-            if ($data[0]['has_height'] == '1') {
-                echo '<th>Einbauhöhe (m)</th>';
-            }
+          if ($data[0]['has_height'] == '1') {
+              echo '<th>Einbauhöhe (m)</th>';
+          }
 
 
-            echo '<th>Leistung (Watt +/-5%)</th>
+          echo '<th>Leistung (Watt +/-5%)</th>
                     
                     <th>Gewicht  (kg)</th>
                   </tr>';
-            $ind = 1;
-            foreach ($data['sizes'] as $row) {
-                echo '';
-                echo '<tr class="row-'.$ind.'">';
-                echo '<td>'.$row['modell'].'</td>';
-                echo '<td>'.$row['sizex'].'x'.$row['sizey'];
-                $ind = $ind + 1;
-                if ($row['sizez'] !== '0') {
-                    echo 'x'.$row['sizez'];
-                }
-                echo '</td>';
+          $ind = 1;
+          foreach ($data['sizes'] as $row) {
+              echo '';
+              echo '<tr class="row-'.$ind.'">';
+              echo '<td>'.$row['modell'].'</td>';
+              echo '<td>'.$row['sizex'].'x'.$row['sizey'];
+              $ind = $ind + 1;
+              if ($row['sizez'] !== '0') {
+                  echo 'x'.$row['sizez'];
+              }
+              echo '</td>';
 
-                echo '<td>'.$row['raumgrose'].'</td> ';
+              echo '<td>'.$row['raumgrose'].'</td> ';
 
-                if ($data[0]['has_height'] == '1') {
-                    echo '<td>'.$row['einbauhohe'].'</td>';
-                }
-                echo '<td>'.$row['leistung'].'</td>';
-                echo '<td>'.$row['gewicht'].'</td>';
-                echo '</tr>';
-            }
+              if ($data[0]['has_height'] == '1') {
+                  echo '<td>'.$row['einbauhohe'].'</td>';
+              }
+              echo '<td>'.$row['leistung'].'</td>';
+              echo '<td>'.$row['gewicht'].'</td>';
+              echo '</tr>';
+          }
 
-            echo '</table>';
-            ?>
-
-        </div>
-
+          echo '</table>';
+          ?>
 
       </div>
+
+
     </div>
+  </div>
 
-    <div class="container">
-      <div class="row technische-row">
-        <!--Technische daten table-->
-        <div class="product-technische-daten product-main">
+  <div class="container">
+    <div class="row technische-row">
+      <!--Technische daten table-->
+      <div class="product-technische-daten product-main">
 
-          <ul class="nav nav-pills">
-            <li class="active">
-              <a class="tab-button" href="#1a" data-toggle="tab">QUALITY</a>
-            </li>
-            <li><a class="tab-button" href="#2a"
-                   data-toggle="tab">DOWNLOAD</a>
-            </li>
-          </ul>
+        <ul class="nav nav-pills">
+          <li class="active">
+            <a class="tab-button" href="#1a" data-toggle="tab">QUALITY</a>
+          </li>
+          <li><a class="tab-button" href="#2a"
+                 data-toggle="tab">DOWNLOAD</a>
+          </li>
+        </ul>
 
-          <div class="tab-content clearfix">
-            <div class="tab-pane active" id="1a">
-              <!-- <h3 class="technische-daten-title">TECHNISCHE DATEN</h3> -->
+        <div class="tab-content clearfix">
+          <div class="tab-pane active" id="1a">
+            <!-- <h3 class="technische-daten-title">TECHNISCHE DATEN</h3> -->
 
-              <table class="features-product-table">
-                  <?php
-                  if (isset($data['features'])) {
-                      foreach ($data['features'] as $row) {
-                          echo ' <tr><td>'.$row['feature'].'</td>';
-                          echo ' <td>'.$row['value'].'</td></tr>';
-                      }
-                  }
-
-
-                  ?>
-              </table>
-            </div>
-            <div class="tab-pane" id="2a">
-              <h3>Documents</h3>
-
+            <table class="features-product-table">
                 <?php
-                if (isset($data['doc'])) {
-                    foreach ($data['doc'] as $doc) {
-                        echo '<a class="document-link" href="'.DOCPATH.$doc['path'].'" download>'.$doc['name'].'</a>';
+                if (isset($data['features'])) {
+                    foreach ($data['features'] as $row) {
+                        echo ' <tr><td>'.$row['feature'].'</td>';
+                        echo ' <td>'.$row['value'].'</td></tr>';
                     }
                 }
 
+
                 ?>
-            </div>
+            </table>
           </div>
+          <div class="tab-pane" id="2a">
+            <h3>Documents</h3>
 
+              <?php
+              if (isset($data['doc'])) {
+                  foreach ($data['doc'] as $doc) {
+                      echo '<a class="document-link" href="'.DOCPATH.$doc['path'].'" download>'.$doc['name'].'</a>';
+                  }
+              }
 
+              ?>
+          </div>
         </div>
+
+
       </div>
-      <div class="row technische-row">
-        <div class="product-thermostat">
-            <?php
-            if (isset($data['principles'])) {
-                foreach ($data['principles'] as $row) {
-                    echo '
-                      <div class="col-xs-12 col-sm-6 product-thermostat-item">
-                        <div class="product-thermostat-image"><img src="'.IMAGEPATH.$row['image'].'" alt="thermostat"></div>
-                        <div class="product-thermostat-title">
-                        '.$row['title'].'
-                        </div>
-                        <div class="product-thermostat-description">
-                        '.$row['description'].'
-                        </div>
-                      </div>';
-                }
-            }
-            foreach ($data['thermostats_info'] as $row) {
-                echo '
-                      <div class="col-xs-12 col-sm-6 product-thermostat-item">
-                        <div class="product-thermostat-image"><img src="'.IMAGEPATH.$row['image'].'" alt="thermostat"></div>
-                        <div class="product-thermostat-title">
-                        '.$row['title'].'
-                        </div>
-                        <div class="product-thermostat-description">
-                        '.$row['description'].'
-                        </div>
-                      </div>';
-            }
-
-
-            ?>
-
-        </div>
-      </div>
-
-
     </div>
+    <div class="row technische-row">
+      <div class="product-thermostat">
+          <?php
+          if (isset($data['principles'])) {
+              foreach ($data['principles'] as $row) {
+                  echo '
+                      <div class="col-xs-12 col-sm-6 product-thermostat-item">
+                        <div class="product-thermostat-image"><img src="'.IMAGEPATH.$row['image'].'" alt="thermostat"></div>
+                        <div class="product-thermostat-title">
+                        '.$row['title'].'
+                        </div>
+                        <div class="product-thermostat-description">
+                        '.$row['description'].'
+                        </div>
+                      </div>';
+              }
+          }
+          if ($data[0]['has_thermostat'] == '1') {
+              foreach ($data['thermostats_info'] as $row) {
+                  echo '
+                      <div class="col-xs-12 col-sm-6 product-thermostat-item">
+                        <div class="product-thermostat-image"><img src="'.IMAGEPATH.$row['image'].'" alt="thermostat"></div>
+                        <div class="product-thermostat-title">
+                        '.$row['title'].'
+                        </div>
+                        <div class="product-thermostat-description">
+                        '.$row['description'].'
+                        </div>
+                      </div>';
+              }
+
+          }
+          ?>
+
+      </div>
+    </div>
+
+
+  </div>
   </div>
 
 
@@ -390,7 +382,8 @@
 
             <div class="thermostats-products-wrapper">
               <div class="thermostats-products">
-                <h3 class="thermostats-products-title right-padding ">FÜR STEUERUNG UNSERE
+                <h3 class="thermostats-products-title right-padding ">FÜR
+                  STEUERUNG UNSERE
                   HEIZUNGSSYSTEME EMPFEHLEN WIR WARM UP THERMOSTATE
                 </h3>
                 <div class="row right-padding">

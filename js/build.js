@@ -44,6 +44,15 @@ $('.carousel-showmanymoveone .item').each(function(){
  interval: 5000,
  });;$('#imageNavMenu .close').on('click', function () {
     $("#imageNavMenu").modal('hide');
+});
+
+$(document).mouseup(function (e) { // событие клика по веб-документу
+    var div = $("#imageNavMenu .modal-dialog"); // тут указываем ID элемента
+    var mod = $("#imageNavMenu"); // тут указываем ID элемента
+    if (!div.is(e.target) // если клик был не по нашему блоку
+        && div.has(e.target).length === 0) { // и не по его дочерним элементам
+        mod.modal('hide');
+    }
 });;(function () {
 
     var contactCol = ".contacts .contact-item-wrapper";
@@ -239,8 +248,34 @@ $('.homepage-gallery-carousel').carousel({
 
     }
 });
-;function arrowsRotation() {
-    $('.faq-item-title').on('click', function () {
+;(function () {
+    $textWrapper = '.product-full-description-wrapper';
+    $textBlock = '.product-full-description-wrapper';
+    $productArrow = '.product-full-description-wrapper .arrow-down';
+$container = $('html, body');
+
+    $($productArrow).on('click', function() {
+
+
+        if($($textWrapper).prop('scrollHeight') > $($textWrapper).height()) {
+            $maxH = parseInt($($textWrapper).prop('scrollHeight')) + 50;
+            $($textWrapper).animate({maxHeight: $maxH + 'px'}, 1200);
+            //$($textWrapper).css('overflow','visible');
+            $($productArrow).css('position','relative');
+            $($productArrow).css('padding','0');
+            $($productArrow).css('transform','scaleY(-1)');
+
+        } else {
+            $($textWrapper).animate({maxHeight: '200px'}, 1200);
+            $($productArrow).css('position','absolute');
+            $($productArrow).css('padding','1rem');
+            $($productArrow).css('transform','scaleY(1)');
+
+            $('html, body').animate({scrollTop: $('.product-title').offset().top},1200);
+        }
+    });
+}());;function arrowsRotation($arr) {
+    $($arr).on('click', function () {
         if($(this).hasClass('opened')) {
             $(this).addClass('closed');
             $(this).removeClass('opened');
@@ -253,7 +288,7 @@ $('.homepage-gallery-carousel').carousel({
 }
 
 $(document).ready(function () {
-    arrowsRotation();
+    arrowsRotation('.faq-item-title');
 });
 
 ;(function () {
@@ -370,6 +405,5 @@ if ($l > 3) {
     $height = "300px";
     technologyTextHover('.convect-house-description', '.convect-house-description .comparison-text',$height);
     technologyTextHover('.infra-house-description', '.infra-house-description .comparison-text',$height);
-
 
 }());
