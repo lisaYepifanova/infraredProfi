@@ -162,7 +162,7 @@
         <!--Colour-->
           <?php if (!empty($data['colours'])) { ?>
             <div class="product-colour-wrapper box-mid-margin">
-              <h3 class="colour-title">FARBE:</h3>
+              <h3 class="colour-title">AUSFÜHRUNG IN:</h3>
               <div class="colour-palette row">
                   <?php
                   foreach ($data['colours'] as $row) {

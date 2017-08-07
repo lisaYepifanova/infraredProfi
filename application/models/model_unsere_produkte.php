@@ -22,7 +22,10 @@ class Model_Unsere_produkte extends Model
         $res = array();
 
         $query = $mysqli->query(
-          "SELECT name, image, title, short_description FROM categories  WHERE parent_id=".$id
+          "SELECT name, image, title, short_description, ord FROM products  WHERE parent_id=".$id.
+          " UNION SELECT name, image, title, short_description, ord FROM  categories  WHERE parent_id=".$id.
+          " UNION SELECT name, image, title, short_description, ord FROM thermostat  WHERE parent_id=".$id.
+          " ORDER BY ord "
         );
 
         if ($query) {
@@ -31,25 +34,6 @@ class Model_Unsere_produkte extends Model
             }
         }
 
-        $query = $mysqli->query(
-          "SELECT name, image, title, short_description FROM products  WHERE parent_id=".$id
-        );
-
-        if ($query) {
-            while ($r = mysqli_fetch_assoc($query)) {
-                $res[] = $r;
-            }
-        }
-
-        $query = $mysqli->query(
-          "SELECT name, image, title, short_description FROM thermostat  WHERE parent_id=".$id
-        );
-
-        if ($query) {
-            while ($r = mysqli_fetch_assoc($query)) {
-                $res[] = $r;
-            }
-        }
 
         return $res;
     }

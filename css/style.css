@@ -7002,7 +7002,7 @@ Pages
 .product-colour-wrapper .colour-block {
   height: 32px;
   background-position: center;
-  background-size: cover; }
+  background-size: 100% 100%; }
 
 .colour-palette.row {
   margin: 0; }
@@ -7109,7 +7109,8 @@ Pages
       margin-bottom: 4rem;
       padding: 0; } }
   @media all and (max-width: 530px) {
-    .product-sizes table th, .product-sizes td {
+    .product-sizes table th,
+    .product-sizes td {
       word-break: break-all; } }
   .product-sizes table {
     font-size: 10px;
@@ -7149,7 +7150,8 @@ Pages
   .product-technische-daten table tr:last-child {
     border-bottom: none; }
 
-.product-sizes table td, .product-sizes table th,
+.product-sizes table td,
+.product-sizes table th,
 .product-technische-daten table td,
 .product-technische-daten table th {
   border: none; }
@@ -7196,7 +7198,6 @@ Pages
       text-align: center; } }
 
 .product-thermostat-image {
-  margin-bottom: 1rem;
   height: 300px;
   width: 80%;
   margin: 1rem auto; }
@@ -7245,7 +7246,8 @@ Pages
   table-layout: fixed;
   width: 100%; }
 
-.features-product-table tr, .features-product-table td {
+.features-product-table tr,
+.features-product-table td {
   cursor: default;
   word-break: break-all; }
 
