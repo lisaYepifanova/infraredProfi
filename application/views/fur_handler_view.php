@@ -5,7 +5,7 @@
 
   <div class="registration-top-block right-padding">
       <?php
-      echo '<h3>'.$data['main_info']['top_block'].'</h3>';
+      echo '<h3 class="container">'.$data['main_info']['top_block'].'</h3>';
       ?>
   </div>
 

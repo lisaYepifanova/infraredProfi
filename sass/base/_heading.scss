@@ -8,3 +8,10 @@ h1 {
     font-size: 3.5rem;
   }
 }
+
+h3 {
+  @media all and (max-width: 480px) {
+    font-size: 21px;
+  }
+}
+

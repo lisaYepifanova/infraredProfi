@@ -24,7 +24,7 @@
 
   .right-side {
     width: 50%;
-    padding-right: $nav-panel-width + 0.5rem;
+    //padding-right: $nav-panel-width;
     padding-left: $homepage-properties-padding-mob;
 
     @media (min-width: $screen-sm-min) {
@@ -75,6 +75,7 @@
   .property-item-title {
     font-weight: bold;
     position: relative;
+    font-size: 19px;
   }
 
   .property-item1 {
@@ -99,6 +100,22 @@
     padding-top: 36px;
     padding-bottom: 36px;
     margin-top: 0;
+    width: 95%;
+    display: inline-block;
+    margin-right: 0;
+
+
+    @media all and (min-width: 360px) {
+      padding-left: 1rem;
+    }
+
+    @media all and (min-width: 400px) {
+      padding-left: 2rem;
+    }
+
+    @media all and (min-width: 480px) {
+      padding-left: 3rem;
+    }
   }
 
   .right-side {

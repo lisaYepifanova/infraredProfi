@@ -1,5 +1,5 @@
-<div class="philosophy container box-vmargin">
-  <h3 class="philosophy-title text-center">PHILOSOPHY</h3>
+<div class="philosophy container box-vmargin right-padding">
+  <h3 class="philosophy-title text-center">PHILOSOPHIE</h3>
 
     <?php
     include 'application/connection.php';

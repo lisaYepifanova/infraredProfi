@@ -5,7 +5,7 @@ function neighbourItems($current_query, $table)
     include 'application/connection.php';
     $current = mysqli_fetch_assoc($current_query);
     $neighbour_query = $mysqli->query(
-      "SELECT id, name, title, parent_id FROM ".$table." WHERE parent_id='".$current['parent_id']."'"
+      "SELECT id, name, title, parent_id FROM ".$table." WHERE parent_id='".$current['parent_id']."' ORDER BY ord"
     );
     $neighbour_set = [];
     if ($neighbour_query) {
@@ -25,9 +25,18 @@ function menu()
 
     $res = [];
 
+        //add product items to the list
+    $query = $mysqli->query("SELECT id, name, title, parent_id, ord FROM products ORDER BY ord");
+    if ($query) {
+        while ($r = mysqli_fetch_assoc($query)) {
+            $r['iscategory'] = false;
+            $res[] = $r;
+        }
+    }
+
     //add category items to the list
     $query = $mysqli->query(
-      "SELECT id, name, title, parent_id FROM categories"
+      "SELECT id, name, title, parent_id, ord FROM categories ORDER BY ord"
     );
 
     if ($query) {
@@ -37,22 +46,15 @@ function menu()
         }
     }
 
-    //add product items to the list
-    $query = $mysqli->query("SELECT id, name, title, parent_id FROM products");
-    if ($query) {
-        while ($r = mysqli_fetch_assoc($query)) {
-            $r['iscategory'] = false;
-            $res[] = $r;
-        }
-    }
+
 
     //products in current dir
     $current_query_prod = $mysqli->query(
-      "SELECT id, name, title, parent_id FROM products WHERE name='".$last."'"
+      "SELECT id, name, title, parent_id FROM products WHERE name='".$last."' ORDER BY ord"
     );
 
     $current_query_therm = $mysqli->query(
-      "SELECT id, name, title, parent_id FROM thermostat WHERE name='".$last."'"
+      "SELECT id, name, title, parent_id FROM thermostat WHERE name='".$last."' ORDER BY ord"
     );
 
     if ($current_query_prod->num_rows !== 0) {
@@ -67,7 +69,7 @@ function menu()
     $category_set = '';
     while ($ind !== "0") {
         $current_category_query = $mysqli->query(
-          "SELECT id, name, title, parent_id FROM categories WHERE id='".$ind."'"
+          "SELECT id, name, title, parent_id FROM categories WHERE id='".$ind."' ORDER BY ord"
         );
         $current_category = mysqli_fetch_assoc($current_category_query);
 

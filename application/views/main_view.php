@@ -60,12 +60,13 @@
   <div class="homepage-properties">
     <div class="homepage-properties-row">
       <div class="properties-side left-side" style="background-image: url(<?php echo IMAGEPATH.$data['property_image']?>)"></div>
+      <?php
+          echo '<h3 class="property-title right-padding">'.$data['property_title'].'</h3>';
+          ?>
       <div class="properties-side right-side right-padding">
 
           <?php
           $index = 1;
-          echo '<h3 class="property-title">'.$data['property_title'].'</h3>';
-
           foreach ($data['property_items'] as $row) {
               echo '<div class="property-item property-item'.$index.'">
               <div class="property-item-image" style="background-image: url('.IMAGEPATH.$row['icon'].')"></div>

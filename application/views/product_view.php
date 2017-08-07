@@ -1,6 +1,6 @@
 <main class="product">
 
-  <h1 class="page-header container text-capitalize">PRODUCT</h1>
+  <h1 class="page-header container text-capitalize">PRODUKT</h1>
   <div class="product-menu-wrapper col-sm-3">
     <div class="product-menu floating">
       <ul>
@@ -10,6 +10,9 @@
           $debug = true;
           $routes = explode('/', $_SERVER['REQUEST_URI']);
           $last = end($routes);
+
+          echo '<h4><a class="product-menu-item" href="/unsere-produkte">UNSERE PRODUKTE</a></h4>';
+
 
           foreach ($data['menu']['root'] as $row) {
               echo '<li>';
@@ -64,8 +67,9 @@
       </ul>
     </div>
   </div>
+
   <div class=" container right-padding">
-    <div class="row">
+    <div>
 
       <div class="product-main">
 
@@ -182,7 +186,7 @@ echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
 
   <div class="technische-container">
     <div class="container">
-      <h4 class="size-title ">SIZE</h4>
+      <h4 class="size-title ">MODELLE UND GRÖßEN</h4>
 
       <div class="row technische-row size-row">
 
@@ -253,7 +257,7 @@ echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
 
         <ul class="nav nav-pills">
           <li class="active">
-            <a class="tab-button" href="#1a" data-toggle="tab">QUALITY</a>
+            <a class="tab-button" href="#1a" data-toggle="tab">TECHNISCHE DATEN</a>
           </li>
           <li><a class="tab-button" href="#2a"
                  data-toggle="tab">DOWNLOAD</a>
@@ -301,7 +305,7 @@ echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
               foreach ($data['principles'] as $row) {
                   echo '
                       <div class="col-xs-12 col-sm-6 product-thermostat-item">
-                        <div class="product-thermostat-image"><img src="'.IMAGEPATH.$row['image'].'" alt="thermostat"></div>
+                        <div class="product-thermostat-image" style="background-image: url('.IMAGEPATH.$row['image'].')"></div>
                         <div class="product-thermostat-title">
                         '.$row['title'].'
                         </div>
@@ -315,7 +319,7 @@ echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
               foreach ($data['thermostats_info'] as $row) {
                   echo '
                       <div class="col-xs-12 col-sm-6 product-thermostat-item">
-                        <div class="product-thermostat-image"><img src="'.IMAGEPATH.$row['image'].'" alt="thermostat"></div>
+                        <div class="product-thermostat-image" style="background-image: url('.IMAGEPATH.$row['image'].')"></div>
                         <div class="product-thermostat-title">
                         '.$row['title'].'
                         </div>

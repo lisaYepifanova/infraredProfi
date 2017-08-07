@@ -5813,6 +5813,10 @@ h1 {
     h1 {
       font-size: 3.5rem; } }
 
+@media all and (max-width: 480px) {
+  h3 {
+    font-size: 21px; } }
+
 img {
   max-width: 100%; }
 
@@ -5998,9 +6002,6 @@ Reusable, discrete UI elements.
 /**
 Blocks
  */
-.philosophy {
-  padding-right: 3.5rem; }
-
 .philosophy-text {
   display: block;
   font-size: 18px;
@@ -6020,7 +6021,7 @@ Blocks
 .carousel-image {
   background-size: cover;
   height: 100%;
-  background-position: center center; }
+  background-position: bottom center; }
 
 .carousel-indicators {
   margin-left: 0;
@@ -6112,7 +6113,6 @@ Blocks
   .registration-properties .right-side,
   .homepage-properties .right-side {
     width: 50%;
-    padding-right: 4rem;
     padding-left: 3.4rem; }
     @media (min-width: 768px) {
       .registration-properties .right-side,
@@ -6159,7 +6159,8 @@ Blocks
   .registration-properties .property-item-title,
   .homepage-properties .property-item-title {
     font-weight: bold;
-    position: relative; }
+    position: relative;
+    font-size: 19px; }
   .registration-properties .property-item1 .property-item-image,
   .homepage-properties .property-item1 .property-item-image {
     width: 32px;
@@ -6200,7 +6201,22 @@ Blocks
   .homepage-properties .property-title {
     padding-top: 36px;
     padding-bottom: 36px;
-    margin-top: 0; }
+    margin-top: 0;
+    width: 95%;
+    display: inline-block;
+    margin-right: 0; }
+    @media all and (min-width: 360px) {
+      .registration-properties .property-title,
+      .homepage-properties .property-title {
+        padding-left: 1rem; } }
+    @media all and (min-width: 400px) {
+      .registration-properties .property-title,
+      .homepage-properties .property-title {
+        padding-left: 2rem; } }
+    @media all and (min-width: 480px) {
+      .registration-properties .property-title,
+      .homepage-properties .property-title {
+        padding-left: 3rem; } }
   .registration-properties .right-side,
   .homepage-properties .right-side {
     padding-bottom: 36px; }
@@ -6227,7 +6243,8 @@ Blocks
   background-color: rgba(54, 54, 54, 0.5); }
 
 .homepage-products-row {
-  width: 100%; }
+  width: 100%;
+  margin: 0; }
 
 .homepage-products {
   padding-right: 2.5rem; }
@@ -6451,8 +6468,10 @@ Blocks
     #imageNavMenu .carousel-wrapper .clearfix .carousel .thumb-image {
       width: 100%;
       background-position: center center;
-      background-size: cover;
+      background-size: contain;
       background-repeat: no-repeat; }
+    #imageNavMenu .carousel-wrapper .clearfix .carousel .thumb-image {
+      background-size: cover; }
     #imageNavMenu .carousel-wrapper .clearfix .carousel .item .thumb {
       width: 31.2%;
       cursor: pointer;
@@ -6704,16 +6723,40 @@ body.modal-open {
   margin-top: 20px; }
 
 .product .large-item {
-  height: 450px; }
+  height: 180px; }
+  @media all and (min-width: 400px) {
+    .product .large-item {
+      height: 230px; } }
+  @media all and (min-width: 560px) {
+    .product .large-item {
+      height: 340px; } }
+  @media all and (min-width: 660px) {
+    .product .large-item {
+      height: 450px; } }
 
 .product .thumb-image {
-  height: 150px; }
+  height: 60px; }
+  @media all and (min-width: 400px) {
+    .product .thumb-image {
+      height: 80px; } }
+  @media all and (min-width: 560px) {
+    .product .thumb-image {
+      height: 110px; } }
+  @media all and (min-width: 660px) {
+    .product .thumb-image {
+      height: 150px; } }
 
 .product .large-item,
 .product .thumb-image {
   width: 100%;
   background-position: center center;
   background-size: contain;
+  background-repeat: no-repeat; }
+
+.product .thumb-image {
+  width: 100%;
+  background-position: center center;
+  background-size: cover;
   background-repeat: no-repeat; }
 
 .product .item .thumb {
@@ -6788,7 +6831,7 @@ body.modal-open {
 Pages
  */
 .faq-content {
-  padding: 0 3.5rem 0 1rem; }
+  padding: 0 0 0 0.5rem; }
 
 .faq-item-title {
   cursor: pointer; }
@@ -6919,6 +6962,7 @@ Pages
     background: linear-gradient(rgba(255, 255, 255, 0.3), white);
     color: #ED6E23;
     font-size: 24px;
+    cursor: pointer;
     font-weight: bold; }
 
 .comparison-title-right {
@@ -6981,7 +7025,8 @@ Pages
     transform: scale(1.1); }
   @media all and (max-width: 560px) {
     .product-item {
-      width: 100%; } }
+      width: 100%;
+      min-height: 280px; } }
 
 .product-name,
 .product-description {
@@ -7028,7 +7073,8 @@ Pages
     background: linear-gradient(rgba(255, 255, 255, 0.3), white);
     color: #ED6E23;
     font-size: 24px;
-    font-weight: bold; }
+    font-weight: bold;
+    cursor: pointer; }
 
 .product-full-description {
   text-align: left; }
@@ -7058,8 +7104,14 @@ Pages
 
 .product-technische-daten {
   padding-left: 0; }
+  @media all and (max-width: 480px) {
+    .product-technische-daten li {
+      float: none; }
+      .product-technische-daten li:last-child {
+        margin-left: 0;
+        margin-top: 4px; } }
   .product-technische-daten .tab-button {
-    width: 8rem;
+    width: 12rem;
     text-align: center;
     background-color: white;
     color: #333333; }
@@ -7097,6 +7149,8 @@ Pages
 
 .technische-row {
   margin: 2rem 0; }
+  .technische-row:last-child {
+    margin-bottom: 0; }
   @media all and (min-width: 992px) and (max-width: 1024px) {
     .technische-row {
       padding-right: 2rem; } }
@@ -7113,8 +7167,6 @@ Pages
 
 .product-main {
   padding-left: 15px; }
-  .product-main .carousel-wrapper {
-    padding-right: 1rem; }
 
 .product-sizes {
   position: relative; }
@@ -7215,19 +7267,24 @@ Pages
   @media all and (max-width: 767px) {
     .product-thermostat-item {
       margin-bottom: 2rem;
-      text-align: center; } }
+      text-align: center; }
+      .product-thermostat-item:last-child {
+        margin-bottom: 0; } }
 
 .product-thermostat-image {
   height: 300px;
   width: 80%;
-  margin: 1rem auto; }
+  margin: 1rem auto;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center; }
+  @media all and (max-width: 480px) {
+    .product-thermostat-image {
+      height: 180px; } }
   @media all and (max-width: 767px) {
     .product-thermostat-image {
       max-width: 300px;
       margin: 0 auto 1rem auto; } }
-  .product-thermostat-image img {
-    height: 100%;
-    width: auto; }
 
 .thermostat-product-image {
   background-size: cover;
@@ -7285,6 +7342,9 @@ h5.container-info-title {
 .registration-leistungen-wrapper {
   text-align: center;
   margin: 4rem 0; }
+  @media all and (max-width: 659px) {
+    .registration-leistungen-wrapper {
+      margin: 1rem 0; } }
 
 .registration-leistungen {
   width: 200px;
@@ -7320,6 +7380,9 @@ h5.container-info-title {
   justify-content: center;
   -ms-flex-align: center;
   align-items: center; }
+  @media all and (max-width: 400px) {
+    .leistungen-item-description {
+      height: auto; } }
   @media all and (max-width: 659px) {
     .leistungen-item-description {
       width: 100%; } }
@@ -7493,6 +7556,9 @@ h5.container-info-title {
 .registration-description {
   text-align: center;
   margin: 6rem 0 4rem 0; }
+  @media all and (max-width: 659px) {
+    .registration-description {
+      margin: 2rem 0; } }
 
 .registration-form-title {
   margin-bottom: 4rem; }

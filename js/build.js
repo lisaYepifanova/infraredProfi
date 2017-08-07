@@ -252,29 +252,29 @@ $('.homepage-gallery-carousel').carousel({
     $textWrapper = '.product-full-description-wrapper';
     $textBlock = '.product-full-description-wrapper';
     $productArrow = '.product-full-description-wrapper .arrow-down';
-$container = $('html, body');
+    $container = $('html, body');
 
-    $($productArrow).on('click', function() {
+    $($productArrow).on('click', function () {
 
 
-        if($($textWrapper).prop('scrollHeight') > $($textWrapper).height()) {
+        if ($($textWrapper).prop('scrollHeight') > $($textWrapper).height()) {
             $maxH = parseInt($($textWrapper).prop('scrollHeight')) + 50;
             $($textWrapper).animate({maxHeight: $maxH + 'px'}, 1200);
-            //$($textWrapper).css('overflow','visible');
-            $($productArrow).css('position','relative');
-            $($productArrow).css('padding','0');
-            $($productArrow).css('transform','scaleY(-1)');
+            $($productArrow).css('position', 'relative');
+            $($productArrow).css('padding', '0');
+            $($productArrow).css('transform', 'scaleY(-1)');
 
         } else {
             $($textWrapper).animate({maxHeight: '200px'}, 1200);
-            $($productArrow).css('position','absolute');
-            $($productArrow).css('padding','1rem');
-            $($productArrow).css('transform','scaleY(1)');
+            $($productArrow).css('position', 'absolute');
+            $($productArrow).css('padding', '1rem');
+            $($productArrow).css('transform', 'scaleY(1)');
 
-            $('html, body').animate({scrollTop: $('.product-title').offset().top},1200);
+            $('html, body').animate({scrollTop: $('.product-title').offset().top}, 1200);
         }
     });
-}());;function arrowsRotation($arr) {
+}());
+;function arrowsRotation($arr) {
     $($arr).on('click', function () {
         if($(this).hasClass('opened')) {
             $(this).addClass('closed');

@@ -18,6 +18,7 @@
 
 .homepage-products-row {
   width: 100%;
+  margin: 0;
 }
 
 .homepage-products {
@@ -147,9 +148,14 @@
         .thumb-image {
           width: 100%;
           background-position: center center;
-          background-size: cover;
+          background-size: contain;
           background-repeat: no-repeat;
         }
+
+        .thumb-image {
+          background-size: cover;
+        }
+
 
         .item .thumb {
           width: 31.2%;

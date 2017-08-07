@@ -1,3 +1,4 @@
+
 .product-menu-wrapper {
   display: block;
   position: absolute;
@@ -43,6 +44,7 @@
     color: #ED6E23;
     font-size: 24px;
     font-weight: bold;
+    cursor: pointer;
   }
 }
 
@@ -82,16 +84,32 @@
 .product-technische-daten {
   padding-left: 0;
 
+
+    li {
+      @media all and (max-width: 480px) {
+        float: none;
+
+        &:last-child {
+          margin-left: 0;
+          margin-top: 4px;
+        }
+      }
+    }
+
   .tab-button {
-    width: 8rem;
+    width: 12rem;
     text-align: center;
     background-color: white;
     color: $text-color;
+
+
 
     @media all and (max-width: 360px) {
       padding: 5px;
       width: 7rem;
     }
+
+
   }
 
   li.active .tab-button {
@@ -136,6 +154,10 @@
 .technische-row {
   margin: 2rem 0;
 
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   @media all and (min-width: 992px) and (max-width: 1024px) {
     padding-right: 2rem;
   }
@@ -157,9 +179,6 @@
 .product-main {
   padding-left: 15px;
 
-  .carousel-wrapper {
-    padding-right: 1rem;
-  }
 }
 
 .product-sizes {
@@ -297,6 +316,10 @@
   @media all and (max-width: 767px) {
     margin-bottom: 2rem;
     text-align: center;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -304,15 +327,17 @@
   height: 300px;
   width: 80%;
   margin: 1rem auto;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+    @media all and (max-width: 480px) {
+      height: 180px;
+  }
 
   @media all and (max-width: 767px) {
     max-width: 300px;
     margin: 0 auto 1rem auto;
-  }
-
-  img {
-    height: 100%;
-    width: auto;
   }
 }
 
