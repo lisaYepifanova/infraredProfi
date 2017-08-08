@@ -206,28 +206,28 @@ echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
           <?php
           echo '<table cellpadding="4">';
           echo '<tr>
-                    <th>Modell</th>
-                    <th>Abmessungen (mm)</th>
-                    <th>Beheizte Raumgröße (m² / m3)</th>';
+                    <th style="width: 5%;">Modell</th>
+                    <th style="width: 7%;">Abmessungen (mm)</th>
+                    <th style="width: 7%;">Beheizte Raumgröße (m² / m3)</th>';
 
           if ($data[0]['has_height'] == '1') {
-              echo '<th>Einbauhöhe (m)</th>';
+              echo '<th style="width: 6%;">Einbauhöhe (m)</th>';
           }
 
 
-          echo '<th>Leistung (Watt +/-5%)</th>
+          echo '<th style="width: 5%;">Leistung (Watt +/-5%)</th>
                     
-                    <th>Gewicht  (kg)</th>
+                    <th style="width: 4%;">Gewicht  (kg)</th>
                   </tr>';
           $ind = 1;
           foreach ($data['sizes'] as $row) {
               echo '';
               echo '<tr class="row-'.$ind.'">';
               echo '<td>'.$row['modell'].'</td>';
-              echo '<td>'.$row['sizex'].'x'.$row['sizey'];
+              echo '<td>'.$row['sizex'].' x '.$row['sizey'];
               $ind = $ind + 1;
               if ($row['sizez'] !== '0') {
-                  echo 'x'.$row['sizez'];
+                  echo ' x '.$row['sizez'];
               }
               echo '</td>';
 

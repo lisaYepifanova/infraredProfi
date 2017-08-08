@@ -28,12 +28,13 @@
 .product-title {
   text-transform: uppercase;
 }
+
 .product-full-description-wrapper {
   max-height: 200px;
   overflow: hidden;
   position: relative;
 
-  .arrow-down{
+  .arrow-down {
     position: absolute;
     bottom: 0;
     top: unset;
@@ -84,17 +85,16 @@
 .product-technische-daten {
   padding-left: 0;
 
+  li {
+    @media all and (max-width: 480px) {
+      float: none;
 
-    li {
-      @media all and (max-width: 480px) {
-        float: none;
-
-        &:last-child {
-          margin-left: 0;
-          margin-top: 4px;
-        }
+      &:last-child {
+        margin-left: 0;
+        margin-top: 4px;
       }
     }
+  }
 
   .tab-button {
     width: 12rem;
@@ -102,13 +102,10 @@
     background-color: white;
     color: $text-color;
 
-
-
     @media all and (max-width: 360px) {
       padding: 5px;
       width: 7rem;
     }
-
 
   }
 
@@ -183,14 +180,47 @@
 
 .product-sizes {
   position: relative;
+  font-size: 12px;
 
   @media all and (max-width: 420px) {
     padding-left: 2px;
 
   }
 
-  @media all and (max-width: 1000px) {
-    width: 90%;
+  &:last-child {
+    @media all and (max-width: 480px) {
+      padding-left: 0;
+      margin-left: -12px;
+    }
+
+    @media all and (min-width: 320px) and (max-width: 420px) {
+      width: calc(100vw - 2.1rem);
+
+    }
+    @media all and (min-width: 421px) and (max-width: 450px) {
+      width: calc(100vw - 2.5rem);
+
+    }
+
+    @media all and (min-width: 451px) and (max-width: 600px) {
+      width: calc(100vw - 3.8rem);
+    }
+
+    @media all and (min-width: 601px) and (max-width: 700px) {
+      width: calc(100vw - 5rem);
+    }
+
+    @media all and (min-width: 380px) and (max-width: 420px) {
+      //width: calc(100vw-48px);
+    }
+
+    @media all and (min-width: 421px) and (max-width: 699px) {
+      //width: 100%;
+    }
+    @media all and (min-width: 700px) and (max-width: 1199px) {
+      width: 90%;
+    }
+
   }
 
   &:first-child {
@@ -198,12 +228,16 @@
       margin-bottom: 4rem;
       padding: 0;
     }
+
+    @media all and (max-width: 600px) {
+      margin-bottom: 2rem;
+      padding: 0;
+    }
   }
 
-  @media all and (max-width: 530px) {
-    table th,
-    td {
-      word-break: break-all;
+  @media all and (max-width: 450px) {
+    table th {
+      word-break: break-word;
     }
   }
 
@@ -254,6 +288,10 @@
     border-right: none;
     cursor: pointer;
 
+    @media all and (max-width: 900px) {
+      height: 32px;
+    }
+
     &:first-child {
       border-top: none;
     }
@@ -269,6 +307,12 @@
   }
 }
 
+.rectangle-wrapper {
+  @media all and (max-width: 400px) {
+    transform: translateX(-34px) scale(0.8);
+  }
+}
+
 .rectangle {
   position: absolute;
   border: 1px solid white;
@@ -280,7 +324,7 @@
 }
 
 .sizes-rectangles {
-  height: 320px;
+  //height: 320px;
 }
 
 .active-row {
@@ -294,11 +338,17 @@
 .size-title,
 .product-thermostat {
   color: white;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   padding-left: 0;
 
   @media all and (max-width: 767px) {
     max-width: 90%;
+  }
+}
+
+.size-title {
+  @media all and (max-width: 600px) {
+    margin-bottom: 0;
   }
 }
 
@@ -331,8 +381,8 @@
   background-size: contain;
   background-position: center;
 
-    @media all and (max-width: 480px) {
-      height: 180px;
+  @media all and (max-width: 480px) {
+    height: 180px;
   }
 
   @media all and (max-width: 767px) {
