@@ -98,7 +98,6 @@
 
   .property-title {
     padding-top: 36px;
-    padding-bottom: 36px;
     margin-top: 0;
     width: 95%;
     display: inline-block;
@@ -125,8 +124,10 @@
 
 .registration-properties .right-side {
   color: white;
+  padding-right: 3.5rem;
 }
 
 .registration-properties .right-side-wrapper {
   background-color: $footer-bg;
 }
+

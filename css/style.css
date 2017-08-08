@@ -6200,7 +6200,6 @@ Blocks
   .registration-properties .property-title,
   .homepage-properties .property-title {
     padding-top: 36px;
-    padding-bottom: 36px;
     margin-top: 0;
     width: 95%;
     display: inline-block;
@@ -6222,7 +6221,8 @@ Blocks
     padding-bottom: 36px; }
 
 .registration-properties .right-side {
-  color: white; }
+  color: white;
+  padding-right: 3.5rem; }
 
 .registration-properties .right-side-wrapper {
   background-color: #ED6E23; }

@@ -33,11 +33,13 @@
       <div class="properties-side left-side"
            style="background-image: url(<?php echo IMAGEPATH.$data['main_info']['angebot_bg'] ?>)"></div>
       <div class="properties-side right-side-wrapper">
+        <?php
+          echo '<h3 class="property-title right-padding" style="color: white;">'.$data['main_info']['angebot_title'].'</h3>';
+?>
       <div class="properties-side right-side">
 
           <?php
           $index = 1;
-          echo '<h3 class="property-title">'.$data['main_info']['angebot_title'].'</h3>';
 
           foreach ($data['angebot'] as $row) {
               echo '<div class="property-item property-item'.$index.'">

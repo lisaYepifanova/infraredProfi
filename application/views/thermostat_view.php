@@ -10,6 +10,8 @@
           $routes = explode('/', $_SERVER['REQUEST_URI']);
           $last = end($routes);
 
+          echo '<h4><a class="product-menu-item" href="/unsere-produkte">UNSERE PRODUKTE</a></h4>';
+
           foreach ($data['menu']['root'] as $row) {
               echo '<li>';
               if ($routes[2] == $row['name']) {

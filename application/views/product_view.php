@@ -398,7 +398,7 @@ echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
 
                     if ($query) {
                         while ($row = mysqli_fetch_assoc($query)) {
-                            echo '<a class="col-sm-4 col-xs-12 thermostat-product-item" href="/products/thermostats/'.$row['name'].'"><div class="thermostat-product-image"><img src="'.IMAGEPATH.$row['image'].'" alt="thermostat"></div>';
+                            echo '<a class="col-sm-4 col-xs-12 thermostat-product-item" href="/unsere-produkte/thermostats/'.$row['name'].'"><div class="thermostat-product-image"><img src="'.IMAGEPATH.$row['image'].'" alt="thermostat"></div>';
                             echo '<h4 class="thermostat-product-title">'.$row['title'].'</h4>';
                             echo '<div class="thermostat-product-description">'.$row['short_description'].'</div></a>';
                         }
