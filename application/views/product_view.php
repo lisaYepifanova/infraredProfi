@@ -1,6 +1,6 @@
 <main class="product">
 
-  <h1 class="page-header container text-capitalize">PRODUKT</h1>
+  <h1 class="page-header container text-capitalize">UNSERE PRODUKTE</h1>
   <div class="product-menu-wrapper col-sm-3">
     <div class="product-menu floating">
       <ul>
@@ -347,7 +347,7 @@ echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
 
         <div class="similar-products-wrapper">
           <div class="similar-products">
-            <h3 class="similar-products-title">PRODUCTE</h3>
+            <h3 class="similar-products-title">UNSERE PRODUKTE</h3>
             <div class="row right-padding">
                 <?php
                 include 'application/connection.php';

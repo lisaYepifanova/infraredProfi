@@ -6468,7 +6468,7 @@ Blocks
     #imageNavMenu .carousel-wrapper .clearfix .carousel .thumb-image {
       width: 100%;
       background-position: center center;
-      background-size: contain;
+      background-size: cover;
       background-repeat: no-repeat; }
     #imageNavMenu .carousel-wrapper .clearfix .carousel .thumb-image {
       background-size: cover; }
@@ -6750,7 +6750,7 @@ body.modal-open {
 .product .thumb-image {
   width: 100%;
   background-position: center center;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat; }
 
 .product .thumb-image {
@@ -7592,6 +7592,10 @@ h5.container-info-title {
 
 .registration-form-title {
   margin-bottom: 4rem; }
+
+.registration-property-title {
+  color: white;
+  padding-left: 3rem; }
 
 /**
 Forms
