@@ -6015,13 +6015,16 @@ Blocks
     width: 60%; }
 
 .homepage-carousel .item {
-  height: 80vh;
+  height: 80vw;
   overflow: hidden; }
+  @media all and (min-width: 600px) {
+    .homepage-carousel .item {
+      height: 40vw; } }
 
 .carousel-image {
   background-size: cover;
   height: 100%;
-  background-position: center 85%; }
+  background-position: center center; }
 
 .carousel-indicators {
   margin-left: 0;
@@ -6468,7 +6471,7 @@ Blocks
     #imageNavMenu .carousel-wrapper .clearfix .carousel .thumb-image {
       width: 100%;
       background-position: center center;
-      background-size: cover;
+      background-size: contain;
       background-repeat: no-repeat; }
     #imageNavMenu .carousel-wrapper .clearfix .carousel .thumb-image {
       background-size: cover; }
@@ -6750,7 +6753,7 @@ body.modal-open {
 .product .thumb-image {
   width: 100%;
   background-position: center center;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat; }
 
 .product .thumb-image {
@@ -7584,7 +7587,6 @@ h5.container-info-title {
       transform: translateY(0); } }
 
 .registration-description {
-  text-align: center;
   margin: 6rem 0 4rem 0; }
   @media all and (max-width: 659px) {
     .registration-description {

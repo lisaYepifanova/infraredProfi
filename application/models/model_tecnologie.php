@@ -30,7 +30,7 @@ Moderne Infrarot-Heizungen funktionieren nach dem natürlichen Prinzip der Sonne
 Sie kennen das, wenn Sie an einem kalten, sonnigen Tag nach draußen gehen: in der Sonne ist es angenehm warm, im Schatten wird Ihnen kalt — obwohl die Lufttemperatur im Schatten und in der Sonne gleich ist.<br>
 Das bedeutet, Sie können die Temperatur in Ihren Räumen 2 — 3 Grad niedriger lassen, um das gleiche Wärmeempfinden zu haben wie bei einer herkömmlichen Heizung. Damit sparen Sie eine Menge Energie!<br>
 Bei Infrarot-Heizungen haben Sie im Prinzip zwei Wärmequellen: Die indirekte Raumwärme, die von Wänden und Möbel zurück gegeben wird und die direkte Strahlungswärme der Infrarotheizung, die bis zu 3 — 4 m spürbar ist. Da die Infrarot Wärmestrahlung auch auf die Wände trifft und von diesen aufgenommen wird, trocknen die Wände, isolieren dadurch besser und Schimmelpilze können nicht entstehen.<br>
-Energieeffizienz zu erreichen und somit Heizkosten zu sparen.<br>
+Energieeffizienz zu erreichen und somit Heizkosten zu sparen ist unser Bestreben.<br>
 </p>',
           'comparison_convect' => 'technology/convect.png',
           'convect_title' => 'KONVEKTION TECHNOLOGIE',

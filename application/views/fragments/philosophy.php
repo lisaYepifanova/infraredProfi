@@ -8,7 +8,7 @@
 
     if ($query) {
         while ($r = mysqli_fetch_assoc($query)) {
-            echo '<span class="philosophy-text">'.$r['text'].'</span>';
+            echo '<div class="philosophy-text">'.$r['text'].'</div>';
         }
     }
 
