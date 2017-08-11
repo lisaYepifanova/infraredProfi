@@ -1,6 +1,6 @@
 <main class="product">
 
-  <h1 class="page-header container text-capitalize">UNSERE PRODUKTE</h1>
+  <h1 class="page-header container text-capitalize right-padding"><?php echo  $data[0]['title']; ?></h1>
   <div class="product-menu-wrapper col-sm-3">
     <div class="product-menu floating">
       <ul>
@@ -148,13 +148,6 @@
               </div>
             </div>
           <?php } ?>
-
-        <!-- Name of the product-->
-        <div class="product-title-wrapper">
-            <?php
-            echo '<h3 class="product-title">'.$data[0]['title'].'</h3>';
-            ?>
-        </div>
 
         <!-- Description of the product-->
         <div class="product-description-wrapper product-full-description-wrapper">

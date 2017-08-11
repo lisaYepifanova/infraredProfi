@@ -5996,6 +5996,17 @@ Reusable, discrete UI elements.
   .hsmall {
     font-size: 32px; } }
 
+.page-header {
+  margin: 16px auto;
+  font-size: 32px; }
+  @media all and (min-width: 600px) {
+    .page-header {
+      font-size: 38px; } }
+  @media all and (min-width: 769px) {
+    .page-header {
+      margin: 32px auto;
+      font-size: 48px; } }
+
 .document-link {
   display: block; }
 
@@ -6720,7 +6731,10 @@ body.modal-open {
     height: 100%; }
 
 .product .carousel-wrapper {
-  margin-bottom: 4rem; }
+  margin-bottom: 2rem; }
+  @media all and (min-width: 660px) {
+    .product .carousel-wrapper {
+      margin-bottom: 4rem; } }
 
 .product .carousel {
   margin-top: 20px; }
@@ -6732,10 +6746,10 @@ body.modal-open {
       height: 230px; } }
   @media all and (min-width: 560px) {
     .product .large-item {
-      height: 340px; } }
+      height: 350px; } }
   @media all and (min-width: 660px) {
     .product .large-item {
-      height: 450px; } }
+      height: 560px; } }
 
 .product .thumb-image {
   height: 60px; }
@@ -6747,10 +6761,9 @@ body.modal-open {
       height: 110px; } }
   @media all and (min-width: 660px) {
     .product .thumb-image {
-      height: 150px; } }
+      height: 160px; } }
 
-.product .large-item,
-.product .thumb-image {
+.product .large-item {
   width: 100%;
   background-position: center center;
   background-size: contain;
@@ -7151,7 +7164,10 @@ Pages
       align-items: center; } }
 
 .technische-row {
-  margin: 2rem 0; }
+  margin: 1rem 0; }
+  @media all and (min-width: 660px) {
+    .technische-row {
+      margin: 2rem 0; } }
   .technische-row:last-child {
     margin-bottom: 0; }
   @media all and (min-width: 992px) and (max-width: 1024px) {
@@ -7163,13 +7179,13 @@ Pages
 
 .technische-container {
   background-color: #b9b8b8;
-  padding: 4rem 0; }
+  padding: 2rem 0; }
+  @media all and (min-width: 660px) {
+    .technische-container {
+      padding: 4rem 0; } }
 
 .product-similar {
   padding: 0 16px; }
-
-.product-main {
-  padding-left: 15px; }
 
 .product-sizes {
   position: relative;
@@ -7330,10 +7346,17 @@ Pages
 
 .similar-products-wrapper,
 .thermostats-row {
-  margin: 4rem 0; }
+  margin: 2rem 0; }
+  @media all and (min-width: 660px) {
+    .similar-products-wrapper,
+    .thermostats-row {
+      margin: 4rem 0; } }
 
 .product-description-wrapper {
-  margin-bottom: 4rem; }
+  margin-bottom: 2rem; }
+  @media all and (min-width: 660px) {
+    .product-description-wrapper {
+      margin-bottom: 4rem; } }
 
 .technische-thermostat-container {
   margin-top: 2rem; }

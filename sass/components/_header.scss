@@ -3,3 +3,17 @@
     font-size: 32px;
   }
 }
+
+.page-header {
+  margin: 16px auto;
+  font-size: 32px;
+
+  @media all and (min-width: 600px) {
+   font-size: 38px;
+  }
+
+  @media all and (min-width: 769px) {
+    margin: 32px auto;
+    font-size: 48px;
+  }
+}

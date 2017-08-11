@@ -1,6 +1,10 @@
 .product {
   .carousel-wrapper {
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
+
+    @media all and (min-width: 660px) {
+      margin-bottom: 4rem;
+    }
   }
 
   .carousel {
@@ -15,11 +19,11 @@
     }
 
     @media all and (min-width: 560px) {
-      height: 340px;
+      height: 350px;
     }
 
     @media all and (min-width: 660px) {
-      height: 450px;
+      height: 560px;
     }
 
 
@@ -38,12 +42,11 @@
     }
 
     @media all and (min-width: 660px) {
-      height: 150px;
+      height: 160px;
     }
   }
 
-  .large-item,
-  .thumb-image {
+  .large-item {
     width: 100%;
     background-position: center center;
     background-size: contain;

@@ -149,7 +149,11 @@
 }
 
 .technische-row {
-  margin: 2rem 0;
+  margin: 1rem 0;
+
+    @media all and (min-width: 660px) {
+    margin: 2rem 0;
+  }
 
   &:last-child {
     margin-bottom: 0;
@@ -166,16 +170,15 @@
 
 .technische-container {
   background-color: #b9b8b8;
-  padding: 4rem 0;
+  padding: 2rem 0;
+
+    @media all and (min-width: 660px) {
+      padding: 4rem 0;
+    }
 }
 
 .product-similar {
   padding: 0 16px;
-}
-
-.product-main {
-  padding-left: 15px;
-
 }
 
 .product-sizes {
@@ -404,11 +407,19 @@
 
 .similar-products-wrapper,
 .thermostats-row {
-  margin: 4rem 0;
+  margin: 2rem 0;
+
+    @media all and (min-width: 660px) {
+      margin: 4rem 0;
+    }
 }
 
 .product-description-wrapper {
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
+
+    @media all and (min-width: 660px) {
+      margin-bottom: 4rem;
+    }
 }
 
 .technische-thermostat-container {
