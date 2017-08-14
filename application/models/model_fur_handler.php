@@ -4,7 +4,7 @@ class Model_Fur_handler extends Model
 {
     public function set_data()
     {
-        $to = "lisa.yepifanova@gmail.com";
+        $to = "info@infraredprofi.de";
         $subject = "=?utf-8?B?".base64_encode("Anfrage von einem Händler")."?=";
         $headers = "Content-type: text/html; charset=utf-8 \r\n";
         $headers .= "From: kontakt@infraredprofi.de\r\n";
