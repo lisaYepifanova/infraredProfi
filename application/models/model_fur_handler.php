@@ -5,12 +5,10 @@ class Model_Fur_handler extends Model
     public function set_data()
     {
         $to = "info@infraredprofi.de";
-        $subject = "=?utf-8?B?".base64_encode("Anfrage von einem Händler")."?=";
+        $subject = "=?utf-8?B?".base64_encode("Запрос от дилера")."?=";
         $headers = "Content-type: text/html; charset=utf-8 \r\n";
-        $headers .= "From: info@infraredprofi.de\r\n";
+        $headers .= "From: testmail@infrared-profi.zzz.com.ua\r\n";
 
-        $headers2 = "Content-type: text/html; charset=utf-8 \r\n";
-        $headers2 .= "From: info@infraredprofi.de\r\n";
 
         $name = 'не указано';
         $telephone = 'не указано';
@@ -47,7 +45,7 @@ class Model_Fur_handler extends Model
 
         $message_to_admin = "
             <html><head><title>Новый запрос от дилера</title></head>
-            <body><h3>Новый запрос от дилера</h3>'.$info.'</body></html>";
+            <body><h3>Новый запрос от дилера</h3>".$info."</body></html>";
 
         $message_to_dealer = "
             <html><head><title>Infrared Profi Team</title></head>
