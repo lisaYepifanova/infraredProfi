@@ -139,7 +139,8 @@ include 'application/views/'.$content_view;
   <script src="'.JSPATH.'vendor/modernizr-2.8.3.min.js"></script>
   <script src="'.JSPATH.'vendor/jquery-1.12.0.min.js"></script>
   <script src="'.JSPATH.'vendor.min.js"></script>
-  <script src="'.JSPATH.'build.min.js"></script>';
+  <script src="'.JSPATH.'build.min.js"></script>
+  <script src="'.JSPATH.'vendor/google-analytics.js"></script>;';
 ?>
 
 
