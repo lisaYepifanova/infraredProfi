@@ -4,10 +4,10 @@ class Model_Fur_handler extends Model
 {
     public function set_data()
     {
-        $to = "info@infraredprofi.de";
+        $to = "kontakt@infraredprofi.de";
         $subject = "=?utf-8?B?".base64_encode("Запрос от дилера")."?=";
         $headers = "Content-type: text/html; charset=utf-8 \r\n";
-        $headers .= "From: testmail@infrared-profi.zzz.com.ua\r\n";
+        $headers .= "From: kontakt@infraredprofi.de\r\n";
 
         $name = 'не указано';
         $telephone = 'не указано';
