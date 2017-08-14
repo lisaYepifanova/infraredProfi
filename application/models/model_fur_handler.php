@@ -9,6 +9,9 @@ class Model_Fur_handler extends Model
         $headers = "Content-type: text/html; charset=utf-8 \r\n";
         $headers .= "From: testmail@infrared-profi.zzz.com.ua\r\n";
 
+        $headers2 = "Content-type: text/html; charset=utf-8 \r\n";
+        $headers2 .= "From: info@infraredprofi.de\r\n";
+
 
         $name = 'не указано';
         $telephone = 'не указано';
@@ -54,8 +57,8 @@ class Model_Fur_handler extends Model
                 Herzliche Grüße,<br>
                 Infrared Profi Team</p></body></html>";
 
-        mail($to, $subject, $message_to_admin, $headers2);
-        mail($email, $subject, $message_to_dealer, $headers);
+        mail($to, $subject, $message_to_admin, $headers);
+        mail($email, $subject, $message_to_dealer, $headers2);
 
         return true;
     }
