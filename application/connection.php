@@ -1,9 +1,9 @@
 <?php
-$host = 'localhost'; // адрес сервера
+/*$host = 'localhost'; // адрес сервера
 $database = 'infrabase'; // имя базы данных
 $user = 'profiuser'; // имя пользователя
 $password = '02Profi50'; // пароль
-
+*/
 /*
 $host = 'mysql.zzz.com.ua'; // адрес сервера
 $database = 'lisa'; // имя базы данных
@@ -11,12 +11,12 @@ $user = 'profiuser'; // имя пользователя
 $password = '02Profi50'; // пароль
 */
 
-/*
+
 $host = 'localhost'; // адрес сервера
 $database = 'bhspyrqm_infraredprofi.de'; // имя базы данных
 $user = 'bhspyrqm_infra'; // имя пользователя
 $password = '23xyF18wpA'; // пароль
-*/
+
 
 $mysqli = new mysqli($host, $user, $password, $database);
 if ($mysqli->connect_errno) {
