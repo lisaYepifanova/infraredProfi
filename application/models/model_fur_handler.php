@@ -4,10 +4,11 @@ class Model_Fur_handler extends Model
 {
     public function set_data()
     {
-        $to = "info@infraredprofi.de";
-        $subject = "=?utf-8?B?".base64_encode("Запрос от дилера")."?=";
+        $to = "hybrotech.de@gmail.com";
+        $subject = "=?utf-8?B?".base64_encode("HÄNDLER ANFRAGE")."?=";
+        $subject_dealer = "=?utf-8?B?".base64_encode("Empfangsbestätigung")."?=";
         $headers = "Content-type: text/html; charset=utf-8 \r\n";
-        $headers .= "From: testmail@infrared-profi.zzz.com.ua\r\n";
+        $headers .= "From: kontakt@infraredprofi.de\r\n";
 
 
         $name = 'не указано';
@@ -54,8 +55,8 @@ class Model_Fur_handler extends Model
                 Herzliche Grüße,<br>
                 Infrared Profi Team</p></body></html>";
 
-        mail($to, $subject, $message_to_admin, $headers2);
-        mail($email, $subject, $message_to_dealer, $headers);
+        mail($to, $subject, $message_to_admin, $headers);
+        mail($email, $subject_dealer, $message_to_dealer, $headers);
 
         return true;
     }
