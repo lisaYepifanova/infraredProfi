@@ -55,7 +55,7 @@ class Model_Fur_handler extends Model
                 Infrared Profi Team</p></body></html>";
 
         mail($to, $subject, $message_to_admin, $headers);
-        mail($email, $subject, $message_to_dealer, $headers2);
+        mail($email, $subject, $message_to_dealer, $headers);
 
         return true;
     }
