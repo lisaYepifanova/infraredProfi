@@ -46,3 +46,5 @@ AddType application/x-font-woff .woff
 	#кэшировать xml файлы на десять минут
 	ExpiresByType application/xhtml+xml "access plus 600 seconds"
 </ifModule>
+
+AddType application/download .pdf
