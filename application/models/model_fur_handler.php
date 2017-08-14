@@ -6,6 +6,7 @@ class Model_Fur_handler extends Model
     {
         $to = "hybrotech.de@gmail.com";
         $subject = "=?utf-8?B?".base64_encode("")."?=";
+        $subject_dealer = "=?utf-8?B?".base64_encode("HÄNDLER ANFRAGE")."?=";
         $headers = "Content-type: text/html; charset=utf-8 \r\n";
         $headers .= "From: kontakt@infraredprofi.de\r\n";
 
@@ -55,7 +56,7 @@ class Model_Fur_handler extends Model
                 Infrared Profi Team</p></body></html>";
 
         mail($to, $subject, $message_to_admin, $headers);
-        mail($email, $subject, $message_to_dealer, $headers);
+        mail($email, $subject_dealer, $message_to_dealer, $headers);
 
         return true;
     }
