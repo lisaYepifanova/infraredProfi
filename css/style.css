@@ -6806,7 +6806,7 @@ body.modal-open {
     list-style: none;
     margin-bottom: 8px; }
   .product-menu ul {
-    padding-left: 1.3rem;
+    padding-left: 0.75rem;
     margin-top: 8px; }
   .product-menu a {
     cursor: pointer;
@@ -7020,6 +7020,10 @@ Pages
 .convect-house-description,
 .infra-house-description {
   max-height: 300px; }
+
+.convect-house-title,
+.infra-house-title {
+  height: 65px; }
 
 .product-img {
   background-size: cover;

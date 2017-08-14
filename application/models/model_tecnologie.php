@@ -42,7 +42,7 @@ Diese Technologie ist also sehr ineffektiv, egal wie effizient der Heizkessel is
 </p>',
           'scheme_img' => array('technology/scheme.png'),
             'scheme_title' => 'VERGLEICH ZWEI VERSCHEIDENE HEIZUNGSSYSTEMEN',
-          'infra_house_title' => 'INFRAROT TECHNOLOGIE',
+          'infra_house_title' => 'INFRAROTHEIZUNGSSYSTEM',
           'infra_house_image' =>  'technology/infra_house.png',
           'infra_house_description' => 'Das moderne zukunftsweisende unabhängige Infrarotheizungssystem besteht aus:<br>
 - Solarzellen<br>
@@ -55,9 +55,9 @@ Diese Technologie ist also sehr ineffektiv, egal wie effizient der Heizkessel is
 - Stromleitungen<br>
 ',
 
-          'convect_house_title' => 'KONVEKTION TECHNOLOGIE',
+          'convect_house_title' => 'WASSERBASIERTES HEIZUNGSSYSTEM',
           'convect_house_image' =>  'technology/convect_house.png',
-          'convect_house_description' => 'Das konventionelle, wasserbasierte Heizungssystem besteht aus:<br>
+          'convect_house_description' => 'Das konventionelle, wasserbasierende Heizungssystem besteht aus:<br>
 - Heiz-, Brennkessel oder Wärmepumpe<br>
 - Steuerung für Kessel bzw. Wärmepumpe<br>
 - Schornstein<br>

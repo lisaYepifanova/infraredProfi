@@ -1,6 +1,6 @@
 <main class="product">
 
-  <h1 class="page-header container text-capitalize">THERMOSTAT</h1>
+  <h1 class="page-header container text-capitalize"><?php echo $data[0]['title']; ?></h1>
   <div class="product-menu-wrapper col-sm-3">
     <div class="product-menu floating">
       <ul>
@@ -135,13 +135,6 @@
           </div>
         </div>
 
-        <!-- Name of the product-->
-        <div class="product-title-wrapper">
-            <?php
-            echo '<h3 class="product-title">'.$data[0]['title'].'</h3>';
-            ?>
-        </div>
-
         <!-- Description of the product-->
         <div class="product-description-wrapper">
             <?php
@@ -152,7 +145,7 @@
       </div>
     </div>
   </div>
-
+<?php if ($data[0]['has_qualities'] == '1') { ?>
   <div class="technische-thermostat-container technische-container">
 
     <div class="container">
@@ -162,7 +155,7 @@
 
           <ul class="nav nav-pills">
             <li class="active">
-              <a class="tab-button" href="#1a" data-toggle="tab">QUALITY</a>
+              <a class="tab-button" href="#1a" data-toggle="tab">TECHNISCHE DATEN</a>
             </li>
             <li><a class="tab-button" href="#2a"
                    data-toggle="tab">DOWNLOAD</a>
@@ -177,7 +170,7 @@
                 <table>
                     <?php
                     foreach ($data[0] as $key => $value) {
-                        if (($key !== 'id' and $key !== 'name' and $key !== 'title' and $key !== 'short_description' and $key !== 'image' and $key !== 'parent_id' and $key !== 'description') and $value !== null) {
+                        if (($key !== 'id' and $key !== 'has_qualities' and $key !== 'has_similar_products' and $key !== 'name' and $key !== 'title' and $key !== 'short_description' and $key !== 'image' and $key !== 'parent_id' and $key !== 'description') and $value !== null) {
                             echo ' <tr><td>'.ucfirst(
                                 str_replace("_", " ", $key)
                               ).'</td>';
@@ -204,14 +197,16 @@
 
     </div>
   </div>
+<?php } ?>
+
+  <?php if ($data[0]['has_similar_products'] == '1') { ?>
   <div class="container">
     <div class="row similar-row">
       <div class="product-similar col-xs-12">
         <!--Similar product-->
-
         <div class="similar-products-wrapper">
           <div class="similar-products">
-            <h3 class="similar-products-title">PRODUCTE</h3>
+            <h3 class="similar-products-title">UNSERE PRODUKTE</h3>
             <div class="row right-padding">
                 <?php
                 include 'application/connection.php';
@@ -246,5 +241,5 @@
       </div>
     </div>
   </div>
-
+<?php } ?>
 </main>

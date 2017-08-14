@@ -119,11 +119,11 @@ $(document).mouseup(function (e) { // событие клика по веб-до
         $(this).load(file);
     });
 });;;$('.right-panel').on('mouseenter', function(){
-    //$('#asideNavMenu').modal('show');
+    $('#asideNavMenu').modal('show');
 });
 
 $('.aside-modal-dialog').on('mouseleave', function(){
-    //$('#asideNavMenu').modal('hide');
+    $('#asideNavMenu').modal('hide');
 });
 ;if ($("div").is(".registration-form-sent")) {
     var container = $('html, body'),
@@ -270,7 +270,7 @@ $('.homepage-gallery-carousel').carousel({
             $($productArrow).css('padding', '1rem');
             $($productArrow).css('transform', 'scaleY(1)');
 
-            $('html, body').animate({scrollTop: $('.product-title').offset().top}, 1200);
+            $('html, body').animate({scrollTop: $('.product-description').offset().top}, 1200);
         }
     });
 }());

@@ -386,7 +386,7 @@ echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
                 <div class="row right-padding">
                     <?php
                     include 'application/connection.php';
-                    $q = "SELECT * FROM thermostat";
+                    $q = "SELECT * FROM thermostat WHERE parent_id='7'";
                     $query = $mysqli->query($q);
 
                     if ($query) {

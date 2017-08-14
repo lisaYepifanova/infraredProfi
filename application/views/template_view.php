@@ -9,7 +9,9 @@ $pageTitle = "Infrared Profi";
   <title>
       <?php
       if (!empty($_REQUEST['_url'])) {
-        $pageTitle = mb_convert_case(preg_replace('/[^\w\s]/u', ' ', $_REQUEST['_url']), MB_CASE_TITLE, "UTF-8");
+        $routes = explode('/', $_SERVER['REQUEST_URI']);
+        $last = end($routes);
+        $pageTitle = mb_convert_case(preg_replace('/[^\w\s]/u', ' ', $last), MB_CASE_TITLE, "UTF-8");
       }
       echo $pageTitle;
       ?>
@@ -17,15 +19,12 @@ $pageTitle = "Infrared Profi";
     <?php
       echo '
       <link rel="apple-touch-icon" href="'.ROOTPATH.'apple-touch-icon.png">
-      <link rel="stylesheet" href="'.CSSPATH.'normalize.css">
-      <link rel="stylesheet" href="'.CSSPATH.'style.css">
-      <script src="'.JSPATH.'vendor/modernizr-2.8.3.min.js"></script>';
+      <link rel="stylesheet" href="'.CSSPATH.'normalize.min.css">
+      <link rel="stylesheet" href="'.CSSPATH.'style.min.css">
+      ';
     ?>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <script type="text/javascript"
-          src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
 </head>
 <body>
 
@@ -137,10 +136,10 @@ include 'application/views/'.$content_view;
 
 <?php
   echo '
-  <script>window.jQuery || document.write(\'<script src="'.JSPATH.'vendor/jquery-1.12.0.min.js"><\/script>\')</script>
-  <script src="'.JSPATH.'vendor.js"></script>
-  <script src="'.JSPATH.'build.js"></script>
-  <script src="'.JSPATH.'vendor/google-analytics.js"></script>';
+  <script src="'.JSPATH.'vendor/modernizr-2.8.3.min.js"></script>
+  <script src="'.JSPATH.'vendor/jquery-1.12.0.min.js"></script>
+  <script src="'.JSPATH.'vendor.min.js"></script>
+  <script src="'.JSPATH.'build.min.js"></script>';
 ?>
 
 

@@ -20,7 +20,7 @@
             $($productArrow).css('padding', '1rem');
             $($productArrow).css('transform', 'scaleY(1)');
 
-            $('html, body').animate({scrollTop: $('.product-title').offset().top}, 1200);
+            $('html, body').animate({scrollTop: $('.product-description').offset().top}, 1200);
         }
     });
 }());

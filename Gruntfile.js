@@ -19,7 +19,8 @@ module.exports = function (grunt) {
                 src: ['node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
                 'node_modules/bootstrap/dist/js/bootstrap.js',
                 'js/vendor/jquery.easing.1.3.js',
-                'js/vendor/jquery.easing.compatibility.js'],
+                'js/vendor/jquery.easing.compatibility.js',
+                'js/vendor/hammer.js'],
                 dest: 'js/vendor.js',
             }
         },
@@ -27,7 +28,8 @@ module.exports = function (grunt) {
         uglify: {
             dist: {
                 files: {
-                    'js/build.min.js': ['js/build.js']
+                    'js/build.min.js': ['js/build.js'],
+                    'js/vendor.min.js': ['js/vendor.js']
                 }
             }
         },
@@ -78,6 +80,7 @@ module.exports = function (grunt) {
             target: {
                 files: {
                     'css/style.min.css': 'css/style.css',
+                    'css/normalize.min.css': 'css/normalize.css'
                 }
             }
         },
@@ -100,8 +103,8 @@ module.exports = function (grunt) {
     //grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-autoprefixer');
-    //grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-    grunt.registerTask('default', ['concat', 'uglify', /*'imagemin',*/ 'sass'/**, 'cssmin'*/, 'autoprefixer']);
+    grunt.registerTask('default', ['concat', 'uglify', /*'imagemin',*/ 'sass', 'cssmin', 'autoprefixer']);
 
 };
