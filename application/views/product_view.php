@@ -1,6 +1,6 @@
 <main class="product">
 
-  <h1 class="page-header container text-capitalize right-padding"><?php echo  $data[0]['title']; ?></h1>
+  <h1 class="page-header container text-capitalize right-padding"><?php echo $data[0]['title']; ?></h1>
   <div class="product-menu-wrapper col-sm-3">
     <div class="product-menu floating">
       <ul>
@@ -150,11 +150,12 @@
           <?php } ?>
 
         <!-- Description of the product-->
-        <div class="product-description-wrapper product-full-description-wrapper">
+        <div
+            class="product-description-wrapper product-full-description-wrapper">
             <?php
 
             echo '<div class="product-description product-full-description">'.$data[0]['description'].'</div>';
-echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
+            echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
             ?>
         </div>
 
@@ -250,7 +251,8 @@ echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
 
         <ul class="nav nav-pills">
           <li class="active">
-            <a class="tab-button" href="#1a" data-toggle="tab">TECHNISCHE DATEN</a>
+            <a class="tab-button" href="#1a" data-toggle="tab">TECHNISCHE
+              DATEN</a>
           </li>
           <li><a class="tab-button" href="#2a"
                  data-toggle="tab">DOWNLOAD</a>
@@ -265,7 +267,10 @@ echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
                 <?php
                 if (isset($data['features'])) {
                     foreach ($data['features'] as $row) {
-                        echo ' <tr><td>'.$row['feature'].'</td>';
+                        echo ' <tr><td>'.$row['feature'];
+
+
+                        echo '</td>';
                         echo ' <td>'.$row['value'].'</td></tr>';
                     }
                 }
@@ -273,16 +278,15 @@ echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
 
                 ?>
             </table>
+              <?php
+
+              if (isset($data['garantie'])) {
+                  echo '<a class="garantie-title" href="#garantieModal" data-toggle="modal">'.$data['garantie']['title'].'</a>';
+              }
+              ?>
           </div>
           <div class="tab-pane" id="2a">
-              <?php
-              if (isset($data['doc'])) {
-                  foreach ($data['doc'] as $doc) {
-                      echo '<a class="document-link" href="'.DOCPATH.$doc['path'].'" download>'.$doc['name'].'</a>';
-                  }
-              }
-
-              ?>
+              c
           </div>
         </div>
 
@@ -405,5 +409,19 @@ echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
       </div>
     </div>
   </div>
+<div id="garantieModal" class="modal fade in" style="display: none;">
+    <div class="modal-dialog aside-modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close glyphicon glyphicon-remove" data-dismiss="modal" aria-hidden="true"></button>
+                   <?php
 
+              if (isset($data['garantie'])) {
+                  echo '<div>'.$data['garantie']['text'].'</div>';
+              }
+              ?>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
