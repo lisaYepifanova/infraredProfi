@@ -6922,6 +6922,10 @@ Pages
   -ms-transform: scaleY(-1);
   transform: scaleY(-1); }
 
+.faq-item-title.closed .glyphicon {
+  -ms-transform: scaleY(1);
+  transform: scaleY(1); }
+
 .panel-default {
   border: 0; }
 
