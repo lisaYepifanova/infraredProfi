@@ -5,6 +5,10 @@
   right: 0;
   width: $nav-panel-width;
   z-index: 1;
+
+  @media all and (max-width: 480px) {
+    width: $nav-panel-width * 0.66;
+  }
 }
 
 .navbar-right-panel {

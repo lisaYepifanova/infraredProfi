@@ -1,0 +1,41 @@
+.garantie-title,
+.garantie-title:visited,
+.garantie-title:focus {
+  color: $footer-bg;
+  font-size: 14px;
+  text-decoration: underline;
+  padding: 0 4px;
+}
+
+#garantieModal {
+  .close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px 15px;
+
+    @media all and (max-width: 480px) {
+      margin-top: 0;
+    }
+  }
+
+  .modal-body {
+    @media all and (min-width: 768px) {
+      padding: 32px;
+    }
+  }
+
+  .close {
+    @media all and (min-width: 768px) {
+      padding: 39px 32px;
+    }
+  }
+
+  h3 {
+    margin-top: 0;
+
+    @media all and (max-width: 380px) {
+      font-size: 17px;
+    }
+  }
+}

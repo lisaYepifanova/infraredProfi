@@ -5889,6 +5889,11 @@ Reusable, discrete UI elements.
     height: 6px;
     background-size: 100% 100%;
     background-color: #ED6E23; }
+    @media all and (max-width: 480px) {
+      .menu-link .menu-link-line {
+        width: 1.5rem;
+        margin: auto;
+        height: 5px; } }
   .menu-link .line1,
   .menu-link .line2 {
     margin-bottom: 0.25rem; }
@@ -5905,6 +5910,9 @@ Reusable, discrete UI elements.
   right: 0;
   width: 3.5rem;
   z-index: 1; }
+  @media all and (max-width: 480px) {
+    .right-panel {
+      width: 2.31rem; } }
 
 .navbar-right-panel {
   height: 100%; }
@@ -5949,6 +5957,10 @@ Reusable, discrete UI elements.
   .right-padding {
     padding-right: 3.5rem; } }
 
+@media all and (max-width: 480px) {
+  .right-padding {
+    padding-right: 2.31rem; } }
+
 @media all and (min-width: 992px) and (max-width: 1080px) {
   .contacts.right-padding {
     padding-right: 3.5rem; } }
@@ -5965,15 +5977,26 @@ Reusable, discrete UI elements.
   .contacts.right-padding {
     padding-right: 4rem; } }
 
+@media all and (max-width: 480px) {
+  .contacts.right-padding {
+    padding-right: 2.31rem; } }
+
 .gallery.right-padding {
   padding-right: 3.5rem; }
   @media all and (max-width: 767px) {
     .gallery.right-padding {
       padding-right: 4.5rem; } }
+  @media all and (max-width: 480px) {
+    .gallery.right-padding {
+      padding-right: 3.31rem; } }
 
 .properties-side.right-padding,
 .contacts-info-wrapper.right-padding {
   padding-right: 4.5rem; }
+  @media all and (max-width: 480px) {
+    .properties-side.right-padding,
+    .contacts-info-wrapper.right-padding {
+      padding-right: 3.31rem; } }
 
 .gmap {
   width: 100%;
@@ -6866,6 +6889,37 @@ body.modal-open {
   .carousel-showmanymoveone .carousel-control.left, .carousel-showmanymoveone .carousel-control.right {
     background-image: none; }
 
+.garantie-title,
+.garantie-title:visited,
+.garantie-title:focus {
+  color: #ED6E23;
+  font-size: 14px;
+  text-decoration: underline;
+  padding: 0 4px; }
+
+#garantieModal .close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 15px; }
+  @media all and (max-width: 480px) {
+    #garantieModal .close {
+      margin-top: 0; } }
+
+@media all and (min-width: 768px) {
+  #garantieModal .modal-body {
+    padding: 32px; } }
+
+@media all and (min-width: 768px) {
+  #garantieModal .close {
+    padding: 39px 32px; } }
+
+#garantieModal h3 {
+  margin-top: 0; }
+  @media all and (max-width: 380px) {
+    #garantieModal h3 {
+      font-size: 17px; } }
+
 /**
 Pages
  */
@@ -6890,6 +6944,10 @@ Pages
 .faq-item-title.opened .glyphicon {
   -ms-transform: scaleY(-1);
   transform: scaleY(-1); }
+
+.faq-item-title.closed .glyphicon {
+  -ms-transform: scaleY(1);
+  transform: scaleY(1); }
 
 .panel-default {
   border: 0; }

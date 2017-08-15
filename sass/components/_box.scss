@@ -47,28 +47,35 @@
 .right-padding {
   @media all and (max-width: 1100px) {
     padding-right: $nav-panel-width;
-  };
+  }
+  @media all and (max-width: 480px) {
+    padding-right: $nav-panel-width * 0.66;
+  }
 }
 
 .contacts.right-padding {
   @media all and (min-width: 992px) and (max-width: 1080px) {
     padding-right: $nav-panel-width;
   }
-;
+
   @media all and (max-width: 767px) {
     padding-right: $nav-panel-width;
   }
-;
+
 
   @media all and (min-width: 721px) and (max-width: 768px) {
     padding-right: 4rem;
   }
-;
+
 
   @media all and (min-width: 821px) and (max-width: 850px) {
     padding-right: 4rem;
   }
-;
+
+    @media all and (max-width: 480px) {
+    padding-right: $nav-panel-width * 0.66 ;
+  }
+
 }
 
 .gallery.right-padding {
@@ -78,10 +85,18 @@
     padding-right: $nav-panel-width + 1rem;
   }
 
+  @media all and (max-width: 480px) {
+    padding-right: $nav-panel-width * 0.66 + 1rem;
+  }
+
 }
 
 
 .properties-side.right-padding,
 .contacts-info-wrapper.right-padding {
   padding-right: $nav-panel-width + 1rem;
+
+  @media all and (max-width: 480px) {
+    padding-right: $nav-panel-width * 0.66 + 1rem;
+  }
 }

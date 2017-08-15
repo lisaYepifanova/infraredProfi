@@ -67,8 +67,8 @@ class Model_Default extends Model
               'link' => '/',
             ],
             [
-              'title' => 'TECNOLOGIE',
-              'link' => '/tecnologie',
+              'title' => 'TECHNOLOGIE',
+              'link' => '/technologie',
             ],
             [
               'title' => 'UNSERE PRODUKTE',

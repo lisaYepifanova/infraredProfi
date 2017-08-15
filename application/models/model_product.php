@@ -112,6 +112,16 @@ class Model_Product extends Model
                 }
             }
 
+            $query = $mysqli->query(
+              "SELECT * FROM garantie"
+            );
+
+            if ($query) {
+                while ($row = mysqli_fetch_assoc($query)) {
+                        $res['garantie'] = $row;
+
+                }
+            }
 
         return $res;
     }
