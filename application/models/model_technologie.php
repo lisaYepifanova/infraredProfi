@@ -1,6 +1,6 @@
 <?php
 
-class Model_Tecnologie extends Model
+class Model_Technologie extends Model
 {
     public function get_data()
     {
@@ -41,7 +41,7 @@ Zum einen entsteht dadurch die unerwünschte Wärmeschichtung (oben warm, unten 
 Diese Technologie ist also sehr ineffektiv, egal wie effizient der Heizkessel ist, wie gut die Heizungsrohre isoliert sind. Sie haben immer einen Wärmeverlust auf dem Weg zum Heizkörper und Sie haben immer die Wärmeschichtung.<br>
 </p>',
           'scheme_img' => array('technology/scheme.png'),
-            'scheme_title' => 'VERGLEICH ZWEI VERSCHEIDENE HEIZUNGSSYSTEMEN',
+            'scheme_title' => 'VERGLEICH ZWEI VERSCHIEDENE HEIZUNGSSYSTEME',
           'infra_house_title' => 'INFRAROTHEIZUNGSSYSTEM',
           'infra_house_image' =>  'technology/infra_house.png',
           'infra_house_description' => 'Das moderne zukunftsweisende unabhängige Infrarotheizungssystem besteht aus:<br>

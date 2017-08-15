@@ -5889,6 +5889,11 @@ Reusable, discrete UI elements.
     height: 6px;
     background-size: 100% 100%;
     background-color: #ED6E23; }
+    @media all and (max-width: 480px) {
+      .menu-link .menu-link-line {
+        width: 1.5rem;
+        margin: auto;
+        height: 5px; } }
   .menu-link .line1,
   .menu-link .line2 {
     margin-bottom: 0.25rem; }
@@ -5905,6 +5910,9 @@ Reusable, discrete UI elements.
   right: 0;
   width: 3.5rem;
   z-index: 1; }
+  @media all and (max-width: 480px) {
+    .right-panel {
+      width: 2.31rem; } }
 
 .navbar-right-panel {
   height: 100%; }

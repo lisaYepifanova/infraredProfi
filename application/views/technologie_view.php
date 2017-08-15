@@ -1,6 +1,6 @@
 <main>
 
-  <h1 class="page-header container hsmall text-capitalize">TECNOLOGIE</h1>
+  <h1 class="page-header container hsmall text-capitalize">TECHNOLOGIE</h1>
 
   <div class="container right-padding">
     <div class="technology-description box-mid-margin">
