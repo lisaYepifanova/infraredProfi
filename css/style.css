@@ -6866,7 +6866,9 @@ body.modal-open {
   .carousel-showmanymoveone .carousel-control.left, .carousel-showmanymoveone .carousel-control.right {
     background-image: none; }
 
-.garantie-title {
+.garantie-title,
+.garantie-title:visited,
+.garantie-title:focus {
   color: #ED6E23;
   font-size: 14px;
   text-decoration: underline;

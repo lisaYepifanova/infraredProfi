@@ -1,4 +1,6 @@
-.garantie-title {
+.garantie-title,
+.garantie-title:visited,
+.garantie-title:focus {
   color: $footer-bg;
   font-size: 14px;
   text-decoration: underline;
