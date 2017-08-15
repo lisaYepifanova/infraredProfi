@@ -1,6 +1,6 @@
 <main>
 
-  <h1 class="page-header container text-capitalize">UNSERE PRODUKTE</h1>
+  <h1 class="page-header container text-capitalize right-padding">UNSERE PRODUKTE</h1>
 
   <div class="gallery container right-padding">
     <div class='row'>

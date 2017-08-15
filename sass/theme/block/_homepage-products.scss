@@ -17,8 +17,12 @@
 }
 
 .homepage-products-row {
-  width: 100%;
+  width: 95%;
   margin: 0;
+
+  @media all and (min-width: 782px) {
+    width: 100%;
+  }
 }
 
 .homepage-products {

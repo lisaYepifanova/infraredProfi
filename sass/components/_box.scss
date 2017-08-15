@@ -81,6 +81,7 @@
 }
 
 
-.properties-side.right-padding {
-  //padding-right: $nav-panel-width;
+.properties-side.right-padding,
+.contacts-info-wrapper.right-padding {
+  padding-right: $nav-panel-width + 1rem;
 }

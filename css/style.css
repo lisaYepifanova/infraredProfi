@@ -5843,11 +5843,9 @@ button.btn {
   background-color: #ED6E23;
   color: white;
   padding: 0.5rem 2rem;
-  margin-top: -1px;
-  margin-bottom: 1px; }
+  margin-top: 8px;
+  margin-bottom: 8px; }
   button.btn:focus, button.btn:hover, button.btn:active {
-    margin-top: 1px;
-    margin-bottom: -1px;
     color: white;
     font-weight: bold; }
 
@@ -5861,7 +5859,10 @@ textarea.form-control {
   input.form-control:focus,
   select.form-control:focus,
   textarea.form-control:focus {
-    box-shadow: 2px 2px 8px rgba(102, 175, 233, 0.6); }
+    box-shadow: 0px 4px 6px -2px rgba(102, 175, 233, 0.6); }
+
+.form-group {
+  padding-left: 0; }
 
 /**
 Reusable, discrete UI elements.
@@ -5970,6 +5971,10 @@ Reusable, discrete UI elements.
     .gallery.right-padding {
       padding-right: 4.5rem; } }
 
+.properties-side.right-padding,
+.contacts-info-wrapper.right-padding {
+  padding-right: 4.5rem; }
+
 .gmap {
   width: 100%;
   height: 400px;
@@ -5997,18 +6002,22 @@ Reusable, discrete UI elements.
     font-size: 32px; } }
 
 .page-header {
-  margin: 16px auto;
-  font-size: 32px; }
+  margin: 16px auto 16px auto;
+  font-size: 32px;
+  word-wrap: break-word;
+  padding-right: 3.5rem; }
   @media all and (min-width: 600px) {
     .page-header {
       font-size: 38px; } }
   @media all and (min-width: 769px) {
     .page-header {
-      margin: 32px auto;
+      margin: 32px auto 16px auto;
       font-size: 48px; } }
 
 .document-link {
-  display: block; }
+  display: block;
+  font-size: 17px;
+  padding: 4px 0; }
 
 /**
 Blocks
@@ -6100,7 +6109,11 @@ Blocks
       width: 100%; } }
 
 .homepage-header-title {
-  color: #ED6E23; }
+  color: #ED6E23;
+  margin: 24px 0; }
+  @media all and (min-width: 580px) {
+    .homepage-header-title {
+      margin-bottom: 12px; } }
 
 .registration-properties,
 .homepage-properties {
@@ -6217,11 +6230,8 @@ Blocks
     margin-top: 0;
     width: 95%;
     display: inline-block;
-    margin-right: 0; }
-    @media all and (min-width: 360px) {
-      .registration-properties .property-title,
-      .homepage-properties .property-title {
-        padding-left: 1rem; } }
+    margin-right: 0;
+    padding-left: 1rem; }
     @media all and (min-width: 400px) {
       .registration-properties .property-title,
       .homepage-properties .property-title {
@@ -6257,8 +6267,11 @@ Blocks
   background-color: rgba(54, 54, 54, 0.5); }
 
 .homepage-products-row {
-  width: 100%;
+  width: 95%;
   margin: 0; }
+  @media all and (min-width: 782px) {
+    .homepage-products-row {
+      width: 100%; } }
 
 .homepage-products {
   padding-right: 2.5rem; }
@@ -6631,20 +6644,20 @@ footer .footer-links {
 footer .footer-service-links {
   opacity: 0.5;
   margin: auto;
-  max-width: 30rem; }
+  max-width: 30rem;
+  display: inline-block; }
 
 footer .footer-link {
   cursor: pointer;
   color: #333333;
   text-decoration: none;
   padding-top: 0.25rem;
-  padding-bottom: 0.25rem; }
-  @media all and (max-width: 319px) {
+  padding-bottom: 0.25rem;
+  display: block;
+  width: 100%; }
+  @media all and (min-width: 480px) {
     footer .footer-link {
-      width: 100%; } }
-  @media all and (min-width: 320px) and (max-width: 480px) {
-    footer .footer-link {
-      width: 50%; } }
+      width: auto; } }
 
 .modal {
   padding-right: 0 !important; }
@@ -6662,10 +6675,19 @@ body.modal-open {
 .aside-nav-menu .menu-item-link {
   cursor: pointer;
   color: #333333;
-  text-decoration: none; }
+  text-decoration: none;
+  padding: 0.25rem; }
 
 .aside-nav-menu .menu-items-wrapper {
-  margin: auto 2rem; }
+  margin: auto 2rem;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center; }
 
 .aside-nav-menu .modal-dialog {
   float: right;
@@ -6674,7 +6696,8 @@ body.modal-open {
 
 .aside-nav-menu .modal-content {
   background-color: #dddddd;
-  height: 100%;
+  min-height: 100%;
+  height: auto;
   border-radius: 0;
   border: 0;
   display: -ms-flexbox;
@@ -6846,11 +6869,17 @@ body.modal-open {
 /**
 Pages
  */
-.faq-content {
-  padding: 0 0 0 0.5rem; }
+.download-content {
+  padding: 0; }
+  @media all and (max-width: 344px) {
+    .download-content {
+      margin-left: -15px; } }
 
 .faq-item-title {
   cursor: pointer; }
+  @media all and (max-width: 340px) {
+    .faq-item-title {
+      font-size: 19px; } }
   .faq-item-title .glyphicon {
     color: #ED6E23;
     top: 3px;
@@ -6872,6 +6901,9 @@ Pages
   margin-bottom: 24px;
   border: 0;
   box-shadow: none; }
+
+.faq-item-answer {
+  padding-left: 1rem; }
 
 .about-us-image img {
   width: 100%;
@@ -6998,7 +7030,10 @@ Pages
       font-size: 24px; } }
 
 .house-img {
-  margin: 2rem auto; }
+  margin: 0 auto; }
+  @media all and (min-width: 768px) {
+    .house-img {
+      margin: 2rem auto; } }
 
 .house-description {
   text-align: left;
@@ -7010,7 +7045,8 @@ Pages
   margin: 2rem 0; }
   @media all and (max-width: 767px) {
     .comparison-img {
-      padding: 0; } }
+      padding: 0;
+      margin: 1rem 0; } }
 
 @media all and (max-width: 767px) {
   .infrared-house-wrapper,
@@ -7023,7 +7059,23 @@ Pages
 
 .convect-house-title,
 .infra-house-title {
-  height: 65px; }
+  text-align: center;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center; }
+  @media all and (max-width: 400px) {
+    .convect-house-title,
+    .infra-house-title {
+      font-size: 16px; } }
+  @media all and (min-width: 768px) {
+    .convect-house-title,
+    .infra-house-title {
+      height: 65px; } }
+  @media all and (min-width: 768px) and (max-width: 991px) {
+    .convect-house-title,
+    .infra-house-title {
+      font-size: 22px; } }
 
 .product-img {
   background-size: cover;
@@ -7035,7 +7087,7 @@ Pages
 .product-item {
   position: relative;
   margin-bottom: 2rem;
-  min-height: 360px;
+  min-height: 320px;
   display: block;
   cursor: pointer;
   transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
@@ -7059,7 +7111,8 @@ Pages
 
 .product-menu-wrapper {
   display: block;
-  position: absolute; }
+  position: absolute;
+  top: 120px; }
   @media all and (max-width: 767px) {
     .product-menu-wrapper {
       display: none; } }
@@ -7107,7 +7160,9 @@ Pages
 .similar-product-item {
   display: inline-block;
   cursor: pointer;
-  transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1); }
+  transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
+  margin: auto;
+  padding: 0 2rem 0.5rem 2rem; }
   .similar-product-item:hover {
     -ms-transform: scale(1.1);
     transform: scale(1.1); }
@@ -7120,7 +7175,8 @@ Pages
 
 .similar-product-title,
 .thermostats-products-title {
-  margin-bottom: 24px; }
+  margin-bottom: 24px;
+  word-wrap: break-word; }
 
 .product-technische-daten {
   padding-left: 0; }
@@ -7137,8 +7193,7 @@ Pages
     color: #333333; }
     @media all and (max-width: 360px) {
       .product-technische-daten .tab-button {
-        padding: 5px;
-        width: 7rem; } }
+        padding: 5px; } }
   .product-technische-daten li.active .tab-button {
     color: white;
     background-color: #ED6E23; }
@@ -7168,7 +7223,7 @@ Pages
       align-items: center; } }
 
 .technische-row {
-  margin: 1rem 0; }
+  margin: 2rem 0; }
   @media all and (min-width: 660px) {
     .technische-row {
       margin: 2rem 0; } }
@@ -7373,7 +7428,7 @@ Pages
   @media all and (max-width: 767px) {
     .thermostat-product-item {
       margin: auto;
-      padding: 0 2rem; } }
+      padding: 0 2rem 2rem 2rem; } }
   .thermostat-product-item:hover {
     -ms-transform: scale(1.1);
     transform: scale(1.1);
@@ -7387,6 +7442,10 @@ Pages
 .features-product-table td {
   cursor: default;
   word-break: break-all; }
+
+.technische-thermostat-daten td {
+  max-width: 40vw;
+  word-wrap: break-word; }
 
 h5.container-info-title {
   color: #ED6E23; }
@@ -7632,6 +7691,9 @@ Forms
 .registration-form .row {
   margin-left: 0;
   margin-right: 0; }
+
+.registration-form-title {
+  padding-right: 15px; }
 
 /**
 Images

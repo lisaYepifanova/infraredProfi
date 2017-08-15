@@ -85,4 +85,9 @@
 .homepage-header-title {
   color: $footer-bg;
   //text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.9);
+  margin: 24px 0;
+
+  @media all and (min-width: 580px){
+    margin-bottom: 12px;
+  }
 }

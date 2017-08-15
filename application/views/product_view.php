@@ -275,8 +275,6 @@ echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
             </table>
           </div>
           <div class="tab-pane" id="2a">
-            <h3>Documents</h3>
-
               <?php
               if (isset($data['doc'])) {
                   foreach ($data['doc'] as $doc) {
