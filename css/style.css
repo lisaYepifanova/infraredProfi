@@ -5957,6 +5957,10 @@ Reusable, discrete UI elements.
   .right-padding {
     padding-right: 3.5rem; } }
 
+@media all and (max-width: 480px) {
+  .right-padding {
+    padding-right: 2.31rem; } }
+
 @media all and (min-width: 992px) and (max-width: 1080px) {
   .contacts.right-padding {
     padding-right: 3.5rem; } }
@@ -5973,15 +5977,26 @@ Reusable, discrete UI elements.
   .contacts.right-padding {
     padding-right: 4rem; } }
 
+@media all and (max-width: 480px) {
+  .contacts.right-padding {
+    padding-right: 2.31rem; } }
+
 .gallery.right-padding {
   padding-right: 3.5rem; }
   @media all and (max-width: 767px) {
     .gallery.right-padding {
       padding-right: 4.5rem; } }
+  @media all and (max-width: 480px) {
+    .gallery.right-padding {
+      padding-right: 3.31rem; } }
 
 .properties-side.right-padding,
 .contacts-info-wrapper.right-padding {
   padding-right: 4.5rem; }
+  @media all and (max-width: 480px) {
+    .properties-side.right-padding,
+    .contacts-info-wrapper.right-padding {
+      padding-right: 3.31rem; } }
 
 .gmap {
   width: 100%;
