@@ -122,7 +122,11 @@
 
 
 .house-img {
-  margin: 2rem auto;
+  margin: 0 auto;
+
+  @media all and (min-width: 768px) {
+     margin: 2rem auto;
+  }
 }
 
 .house-description {
@@ -136,6 +140,7 @@
 
   @media all and (max-width: 767px) {
     padding: 0;
+    margin: 1rem 0;
   }
 }
 
@@ -153,5 +158,20 @@
 
 .convect-house-title,
 .infra-house-title {
-  height: 65px;
+  text-align: center;
+      display: flex;
+    align-items: center;
+
+  @media all and (max-width: 400px) {
+    font-size: 16px;
+  }
+
+  @media all and (min-width: 768px) {
+    height: 65px;
+  }
+
+    @media all and (min-width: 768px) and (max-width: 991px) {
+    font-size: 22px;
+  }
 }
+

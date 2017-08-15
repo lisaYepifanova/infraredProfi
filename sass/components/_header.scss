@@ -5,15 +5,17 @@
 }
 
 .page-header {
-  margin: 16px auto;
+  margin: 16px auto 16px auto;
   font-size: 32px;
+  word-wrap: break-word;
+  padding-right: 3.5rem;
 
   @media all and (min-width: 600px) {
    font-size: 38px;
   }
 
   @media all and (min-width: 769px) {
-    margin: 32px auto;
+    margin: 32px auto 16px auto;
     font-size: 48px;
   }
 }

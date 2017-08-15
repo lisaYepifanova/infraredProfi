@@ -3,7 +3,7 @@
   <h1 class="page-header container text-capitalize">DOWNLOAD</h1>
 
   <div class="faq-content-wrapper container right-padding">
-    <div class="faq-content">
+    <div class="faq-content download-content">
 
         <?php
         $index = 1;

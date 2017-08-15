@@ -135,10 +135,12 @@
           </div>
         </div>
 
-        <!-- Description of the product-->
-        <div class="product-description-wrapper">
+                  <!-- Description of the product-->
+        <div class="product-description-wrapper product-full-description-wrapper">
             <?php
-            echo '<p class="product-description product-full-description">'.$data[0]['description'].'</p>';
+
+            echo '<div class="product-description product-full-description"><p>'.$data[0]['description'].'</p></div>';
+echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
             ?>
         </div>
 
@@ -182,10 +184,11 @@
               </div>
             </div>
             <div class="tab-pane" id="2a">
-              <h3>Documents</h3>
                 <?php
-                foreach ($data['doc'] as $doc) {
-                    echo '<a class="document-link" href="'.DOCPATH.$doc['path'].'" download>'.$doc['name'].'</a>';
+                if (isset($data['doc'])) {
+                    foreach ($data['doc'] as $doc) {
+                        echo '<a class="document-link" href="'.DOCPATH.$doc['path'].'" download>'.$doc['name'].'</a>';
+                    }
                 }
                 ?>
             </div>

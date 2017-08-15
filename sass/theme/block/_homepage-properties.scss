@@ -103,10 +103,8 @@
     display: inline-block;
     margin-right: 0;
 
-
-    @media all and (min-width: 360px) {
       padding-left: 1rem;
-    }
+
 
     @media all and (min-width: 400px) {
       padding-left: 2rem;
@@ -130,4 +128,5 @@
 .registration-properties .right-side-wrapper {
   background-color: $footer-bg;
 }
+
 

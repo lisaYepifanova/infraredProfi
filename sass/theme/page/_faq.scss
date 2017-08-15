@@ -1,9 +1,18 @@
-.faq-content {
-  padding: 0 0 0 0.5rem;
+.download-content {
+    padding: 0;
+
+  @media all and (max-width: 344px) {
+    margin-left: -15px;
+  }
 }
+
 
 .faq-item-title {
   cursor: pointer;
+
+    @media all and (max-width: 340px) {
+    font-size: 19px;
+  }
 
   .glyphicon {
     color: $footer-bg;
@@ -30,6 +39,10 @@
   margin-bottom: 24px;
   border: 0;
   box-shadow: none;
+}
+
+.faq-item-answer {
+padding-left: 1rem;
 }
 
 
