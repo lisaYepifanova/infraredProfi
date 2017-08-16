@@ -30,6 +30,7 @@
 
             $($element).on('mouseenter', function () {
                 $maxH = parseInt($($element).prop('scrollHeight')) + 20;
+
                 $(this).animate({maxHeight: $maxH+'px'}, 500);
             });
 

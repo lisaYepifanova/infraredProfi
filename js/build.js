@@ -133,7 +133,28 @@ function onTextChange($fsize, $len) {
 }
 
 onTextChange(12, 1000);
-    */;;$('.right-panel').on('mouseenter', function(){
+    */;(function () {
+    function changeMainHeight() {
+        $contactH = parseInt($('.contacts').css('height')) + parseInt($('.contacts').css('margin-top')) + parseInt($('.contacts').css('margin-bottom'));
+        $footerH = parseInt($('footer').css('height'));
+        $headerMargin = parseInt($('.page-header').css('margin-top'));
+        $winH = parseInt($(document).height());
+
+        $mainHeight = $winH - $headerMargin - $footerH - $contactH + 5;
+        $mainHeight += 'px';
+
+        $('main').css('minHeight', $mainHeight);
+        $fHeight = parseInt($mainHeight) - parseInt($('.page-header').css('height')) - parseInt($('.page-header').css('margin-bottom')) ;
+        $('.faq-content-wrapper').css('minHeight', $fHeight);
+
+    }
+
+    changeMainHeight();
+    $(window).resize(function () {
+        changeMainHeight();
+    });
+}());
+;$('.right-panel').on('mouseenter', function(){
     $('#asideNavMenu').modal('show');
 });
 
@@ -423,6 +444,7 @@ if ($l > 3) {
 
             $($element).on('mouseenter', function () {
                 $maxH = parseInt($($element).prop('scrollHeight')) + 20;
+
                 $(this).animate({maxHeight: $maxH+'px'}, 500);
             });
 
