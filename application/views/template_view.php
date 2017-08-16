@@ -8,7 +8,7 @@ $pageTitle = "Infrared Profi";
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>
       <?php
-      if (!empty($_REQUEST['_url'])) {
+      if (!empty($_SERVER['REQUEST_URI'])) {
         $routes = explode('/', $_SERVER['REQUEST_URI']);
         $last = end($routes);
         $pageTitle = mb_convert_case(preg_replace('/[^\w\s]/u', ' ', $last), MB_CASE_TITLE, "UTF-8");
@@ -98,6 +98,7 @@ include 'application/views/'.$content_view;
           }
         ?>
     </div>
+    <div class="text-center right-padding">© 2017 Fomin & Dementev GbR</div>
   </div>
 </footer>
 
@@ -122,7 +123,7 @@ include 'application/views/'.$content_view;
         </div>
         <div class="modal-footer">
             <?php
-              echo '<a href="https://www.facebook.com/" class="social-link"><img src="'.IMAGEPATH.'fb.png" alt="facebook link"></a>
+              echo '<a href="https://www.facebook.com/infraredprofi.de" class="social-link"><img src="'.IMAGEPATH.'fb.png" alt="facebook link"></a>
           <a href="https://twitter.com/" class="social-link"><img src="'.IMAGEPATH.'twitter.png" alt="twitter link"></a>';
             ?>
 

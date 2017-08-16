@@ -1,4 +1,4 @@
-<main>
+<main class="faq-page">
 
   <h1 class="page-header container text-capitalize">FAQ</h1>
 

@@ -41,7 +41,7 @@ class Model_Default extends Model
             [
               'icon' => 'icons/contacts/mail.png',
               'value' => 'info@infraredprofi.de',
-              'link' => 'mailto:test@gmail.com',
+              'link' => 'mailto:info@infraredprofi.de',
               'name' => 'email',
             ],
             [

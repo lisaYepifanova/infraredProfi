@@ -1,4 +1,4 @@
-<main>
+<main class="download-page">
 
   <h1 class="page-header container text-capitalize">DOWNLOAD</h1>
 
