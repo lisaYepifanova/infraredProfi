@@ -5953,13 +5953,14 @@ Reusable, discrete UI elements.
   .container {
     width: 1000px; } }
 
-@media all and (max-width: 1100px) {
-  .right-padding {
-    padding-right: 3.5rem; } }
-
-@media all and (max-width: 480px) {
-  .right-padding {
-    padding-right: 2.31rem; } }
+.right-padding {
+  padding-right: 3.5rem; }
+  @media all and (max-width: 1100px) {
+    .right-padding {
+      padding-right: 3.5rem; } }
+  @media all and (max-width: 480px) {
+    .right-padding {
+      padding-right: 2.31rem; } }
 
 @media all and (min-width: 992px) and (max-width: 1080px) {
   .contacts.right-padding {
@@ -5976,10 +5977,6 @@ Reusable, discrete UI elements.
 @media all and (min-width: 821px) and (max-width: 850px) {
   .contacts.right-padding {
     padding-right: 4rem; } }
-
-@media all and (max-width: 480px) {
-  .contacts.right-padding {
-    padding-right: 2.31rem; } }
 
 .gallery.right-padding {
   padding-right: 3.5rem; }
@@ -6010,15 +6007,15 @@ Reusable, discrete UI elements.
       display: block;
       position: fixed;
       top: 1rem;
-      width: calc((100vw - 1000px)/2 - 2*20px);
+      width: calc((100vw - 1000px)/2 - 2*5px);
       z-index: 1;
-      left: 20px;
+      left: 5px;
       text-align: center; }
       .site-logo-wrapper a {
         display: block; }
       .site-logo-wrapper img {
         width: 100%;
-        max-width: 220px; } }
+        max-width: 295px; } }
 
 @media all and (max-width: 380px) {
   .hsmall {

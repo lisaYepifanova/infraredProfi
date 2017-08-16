@@ -25,8 +25,10 @@ function menu()
 
     $res = [];
 
-        //add product items to the list
-    $query = $mysqli->query("SELECT id, name, title, parent_id, ord FROM products ORDER BY ord");
+    //add product items to the list
+    $query = $mysqli->query(
+      "SELECT id, name, title, parent_id, ord FROM products ORDER BY ord"
+    );
     if ($query) {
         while ($r = mysqli_fetch_assoc($query)) {
             $r['iscategory'] = false;
@@ -47,7 +49,6 @@ function menu()
     }
 
 
-
     //products in current dir
     $current_query_prod = $mysqli->query(
       "SELECT id, name, title, parent_id FROM products WHERE name='".$last."' ORDER BY ord"
@@ -57,11 +58,22 @@ function menu()
       "SELECT id, name, title, parent_id FROM thermostat WHERE name='".$last."' ORDER BY ord"
     );
 
+    $current_query_cat = $mysqli->query(
+      "SELECT id, name, title, parent_id FROM categories WHERE name='".$last."' ORDER BY ord"
+    );
+
     if ($current_query_prod->num_rows !== 0) {
         $neighbour_set = neighbourItems($current_query_prod, 'products');
     } else {
         if ($current_query_therm->num_rows !== 0) {
             $neighbour_set = neighbourItems($current_query_therm, 'thermostat');
+        } else {
+            if ($current_query_cat->num_rows !== 0) {
+                $neighbour_set = neighbourItems(
+                  $current_query_therm,
+                  'categories'
+                );
+            }
         }
     }
 

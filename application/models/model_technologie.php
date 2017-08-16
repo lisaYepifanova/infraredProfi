@@ -75,8 +75,8 @@ Diese Technologie ist also sehr ineffektiv, egal wie effizient der Heizkessel is
 - Thermosyfon <br>
 - Spengler<br>
 - unendliche Fühler <br>
-- sehr teuer Planung für das Heizungssystem<br>
-- dazu kommt gleich eine riesige Luftungsanlage, weil an eine Seite durch reine Konvektion wird Sauerstoff verbrannt und beim lüften geht Wärmeenergie verloren <br>
+- sehr teure Planung für das Heizungssystem<br>
+- dazu kommt gleich eine riesige Luftungsanlage, weil an einer Seite durch reine Konvektion Sauerstoff verbrannt wird und beim lüften die Wärmeenergie verloren geht<br>
 ',
         ];
     }

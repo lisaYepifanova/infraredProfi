@@ -19,7 +19,7 @@ class Model_Unsere_produkte extends Model
             $id = 0;
         }
 
-        $res = array();
+        $res = [];
 
         $query = $mysqli->query(
           "SELECT name, image, title, short_description, ord FROM products  WHERE parent_id=".$id.
@@ -30,10 +30,16 @@ class Model_Unsere_produkte extends Model
 
         if ($query) {
             while ($r = mysqli_fetch_assoc($query)) {
-                $res[] = $r;
+                $res['items'][] = $r;
             }
         }
 
+        if ($last !== 'unsere-produkte') {
+            include 'application/menu.php';
+            $menu = menu();
+
+            $res['menu'] = $menu;
+        }
 
         return $res;
     }
