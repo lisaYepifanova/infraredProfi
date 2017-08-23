@@ -7750,6 +7750,9 @@ Forms
 .registration-form-title {
   padding-right: 15px; }
 
+.login-form-wrapper .row {
+  margin-left: 0; }
+
 /**
 Images
  */

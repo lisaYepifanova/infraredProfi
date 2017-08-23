@@ -134,11 +134,11 @@ function onTextChange($fsize, $len) {
 
 onTextChange(12, 1000);
     */;;$('.right-panel').on('mouseenter', function(){
-    $('#asideNavMenu').modal('show');
+    //$('#asideNavMenu').modal('show');
 });
 
 $('.aside-modal-dialog').on('mouseleave', function(){
-    $('#asideNavMenu').modal('hide');
+    //$('#asideNavMenu').modal('hide');
 });
 ;if ($("div").is(".registration-form-sent")) {
     var container = $('html, body'),
