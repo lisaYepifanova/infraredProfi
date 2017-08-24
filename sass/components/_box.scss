@@ -48,10 +48,10 @@
   padding-right: $nav-panel-width;
 
   @media all and (max-width: 1100px) {
-    padding-right: $nav-panel-width;
+    padding-right: $nav-panel-width * 1.1;
   }
   @media all and (max-width: 480px) {
-    padding-right: $nav-panel-width * 0.66;
+    padding-right: $nav-panel-width * 0.85;
   }
 }
 

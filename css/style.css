@@ -5905,11 +5905,13 @@ Reusable, discrete UI elements.
 
 .right-panel {
   position: fixed;
+  display: block;
   bottom: 0;
   top: 0;
   right: 0;
   width: 3.5rem;
-  z-index: 1; }
+  z-index: 1;
+  cursor: pointer; }
   @media all and (max-width: 480px) {
     .right-panel {
       width: 2.31rem; } }
@@ -5957,10 +5959,10 @@ Reusable, discrete UI elements.
   padding-right: 3.5rem; }
   @media all and (max-width: 1100px) {
     .right-padding {
-      padding-right: 3.5rem; } }
+      padding-right: 3.85rem; } }
   @media all and (max-width: 480px) {
     .right-padding {
-      padding-right: 2.31rem; } }
+      padding-right: 2.975rem; } }
 
 @media all and (min-width: 992px) and (max-width: 1080px) {
   .contacts.right-padding {
@@ -7752,6 +7754,14 @@ Forms
 
 .login-form-wrapper .row {
   margin-left: 0; }
+
+@media all and (max-width: 767px) {
+  .login-form-wrapper .form-group,
+  .login-form-wrapper .error-form-message {
+    max-width: 480px; } }
+
+.login-form-wrapper .error-wrapper {
+  width: 100%; }
 
 /**
 Images

@@ -133,7 +133,33 @@ function onTextChange($fsize, $len) {
 }
 
 onTextChange(12, 1000);
-    */;;$('.right-panel').on('mouseenter', function(){
+    */;(function () {
+    function changeMainHeight() {
+         $('main').css('minHeight', 'unset');
+         $('.faq-content-wrapper').css('minHeight', 'unset');
+        $contactH = parseInt($('.contacts').css('height')) + parseInt($('.contacts').css('margin-top')) + parseInt($('.contacts').css('margin-bottom'));
+        $footerH = parseInt($('footer').css('height'));
+        $headerMargin = parseInt($('.page-header').css('margin-top'));
+        $winH = parseInt($(document).height());
+
+        $mainHeight = $winH - $headerMargin - $footerH - $contactH + 5;
+        $mainHeight += 'px';
+
+
+        $('main').css('minHeight', $mainHeight);
+        $fHeight = parseInt($mainHeight) - parseInt($('.page-header').css('height')) - parseInt($('.page-header').css('margin-bottom'));
+        $('.faq-content-wrapper').css('minHeight', $fHeight);
+
+    }
+
+    changeMainHeight();
+    $(window).resize(function () {
+        if (parseInt($(window).width()) > 768) {
+            changeMainHeight();
+        }
+    });
+}());
+;$('.right-panel').on('mouseenter', function(){
     //$('#asideNavMenu').modal('show');
 });
 
@@ -269,25 +295,29 @@ $('.homepage-gallery-carousel').carousel({
     $productArrow = '.product-full-description-wrapper .arrow-down';
     $container = $('html, body');
 
-    $($productArrow).on('click', function () {
+    if ( parseInt($('.product-full-description').css('height')) > "200"  ) {
+        $($productArrow).on('click', function () {
 
 
-        if ($($textWrapper).prop('scrollHeight') > $($textWrapper).height()) {
-            $maxH = parseInt($($textWrapper).prop('scrollHeight')) + 50;
-            $($textWrapper).animate({maxHeight: $maxH + 'px'}, 1200);
-            $($productArrow).css('position', 'relative');
-            $($productArrow).css('padding', '0');
-            $($productArrow).css('transform', 'scaleY(-1)');
+            if ($($textWrapper).prop('scrollHeight') > $($textWrapper).height()) {
+                $maxH = parseInt($($textWrapper).prop('scrollHeight')) + 50;
+                $($textWrapper).animate({maxHeight: $maxH + 'px'}, 1200);
+                $($productArrow).css('position', 'relative');
+                $($productArrow).css('padding', '0');
+                $($productArrow).css('transform', 'scaleY(-1)');
 
-        } else {
-            $($textWrapper).animate({maxHeight: '200px'}, 1200);
-            $($productArrow).css('position', 'absolute');
-            $($productArrow).css('padding', '1rem');
-            $($productArrow).css('transform', 'scaleY(1)');
+            } else {
+                $($textWrapper).animate({maxHeight: '200px'}, 1200);
+                $($productArrow).css('position', 'absolute');
+                $($productArrow).css('padding', '1rem');
+                $($productArrow).css('transform', 'scaleY(1)');
 
-            $('html, body').animate({scrollTop: $('.product-description').offset().top}, 1200);
-        }
-    });
+                $('html, body').animate({scrollTop: $('.product-description').offset().top}, 1200);
+            }
+        });
+    } else {
+        $($productArrow).css('display', 'none');
+    }
 }());
 ;function arrowsFaqRotation($accTitle, $tex) {
     $($accTitle).on('click', function () {
@@ -419,11 +449,12 @@ if ($l > 3) {
 
             $($element).on('mouseenter', function () {
                 $maxH = parseInt($($element).prop('scrollHeight')) + 20;
-                $(this).animate({maxHeight: $maxH+'px'}, 1000);
+
+                $(this).animate({maxHeight: $maxH+'px'}, 500);
             });
 
             $($element).on('mouseleave', function () {
-                $(this).animate({maxHeight: $height}, 1000);
+                $(this).animate({maxHeight: $height}, 500);
             });
         }
     }

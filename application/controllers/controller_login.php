@@ -13,7 +13,20 @@ class Controller_Login extends Controller
     {
         $default = $this->default_model->get_data();
         $data = $this->model->get_data();
-        $this->view->generate('login_view.php', 'template_view.php', $data, $default);
+
+        if (!empty($_POST)) {
+            $content_view = 'login_view.php';
+
+        } else {
+            $content_view = 'login_view.php';
+        }
+
+        $this->view->generate(
+          $content_view,
+          'template_view.php',
+          $data,
+          $default
+        );
     }
 }
 
