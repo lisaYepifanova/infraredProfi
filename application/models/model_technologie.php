@@ -42,7 +42,7 @@ Diese Technologie ist also sehr ineffektiv, egal wie effizient der Heizkessel is
 </p>',
           'scheme_img' => array('technology/scheme.png'),
             'scheme_title' => 'VERGLEICH ZWEI VERSCHIEDENE HEIZUNGSSYSTEME',
-          'infra_house_title' => 'INFRAROTHEIZUNGSSYSTEM',
+          'infra_house_title' => 'INFRAROTHEIZUNG INNERHALB EINES GESAMT-ENERGIEKONZEPTES',
           'infra_house_image' =>  'technology/infra_house.png',
           'infra_house_description' => 'Das moderne zukunftsweisende unabhängige Infrarotheizungssystem besteht aus:<br>
 - Solarzellen<br>
