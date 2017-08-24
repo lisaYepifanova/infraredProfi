@@ -5909,7 +5909,8 @@ Reusable, discrete UI elements.
   top: 0;
   right: 0;
   width: 3.5rem;
-  z-index: 1; }
+  z-index: 1;
+  cursor: pointer; }
   @media all and (max-width: 480px) {
     .right-panel {
       width: 2.31rem; } }

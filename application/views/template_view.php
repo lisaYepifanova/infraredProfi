@@ -39,17 +39,17 @@ $pageTitle = "Infrared Profi";
   ?>
 </div>
 
-<aside class="right-panel">
+<a class="right-panel aside-panel" href="#asideNavMenu"  data-toggle="modal">
   <div class="navbar navbar-default navbar-right-panel" role="navigation">
     <div class="menu-link-button">
-      <a href="#asideNavMenu" class="menu-link" data-toggle="modal">
+      <div class="menu-link" >
         <span class="menu-link-line line1"></span>
         <span class="menu-link-line line2"></span>
         <span class="menu-link-line line3"></span>
-      </a>
+      </div>
     </div>
   </div>
-</aside>
+</a>
 
 <?php
 include 'application/views/'.$content_view;

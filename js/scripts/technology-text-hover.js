@@ -30,11 +30,12 @@
 
             $($element).on('mouseenter', function () {
                 $maxH = parseInt($($element).prop('scrollHeight')) + 20;
-                $(this).animate({maxHeight: $maxH+'px'}, 1000);
+
+                $(this).animate({maxHeight: $maxH+'px'}, 500);
             });
 
             $($element).on('mouseleave', function () {
-                $(this).animate({maxHeight: $height}, 1000);
+                $(this).animate({maxHeight: $height}, 500);
             });
         }
     }
