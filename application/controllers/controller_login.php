@@ -1,5 +1,6 @@
 <?php
 
+
 class Controller_Login extends Controller
 {
     function __construct()
@@ -11,14 +12,19 @@ class Controller_Login extends Controller
 
     function action_index()
     {
+        include 'application/auth.php';
         $default = $this->default_model->get_data();
         $data = $this->model->get_data();
 
-        if (!empty($_POST)) {
-            $content_view = 'login_view.php';
-
+        if (isAuth()) {
+            $_SESSION['is_auth'] = true;
+            header('Location: /user', true, 303);
         } else {
-            $content_view = 'login_view.php';
+            if ($this->model->check_data()) {
+                header('Location: /user', true, 303);
+            } else {
+                $content_view = 'login_view.php';
+            }
         }
 
         $this->view->generate(

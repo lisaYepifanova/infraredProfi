@@ -1,0 +1,68 @@
+.handler-adding-form,
+.handler-editing-form {
+  .row {
+    margin: 0;
+    margin-bottom: 36px;
+  }
+
+  .form-group {
+    margin-bottom: 0;
+  }
+
+  .col-sm-6 {
+    padding-left: 0;
+  }
+
+  .req-star {
+    color: $footer-bg;
+    line-height: 3;
+    vertical-align: bottom;
+    font-size: 11px;
+  }
+
+.error-block {
+    //margin-top: -16px;
+}
+.pass-r-wrapper,
+.pass-wrapper {
+  position: relative;
+}
+  .green-tick-icon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    height: 42px;
+    width: 42px;
+    transform: translateY(-50%);
+    display: none;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .close-img {
+    display: none;
+    padding: 6px 12px 0 12px;
+    color: $text-color;
+  }
+
+  .pass-help,
+  .login-help {
+
+  }
+  
+  .error-block {
+    display: none;
+    color: red;
+    position: absolute;
+  }
+
+  .red-field {
+    border-color: red;
+
+    &:focus {
+      box-shadow: 0 4px 6px -2px rgba(233, 0, 1, 0.91)
+    }
+  }
+}

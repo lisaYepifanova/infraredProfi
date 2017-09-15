@@ -1,0 +1,87 @@
+.handler-liste-wrapper {
+  .role-item {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .user-item {
+    margin: 3rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    @media all and (min-width: 620px) {
+      justify-content: flex-start;
+      flex-direction: row;
+      align-items: stretch;
+    }
+
+  }
+
+  .image-row {
+    img {
+      width: 320px;
+    }
+  }
+
+  .info-row {
+    padding: 3rem;
+    text-align: center;
+    position: relative;
+    width: 320px;
+
+    @media all and (min-width: 620px) {
+      text-align: left;
+      flex: 1;
+      padding: 0 3rem;
+      width: auto;
+    }
+
+    a {
+      color: $footer-bg;
+
+      &:hover,
+      &:focus {
+        color: $text-color;
+      }
+    }
+  }
+
+  .delete-item,
+  .edit-item,
+  a.delete-item,
+  a.edit-item {
+    position: absolute;
+    right: 0;
+    font-size: 28px;
+    cursor: pointer;
+
+    color: $text-color;
+
+    @media all and (max-width: 619px) {
+      top: 12px;
+    }
+  }
+
+  .delete-item {
+    right: 42px;
+  }
+
+}
+
+
+.delete-item-modal {
+  .modal-dialog {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .modal-content {
+    flex: 1;
+    margin: 0 1rem;
+  }
+}

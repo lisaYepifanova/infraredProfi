@@ -8,6 +8,7 @@ class Route
 
         $controller_name = 'Main';
         $action_name = 'index';
+        $arg = '';
 
         if (substr(
             $_SERVER['REQUEST_URI'],
@@ -20,54 +21,63 @@ class Route
               strlen($_SERVER['REQUEST_URI']) - 1
             );
         }
-        
+
         $routes = explode('/', $_SERVER['REQUEST_URI']);
 
         if (!empty($routes[1])) {
             $controller_name = $routes[1];
 
-                    if ($routes[1] == 'unsere-produkte') {
-            $last = end($routes);
+            if ($routes[1] == 'unsere-produkte') {
+                $last = end($routes);
 
-            $result_category = $mysqli->query(
-              "SELECT * FROM categories WHERE name LIKE '%".$last."%'"
-            );
+                $result_category = $mysqli->query(
+                  "SELECT * FROM categories WHERE name LIKE '%".$last."%'"
+                );
 
-            $result_product = $mysqli->query(
-              "SELECT * FROM products WHERE name LIKE '%".$last."%'"
-            );
+                $result_product = $mysqli->query(
+                  "SELECT * FROM products WHERE name LIKE '%".$last."%'"
+                );
 
-            $result_thermostat = $mysqli->query(
-              "SELECT * FROM thermostat WHERE name LIKE '%".$last."%'"
-            );
+                $result_thermostat = $mysqli->query(
+                  "SELECT * FROM thermostat WHERE name LIKE '%".$last."%'"
+                );
 
-            $action_name = 'index';
-            if ($result_category->num_rows !== 0 || empty($routes[2])) {
-                $controller_name = 'unsere-produkte';
-            } else {
-                if ($result_product->num_rows !== 0) {
-                    $controller_name = 'product';
+                $action_name = 'index';
+                if ($result_category->num_rows !== 0 || empty($routes[2])) {
+                    $controller_name = 'unsere-produkte';
                 } else {
-                    if ($result_thermostat->num_rows !== 0) {
-                        $controller_name = 'thermostat';
+                    if ($result_product->num_rows !== 0) {
+                        $controller_name = 'product';
                     } else {
-                        $controller_name = '404';
+                        if ($result_thermostat->num_rows !== 0) {
+                            $controller_name = 'thermostat';
+                        } else {
+                            $controller_name = '404';
+                        }
                     }
                 }
+
+
             }
+            else {
+                if (!empty($routes[2])) {
+                    $action_name = $routes[2];
+                }
+                if (!empty($routes[3])) {
+                    $arg = $routes[3];
+                }
 
+            }
         }
-        }
 
-        if (!empty($routes[2])) {
-           // $action_name = $routes[2];
-        }
-
-
+        $action_name = strtolower(
+            preg_replace("/-/", "_", $action_name)
+          );
 
         $model_name = 'model_'.$controller_name;
         $controller_name = 'controller_'.$controller_name;
         $action_name = 'action_'.$action_name;
+
 
 
         $model_file = strtolower(preg_replace("/-/", "_", $model_name)).'.php';
@@ -80,6 +90,7 @@ class Route
             preg_replace("/-/", "_", $controller_name)
           ).'.php';
         $controller_path = "application/controllers/".$controller_file;
+
         if (file_exists($controller_path)) {
             include "application/controllers/".$controller_file;
         } else {
@@ -95,7 +106,12 @@ class Route
         $action = $action_name;
 
         if (method_exists($controller, $action)) {
-            $controller->$action();
+            if($arg == '' and $action !== 'action_edit_user') {
+                $controller->$action();
+            } else {
+                $controller->$action($arg);
+            }
+
         } else {
             //if($controller_name == 'controller_404') {
             $controller_name = 'controller_404';

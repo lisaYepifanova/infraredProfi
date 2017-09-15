@@ -25,7 +25,7 @@ class Model_Unsere_produkte extends Model
           "SELECT name, image, title, short_description, ord FROM products  WHERE parent_id=".$id.
           " UNION SELECT name, image, title, short_description, ord FROM  categories  WHERE parent_id=".$id.
           " UNION SELECT name, image, title, short_description, ord FROM thermostat  WHERE parent_id=".$id.
-          " ORDER BY ord "
+          " ORDER BY ord"
         );
 
         if ($query) {

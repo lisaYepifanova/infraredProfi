@@ -1,3 +1,4 @@
+<?php include_once 'application/auth.php'; ?>
 <!doctype html>
 <html lang="de">
 <?php
@@ -9,15 +10,19 @@ $pageTitle = "Infrared Profi";
   <title>
       <?php
       if (!empty($_SERVER['REQUEST_URI'])) {
-        $routes = explode('/', $_SERVER['REQUEST_URI']);
-        $last = end($routes);
-        $pageTitle = mb_convert_case(preg_replace('/[^\w\s]/u', ' ', $last), MB_CASE_TITLE, "UTF-8");
+          $routes = explode('/', $_SERVER['REQUEST_URI']);
+          $last = end($routes);
+          $pageTitle = mb_convert_case(
+            preg_replace('/[^\w\s]/u', ' ', $last),
+            MB_CASE_TITLE,
+            "UTF-8"
+          );
       }
       echo $pageTitle;
       ?>
   </title>
     <?php
-      echo '
+    echo '
       <link rel="apple-touch-icon" href="'.ROOTPATH.'apple-touch-icon.png">
       <link rel="stylesheet" href="'.CSSPATH.'normalize.min.css">
       <link rel="stylesheet" href="'.CSSPATH.'style.min.css">
@@ -29,20 +34,21 @@ $pageTitle = "Infrared Profi";
 <body>
 
 <!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-  your browser</a> to improve your experience.</p>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser.
+  Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <div class="site-logo-wrapper">
-  <?php
+    <?php
     echo '<a href="/"><img src="'.IMAGEPATH.$default['site_logo'].'" alt="logo"></a>'
-  ?>
+    ?>
 </div>
 
-<a class="right-panel aside-panel" href="#asideNavMenu"  data-toggle="modal">
+<a class="right-panel aside-panel" href="#asideNavMenu" data-toggle="modal">
   <div class="navbar navbar-default navbar-right-panel" role="navigation">
     <div class="menu-link-button">
-      <div class="menu-link" >
+      <div class="menu-link">
         <span class="menu-link-line line1"></span>
         <span class="menu-link-line line2"></span>
         <span class="menu-link-line line3"></span>
@@ -56,46 +62,47 @@ include 'application/views/'.$content_view;
 ?>
 
 <div class="contacts container box-same-vmargin right-padding">
-    <div class="row">
-        <?php
-          $index = 1;
-          foreach ($default['contacts'] as $row) {
-            echo '<div class="contact-item-wrapper col-xs-3  text-center ">
+  <div class="row">
+      <?php
+      $index = 1;
+      foreach ($default['contacts'] as $row) {
+          echo '<div class="contact-item-wrapper col-xs-3  text-center ">
                     <div class="contact-item contact-item'.$index.'">
                       <img class="content-item-icon" src="'.IMAGEPATH.$row['icon'].'" alt="contact">';
-                      if($row['name'] == 'phone') {
-                        echo '<div class="phone-wrapper">';
-                        foreach ($default['phones'] as $phone_row) {
-                          echo '<a href="tel:'.$phone_row['tel'].'" class="contact-item-value phone-value">'.$phone_row['text'].'</a>';
-                        }
-                        echo '</div>';
-                      } else {
-                        echo '<a href="'.$row['link'].'" class="contact-item-value">'.$row['value'].'</a>';
-                      }
-                      echo '
+          if ($row['name'] == 'phone') {
+              echo '<div class="phone-wrapper">';
+              foreach ($default['phones'] as $phone_row) {
+                  echo '<a href="tel:'.$phone_row['tel'].'" class="contact-item-value phone-value">'.$phone_row['text'].'</a>';
+              }
+              echo '</div>';
+          } else {
+              echo '<a href="'.$row['link'].'" class="contact-item-value">'.$row['value'].'</a>';
+          }
+          echo '
                    </div>
                   </div>';
-            $index = $index + 1;
-          }
-        ?>
-    </div>
+          $index = $index + 1;
+      }
+      ?>
   </div>
+</div>
 
 <footer id="footer" class="footer text-center">
   <div class="footer-links-wrapper container">
     <div class="footer-links row">
-      <?php
-      if(!empty($default['footer_links']))
-          foreach ($default['footer_links'] as $row) {
-            echo '<a href="'.$row['link'].'" class="footer-link col-xs-3">'.$row['title'].'</a>';
-          }
+        <?php
+        if (!empty($default['footer_links'])) {
+            foreach ($default['footer_links'] as $row) {
+                echo '<a href="'.$row['link'].'" class="footer-link col-xs-3">'.$row['title'].'</a>';
+            }
+        }
         ?>
     </div>
     <div class="footer-links footer-service-links row">
-      <?php
-          foreach ($default['footer_service_links'] as $row) {
+        <?php
+        foreach ($default['footer_service_links'] as $row) {
             echo '<a href="'.$row['link'].'" class="footer-link col-xs-4">'.$row['title'].'</a>';
-          }
+        }
         ?>
     </div>
     <div class="text-center right-padding">© 2017 Fomin & Dementev GbR</div>
@@ -103,40 +110,54 @@ include 'application/views/'.$content_view;
 </footer>
 
 <!-- Modal -->
-<div id="asideNavMenu" class="modal fade in aside-nav-menu" style="display: none;">
-    <div class="modal-dialog aside-modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">›</button>
-          <h5 class="modal-title">
-            <a class="lang-link">DE</a>
-          </h5>
-        </div>
-        <div class="modal-body">
-          <div class="menu-items-wrapper">
+<div id="asideNavMenu" class="modal fade in aside-nav-menu"
+     style="display: none;">
+  <div class="modal-dialog aside-modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-hidden="true">›
+        </button>
+        <h5 class="modal-title">
+          <a class="lang-link">DE</a>
+        </h5>
+        <h5 class="modal-title profile-links">
             <?php
-              foreach ($default['modal_menu'] as $row) {
+            if (isAuth()) {
+              echo '<a class="prof-link" href="/user">'.getLogin().'</a>';
+
+            } else {
+                echo '<a class="prof-link" href="/login">Sign in</a>';
+            }
+            ?>
+
+        </h5>
+      </div>
+      <div class="modal-body">
+        <div class="menu-items-wrapper">
+            <?php
+            foreach ($default['modal_menu'] as $row) {
                 echo '<h4 class="menu-item text-center"><a href="'.$row['link'].'" class="menu-item-link">'.$row['title'].'</a></h4>';
-              }
+            }
             ?>
-          </div>
         </div>
-        <div class="modal-footer">
-            <?php
-              echo '<a href="https://www.facebook.com/infraredprofi.de" class="social-link"><img src="'.IMAGEPATH.'fb.png" alt="facebook link"></a>
+      </div>
+      <div class="modal-footer">
+          <?php
+          echo '<a href="https://www.facebook.com/infraredprofi.de" class="social-link"><img src="'.IMAGEPATH.'fb.png" alt="facebook link"></a>
           <a href="https://twitter.com/" class="social-link"><img src="'.IMAGEPATH.'twitter.png" alt="twitter link"></a>';
-            ?>
+          ?>
 
 
-        </div>
       </div>
     </div>
   </div>
+</div>
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
 <?php
-  echo '
+echo '
   <script src="'.JSPATH.'vendor/modernizr-2.8.3.min.js"></script>
   <script src="'.JSPATH.'vendor/jquery-1.12.0.min.js"></script>
   <script src="'.JSPATH.'vendor.min.js"></script>

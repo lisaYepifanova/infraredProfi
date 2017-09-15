@@ -4,11 +4,11 @@
   <div class="container login-form-wrapper box-mid-margin right-padding">
 
       <?php
-        if (!$data['iscorrect']) {
+      if (!$data['iscorrect']) {
           echo '<div class="error-wrapper row"><div class="alert alert-danger fade in error-form-message col-sm-6">';
           echo 'Incorrect username or password.';
           echo '</div></div>';
-        }
+      }
       ?>
 
     <form role="form" action="" method="post">

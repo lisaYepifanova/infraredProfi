@@ -2,6 +2,25 @@
 
 class Model_Login extends Model
 {
+    public function empty_data()
+    {
+         $login = '';
+        if (isset($_POST['login'])) {
+            $login = $_POST['login'];
+        }
+
+        $pass = '';
+        if (isset($_POST['pass'])) {
+            $pass = $_POST['pass'];
+        }
+
+        if ($login == "" and $pass == "") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function check_data()
     {
         include 'application/connection.php';
@@ -16,12 +35,23 @@ class Model_Login extends Model
             $pass = $_POST['pass'];
         }
 
-        $query = mysqli_fetch_assoc($mysqli->query("SELECT pass FROM users WHERE login=".$login));
+        $qs = "SELECT id, pass FROM users WHERE login='".$login."'";
+        $q = $mysqli->query($qs);
+        if ($q) {
+            $querys = mysqli_fetch_assoc($q);
+        }
 
 
         $res = false;
-        if($query['pass'] == $pass) {
-            $res = true;
+        if (isset($querys)) {
+            if ($querys['pass'] == $pass) {
+                $res = true;
+
+                $pass = $querys['pass'];
+
+
+                auth($login, $pass);
+            }
         }
 
         return $res;
@@ -31,18 +61,10 @@ class Model_Login extends Model
     {
         include 'application/connection.php';
 
-        $res['iscorrect'] = $this->check_data();
+        $true_data = $this->check_data();
+        $empty_data = $this->empty_data();
 
-        /* $query = $mysqli->query("SELECT * FROM contact_page");
-
-         if ($query) {
-             while ($r = mysqli_fetch_assoc($query)) {
-                 $res = $r;
-             }
-         }*/
-
-
-
+        $res['iscorrect'] = $true_data || $empty_data;
 
         return $res;
     }

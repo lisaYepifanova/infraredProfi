@@ -1,0 +1,16 @@
+.admin-page-icons {
+  //width: 60px;
+  height: 48px;
+  display: inline-block;
+  color: $footer-bg;
+
+  img {
+    max-height: 100%;
+    max-width: 100%;
+
+  }
+
+  .icon-title {
+    display: inline-block;
+  }
+}

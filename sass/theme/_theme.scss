@@ -23,9 +23,13 @@ Pages
 @import "page/product";
 @import "page/contacts";
 @import "page/registration";
+@import "page/handler-list";
+@import "page/admin-pages";
 
 /**
 Forms
  */
 @import "form/registration-form";
 @import "form/login-form";
+@import "form/handler-adding-form";
+@import "form/del-form";

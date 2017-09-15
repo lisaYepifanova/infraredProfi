@@ -1,0 +1,12 @@
+.del-form {
+  display: inline-block;
+
+  button {
+        border-radius: 4px;
+    padding: 6px 12px;
+
+    &:hover {
+      color: $text-color;
+    }
+  }
+}
