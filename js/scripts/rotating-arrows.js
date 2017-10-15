@@ -1,18 +1,42 @@
-function arrowsFaqRotation($accTitle, $tex) {
+function arrowsFaqRotation($accTitle) {
     $($accTitle).on('click', function () {
+        $open_height = $('.price-list-content').height() + 20;
         if ($(this).hasClass('opened')) {
             $(this).removeClass('opened');
-            $($accTitle).addClass('closed');
+            $($accTitle).each(function () {
+                $(this).removeClass('opened');
+                $(this).addClass('closed');
+            });
         } else {
-           $('html, body').animate({scrollTop: parseInt($(this).parent().prev().offset().top) + parseInt($(this).parent().prev().children($accTitle).css('height'))  + 'px' },1500);
-            $($accTitle).removeClass('opened');
+            if ($('.opened').next().height() > 0) {
+                 $open_height = $('.opened').next().height() + 20;
+            }
+
+            $($accTitle).each(function () {
+                $(this).removeClass('opened');
+                $(this).addClass('closed');
+            });
+
             $(this).addClass('opened');
             $(this).removeClass('closed');
+
+
         }
+
+        /* $(this).next().on('shown.bs.collapse', function () {
+            */
+            if ($(this).parent().prev().hasClass($accTitle)) {
+                $('html, body').animate({scrollTop: parseInt($(this).parent().prev().offset().top) - $open_height + 'px'}, 300);
+                console.log(parseInt($(this).parent().prev().offset().top));
+            } else {
+                $('html, body').animate({scrollTop: parseInt($(this).parent().offset().top) - $open_height + 'px'}, 300);
+                console.log(parseInt($(this).parent().offset().top));
+            }
+        /* });*/
     });
 }
 
-function arrowsDocRotation($accTitle, $tex) {
+function arrowsDocRotation($accTitle) {
     $($accTitle).on('click', function () {
         if ($(this).hasClass('opened')) {
             $(this).removeClass('opened');
@@ -26,7 +50,8 @@ function arrowsDocRotation($accTitle, $tex) {
 }
 
 $(document).ready(function () {
-    arrowsFaqRotation('.faq-page .faq-item-title', '.faq-page .faq-item-title + div');
-    arrowsDocRotation('.download-page .faq-item-title', '.download-page .faq-item-title + div');
+    arrowsFaqRotation('.faq-page .faq-item-title');
+    arrowsFaqRotation('.order-page .prod-item-title');
+    arrowsDocRotation('.download-page .faq-item-title');
 });
 

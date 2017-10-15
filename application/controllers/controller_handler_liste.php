@@ -14,7 +14,7 @@ class Controller_Handler_liste extends Controller
         include 'application/auth.php';
         $default = $this->default_model->get_data();
 
-        if (isAuth()) {
+        if (isAuth() && (getRole() == 'superadmin' || getRole() == 'admin' )) {
             $data = $this->model->get_data();
             $content_view = 'handler_liste_view.php';
         } else {
@@ -37,7 +37,7 @@ class Controller_Handler_liste extends Controller
 
         $default = $this->default_model->get_data();
 
-        if (isAuth()) {
+        if (isAuth() && (getRole() == 'superadmin' || getRole() == 'admin' )) {
             $send_data = null;
             if (!empty($_POST)) {
 
@@ -75,7 +75,7 @@ class Controller_Handler_liste extends Controller
 
         $default = $this->default_model->get_data();
 
-        if (isAuth()) {
+        if (isAuth() && (getRole() == 'superadmin' || getRole() == 'admin' )) {
             $data = $this->model->del_data();
             $content_view = 'del_user_view.php';
         } else {
@@ -97,7 +97,7 @@ class Controller_Handler_liste extends Controller
         include 'application/auth.php';
         $default = $this->default_model->get_data();
 
-        if (isAuth())
+        if (isAuth() && (getRole() == 'superadmin' || getRole() == 'admin' ))
         {
             $update_data = null;
             if (!empty($_POST))

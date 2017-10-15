@@ -1,6 +1,6 @@
 (function () {
     function changeMainHeight() {
-         $('main').css('minHeight', 'unset');
+         $('.download-page').css('minHeight', 'unset');
          $('.faq-content-wrapper').css('minHeight', 'unset');
         $contactH = parseInt($('.contacts').css('height')) + parseInt($('.contacts').css('margin-top')) + parseInt($('.contacts').css('margin-bottom'));
         $footerH = parseInt($('footer').css('height'));
@@ -11,7 +11,7 @@
         $mainHeight += 'px';
 
 
-        $('main').css('minHeight', $mainHeight);
+        $('.download-page').css('minHeight', $mainHeight);
         $fHeight = parseInt($mainHeight) - parseInt($('.page-header').css('height')) - parseInt($('.page-header').css('margin-bottom'));
         $('.faq-content-wrapper').css('minHeight', $fHeight);
 

@@ -286,7 +286,16 @@
               ?>
           </div>
           <div class="tab-pane" id="2a">
-              c
+              <h3>Documents</h3>
+
+             <?php
+              if (isset($data['doc'])) {
+                  foreach ($data['doc'] as $doc) {
+                      echo '<a class="document-link" href="'.DOCPATH.$doc['path'].'" download>'.$doc['name'].'</a>';
+                  }
+              }
+
+              ?>
           </div>
         </div>
 

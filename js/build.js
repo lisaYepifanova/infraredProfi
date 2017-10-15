@@ -40,7 +40,46 @@ $('.carousel-showmanymoveone .item').each(function(){
         $('.image-nav-menu .item.' + $lastLinkClass).addClass('active');
     });
 });
-;(function () {
+;(function($) {
+setTimeout(function () {
+
+        $('tr').find('td .add-another-button').on('click', function () {
+            $elem = $(this).parent().parent().clone();
+            $elem.find('.add-another-button').remove();
+            $currid = $elem.find('.count').attr('id');
+
+            console.log($currid);
+
+            $currclass = $elem.find('.count').attr('class').split(' ')[1];
+
+            $parentClass = $(this).parent().parent().parent().attr('class');
+
+            $numOfCurrElem = $('.'+$currclass).length;
+
+            $elemId = $elem.find('.count').attr('id');
+            $elem.find('.count').attr('id', $elemId + '_' + $numOfCurrElem);
+
+            $elemName = $elem.find('.count').attr('name');
+            $elem.find('.count').attr('name', $elemName + '_' + $numOfCurrElem);
+
+
+            $tId = $elem.find('.has-thermostat').attr('id');
+            $elem.find('.has-thermostat').attr('id', $tId + '_' + $numOfCurrElem);
+
+            $tName = $elem.find('.has-thermostat').attr('name');
+            $elem.find('.has-thermostat').attr('name', $tName + '_' + $numOfCurrElem);
+
+
+
+
+            $elem.insertAfter($(this).parent().parent());
+            orderCount();
+
+        });
+
+}, 100);
+
+})(jQuery);;(function () {
     function disableSubmit(login, pass, pass_r) {
         if (login.length !== 0 && pass.length >= 8 && pass_r.length >= 8 && pass == pass_r) {
             $('#submit').removeAttr('disabled');
@@ -270,7 +309,7 @@ function onTextChange($fsize, $len) {
 onTextChange(12, 1000);
     */;(function () {
     function changeMainHeight() {
-         $('main').css('minHeight', 'unset');
+         $('.download-page').css('minHeight', 'unset');
          $('.faq-content-wrapper').css('minHeight', 'unset');
         $contactH = parseInt($('.contacts').css('height')) + parseInt($('.contacts').css('margin-top')) + parseInt($('.contacts').css('margin-bottom'));
         $footerH = parseInt($('footer').css('height'));
@@ -281,7 +320,7 @@ onTextChange(12, 1000);
         $mainHeight += 'px';
 
 
-        $('main').css('minHeight', $mainHeight);
+        $('.download-page').css('minHeight', $mainHeight);
         $fHeight = parseInt($mainHeight) - parseInt($('.page-header').css('height')) - parseInt($('.page-header').css('margin-bottom'));
         $('.faq-content-wrapper').css('minHeight', $fHeight);
 
@@ -311,6 +350,43 @@ $('.aside-modal-dialog').on('mouseleave', function(){
         }, 2000, "easeOutCirc");
     });
 
+}
+
+
+;(function ($) {
+    setTimeout(function () {
+        // $('.num-of-items-wrapper').each(function () {
+        orderCount();
+
+        // });
+
+    }, 1000);
+})(jQuery);
+
+function orderCount() {
+    $('.num-of-items-wrapper').on('click', '.num-of-items-min', function () {
+        $new_val = parseInt($(this).parent().find('.count').val()) - 1;
+        if ($new_val >= 0) {
+            $(this).parent().find('.count').val($new_val);
+        }
+
+    });
+
+    $('.num-of-items-wrapper').on('click', '.num-of-items-max', function () {
+        $new_val = parseInt($(this).parent().find('.count').val()) + 1;
+        $(this).parent().find('.count').val($new_val);
+    });
+}
+
+function numOfItemsValid(evt) {
+    var theEvent = evt || window.event;
+    var key = theEvent.keyCode || theEvent.which;
+    key = String.fromCharCode(key);
+    var regex = /[0-9]|\./;
+    if (!regex.test(key)) {
+        theEvent.returnValue = false;
+        if (theEvent.preventDefault) theEvent.preventDefault();
+    }
 }
 
 
@@ -454,21 +530,45 @@ $('.homepage-gallery-carousel').carousel({
         $($productArrow).css('display', 'none');
     }
 }());
-;function arrowsFaqRotation($accTitle, $tex) {
+;function arrowsFaqRotation($accTitle) {
     $($accTitle).on('click', function () {
+        $open_height = $('.price-list-content').height() + 20;
         if ($(this).hasClass('opened')) {
             $(this).removeClass('opened');
-            $($accTitle).addClass('closed');
+            $($accTitle).each(function () {
+                $(this).removeClass('opened');
+                $(this).addClass('closed');
+            });
         } else {
-           $('html, body').animate({scrollTop: parseInt($(this).parent().prev().offset().top) + parseInt($(this).parent().prev().children($accTitle).css('height'))  + 'px' },1500);
-            $($accTitle).removeClass('opened');
+            if ($('.opened').next().height() > 0) {
+                 $open_height = $('.opened').next().height() + 20;
+            }
+
+            $($accTitle).each(function () {
+                $(this).removeClass('opened');
+                $(this).addClass('closed');
+            });
+
             $(this).addClass('opened');
             $(this).removeClass('closed');
+
+
         }
+
+        /* $(this).next().on('shown.bs.collapse', function () {
+            */
+            if ($(this).parent().prev().hasClass($accTitle)) {
+                $('html, body').animate({scrollTop: parseInt($(this).parent().prev().offset().top) - $open_height + 'px'}, 300);
+                console.log(parseInt($(this).parent().prev().offset().top));
+            } else {
+                $('html, body').animate({scrollTop: parseInt($(this).parent().offset().top) - $open_height + 'px'}, 300);
+                console.log(parseInt($(this).parent().offset().top));
+            }
+        /* });*/
     });
 }
 
-function arrowsDocRotation($accTitle, $tex) {
+function arrowsDocRotation($accTitle) {
     $($accTitle).on('click', function () {
         if ($(this).hasClass('opened')) {
             $(this).removeClass('opened');
@@ -482,8 +582,9 @@ function arrowsDocRotation($accTitle, $tex) {
 }
 
 $(document).ready(function () {
-    arrowsFaqRotation('.faq-page .faq-item-title', '.faq-page .faq-item-title + div');
-    arrowsDocRotation('.download-page .faq-item-title', '.download-page .faq-item-title + div');
+    arrowsFaqRotation('.faq-page .faq-item-title');
+    arrowsFaqRotation('.order-page .prod-item-title');
+    arrowsDocRotation('.download-page .faq-item-title');
 });
 
 ;function readURL(input) {

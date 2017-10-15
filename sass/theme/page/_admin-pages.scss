@@ -1,8 +1,9 @@
 .admin-page-icons {
-  //width: 60px;
+  // min-width: 200px;
   height: 48px;
-  display: inline-block;
+  //display: inline-block;
   color: $footer-bg;
+  text-align: center;
 
   img {
     max-height: 100%;
@@ -10,7 +11,23 @@
 
   }
 
+  @media all and (min-width: 680px) {
+    display: flex;
+   // justify-content: center;
+    align-items: center;
+  }
+
   .icon-title {
     display: inline-block;
+    margin: 0.5rem auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    @media all and (min-width: 680px) {
+      margin: 0.5rem;
+      width: auto;
+    }
+
   }
 }

@@ -44,7 +44,8 @@ class Model_Login extends Model
 
         $res = false;
         if (isset($querys)) {
-            if ($querys['pass'] == $pass) {
+           // if (password_verify($pass, $querys['pass'])) {
+            if ($pass == $querys['pass']) {
                 $res = true;
 
                 $pass = $querys['pass'];

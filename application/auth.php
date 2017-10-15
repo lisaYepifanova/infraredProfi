@@ -43,7 +43,7 @@ function auth($login, $pass)
         $_SESSION["login"] = $login; //Записываем в сессию логин пользователя
         $_SESSION["role"] = $role['role'];
         $_SESSION['user_id'] = $query['id'];
-        $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
+        $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'] ;
 
 
         return true;

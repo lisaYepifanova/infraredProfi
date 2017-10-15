@@ -18,6 +18,7 @@ $pageTitle = "Infrared Profi";
             "UTF-8"
           );
       }
+
       echo $pageTitle;
       ?>
   </title>

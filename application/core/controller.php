@@ -2,6 +2,8 @@
 define('MODELS',$_SERVER['DOCUMENT_ROOT'].'/application/models/');
 include_once MODELS.'model_default.php';
 
+define('PROJ_PATH', '/home/lisabeth/Projects/infraredprofi/');
+
 class Controller
 {
 

@@ -2,9 +2,9 @@
   <h1 class="page-header container text-capitalize">EDIT USER</h1>
 
   <div class="container right-padding box-mid-margin">
-    <a class="admin-page-icons" href="/handler-liste/">
+    <a class="admin-page-icons" href="/user/">
         <?php echo '<img src="'.$data['add']['list_page']['list_icon']['path'].'" alt="'.$data['add']['list_page']['list_icon']['name'].'">'; ?>
-      <p class="icon-title">Back to the list</p>
+      <p class="icon-title">Back to the user page</p>
     </a>
   </div>
 
@@ -154,29 +154,6 @@
                  name="bank_account"
                  value=<?php echo $main_info['bank_account']; ?>>
         </div>
-
-          <?php
-            if(getRole() == 'superadmin') {
-                ?>
-              <div class="form-group col-sm-6 col-xs-12">
-                <label for="role">Handler role:</label>
-                <select class="form-control" id="role" name="role">
-                    <?php
-                    foreach ($data['add']['roles'] as $row) {
-                        echo '<option value="'.$row['id'].'"';
-                        if ($row['id'] == $main_info['roleid']) {
-                            echo ' selected ';
-                        }
-                        echo '>'.$row['role'].'</option>';
-                    }
-                    ?>
-
-                </select>
-              </div>
-
-                <?php
-            }
-          ?>
 
       </div>
       <div class="row text-center">
