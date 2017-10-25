@@ -5838,6 +5838,9 @@ a:hover {
 a {
   cursor: pointer; }
 
+.orange-link {
+  color: #ED6E23; }
+
 button.btn {
   border-radius: 0;
   background-color: #ED6E23;
@@ -5846,7 +5849,8 @@ button.btn {
   margin-top: 8px;
   margin-bottom: 8px; }
   button.btn:focus, button.btn:hover, button.btn:active {
-    color: white; }
+    color: white;
+    background-color: rgba(237, 110, 35, 0.83); }
 
 input.form-control,
 select.form-control,
@@ -5953,6 +5957,20 @@ Reusable, discrete UI elements.
     .box-mid-margin {
       margin-top: 2rem;
       margin-bottom: 2rem; } }
+
+.box-small-margin {
+  margin-top: 1rem;
+  margin-bottom: 1rem; }
+  @media all and (max-width: 768px) {
+    .box-small-margin {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem; } }
+
+.box-small-mb {
+  margin-bottom: 1rem; }
+  @media all and (max-width: 768px) {
+    .box-small-mb {
+      margin-bottom: 0.5rem; } }
 
 @media (min-width: 1200px) {
   .container {
@@ -7887,8 +7905,6 @@ h5.container-info-title {
   text-align: center; }
 
 .num-of-items-wrapper {
-  display: -ms-flexbox;
-  display: flex;
   -ms-flex-pack: center;
   justify-content: center; }
 
@@ -7930,6 +7946,9 @@ h5.container-info-title {
 
 .count {
   text-align: center; }
+
+.send-order-btn {
+  margin-top: 2rem; }
 
 /**
 Forms

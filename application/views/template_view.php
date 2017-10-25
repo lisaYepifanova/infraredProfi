@@ -29,9 +29,21 @@ $pageTitle = "Infrared Profi";
       <link rel="stylesheet" href="'.CSSPATH.'style.min.css">
       ';
     ?>
-  <meta name="description" content="">
+  <meta name="keywords" content="Infrared Profi, Infrarot Profi, Heizung,
+Infrarot, Infrarotstrahler, Infrarotheizung, Heizungssystem,
+Heizsystem , Infrarotwärme, Infrarotstrahlen, Infrarot Wellen ,
+Heizstrahler, Wärmestrahlung, Strahlenwärme , Haustechnik ,
+Elektroheizung, Heizen mit Strom, Stromheizung , Infrarot Badheizung,
+Handtuchheizung , Wandheizsystem , Glaskeramik , Glasheizung ">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <?php
+
+    echo '<script src="'.LIBPATH.'ckeditor/ckeditor.js"></script>';
+  ?>
+
+  </head>
 <body>
 
 <!--[if lt IE 8]>
@@ -157,6 +169,8 @@ include 'application/views/'.$content_view;
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
+
+
 <?php
 echo '
   <script src="'.JSPATH.'vendor/modernizr-2.8.3.min.js"></script>
@@ -164,6 +178,7 @@ echo '
   <script src="'.JSPATH.'vendor.min.js"></script>
   <script src="'.JSPATH.'build.min.js"></script>
   <script src="'.JSPATH.'vendor/google-analytics.js"></script>';
+
 ?>
 
 

@@ -5,17 +5,13 @@
   <div class="container right-padding">
     <div class="technology-description box-mid-margin">
         <?php
-        foreach ($data['description_before'] as $row) {
-            echo '<p class="description-before-items">'.$row.'</p>';
-        }
+            echo '<p class="description-before-items">'.$data['description_before'].'</p>';
         ?>
     </div>
 
     <div class="description-img-wrapper box-mid-margin text-center">
         <?php
-        foreach ($data['description_image'] as $row) {
-            echo '<img class="description-img" src="'.IMAGEPATH.$row.'">';
-        }
+            echo '<img class="description-img" src="'.IMAGEPATH.$data['description_image'].'">';
         ?>
     </div>
 

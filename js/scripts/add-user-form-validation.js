@@ -28,10 +28,10 @@
 
     function errorField($elem) {
         if ($($elem).val().length === 0) {
-            $('.' + ($($elem).parent().attr('class')) + ' ~ .error-block').css('display', 'block');
+            $('.' + ($($elem).parent().attr('class')) + '  .error-block').css('display', 'block');
             $($elem).addClass('red-field');
         } else {
-            $('.' + ($($elem).parent().attr('class')) + ' ~ .error-block').css('display', 'none');
+            $('.' + ($($elem).parent().attr('class')) + ' .error-block').css('display', 'none');
             $($elem).removeClass('red-field');
         }
     }
@@ -44,7 +44,6 @@
             $('#submit').removeAttr('disabled');
         } else {
             $('#submit').attr('disabled', 'disabled');
-            console.log('attr added');
 
         }
 
@@ -81,6 +80,19 @@
             errorField('.handler-editing-form #pass');
         });
     }
+
+
+
+    $('#pass_r').attr('disabled', true);
+    $('#pass').on('input', function () {
+            if($('#pass').val().length < 8) {
+        $('#pass_r').attr('disabled', true);
+    } else {
+        $('#pass_r').attr('disabled', false);
+    }
+        });
+
+
 
 
 }());

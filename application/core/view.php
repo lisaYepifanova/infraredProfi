@@ -4,6 +4,7 @@ define('CSSPATH', View::partPath().'../css/');
 define('JSPATH', View::partPath().'../js/');
 define('DOCPATH', View::partPath().'../doc/');
 define('ROOTPATH', View::partPath().'../');
+define('LIBPATH', View::partPath().'../libs/');
 
 class View
 {

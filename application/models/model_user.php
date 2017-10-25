@@ -236,7 +236,7 @@ class Model_User extends Model
             $result['info'][] = 'This login '.$_POST['login'].' is already in use';
         }
 
-        if (($_POST['login'] !== '') and ($_POST['pass'] !== '') and $unique) {
+        if (($_POST['login'] !== '') and $unique) {
             $form_result = true;
 
 

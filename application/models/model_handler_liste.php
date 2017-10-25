@@ -397,19 +397,19 @@ class Model_Handler_liste extends Model {
         $result['info'][] = 'This login ' . $_POST['login'] . ' is already in use';
       }
 
-      if (($_POST['login'] !== '') and ($_POST['pass'] !== '') and $unique) {
+      if (($_POST['login'] !== '') /*and ($_POST['pass'] !== '')*/ and $unique) {
         $form_result = TRUE;
 
         $login = NULL;
         if (isset($_POST['login'])) {
           $login = $_POST['login'];
         }
-
+/*
         $pass = NULL;
         if (isset($_POST['pass'])) {
           $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
         }
-
+*/
         $name = NULL;
         if (isset($_POST['name'])) {
           $name = $_POST['name'];
@@ -452,7 +452,6 @@ class Model_Handler_liste extends Model {
 
         $add_q = 'UPDATE users SET 
                         login = "' . $login . '",
-                        pass = "' . $pass . '",
                         uname = "' . $name . '",
                         surname = "' . $surname . '",
                         email = "' . $email . '",
@@ -470,15 +469,33 @@ class Model_Handler_liste extends Model {
           $form_result = FALSE;
         }
 
+        $pass = NULL;
+        if (isset($_POST['pass'])) {
+          $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+        }
+
+        if ($pass.length() >= 8) {
+          $add_qp = 'UPDATE users SET 
+                        pass = "' . $pass . '"
+                        WHERE id = "' . $_POST['id'] . '"
+                          ';
+
+          $adding_user_qp = $mysqli->query($add_qp);
+
+          if (!$adding_user_qp) {
+            $form_result = FALSE;
+          }
+        }
+
       }
       else {
         if ($_POST['login'] == '') {
           $result['info'][] = 'Login can\'t be blank';
         }
 
-        if ($_POST['pass'] == '') {
+       /* if ($_POST['pass'] == '') {
           $result['info'][] = 'Password can\'t be blank';
-        }
+        }*/
       }
 
       if ($img_result and $form_result) {

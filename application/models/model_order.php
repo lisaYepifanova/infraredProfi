@@ -3,6 +3,7 @@
 class Model_Order extends Model {
   public function get_data() {
     include 'application/connection.php';
+
     $query = $mysqli->query("SELECT id, title FROM products WHERE isInPriceList=1");
 
     if ($query) {
@@ -41,7 +42,58 @@ class Model_Order extends Model {
   public function get_result_data() {
     include 'application/connection.php';
 
-    $test = 1;
+    $res = [];
 
+    foreach ($_POST as $cat_name=>$category) {
+      if(!$this->isCategoryOrderEmpty($category)) {
+        $cat = [];
+
+        foreach ($category['products'] as $model_name=>$model) {
+          if($this->isModelOrderEmpty($model)) {
+            $cat['products'][$model_name] = $this->isModelOrderEmpty($model);
+          }
+        }
+
+        $res[$cat_name] = $cat;
+        $res[$cat_name]['comment'] = $category['comment'];
+      }
+    }
+
+    return $res;
+
+  }
+
+  function isCategoryOrderEmpty($category) {
+    $products = $category['products'];
+
+    $res = true;
+
+    foreach($products as $pname=>$pitem) {
+      foreach($pitem['count'] as $c) {
+        if($c !== '0') {
+          $res = false;
+          break;
+        }
+      }
+    }
+
+    return $res;
+  }
+
+  function isModelOrderEmpty($model) {
+    $res = [];
+
+    foreach ($model['count'] as $ind=>$count) {
+      if($count !== "0") {
+        $res['count'][] = $count;
+        if(isset($model['term'][$ind])) {
+          $res['term'][] = $model['term'][$ind];
+        } else {
+          $res['term'][] = 'off';
+        }
+      }
+    }
+
+    return $res;
   }
 }

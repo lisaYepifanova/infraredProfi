@@ -6,15 +6,15 @@
     <div class="row">
       <div class="about-us-image col-xs-7">
         <?php
-          echo '<img src="'.IMAGEPATH.$data['images']['mission_img'].'" alt="">';
+        echo '<img src="' . IMAGEPATH . $data['mission_img'] . '" alt="">';
         ?>
       </div>
       <div class="about-us-text col-xs-5">
         <h4 class="about-us-text-title">MISSION</h4>
         <p class="about-us-text-description">
-            <?php
-                echo $data['texts']['mission_text'];
-            ?>
+          <?php
+          echo $data['mission_text'];
+          ?>
         </p>
       </div>
 
@@ -26,7 +26,7 @@
     <div class="row">
       <div class="about-us-image  col-xs-7">
         <?php
-          echo '<img src="'.IMAGEPATH.$data['images']['vision_img'].'" alt="">';
+        echo '<img src="' . IMAGEPATH . $data['vision_img'] . '" alt="">';
         ?>
       </div>
 
@@ -34,8 +34,8 @@
         <h4 class="about-us-text-title">VISION</h4>
         <p class="about-us-text-description">
           <?php
-                echo $data['texts']['vision_text'];
-            ?>
+          echo $data['vision_text'];
+          ?>
         </p>
       </div>
     </div>
@@ -44,11 +44,9 @@
   <div class="about-us-description-wrapper container right-padding">
     <div class="about-us-description">
       <h4 class="right-padding">ÜBER UNS</h4>
-         <?php
-        foreach ($data['about_us_description'] as $row) {
-            echo '<p class="about-us-paragraph">'.$row['paragraph'].'</p>';
-        }
-        ?>
+      <?php
+      echo '<p class="about-us-paragraph">' . $data['about_us_description'] . '</p>';
+      ?>
     </div>
   </div>
 

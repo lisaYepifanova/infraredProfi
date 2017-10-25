@@ -21,6 +21,9 @@ $('.carousel-showmanymoveone .item').each(function(){
     $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
   }
 });
+;$(function () {
+    CKEDITOR.replaceAll( 'editor-area' );
+});
 ;$('.item-wrapper a').each(function () {
     $linkClass = $(this).attr('class').split(' ');
     $lastLinkClass = $linkClass[$linkClass.length - 1];
@@ -56,24 +59,34 @@ setTimeout(function () {
 
             $numOfCurrElem = $('.'+$currclass).length;
 
+
             $elemId = $elem.find('.count').attr('id');
-            $elem.find('.count').attr('id', $elemId + '_' + $numOfCurrElem);
+            $elemId = $elemId.substring(0, $elemId.length - 3);
+            $elem.find('.count').attr('id', $elemId + '[' + $numOfCurrElem + ']');
+
+            $elemClass = $elem.find('.count').attr('class');
+            $elemClass = $elemClass.substring(0, $elemClass.length - 3);
+            $elem.find('.count').attr('class', $elemClass + '[' + $numOfCurrElem + ']');
 
             $elemName = $elem.find('.count').attr('name');
-            $elem.find('.count').attr('name', $elemName + '_' + $numOfCurrElem);
+            $elemName = $elemName.substring(0, $elemName.length - 3);
+            $elem.find('.count').attr('name', $elemName + '[' + $numOfCurrElem + ']');
+
 
 
             $tId = $elem.find('.has-thermostat').attr('id');
-            $elem.find('.has-thermostat').attr('id', $tId + '_' + $numOfCurrElem);
+            $tId = $tId.substring(0, $tId.length - 3);
+            $elem.find('.has-thermostat').attr('id', $tId + '[' + $numOfCurrElem + ']');
 
             $tName = $elem.find('.has-thermostat').attr('name');
-            $elem.find('.has-thermostat').attr('name', $tName + '_' + $numOfCurrElem);
+            $tName = $tName.substring(0, $tName.length - 3);
+            $elem.find('.has-thermostat').attr('name', $tName + '[' + $numOfCurrElem + ']');
 
 
 
 
             $elem.insertAfter($(this).parent().parent());
-            orderCount();
+           // orderCount();
 
         });
 
@@ -109,10 +122,10 @@ setTimeout(function () {
 
     function errorField($elem) {
         if ($($elem).val().length === 0) {
-            $('.' + ($($elem).parent().attr('class')) + ' ~ .error-block').css('display', 'block');
+            $('.' + ($($elem).parent().attr('class')) + '  .error-block').css('display', 'block');
             $($elem).addClass('red-field');
         } else {
-            $('.' + ($($elem).parent().attr('class')) + ' ~ .error-block').css('display', 'none');
+            $('.' + ($($elem).parent().attr('class')) + ' .error-block').css('display', 'none');
             $($elem).removeClass('red-field');
         }
     }
@@ -125,7 +138,6 @@ setTimeout(function () {
             $('#submit').removeAttr('disabled');
         } else {
             $('#submit').attr('disabled', 'disabled');
-            console.log('attr added');
 
         }
 
@@ -164,6 +176,19 @@ setTimeout(function () {
     }
 
 
+
+    $('#pass_r').attr('disabled', true);
+    $('#pass').on('input', function () {
+            if($('#pass').val().length < 8) {
+        $('#pass_r').attr('disabled', true);
+    } else {
+        $('#pass_r').attr('disabled', false);
+    }
+        });
+
+
+
+
 }());
 ;$('#homepageCarousel').carousel({
  interval: 5000,
@@ -195,7 +220,18 @@ $(".close-img").on('click', function(){
     $('#photo').val('');
     $('.close-img').css('display', 'none');
 });
-;(function () {
+
+$(".close-imgv").on('click', function(){
+    $('#imagev').attr('src', '#');
+    $('#vision_img').val('');
+    $('.close-img').css('display', 'none');
+});
+
+$(".close-imgm").on('click', function(){
+    $('#imagem').attr('src', '#');
+    $('#mission_img').val('');
+    $('.close-img').css('display', 'none');
+});;(function () {
 
     var contactCol = ".contacts .contact-item-wrapper";
     var contactItem = ".contacts .contact-item";
@@ -355,21 +391,21 @@ $('.aside-modal-dialog').on('mouseleave', function(){
 
 ;(function ($) {
     setTimeout(function () {
-        // $('.num-of-items-wrapper').each(function () {
         orderCount();
-
-        // });
-
     }, 1000);
 })(jQuery);
 
 function orderCount() {
     $('.num-of-items-wrapper').on('click', '.num-of-items-min', function () {
+
+
         $new_val = parseInt($(this).parent().find('.count').val()) - 1;
+
+        console.log($(this).attr('id'));
+
         if ($new_val >= 0) {
             $(this).parent().find('.count').val($new_val);
         }
-
     });
 
     $('.num-of-items-wrapper').on('click', '.num-of-items-max', function () {
@@ -587,13 +623,13 @@ $(document).ready(function () {
     arrowsDocRotation('.download-page .faq-item-title');
 });
 
-;function readURL(input) {
+;function readURL(input, $image) {
 
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $('#image').attr('src', e.target.result);
+            $($image).attr('src', e.target.result);
             $('.close-img').css('display', 'block');
         };
 
@@ -605,7 +641,15 @@ $(document).ready(function () {
 }
 
 $("#photo").change(function(){
-    readURL(this);
+    readURL(this,'#image');
+});
+
+$("#vision_img").change(function(){
+    readURL(this,'#imagev');
+});
+
+$("#mission_img").change(function(){
+    readURL(this, '#imagem');
 });
 ;(function () {
     function sizeRect(i) {

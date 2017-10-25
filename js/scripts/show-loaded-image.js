@@ -1,10 +1,10 @@
-function readURL(input) {
+function readURL(input, $image) {
 
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $('#image').attr('src', e.target.result);
+            $($image).attr('src', e.target.result);
             $('.close-img').css('display', 'block');
         };
 
@@ -16,5 +16,13 @@ function readURL(input) {
 }
 
 $("#photo").change(function(){
-    readURL(this);
+    readURL(this,'#image');
+});
+
+$("#vision_img").change(function(){
+    readURL(this,'#imagev');
+});
+
+$("#mission_img").change(function(){
+    readURL(this, '#imagem');
 });

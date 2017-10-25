@@ -42,7 +42,7 @@
 }
 
 .num-of-items-wrapper {
-  display: flex;
+  //display: flex;
   justify-content: center;
 }
 
@@ -92,4 +92,8 @@
 
 .count {
   text-align: center;
+}
+
+.send-order-btn {
+  margin-top: 2rem;
 }
