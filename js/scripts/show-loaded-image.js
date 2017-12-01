@@ -85,7 +85,7 @@ $("#gallery_bg_image").change(function () {
 });
 
 //main carousel
-for ($i = 1; $i <= 10; $i++) {
+for ($i = 1; $i <= 20; $i++) {
     $("#carousel_image_" + $i).change(function (x) {
         return function () {
             readURL(this, '#imagecarousel_image_' + x, '#close-carousel_image_' + x);

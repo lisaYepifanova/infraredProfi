@@ -18,6 +18,13 @@
               </div>';
 
         $($btn).prev().after($new_field);
+
+            $("#prop_image_" + $id).change(function (x) {
+        return function () {
+            readURL(this, '#imageprop_image_' + x, '#close-prop_image_' + x);
+        }
+    }($id));
+
     }
 
     $('.add-new-angebot-button').on('click', function () {

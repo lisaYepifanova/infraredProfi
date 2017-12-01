@@ -117,11 +117,54 @@ setTimeout(function () {
               </div>';
 
         $($btn).prev().after($new_field);
+
+            $("#prop_image_" + $id).change(function (x) {
+        return function () {
+            readURL(this, '#imageprop_image_' + x, '#close-prop_image_' + x);
+        }
+    }($id));
+
     }
 
     $('.add-new-angebot-button').on('click', function () {
         $id = $('#max_id_angebot').val();
         addAngebotField(parseInt($id) + 1, this);
+    });
+})(jQuery);
+;(function ($) {
+    function addCarouselItemField($id, $btn) {
+        $new_field = '<div class="item-edit"> \
+        <div class="carousel-img-ed carousel-image-edit' + $id + '"> \
+          <div class="prev-image"> \
+            <img id="imagecarousel_image_' + $id + '" \
+                 src="" \
+                 alt=""/> \
+            <div id="close-carousel_image_' + $id + '"> \
+              <button type="button">Reset</button> \
+            </div> \
+          </div> \
+          <input type="file" class="form-control" \
+                 id="carousel_image_' + $id + '" \
+                 name="carousel_image[carousel_image_' + $id + ']" \
+          > \
+          <span class="help-block"> Max filesize is 2mb</span> \
+          <input type="hidden" \
+                 name="carousel_image[carousel_image_' + $id + ']" \
+                 value="' + $id + '"> \
+          </div> </div>';
+
+        $($btn).prev().after($new_field);
+
+         $("#carousel_image_" + $id).change(function (x) {
+        return function () {
+            readURL(this, '#imagecarousel_image_' + x, '#close-carousel_image_' + x);
+        }
+    }($id));
+    }
+
+    $('.add-new-carousel-item').on('click', function () {
+        $id = $('#max_carousel_id').val();
+        addCarouselItemField(parseInt($id) + 1, this);
     });
 })(jQuery);
 ;(function ($) {
@@ -196,6 +239,45 @@ setTimeout(function () {
     });
 
 
+})(jQuery);
+;(function ($) {
+    function addGalleryItemField($id, $btn) {
+        $new_field = '<div class="item-wrapper-edit "> \
+            <div class=""> \
+              <img id="imagegallery_item_' + $id + '" \
+                   src="" \
+                   alt=""/> \
+              <div id="close-gallery_item_' + $id + '"> \
+                <button type="button">Reset</button> \
+              </div> \
+            </div> \
+            <input type="file" class="form-control" \
+                   id="gallery_item_' + $id + '" \
+                   name="gallery[item_' + $id + ']"> \
+            <span class="help-block"> Max filesize is 2mb</span> \
+            <input type="hidden" name="gallery[item_' + $id + ']" value="' + $id + '"> \
+            <div class="gallery-image-title"> \
+            <label for="is-on-main-gallery-' + $id + '">Image title</label> \
+            <input type="text" id="is-on-main-gallery-' + $id + '" name="img-title-main-gallery[item_' + $id + ']"> \
+            </div> \
+            <div class="is-on-main-item"> \
+            <input type="checkbox" id="is-on-main-gallery-' + $id + '" name="is-on-main-gallery[item_' + $id + ']" > \
+            <label for="is-on-main-gallery-' + $id + '">Is main image</label> \
+            </div></div>';
+
+        $($btn).prev().after($new_field);
+
+         $("#gallery_item_" + $id).change(function (x) {
+        return function () {
+            readURL(this, '#imagegallery_item_' + x, '#close-gallery_item_' + x);
+        }
+    }($id));
+    }
+
+    $('.add-new-gallery-item').on('click', function () {
+        $id = $('#max_gallery_id').val();
+        addGalleryItemField(parseInt($id) + 1, this);
+    });
 })(jQuery);
 ;(function ($) {
     function addPropField($id, $btn) {
@@ -1075,7 +1157,7 @@ $("#gallery_bg_image").change(function () {
 });
 
 //main carousel
-for ($i = 1; $i <= 10; $i++) {
+for ($i = 1; $i <= 20; $i++) {
     $("#carousel_image_" + $i).change(function (x) {
         return function () {
             readURL(this, '#imagecarousel_image_' + x, '#close-carousel_image_' + x);

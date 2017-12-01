@@ -6060,6 +6060,10 @@ Reusable, discrete UI elements.
     .gmap.left-padding {
       padding-left: 3.5rem; } }
 
+.box-lr-1m {
+  margin-left: 1rem;
+  margin-right: 1rem; }
+
 .gmap {
   width: 100%;
   height: 400px;

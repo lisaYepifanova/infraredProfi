@@ -14,6 +14,26 @@ class Model_Main extends Model {
     $res['max_prop_id'] = max($rr['arr_of_id']);
 
 
+    $query = $mysqli->query("SELECT id FROM header_slider");
+    if ($query) {
+      while ($r = mysqli_fetch_assoc($query)) {
+        $rr['arr_of_id_slider'][] = $r['id'];
+      }
+    }
+
+    $res['max_carousel_id'] = max($rr['arr_of_id_slider']);
+
+
+    $query = $mysqli->query("SELECT id FROM gallery_images");
+    if ($query) {
+      while ($r = mysqli_fetch_assoc($query)) {
+        $rr['arr_of_id_gallery'][] = $r['id'];
+      }
+    }
+
+    $res['max_gallery_id'] = max($rr['arr_of_id_gallery']);
+
+
     $query = $mysqli->query("SELECT * FROM homepage_info");
 
     if ($query) {
@@ -87,9 +107,19 @@ class Model_Main extends Model {
                 }
               }
 
+               $sel = 'SELECT id FROM header_slider WHERE id=' . $curr_id;
+              $query = $mysqli->query($sel);
 
-              $add_mi = 'UPDATE header_slider SET img = "slider/' . $carousel_image . '" WHERE id="' . $curr_id . '"';
+              $isId = mysqli_fetch_assoc($query);
+
+              if ($isId['id'] == NULL) {
+                $add_mi = 'INSERT INTO header_slider (id, img) VALUES ("' . $curr_id . '", "slider/' . $carousel_image . '")';
+              }
+              else {
+                $add_mi = 'UPDATE header_slider SET img = "slider/' . $carousel_image . '" WHERE id="' . $curr_id . '"';
+              }
               $adding_miq = $mysqli->query($add_mi);
+
             }
             else {
               $result['info'][] = 'Image is too large.';
@@ -211,7 +241,7 @@ class Model_Main extends Model {
             $property_image = $_FILES['gallery_bg']['name'];
           }
 
-          $add_mi = 'UPDATE homepage_gallery SET path = "homepage-gallery/' . $property_image . '"';
+          $add_mi = 'UPDATE gallery_bg SET path = "homepage-gallery/' . $property_image . '" WHERE id=1';
           $adding_miq = $mysqli->query($add_mi);
         }
         else {
@@ -268,12 +298,25 @@ class Model_Main extends Model {
                 }
               }
 
-              $add_mi = 'UPDATE gallery-images ' .
+               $sel = 'SELECT id FROM gallery_images WHERE id=' . $curr_id;
+              $query = $mysqli->query($sel);
+
+              $isId = mysqli_fetch_assoc($query);
+
+              if ($isId['id'] == NULL) {
+                $add_mi = 'INSERT INTO gallery_images ' .
+                  '(id, path, panel_displaying, alt, title) '.
+                  'VALUES ("' . $curr_id . '", "homepage-gallery/' . $gallery . '", "' . $curr_is_on_main . '", "' . $curr_title . '", "' . $curr_title . '")';
+              }
+              else {
+                $add_mi = 'UPDATE gallery_images ' .
                 'SET path = "homepage-gallery/' . $gallery . '", ' .
-                'panel-displaying = "' . $curr_is_on_main . '", ' .
+                'panel_displaying = "' . $curr_is_on_main . '", ' .
                 'alt = "' . $curr_title . '", ' .
                 'title = "' . $curr_title . '" ' .
                 'WHERE id="' . $curr_id . '"';
+              }
+
               $adding_miq = $mysqli->query($add_mi);
 
 
@@ -333,6 +376,20 @@ class Model_Main extends Model {
       }
     }
 
+    if (isset($_POST['img-title-main-gallery'])) {
+      foreach ($_POST['img-title-main-gallery'] as $id => $item) {
+        if (isset($_POST['img-title-main-gallery'][$id])) {
+
+          $i = explode("_", $id);
+          $add_mi = "UPDATE gallery_images SET alt = '" . $item . "', title = '" . $item . "' WHERE id = '" . $i[1] . "' ";
+
+          $adding_info_query = $mysqli->query($add_mi);
+        }
+      }
+    }
+
+
+
 
     //собственно запрос
     $add_q = "UPDATE homepage_info " .
@@ -353,6 +410,64 @@ class Model_Main extends Model {
      else {
        $result['res'] = FALSE;
      }*/
+
+    return $result;
+  }
+
+  public function delete_slider_img_data($id) {
+    include 'application/connection.php';
+
+
+    if (isset($id)) {
+      $del_file = "SELECT img FROM header_slider WHERE id = " . $id . " ";
+      $filename = mysqli_fetch_assoc($mysqli->query($del_file));
+
+      if (file_exists($filename['img'])) {
+        unlink($filename['img']);
+      }
+      else {
+        $result['info'] = "File not exist";
+      }
+
+      $del_q = "DELETE FROM header_slider WHERE id = " . $id . " ";
+      $info_query = $mysqli->query($del_q);
+    }
+
+    if ($info_query) {
+      $result['res'] = TRUE;
+    }
+    else {
+      $result['res'] = FALSE;
+    }
+
+    return $result;
+  }
+
+  public function delete_gallery_img_data($id) {
+    include 'application/connection.php';
+
+
+    if (isset($id)) {
+      $del_file = "SELECT path FROM gallery_images WHERE id = " . $id . " ";
+      $filename = mysqli_fetch_assoc($mysqli->query($del_file));
+
+      if (file_exists($filename['path'])) {
+        unlink($filename['path']);
+      }
+      else {
+        $result['info'] = "File not exist";
+      }
+
+      $del_q = "DELETE FROM gallery_images WHERE id = " . $id . " ";
+      $info_query = $mysqli->query($del_q);
+    }
+
+    if ($info_query) {
+      $result['res'] = TRUE;
+    }
+    else {
+      $result['res'] = FALSE;
+    }
 
     return $result;
   }

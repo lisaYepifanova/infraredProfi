@@ -127,7 +127,7 @@
 
           foreach ($data['gallery'] as $row) {
 
-              if ($row['panel-displaying'] == '1') {
+              if ($row['panel_displaying'] == '1') {
                   echo '<div class="item-wrapper col-sm-';
                   if (($index - 3) % 5 == 0 or ($index - 4) % 5 == 0) {
                       $size = 3;

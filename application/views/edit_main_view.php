@@ -3,7 +3,9 @@
   <h1 class="page-header container hsmall text-capitalize left-padding">EDIT MAIN PAGE</h1>
   <form enctype="multipart/form-data" method="post">
     <?php echo '<input type="hidden" name="max_prop_id" id="max_prop_id" value="'.$data['add']['max_prop_id'].'">'; ?>
-<input type="hidden" name="MAX_FILE_SIZE" value="409600"/>
+    <?php echo '<input type="hidden" name="max_carousel_id" id="max_carousel_id" value="'.$data['add']['max_carousel_id'].'">'; ?>
+    <?php echo '<input type="hidden" name="max_gallery_id" id="max_gallery_id" value="'.$data['add']['max_gallery_id'].'">'; ?>
+<input type="hidden" name="MAX_FILE_SIZE" value="2096000"/>
     <div class="homepage-header container left-padding">
       <a class="admin-page-icons admin-icon-item" href="/site-settings"><img src="<?php echo IMAGEPATH; ?>user_pages/settings.png" alt="settings"><p class="icon-title">Site settings</p>
     </a>
@@ -13,30 +15,37 @@
 
         foreach ($data['add']['header_slider'] as $id=>$row) {
           echo '<div class="item-edit">
-        <div class="carousel-img-ed carousel-image-edit' . $id. '">';
+        <div class="carousel-img-ed carousel-image-edit' . $row['id']. '">';
           ?>
 
           <div class="prev-image">
-            <img id="imagecarousel_image_<?php echo $id; ?>"
+            <img id="imagecarousel_image_<?php echo $row['id']; ?>"
                  src="<?php echo IMAGEPATH . '' . $row['img']; ?>"
                  alt=""/>
-            <div id="close-carousel_image_<?php echo $id; ?>">
+            <div id="close-carousel_image_<?php echo $row['id']; ?>">
               <button type="button">Reset</button>
             </div>
           </div>
 
           <input type="file" class="form-control"
-                 id="carousel_image_<?php echo $id; ?>"
-                 name="carousel_image[carousel_image_<?php echo $id; ?>]"
+                 id="carousel_image_<?php echo $row['id']; ?>"
+                 name="carousel_image[carousel_image_<?php echo $row['id']; ?>]"
           >
-          <span class="help-block"> Max filesize is 400Kb</span>
+          <span class="help-block"> Max filesize is 2mb</span>
           <input type="hidden"
-                 name="carousel_image[carousel_image_<?php echo $id; ?>]"
-                 value="<?php echo $id; ?>">
+                 name="carousel_image[carousel_image_<?php echo $row['id']; ?>]"
+                 value="<?php echo $row['id']; ?>">
 
           <?php
+
+            echo '<a class="glyphicon glyphicon-trash delete-carousel-item"
+                data-toggle="modal"
+                data-target="#delCarouselItem-' . $row['id'] . '">Delete</a>';
+              modalSliderWin($row['id']);
+
           echo '</div> </div>';
         }
+        echo '<a class="glyphicon glyphicon-plus add-new-carousel-item ">Add new carousel image</a>';
         ?>
 
       </div>
@@ -89,7 +98,7 @@
       <input type="file" class="form-control" id="sign_image"
              name="sign_image"
              value=<?php echo $r['sign_image']; ?>>
-      <span class="help-block"> Max filesize is 400Kb</span>
+      <span class="help-block"> Max filesize is 2mb</span>
 
       <?php
     }
@@ -115,7 +124,7 @@
 
           <input type="file" class="form-control" id="property_image"
                  name="property_image">
-          <span class="help-block"> Max filesize is 400Kb</span>
+          <span class="help-block"> Max filesize is 2mb</span>
         </div>
 
 
@@ -144,7 +153,7 @@
                    id="prop_image_<?php echo $row['id']; ?>"
                    name="property[<?php echo $row['id']; ?>][image]"
             >
-            <span class="help-block"> Max filesize is 400Kb</span>
+            <span class="help-block"> Max filesize is 2mb</span>
             <input type="hidden"
                    name="property[<?php echo $row['id']; ?>][id]"
                    value="<?php echo $row['id']; ?>">
@@ -185,14 +194,13 @@
       <input type="file" class="form-control" id="gallery_bg_image"
              name="gallery_bg"
       >
-      <span class="help-block"> Max filesize is 400Kb</span>
+      <span class="help-block"> Max filesize is 2mb</span>
     </div>
 
     <div class="homepage-products-items-edit left-padding">
       <div class="homepage-products-edit container box-same-vpadding">
         <div class="homepage-products-row row">
           <?php
-          $index = 1;
 
           foreach ($data['add']['gallery'] as $row) {
             echo '<div class="item-wrapper-edit ">';
@@ -200,42 +208,48 @@
             ?>
 
             <div class="">
-              <img id="imagegallery_item_<?php echo $index; ?>"
+              <img id="imagegallery_item_<?php echo $row['id']; ?>"
                    src="<?php echo IMAGEPATH . '' . $row['path']; ?>"
                    alt=""/>
-              <div id="close-gallery_item_<?php echo $index; ?>">
+              <div id="close-gallery_item_<?php echo $row['id']; ?>">
                 <button type="button">Reset</button>
               </div>
             </div>
 
             <input type="file" class="form-control"
-                   id="gallery_item_<?php echo $index; ?>"
-                   name="gallery[item_<?php echo $index; ?>]">
-            <span class="help-block"> Max filesize is 400Kb</span>
-            <input type="hidden" name="gallery[item_<?php echo $index; ?>]">
+                   id="gallery_item_<?php echo $row['id']; ?>"
+                   name="gallery[item_<?php echo $row['id']; ?>]">
+            <span class="help-block"> Max filesize is 2mb</span>
+            <input type="hidden" name="gallery[item_<?php echo $row['id']; ?>]" value="<?php echo $row['id']; ?>">
 
             <?php
             echo '<div class="gallery-image-title">';
-            echo '<label for="is-on-main-gallery-'
-              . $index . '">Image title</label>';
+            echo '<label for="image-title-'
+              . $row['id'] . '">Image title  </label>';
 
-             echo '<input type="text" id="is-on-main-gallery-'
-              . $index . '" name="img-title-main-gallery[item_' . $index . ']">';
+             echo '<input type="text" class="box-lr-1m" id="image-title-'
+              . $row['id'] . '" value="' . $row['alt'] . '" name="img-title-main-gallery[item_' . $row['id'] . ']">';
              echo '</div>';
 
              echo '<div class="is-on-main-item">';
             echo '<input type="checkbox" id="is-on-main-gallery-'
-              . $index . '" name="is-on-main-gallery[item_' . $index . ']" ';
-            if ($row['panel-displaying'] == '1') {
+              . $row['id'] . '" name="is-on-main-gallery[item_' . $row['id'] . ']" ';
+            if ($row['panel_displaying'] == '1') {
               echo ' checked ';
             }
             echo '>';
-            echo '<label for="is-on-main-gallery-' . $index . '">Is main image</label>';
+            echo '<label for="is-on-main-gallery-' . $row['id'] . '">Is main image</label>';
+
+            echo '<br><a class="glyphicon glyphicon-trash delete-homepage-gallery-item"
+                data-toggle="modal"
+                data-target="#delGalleryItem-' . $row['id'] . '">Delete</a>';
+              modalGalleryWin($row['id']);
+
             echo '</div>';
             echo '</div>';
 
-            $index = $index + 1;
           }
+          echo '<a class="glyphicon glyphicon-plus add-new-gallery-item ">Add new gallery image</a>';
           ?>
         </div>
       </div>
@@ -251,3 +265,56 @@
 <div id="imageNavMenu" class="modal fade image-nav-menu container"
      style="display: none;">
 </div>
+
+ <?php
+        function modalSliderWin($j) {
+          echo '<div class="modal fade" id="delCarouselItem-' . $j . '" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Deleting image</h4>
+        </div>
+        <div class="modal-body">
+          <p>Do you want to delete image?</p>
+        </div>
+        <div class="modal-footer">
+          <a href="/main/delete-slider-img/' . $j . '" class="btn btn-default">Delete</a>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cansel</button>
+          
+        </div>
+      </div>
+
+    </div>
+  </div>';
+        }
+        ?>
+
+ <?php
+        function modalGalleryWin($j) {
+          echo '<div class="modal fade" id="delGalleryItem-' . $j . '" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Deleting image</h4>
+        </div>
+        <div class="modal-body">
+          <p>Do you want to delete image?</p>
+        </div>
+        <div class="modal-footer">
+          <a href="/main/delete-gallery-img/' . $j . '" class="btn btn-default">Delete</a>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cansel</button>
+          
+        </div>
+      </div>
+
+    </div>
+  </div>';
+        }
+
+        ?>
