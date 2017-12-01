@@ -1,12 +1,15 @@
 .registration-properties,
 .homepage-properties {
   width: 100%;
-  padding: 0;
 
   .homepage-properties-row,
   .registration-properties-row {
     display: table;
     width: 100%;
+      padding-left: 2.25rem;
+    @media (min-width: $screen-xs) {
+      padding-left: $nav-panel-width;
+    }
   }
 
   .left-side {
@@ -24,8 +27,7 @@
 
   .right-side {
     width: 50%;
-    //padding-right: $nav-panel-width;
-    padding-left: $homepage-properties-padding-mob;
+    padding-left: 3rem;
 
     @media (min-width: $screen-sm-min) {
       width: $container-sm/2;
@@ -84,7 +86,7 @@
     }
   }
 
-  @for $i from 1 through 4 {
+  @for $i from 1 through 10 {
     .property-item#{$i} .property-item-image {
       width: 32px;
       height: 36px;
@@ -120,6 +122,7 @@
   }
 }
 
+
 .registration-properties .right-side {
   color: white;
   padding-right: 3.5rem;
@@ -129,4 +132,12 @@
   background-color: $footer-bg;
 }
 
+.homepage-properties-edit  {
+  .property-title {
+    padding-left: 0;
+  }
 
+  .right-side {
+    padding: 0 0.5rem;
+  }
+}

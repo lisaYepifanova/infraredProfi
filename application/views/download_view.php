@@ -1,8 +1,8 @@
 <main class="download-page">
 
-  <h1 class="page-header container text-capitalize">DOWNLOAD</h1>
+  <h1 class="page-header container text-capitalize left-padding">DOWNLOAD</h1>
 
-  <div class="faq-content-wrapper container right-padding">
+  <div class="faq-content-wrapper container left-padding">
     <div class="faq-content download-content">
 
         <?php

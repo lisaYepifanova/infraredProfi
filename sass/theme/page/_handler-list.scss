@@ -18,11 +18,12 @@
 
     @media all and (max-width: 619px) {
       top: 12px;
+      right: 1rem;
     }
   }
 
   .delete-item {
-    right: 42px;
+    right: 4rem;
   }
 
 }
@@ -87,4 +88,9 @@
     align-items: stretch;
   }
 
+}
+
+.admin-page-icons.add-handler {
+  min-height:4.5rem;
+  display: block;
 }

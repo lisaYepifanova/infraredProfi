@@ -1,7 +1,7 @@
 <main class="product">
 
-  <h1 class="page-header container text-capitalize right-padding"><?php echo $data[0]['title']; ?></h1>
-  <div class="product-menu-wrapper col-sm-3">
+  <h1 class="page-header container text-capitalize left-padding left-padding"><?php echo $data[0]['title']; ?></h1>
+  <div class="product-menu-wrapper col-sm-3 left-padding">
     <div class="product-menu floating">
       <ul>
           <?php
@@ -68,7 +68,7 @@
     </div>
   </div>
 
-  <div class=" container right-padding">
+  <div class=" container left-padding">
     <div>
 
       <div class="product-main">
@@ -352,7 +352,7 @@
         <div class="similar-products-wrapper">
           <div class="similar-products">
             <h3 class="similar-products-title">UNSERE PRODUKTE</h3>
-            <div class="row right-padding">
+            <div class="row">
                 <?php
                 include 'application/connection.php';
                 $routes = explode('/', $_SERVER['REQUEST_URI']);
@@ -390,11 +390,11 @@
 
             <div class="thermostats-products-wrapper">
               <div class="thermostats-products">
-                <h3 class="thermostats-products-title right-padding ">FÜR
+                <h3 class="thermostats-products-title  ">FÜR
                   STEUERUNG UNSERE
                   HEIZUNGSSYSTEME EMPFEHLEN WIR WARM UP THERMOSTATE
                 </h3>
-                <div class="row right-padding">
+                <div class="row ">
                     <?php
                     include 'application/connection.php';
                     $q = "SELECT * FROM thermostat WHERE parent_id='7'";

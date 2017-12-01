@@ -23,8 +23,6 @@
 
   cursor: pointer;
 
-
-
   .menu-link-line {
     display: block;
     width: 2rem;
@@ -32,11 +30,11 @@
     background-size: 100% 100%;
     background-color: $footer-bg;
 
-      @media all and (max-width: 480px) {
-     width: 1.5rem;
-    margin: auto;
-        height: 5px;
-  }
+    @media all and (max-width: 480px) {
+      width: 1.5rem;
+      margin: auto;
+      height: 5px;
+    }
   }
 
   .line1,
@@ -48,7 +46,6 @@
   }
   .line3 {
   }
-
 
 }
 

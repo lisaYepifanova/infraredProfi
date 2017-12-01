@@ -1,6 +1,6 @@
 <main>
 
-  <h1 class="page-header container text-capitalize right-padding"><?php echo strtoupper(
+  <h1 class="page-header container text-capitalize left-padding"><?php echo strtoupper(
         $pageTitle
       ); ?></h1>
     <?php if ($pageTitle !== 'Unsere Produkte') { ?>
@@ -38,7 +38,7 @@
         </div>
       </div>
     <?php } ?>
-  <div class="gallery container right-padding">
+  <div class="gallery container left-padding">
     <div class='row'>
         <?php
         if (!empty($data['items'])) {

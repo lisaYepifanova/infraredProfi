@@ -1,7 +1,7 @@
 <main>
-  <h1 class="page-header container text-capitalize">LOGIN</h1>
+  <h1 class="page-header container text-capitalize left-padding">LOGIN</h1>
 
-  <div class="container login-form-wrapper box-mid-margin right-padding">
+  <div class="container login-form-wrapper box-mid-margin left-padding">
 
       <?php
       if (!$data['iscorrect']) {

@@ -1,14 +1,14 @@
 <main class="add-handler-page">
-  <h1 class="page-header container text-capitalize">EDIT USER</h1>
+  <h1 class="page-header container text-capitalize left-padding">EDIT USER</h1>
 
-  <div class="container right-padding box-mid-margin">
-    <a class="admin-page-icons" href="/user/">
+  <div class="container left-padding box-mid-margin">
+    <a class="admin-page-icons admin-icon-item" href="/user/">
         <?php echo '<img src="'.$data['add']['list_page']['list_icon']['path'].'" alt="'.$data['add']['list_page']['list_icon']['name'].'">'; ?>
       <p class="icon-title">Back to the user page</p>
     </a>
   </div>
 
-  <div class="handler-editing-form container right-padding box-mid-margin">
+  <div class="handler-editing-form container left-padding box-mid-margin">
 
       <?php
       if ($data['save']) {

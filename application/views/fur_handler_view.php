@@ -1,15 +1,15 @@
 <main>
 
-  <h1 class="page-header container hsmall text-capitalize">FÜR HÄNDLER</h1>
+  <h1 class="page-header container hsmall text-capitalize left-padding">FÜR HÄNDLER</h1>
 
 
-  <div class="registration-top-block right-padding">
+  <div class="registration-top-block">
       <?php
-      echo '<h3 class="container">'.$data['main_info']['top_block'].'</h3>';
+      echo '<h3 class="container  left-padding">'.$data['main_info']['top_block'].'</h3>';
       ?>
   </div>
 
-  <div class="container right-padding">
+  <div class="container left-padding">
     <div class="registration-leistungen-wrapper">
       <h3> <?php echo $data['main_info']['service_title']; ?></h3>
       <div class="registration-leistungen"
@@ -24,7 +24,7 @@
     </div>
 
     <div class="registration-description">
-        <?php echo $data['main_info']['description']; ?>
+        <?php echo '<h3>'.$data['main_info']['description'].'</h3>'; ?>
     </div>
   </div>
 
@@ -34,7 +34,7 @@
            style="background-image: url(<?php echo IMAGEPATH.$data['main_info']['angebot_bg'] ?>)"></div>
       <div class="properties-side right-side-wrapper">
         <?php
-          echo '<h3 class="property-title registration-property-title right-padding">'.$data['main_info']['angebot_title'].'</h3>';
+          echo '<h3 class="property-title registration-property-title left-padding">' .$data['main_info']['angebot_title'].'</h3>';
 ?>
       <div class="properties-side right-side">
 
@@ -57,7 +57,7 @@
     </div>
   </div>
 
-  <div class="registration-form container right-padding box-same-vmargin">
+  <div class="registration-form container left-padding box-same-vmargin">
     <div class="registration-form-title text-center">
     <?php echo $data['main_info']['form_title']; ?>
     </div>

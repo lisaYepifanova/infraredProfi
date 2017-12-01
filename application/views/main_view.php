@@ -43,7 +43,7 @@
 
       </div>
     </div>
-    <div class="homepage-header-title-wrapper container">
+    <div class="homepage-header-title-wrapper left-padding container">
       <h2 class="homepage-header-title">
           <?php
           echo $data['header_title'];
@@ -53,17 +53,50 @@
   </div>
 
 
-    <?php
-    include("application/views/fragments/philosophy.php");
-    ?>
+<div class="philosophy container box-vmargin left-padding">
+  <h3 class="philosophy-title text-center">PHILOSOPHIE</h3>
 
-  <div class="homepage-properties">
-    <div class="homepage-properties-row">
+  <?php
+  include 'application/connection.php';
+  $q = "SELECT * FROM philosophy";
+  $query = $mysqli->query($q);
+
+  if ($query) {
+    while ($r = mysqli_fetch_assoc($query)) {
+      echo '<div class="">' . $r['text'] . '</div>';
+    }
+  }
+
+  $q = "SELECT sign_image FROM homepage_info";
+  $query = $mysqli->query($q);
+
+  if ($query) {
+    while ($r = mysqli_fetch_assoc($query)) {
+      echo '<div class="sign-wrapper text-center">';
+      ?>
+
+      <div>
+        <img id="imagesign_image"
+             src="<?php echo IMAGEPATH . '' . $r['sign_image']; ?>"
+             alt=""/>
+
+      </div>
+
+      <?php
+    }
+  }
+  ?>
+
+</div>
+</div>
+
+  <div class="homepage-properties ">
+    <div class="homepage-properties-row ">
       <div class="properties-side left-side" style="background-image: url(<?php echo IMAGEPATH.$data['property_image']?>)"></div>
       <?php
-          echo '<h3 class="property-title right-padding">'.$data['property_title'].'</h3>';
+          echo '<h3 class="property-title left-padding ">' .$data['property_title'].'</h3>';
           ?>
-      <div class="properties-side right-side right-padding">
+      <div class="properties-side right-side left-padding">
 
           <?php
           $index = 1;
@@ -105,7 +138,7 @@
                 <a href="#imageNavMenu" class="imageNavMenuLink '.$row['alt'].'" data-toggle="modal">
                 <div class="homepage-product-item item-'.$index.'" style="background-image: url('.IMAGEPATH.$row['path'].')">
                 </div>
-                </a>>
+                </a>
               </div>';
 
                   $index = $index + 1;

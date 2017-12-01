@@ -1,6 +1,6 @@
 <main class="order-page">
-  <h1 class="page-header container text-capitalize">ORDER PRODUCTS</h1>
-  <div class="container right-padding">
+  <h1 class="page-header container text-capitalize left-padding">ORDER PRODUCTS</h1>
+  <div class="container left-padding">
     <form role="form" action="" method="post">
       <div class="price-list-content">
 

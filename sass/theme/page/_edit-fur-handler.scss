@@ -1,0 +1,29 @@
+.registration-leistungen-edit {
+  display: inline-block;
+}
+
+.leistungen-item-edit {
+  //display: flex;
+}
+
+.leistungen-item-img-wrap-edit {
+  display: inline-block;
+}
+
+.leistungen-item-img-edit {
+  max-height: 200px;
+  height: 100%;
+
+  div {
+    max-height: 100%;
+    display: block;
+
+    img {
+      max-height: 85px;
+    }
+  }
+}
+
+.left-side-edit {
+  vertical-align: top;
+}

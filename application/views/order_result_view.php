@@ -1,7 +1,7 @@
 <main class="order-page">
-  <h1 class="page-header container text-capitalize">ORDER RESULT</h1>
+  <h1 class="page-header container text-capitalize left-padding">ORDER RESULT</h1>
 
-  <div class="order-result-wrapper container right-padding">
+  <div class="order-result-wrapper container left-padding">
     <form role="form" action="/order-sending" method="post">
   <?php
     if(isset($data)) {

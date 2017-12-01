@@ -1,101 +1,58 @@
 <?php
 
-class Model_Default extends Model
-{
-    public function get_data()
-    {
-        return [
-          'footer_links' => [
+class Model_Default extends Model {
+  public function get_data() {
 
+    include 'application/connection.php';
+    $query = $mysqli->query("SELECT * FROM default_info");
 
-          ],
-          'footer_service_links' => [
-            [
-              'title' => 'Datenschutz',
-              'link' => '/datenschutz',
-            ],
-            [
-              'title' => 'AGB',
-              'link' => '/agb',
-            ],
-            [
-              'title' => 'Impressum',
-              'link' => '/impressum',
-            ],
-          ],
-          'phones' => [
-            [
-              'text' => '+49 (0) 33638 91 11 73',
-              'tel' => '+49033638911173',
-            ],
-            [
-              'text' => '+49 (0) 152 235 008 44',
-              'tel' => '+49015223500844',
-            ],
-            [
-              'text' => '+49 (0) 151 281 318 23',
-              'tel' => '+49015128131823',
-            ],
-          ],
-          'contacts' => [
-            [
-              'icon' => 'icons/contacts/mail.png',
-              'value' => 'info@infraredprofi.de',
-              'link' => 'mailto:info@infraredprofi.de',
-              'name' => 'email',
-            ],
-            [
-              'icon' => 'icons/contacts/phone.png',
-              'name' => 'phone',
-            ],
-            [
-              'icon' => 'icons/contacts/location.png',
-              'value' => 'KONTAKT',
-              'link' => '/kontakt',
-              'name' => 'kontakt',
-            ],
-            [
-              'icon' => 'icons/contacts/chat.png',
-              'value' => 'FÜR HÄNDLER',
-              'link' => '/fur-handler',
-              'name' => 'fur-handler',
-            ],
-          ],
-          'modal_menu' => [
-            [
-              'title' => 'HOME',
-              'link' => '/',
-            ],
-            [
-              'title' => 'TECHNOLOGIE',
-              'link' => '/technologie',
-            ],
-            [
-              'title' => 'UNSERE PRODUKTE',
-              'link' => '/unsere-produkte',
-            ],
-            [
-              'title' => 'ÜBER UNS',
-              'link' => '/uber-uns',
-            ],
-            [
-              'title' => 'FÜR HÄNDLER',
-              'link' => '/fur-handler',
-            ],
-            [
-              'title' => 'KONTAKT',
-              'link' => '/kontakt',
-            ],
-            [
-              'title' => 'FAQ',
-              'link' => '/faq',
-            ],
-               [
-              'title' => 'DOWNLOAD',
-              'link' => '/download',
-            ],
-          ],
-          'site_logo' => 'site_logo.png',
-        ];
+    if ($query) {
+      while ($r = mysqli_fetch_assoc($query)) {
+        $res['logo'][] = $r;
+      }
     }
+
+        $query = $mysqli->query("SELECT * FROM footer_links");
+
+    if ($query) {
+      while ($r = mysqli_fetch_assoc($query)) {
+        $res['footer_links'][] = $r;
+      }
+    }
+
+    $query = $mysqli->query("SELECT * FROM footer_service_links");
+
+    if ($query) {
+      while ($r = mysqli_fetch_assoc($query)) {
+        $res['footer_service_links'][] = $r;
+      }
+    }
+
+    $query = $mysqli->query("SELECT * FROM phones");
+
+    if ($query) {
+      while ($r = mysqli_fetch_assoc($query)) {
+        $res['phones'][] = $r;
+      }
+    }
+
+    $query = $mysqli->query("SELECT * FROM contacts");
+
+    if ($query) {
+      while ($r = mysqli_fetch_assoc($query)) {
+        $res['contacts'][] = $r;
+      }
+    }
+
+
+    $query = $mysqli->query("SELECT * FROM modal_menu");
+
+    if ($query) {
+      while ($r = mysqli_fetch_assoc($query)) {
+        $res['modal_menu'][] = $r;
+      }
+    }
+
+    return $res;
+  }
 }

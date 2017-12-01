@@ -1,8 +1,8 @@
 <main>
 
-  <h1 class="page-header container hsmall text-capitalize">TECHNOLOGIE</h1>
+  <h1 class="page-header container hsmall text-capitalize left-padding">TECHNOLOGIE</h1>
 
-  <div class="container right-padding">
+  <div class="container left-padding">
     <div class="technology-description box-mid-margin">
         <?php
             echo '<p class="description-before-items">'.$data['description_before'].'</p>';
@@ -27,7 +27,7 @@
   </div>
   <div class="description-img-comparison-wrapper ">
     <div
-        class="description-img-comparison box-mid-margin text-center container right-padding">
+        class="description-img-comparison box-mid-margin text-center container left-padding">
         <?php
         /*first item*/
         echo '<div class="row">';
@@ -68,7 +68,7 @@
         ?>
     </div>
   </div>
-  <div class="container right-padding">
+  <div class="container left-padding">
     <h3 class="description-scheme-title text-center"><?php echo $data['scheme_title']; ?></h3>
     <div class="description-img-scheme box-mid-margin text-center">
         <?php

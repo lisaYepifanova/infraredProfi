@@ -1,14 +1,22 @@
 .admin-page-icons {
-  // min-width: 200px;
-  height: 48px;
-  //display: inline-block;
+  min-height: 120px;
+
   color: $footer-bg;
   text-align: center;
+  margin-bottom: 1rem;
 
-  img {
-    max-height: 100%;
+  img,
+  .user-page-icon {
+    max-height: 48px;
     max-width: 100%;
+  }
 
+  @media all and (min-width: 365px) {
+    min-height: 160px;
+  }
+
+  @media all and (min-width: 576px) {
+    min-height: 90px;
   }
 
   @media all and (min-width: 680px) {
@@ -30,4 +38,36 @@
     }
 
   }
+}
+
+.admin-icon-item {
+  display: block;
+  min-height:80px;
+  max-width: 200px;
+}
+
+.homepage-properties-edit {
+  padding-left: 0;
+}
+
+
+
+
+.properties-side.left-side-edit {
+  height: auto;
+  @media (max-width: 767px) {
+    padding: 0 1rem;
+  }
+}
+
+.about-us-description-edit {
+  padding: 0;
+}
+
+.properties-right-side-edit.right-side {
+  padding:1rem;
+}
+
+.registration-form-title-edit {
+  margin-bottom: 0;
 }

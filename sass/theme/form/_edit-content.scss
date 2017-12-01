@@ -1,0 +1,57 @@
+.input-map {
+  width: 100%;
+}
+
+.smaller-image {
+  max-height: 100vh;
+  height: 400px;
+  display: inline-block;
+
+  img {
+        max-height: inherit;
+    height: 100%;
+  }
+}
+
+.item-edit {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.prev-image {
+  img {
+    width: 400px;
+    max-width: 100%;
+  }
+}
+
+.homepage-properties-edit .left-side {
+  height: auto;
+}
+
+
+.homepage-products-edit {
+.homepage-products-row {
+  margin: 0;
+  width: 100%;
+}
+
+}
+
+
+.item-wrapper-edit {
+  margin-bottom: 3.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  img {
+    max-height: 400px;
+  }
+}
+
+.accordion-title-textarea {
+  width: 90%;
+}
+

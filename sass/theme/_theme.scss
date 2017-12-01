@@ -26,6 +26,8 @@ Pages
 @import "page/handler-list";
 @import "page/admin-pages";
 @import "page/order-page";
+@import "page/edit-fur-handler";
+
 
 /**
 Forms
@@ -34,3 +36,5 @@ Forms
 @import "form/login-form";
 @import "form/handler-adding-form";
 @import "form/del-form";
+@import "form/edit-content";
+

@@ -1,5 +1,5 @@
 .modal {
-  padding-right: 0 !important;
+  padding-left: 0 !important;
 }
 
   body.modal-open {
@@ -13,7 +13,7 @@
     display: inline-block;
 
     @media all and (min-width: 480px){
-      width: 49%;
+   //   width: 49%;
     }
   }
 
@@ -33,7 +33,7 @@
   }
 
   .modal-dialog {
-    float: right;
+    float: left;
     height: 100%;
     margin: 0;
 
@@ -71,7 +71,8 @@
 
   button.close {
     top: 50%;
-    transform: translateY(-65%);
+    right: 2%;
+    transform: translateY(-65%) rotate(180deg);
     position: absolute;
     cursor: pointer;
     z-index: 1;
@@ -88,8 +89,8 @@
 }
 
 #asideNavMenu.modal.fade:not(.in) .modal-dialog {
-    -webkit-transform: translate3d(-25%, 0, 0);
-    transform: translate3d(25%, 0, 0);
+    -webkit-transform: translate3d(25%, 0, 0);
+    transform: translate3d(-25%, 0, 0);
 }
 
 #imageNavMenu.modal.fade:not(.in) .modal-dialog {

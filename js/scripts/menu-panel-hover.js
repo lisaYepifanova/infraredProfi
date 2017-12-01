@@ -1,4 +1,4 @@
-$('.right-panel').on('mouseenter', function(){
+$('.left-panel').on('mouseenter', function(){
     //$('#asideNavMenu').modal('show');
 });
 

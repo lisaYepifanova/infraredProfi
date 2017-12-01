@@ -1,15 +1,15 @@
 <main>
 
-  <h1 class="page-header container hsmall text-capitalize">FÜR HÄNDLER</h1>
+  <h1 class="page-header container hsmall text-capitalize left-padding">FÜR HÄNDLER</h1>
 
 
-  <div class="registration-top-block right-padding">
+  <div class="registration-top-block left-padding">
       <?php
       echo '<h3>'.$data['main_info']['top_block'].'</h3>';
       ?>
   </div>
 
-  <div class="container right-padding">
+  <div class="container left-padding">
     <div class="registration-leistungen-wrapper">
       <h3> <?php echo $data['main_info']['service_title']; ?></h3>
       <div class="registration-leistungen"
@@ -55,7 +55,7 @@
     </div>
   </div>
 
-  <div class="registration-form registration-form-sent container right-padding box-same-vmargin">
+  <div class="registration-form registration-form-sent container left-padding box-same-vmargin">
     <h3>REQUEST SENT SUCCESSFULLY</h3>
   </div>
 </main>

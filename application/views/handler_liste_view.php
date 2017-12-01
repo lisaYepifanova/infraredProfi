@@ -1,14 +1,14 @@
 <main>
-  <h1 class="page-header container text-capitalize">HANDLER LISTE</h1>
+  <h1 class="page-header container text-capitalize left-padding">HANDLER LISTE</h1>
 
-  <div class="right-padding box-mid-margin container">
-    <a class="admin-page-icons" href="/handler-liste/add-user/">
+  <div class="left-padding box-mid-margin container">
+    <a class="admin-page-icons add-handler" href="/handler-liste/add-user/">
         <?php echo '<img src="'.$data['list_page']['add_icon']['path'].'" alt="'.$data['list_page']['add_icon']['name'].'">'; ?>
       <p class="icon-title">Add new user</p>
     </a>
   </div>
 
-  <div class="container handler-liste-wrapper box-mid-margin right-padding">
+  <div class="container handler-liste-wrapper box-mid-margin left-padding">
     <div class="handler-liste">
         <?php
         foreach ($data['user_info'] as $row) {

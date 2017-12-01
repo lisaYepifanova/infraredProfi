@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="de">
 <?php
-$pageTitle = "Infrared Profi";
+$pageTitle = "Infrared24";
 ?>
 <head>
   <meta charset="utf-8">
@@ -54,11 +54,11 @@ Handtuchheizung , Wandheizsystem , Glaskeramik , Glasheizung ">
 
 <div class="site-logo-wrapper">
     <?php
-    echo '<a href="/"><img src="'.IMAGEPATH.$default['site_logo'].'" alt="logo"></a>'
+    echo '<a href="/"><img src="'.IMAGEPATH.$default['logo'][0]['site_logo'].'" alt="logo"></a>'
     ?>
 </div>
 
-<a class="right-panel aside-panel" href="#asideNavMenu" data-toggle="modal">
+<a class="left-panel aside-panel" href="#asideNavMenu" data-toggle="modal">
   <div class="navbar navbar-default navbar-right-panel" role="navigation">
     <div class="menu-link-button">
       <div class="menu-link">
@@ -74,7 +74,7 @@ Handtuchheizung , Wandheizsystem , Glaskeramik , Glasheizung ">
 include 'application/views/'.$content_view;
 ?>
 
-<div class="contacts container box-same-vmargin right-padding">
+<div class="contacts container box-same-vmargin left-padding">
   <div class="row">
       <?php
       $index = 1;
@@ -102,7 +102,7 @@ include 'application/views/'.$content_view;
 
 <footer id="footer" class="footer text-center">
   <div class="footer-links-wrapper container">
-    <div class="footer-links row">
+    <div class="footer-links row left-padding">
         <?php
         if (!empty($default['footer_links'])) {
             foreach ($default['footer_links'] as $row) {
@@ -111,14 +111,14 @@ include 'application/views/'.$content_view;
         }
         ?>
     </div>
-    <div class="footer-links footer-service-links row">
+    <div class="footer-links footer-service-links left-padding row">
         <?php
         foreach ($default['footer_service_links'] as $row) {
             echo '<a href="'.$row['link'].'" class="footer-link col-xs-4">'.$row['title'].'</a>';
         }
         ?>
     </div>
-    <div class="text-center right-padding">© 2017 Fomin & Dementev GbR</div>
+    <div class="text-center left-padding">© 2017 InfraRed24 GmbH</div>
   </div>
 </footer>
 

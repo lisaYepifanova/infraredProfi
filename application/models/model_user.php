@@ -134,6 +134,19 @@ class Model_User extends Model
         $res['logout_icon']['path'] = IMAGEPATH.'user_pages/'.$add_path['path'];
         $res['logout_icon']['name'] = $add_path['name'];
 
+        ///
+        $add_path_q = $mysqli->query(
+          "SELECT * FROM list_page_icons WHERE name='settings'"
+        );
+
+        if ($add_path_q) {
+            $add_path = mysqli_fetch_assoc($add_path_q);
+        }
+
+        $res['settings_icon']['path'] = IMAGEPATH.'user_pages/'.$add_path['path'];
+        $res['settings_icon']['name'] = $add_path['name'];
+
+
         return $res;
     }
 

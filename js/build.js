@@ -22,7 +22,12 @@ $('.carousel-showmanymoveone .item').each(function(){
   }
 });
 ;$(function () {
-    CKEDITOR.replaceAll( 'editor-area' );
+
+CKEDITOR.replaceAll( 'editor-area', {
+    filebrowserBrowseUrl: '/browser/browse.php',
+    filebrowserUploadUrl: '/uploader/upload.php'
+} );
+
 });
 ;$('.item-wrapper a').each(function () {
     $linkClass = $(this).attr('class').split(' ');
@@ -92,7 +97,197 @@ setTimeout(function () {
 
 }, 100);
 
-})(jQuery);;(function () {
+})(jQuery);;(function ($) {
+    function addAngebotField($id, $btn) {
+        $new_field = '<div class="property-item property-item' + $id + '"> \
+              <div class="property-item-image"></div> \
+              <div> \
+                <img id="imageang' + $id + '" \
+                     src="" \
+                     alt=""/> \
+                <a href="#" class="close-img-ang_' + $id + '"> \
+                  <button type="button">Reset</button> \
+                </a> \
+              </div> \
+              <input type="file" class="form-control" id="service_ang' + $id + '" \
+                     name="ang_image' + $id +'"> \
+              <span class="help-block"> Max filesize is 400Kb</span> \
+              <h4 class="property-item-title"><textarea class="bg-field full-textarea" name="item-title_' + $id + '"></textarea></h4> \
+              <p class="property-item-description"><textarea class="bg-field full-textarea" name="item-desc_' + $id + '"></textarea></p> \
+              </div>';
+
+        $($btn).prev().after($new_field);
+    }
+
+    $('.add-new-angebot-button').on('click', function () {
+        $id = $('#max_id_angebot').val();
+        addAngebotField(parseInt($id) + 1, this);
+    });
+})(jQuery);
+;(function ($) {
+    function addQuestionField($index) {
+        $new_field = '<div class="faq-item panel box-mid-margin panel-default"> \
+                    <h4 class="faq-item-title collapsed" \
+                    data-parent="#accordion" \
+                    data-toggle="collapse" \
+                    data-target="#answer-' + $index + '" \
+                    aria-expanded="false">\
+                    <span class="glyphicon glyphicon-chevron-down arrow-down"> \
+                     </span> \
+                    <input type="text" placeholder="Question"\
+                              name="question_' + $index + '" \
+                              class="full-textarea"></h4> \
+                    <div  role="definition" id="answer-' + $index + '" \
+                    class="faq-item-answer panel-collapse collapse " \
+                    aria-expanded="false" \
+                    style="height: 0px;"><textarea\
+                        class="editor-area full-textarea answer_' + $index + '" \
+                        name="answer_' + $index + '" \
+                       ></textarea> \
+                       <input type="hidden" name="id_' +$index +'"  value="' + $index + '"> \
+                        </div> \
+                        <a class="glyphicon glyphicon-trash delete-faq-item">Delete</a> \
+                       </div> \
+                  </div>';
+
+
+        $('.faq-item').last().after($new_field);
+         CKEDITOR.replaceAll( 'answer_' + $index );
+    }
+
+    $('.add-new-question-button').on('click', function () {
+        $lastId = $('.faq-item .faq-item-answer').last().attr('id');
+
+        $split = $lastId.split('-');
+        $index = $split[$split.length - 1];
+
+        addQuestionField(parseInt($index) + 1);
+    });
+
+
+})(jQuery);
+;(function ($) {
+    function addFileField($j, $btn, $cid) {
+        $new_field = '<div class="doc-item box-mid-margin doc-item-' + $j + '"> \
+              <label for="name_' + $j + '">Name:</label> \
+             <input type="text" id="name_' + $j + '" \
+                    name="doc[' + $j + '][name]"  class="full-textarea"> \
+              <label for="file_' + $j + '">File:</label> \
+             <input type="file" id="file_' + $j + '" \
+                    name="doc[' + $j + ']" class="full-textarea"> \
+              <input type="hidden" name="doc[' + $j + '][cid]" value="' + $cid + '">  \
+              </div>';
+
+        $($btn).prev().after($new_field);
+    }
+
+    $('.add-new-document').on('click', function () {
+        $id = $('#max_id').val();
+
+        $catId = $(this).attr('class');
+
+        $split = $catId.split(' ');
+        $lastClass = $split[$split.length - 1];
+
+        $splitClass = $lastClass.split('-');
+        $cid = $splitClass[$splitClass.length - 1];
+
+        addFileField(parseInt($id) + 1, this, $cid);
+    });
+
+
+})(jQuery);
+;(function ($) {
+    function addPropField($id, $btn) {
+        $new_field = '<div class="property-item property-item_' + $id + '"> \
+              <div class="property-item-image" style=""></div> \
+            <div class="">\
+              <img id="imageprop_image_' + $id + '" \
+                   src="/" \
+                   alt=""/> \
+              <div id="close-prop_image_' + $id + '"> \
+                <button type="button">Reset</button> \
+              </div> \
+            </div> \
+            <input type="file" class="form-control" \
+                   id="prop_image_' + $id + '" \
+                   name="property[' + $id + '][image]" \
+            > \
+            <span class="help-block"> Max filesize is 400Kb</span> \
+            <input type="hidden" \
+                   name="property[' + $id + '][id]" \
+                   value="' + $id + '"> \
+            <h4 class="property-item-title"> \
+              <input type="text" class="full-textarea" name="property[' + $id + '][title]" value=""> \
+              </h4> \
+              <p class="property-item-description"> \
+              <textarea class="editor-area full-textarea" name="property[' + $id + '][description]"> \
+              </textarea></p> \
+              </div>';
+
+        $($btn).prev().after($new_field);
+    }
+
+    $('.add-new-prop').on('click', function () {
+        $id = $('#max_prop_id').val();
+        addPropField(parseInt($id) + 1, this);
+    });
+})(jQuery);
+;(function ($) {
+    function addMenuItemField($id, $btn) {
+        $new_field = '<div class="modal-menu-item box-small-mb"> \
+            <label for="menu-item-title-'+$id+'">Link title:</label> \
+            <input type="text" id="menu-item-title-' + $id + '" class="" name="modal_menu[' +$id + '][title]" value="">\
+            <label for="menu-item-path-'+$id+'">Link path:</label> \
+            <input type="text" id="menu-item-path-' + $id + '"  name="modal_menu[' + $id + '][link]" value=""> \
+            <input type="hidden" name="modal_menu[' + $id +'][id]"  value="' + $id +'">\
+          </div>';
+
+        $($btn).prev().after($new_field);
+    }
+
+    $('.add-new-menu-item').on('click', function () {
+        $id = $('#max_id_menu').val();
+        addMenuItemField(parseInt($id) + 1, this);
+    });
+})(jQuery);
+;(function ($) {
+    function addPhoneField($id, $btn) {
+        $new_field = '<div class="phone-item box-small-mb"> \
+            <label for="phone-title-'+$id+'">Text:</label> \
+            <input type="text" id="phone-title-'+$id+'" name="phones['+$id+'][text]" value=""> \
+            <label for="phone-num-'+$id+'">Phone:</label> \
+            <input type="text" id="phone-num-'+$id+'"  name="phones['+$id+'][tel]" value=""> \
+            <input type="hidden" name="phones[' + $id +'][id]"  value="' + $id +'">\
+          </div>';
+
+        $($btn).prev().after($new_field);
+    }
+
+    $('.add-new-phone').on('click', function () {
+        $id = $('#max_id_phone').val();
+        addPhoneField(parseInt($id) + 1, this);
+    });
+})(jQuery);
+;(function ($) {
+    function addServiceLinkField($id, $btn) {
+        $new_field = '<div class="service-link-item box-small-mb"> \
+            <label for="link-title-'+$id+'">Link title:</label> \
+            <input type="text" id="link-title-'+$id+'" class="box-small-mb" name="footer_service_links['+$id+'][title]" value=""> \
+            <label for="link-path-'+$id+'">Link path:</label> \
+            <input type="text" id="link-path-'+$id+'"  name="footer_service_links['+$id+'][link]" value=""> \
+            <input type="hidden" name="footer_service_links['+$id+'][id]"  value="' + $id +'">\
+          </div>';
+
+        $($btn).prev().after($new_field);
+    }
+
+    $('.add-new-service-link').on('click', function () {
+        $id = $('#max_id').val();
+        addServiceLinkField(parseInt($id) + 1, this);
+    });
+})(jQuery);
+;(function () {
     function disableSubmit(login, pass, pass_r) {
         if (login.length !== 0 && pass.length >= 8 && pass_r.length >= 8 && pass == pass_r) {
             $('#submit').removeAttr('disabled');
@@ -215,23 +410,154 @@ closeModal('.delete-item-modal', '.delete-item-modal .modal-dialog .modal-conten
 
 }
 
-$(".close-img").on('click', function(){
+$(".close-img").on('click', function () {
     $('#image').attr('src', '#');
     $('#photo').val('');
     $('.close-img').css('display', 'none');
 });
 
-$(".close-imgv").on('click', function(){
+$(".close-imgv").on('click', function () {
     $('#imagev').attr('src', '#');
     $('#vision_img').val('');
-    $('.close-img').css('display', 'none');
+    $('.close-imgv').css('display', 'none');
 });
 
-$(".close-imgm").on('click', function(){
+$(".close-imgm").on('click', function () {
     $('#imagem').attr('src', '#');
     $('#mission_img').val('');
-    $('.close-img').css('display', 'none');
-});;(function () {
+    $('.close-imgm').css('display', 'none');
+});
+
+//  technology //
+$(".close-img-description").on('click', function () {
+    $('#imaged').attr('src', '#');
+    $('#description_image').val('');
+    $('.close-img-description').css('display', 'none');
+});
+
+$(".close-img-comparison_infra").on('click', function () {
+    $('#imagecomparison_infra').attr('src', '#');
+    $('#comparison_infra_image').val('');
+    $('.close-img-comparison_infra').css('display', 'none');
+});
+
+$(".close-img-comparison_convect").on('click', function () {
+    $('#imagecomparison_convect').attr('src', '#');
+    $('#comparison_convect_image').val('');
+    $('.close-img-comparison_convect').css('display', 'none');
+});
+
+$(".close-img-infra_house_image").on('click', function () {
+    $('#imageinfra_house_image').attr('src', '#');
+    $('#infra_house_image').val('');
+    $('.close-img-infra_house_image').css('display', 'none');
+});
+
+$(".close-img-convect_house_image").on('click', function () {
+    $('#imageconvect_house_image').attr('src', '#');
+    $('#convect_house_image').val('');
+    $('.close-img-convect_house_image').css('display', 'none');
+});
+
+////
+
+////fur handler
+
+$(".close-img-service_bg").on('click', function () {
+    $('#imageservice_bg').attr('src', '#');
+    $('#service_bg_image').val('');
+    $('.close-img-service_bg').css('display', 'none');
+});
+
+//service fur handler
+var $i;
+for ($i = 1; $i <= 6; $i++) {
+    $(".close-img-service_" + $i).on('click', function () {
+        $('#imageservice_' + $i).attr('src', '#');
+        $('#service_image_' + $i).val('');
+        $(".close-img-service_" + $i).css('display', 'none');
+    });
+}
+
+//angebot
+for ($i = 1; $i <= 3; $i++) {
+    $(".close-img-ang_" + $i).on('click', function () {
+        $('#imageang_' + $i).attr('src', '#');
+        $('#service_ang_' + $i).val('');
+        $(".close-img-ang_" + $i).css('display', 'none');
+    });
+}
+
+$(".close-img-angbg").on('click', function () {
+    $('#imageangbg').attr('src', '#');
+    $('#service_angbg').val('');
+    $('.close-img-angbg').css('display', 'none');
+});
+
+
+//main
+$(".close-sign_image").on('click', function () {
+    $('#imagesign_image').attr('src', '#');
+    $('#sign_image').val('');
+    $('.close-sign_image').css('display', 'none');
+});
+
+$(".close-property_image").on('click', function () {
+    $('#imageproperty_image').attr('src', '#');
+    $('#property_image').val('');
+    $('.close-property_image').css('display', 'none');
+});
+
+$(".close-gallery_bg").on('click', function () {
+
+    $('.close-gallery_bg').css('display', 'none');
+
+    $('#gallery_bg_image').val('');
+    $('#imagegallery_bg').attr('src', '#');
+});
+
+//main carousel
+
+for (var i = 1; i <= 10; i++) {
+    $("#close-carousel_image_" + i).on('click', function (x) {
+        return function() {
+            $('#imagecarousel_image_' + x).attr('src', '#');
+            $('#carousel_image_' + x).val('');
+            $("#close-carousel_image_" + x).css('display', 'none');
+            console.log("clicked .close-carousel_image_" + x);
+        }
+    }(i));
+}
+
+//main properties
+for (var i = 1; i <= 10; i++) {
+    $("#close-prop_image_" + i).on('click', function (x) {
+        return function() {
+            $('#imageprop_image_' + x).attr('src', '#');
+            $('#prop_image_' + x).val('');
+            $("#close-prop_image_" + x).css('display', 'none');
+        }
+    }(i));
+}
+
+//main gallery
+for (var i = 1; i <= 30; i++) {
+    $("#close-gallery_item_" + i).on('click', function (x) {
+        return function() {
+            $('#imagegallery_item_' + x).attr('src', '#');
+            $('#gallery_item_' + x).val('');
+            $("#close-gallery_item_" + x).css('display', 'none');
+        }
+    }(i));
+}
+
+//default
+$(".close-logo-image").on('click', function () {
+    $('#imagelogo_image').attr('src', '#');
+    $('#logo_image').val('');
+    $('.close-logo-image').css('display', 'none');
+});
+;(function () {
 
     var contactCol = ".contacts .contact-item-wrapper";
     var contactItem = ".contacts .contact-item";
@@ -290,7 +616,46 @@ $(".close-imgm").on('click', function(){
         contactItemResize()
     });
 
-}());;(function () {
+}());;(function ($) {
+    $('.delete-angebot-item').on('click', function() {
+        $classes = $(this).attr('class');
+        $classes_arr = $classes.split(' ');
+
+        $itemClass = $classes_arr[3];
+
+        $split = $itemClass.split('-');
+        $index = $split[$split.length - 1];
+
+        $(".title-"+$index).remove();
+        $("#answer-"+$index).remove();
+    });
+})(jQuery);;(function ($) {
+    $('.delete-file-item').on('click', function() {
+        $classes = $(this).attr('class');
+        $classes_arr = $classes.split(' ');
+
+        $itemClass = $classes_arr[3];
+
+        $split = $itemClass.split('-');
+        $index = $split[$split.length - 1];
+
+        $(".title-"+$index).remove();
+        $("#answer-"+$index).remove();
+    });
+})(jQuery);;(function ($) {
+    $('.delete-faq-item').on('click', function() {
+        $classes = $(this).attr('class');
+        $classes_arr = $classes.split(' ');
+
+        $itemClass = $classes_arr[3];
+
+        $split = $itemClass.split('-');
+        $index = $split[$split.length - 1];
+
+        $(".title-"+$index).remove();
+        $("#answer-"+$index).remove();
+    });
+})(jQuery);;(function () {
 
     function checkPass(pass, passr) {
         if ($(pass).val().length >= 8) {
@@ -369,7 +734,7 @@ onTextChange(12, 1000);
         }
     });
 }());
-;$('.right-panel').on('mouseenter', function(){
+;$('.left-panel').on('mouseenter', function(){
     //$('#asideNavMenu').modal('show');
 });
 
@@ -623,35 +988,125 @@ $(document).ready(function () {
     arrowsDocRotation('.download-page .faq-item-title');
 });
 
-;function readURL(input, $image) {
+;function readURL(input, $image, $closeImg) {
 
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
             $($image).attr('src', e.target.result);
-            $('.close-img').css('display', 'block');
+            $($closeImg).css('display', 'block');
         };
 
         reader.readAsDataURL(input.files[0]);
         console.log(input.files[0].size);
     } else {
-        $('.close-img').css('display', 'none');
+        $($closeImg).css('display', 'none');
     }
 }
 
-$("#photo").change(function(){
-    readURL(this,'#image');
+$("#photo").change(function () {
+    readURL(this, '#image', '.close-img');
 });
 
-$("#vision_img").change(function(){
-    readURL(this,'#imagev');
+$("#vision_img").change(function () {
+    readURL(this, '#imagev', '.close-imgv');
 });
 
-$("#mission_img").change(function(){
-    readURL(this, '#imagem');
+$("#mission_img").change(function () {
+    readURL(this, '#imagem', '.close-imgm');
 });
-;(function () {
+
+$("#description_image").change(function () {
+    readURL(this, '#imaged', '.close-imgd');
+});
+
+$("#comparison_infra_image").change(function () {
+    readURL(this, '#imagecomparison_infra', '.close-imgm');
+});
+
+$("#comparison_convect_image").change(function () {
+    readURL(this, '#imagecomparison_convect', '.close-imgm');
+});
+
+$("#convect_house_image").change(function () {
+    readURL(this, '#imageconvect_house_image', '.close-imgm');
+});
+
+$("#infra_house_image").change(function () {
+    readURL(this, '#imageinfra_house_image', '.close-imgm');
+});
+
+//fur handler
+$("#service_bg_image").change(function () {
+    readURL(this, '#imageservice_bg', '.close-imgm');
+});
+
+var $i;
+
+for ($i = 1; $i <= 6; $i++) {
+//service fur handler
+    $("#service_image" + $i).change(function () {
+        readURL(this, '#imageservice_' + $i, '.close-imgm');
+    });
+
+//angebot fur handler
+    $("#service_ang" + $i).change(function () {
+        readURL(this, '#imageang_' + $i, '.close-imgm');
+    });
+}
+
+//fur handler ang bg
+$("#service_angbg").change(function () {
+    readURL(this, '#imageangbg', '.close-imgm');
+});
+
+//main
+$("#sign_image").change(function () {
+    readURL(this, '#imagesign_image', '.close-imgm');
+});
+
+$("#property_image").change(function () {
+    readURL(this, '#imageproperty_image', '.close-imgm');
+});
+
+$("#gallery_bg_image").change(function () {
+    readURL(this, '#imagegallery_bg', '.close-imgm');
+});
+
+//main carousel
+for ($i = 1; $i <= 10; $i++) {
+    $("#carousel_image_" + $i).change(function (x) {
+        return function () {
+            readURL(this, '#imagecarousel_image_' + x, '#close-carousel_image_' + x);
+        }
+    }($i));
+}
+
+
+//main prop
+for ($i = 1; $i <= 10; $i++) {
+    $("#prop_image_" + $i).change(function (x) {
+        return function () {
+            readURL(this, '#imageprop_image_' + x, '#close-prop_image_' + x);
+        }
+    }($i));
+}
+
+
+//main gallery
+for ($i = 1; $i <= 30; $i++) {
+    $("#gallery_item_" + $i).change(function (x) {
+        return function () {
+            readURL(this, '#imagegallery_item_' + x, '#close-gallery_item_' + x);
+        }
+    }($i));
+}
+
+//default
+$("#logo_image").change(function () {
+    readURL(this, '#imagelogo_image', '.close-logo-image');
+});;(function () {
     function sizeRect(i) {
         $('.row-' + i).on('click', function () {
             $('tr').removeClass('active-row');

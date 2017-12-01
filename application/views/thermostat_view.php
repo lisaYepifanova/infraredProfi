@@ -1,6 +1,6 @@
 <main class="product">
 
-  <h1 class="page-header container text-capitalize"><?php echo $data[0]['title']; ?></h1>
+  <h1 class="page-header container text-capitalize left-padding"><?php echo $data[0]['title']; ?></h1>
   <div class="product-menu-wrapper col-sm-3">
     <div class="product-menu floating">
       <ul>
@@ -59,7 +59,7 @@
       </ul>
     </div>
   </div>
-  <div class=" container right-padding">
+  <div class=" container left-padding">
     <div class="row">
 
       <div class="product-main col-sm-12">
@@ -210,7 +210,7 @@ echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
         <div class="similar-products-wrapper">
           <div class="similar-products">
             <h3 class="similar-products-title">UNSERE PRODUKTE</h3>
-            <div class="row right-padding">
+            <div class="row left-padding">
                 <?php
                 include 'application/connection.php';
                 $routes = explode('/', $_SERVER['REQUEST_URI']);

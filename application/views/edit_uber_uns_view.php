@@ -1,9 +1,11 @@
 <main class="about-us-page">
 
-  <h1 class="page-header container hsmall text-capitalize">EDIT "ÜBER UNS"</h1>
+  <h1 class="page-header container hsmall text-capitalize left-padding">EDIT "ÜBER UNS"</h1>
   <form enctype="multipart/form-data" role="form" action="" method="post">
 <input type="hidden" name="MAX_FILE_SIZE" value="409600"/>
-    <div class="about-us-right-image container box-mid-margin right-padding">
+    <div class="about-us-right-image container box-mid-margin left-padding">
+      <a class="admin-page-icons admin-icon-item" href="/site-settings"><img src="../img/user_pages/settings.png" alt="settings"><p class="icon-title">Site settings</p>
+    </a>
       <div class="row">
         <div class="about-us-image col-xs-7">
 
@@ -31,7 +33,7 @@
       </div>
     </div>
 
-    <div class="about-us-left-image container box-mid-margin right-padding">
+    <div class="about-us-left-image container box-mid-margin left-padding">
       <div class="row">
         <div class="about-us-image  col-xs-7">
              <label for="photo">Photo:</label>
@@ -57,14 +59,14 @@
         </div>
     </div>
 
-    <div class="about-us-description-wrapper box-mid-margin container right-padding">
+    <div class="about-us-description-wrapper about-us-description-edit box-mid-margin container ">
       <div class="about-us-description">
-        <h4 class="right-padding">ÜBER UNS</h4>
+        <h4 class="">ÜBER UNS</h4>
         <textarea name="about_us_description"  class="editor-area"><?php echo $data['add']['about_us_description']; ?></textarea>
       </div>
     </div>
 
-    <div class="btn-wrapper container box-mid-margin right-padding">
+    <div class="btn-wrapper container box-mid-margin left-padding">
       <button class="btn" type="submit">SAVE</button>
     </div>
   </form>
