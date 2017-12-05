@@ -1189,6 +1189,13 @@ for ($i = 1; $i <= 30; $i++) {
 $("#logo_image").change(function () {
     readURL(this, '#imagelogo_image', '.close-logo-image');
 });;(function () {
+     $h = $('.page-header').css('height');
+        $('.site-logo-wrapper').css('height', $h);
+    $('.page-header').on('resize', function () {
+        $h = $('.page-header').css('height');
+        $('.site-logo-wrapper').css('height', $h);
+    });
+}());;(function () {
     function sizeRect(i) {
         $('.row-' + i).on('click', function () {
             $('tr').removeClass('active-row');
