@@ -4,7 +4,7 @@
         $pageTitle
       ); ?></h1>
     <?php if ($pageTitle !== 'Unsere Produkte') { ?>
-      <div class="product-menu-wrapper col-sm-3">
+      <div class="product-menu-wrapper col-sm-3 left-padding">
         <div class="product-menu floating">
           <ul>
               <?php

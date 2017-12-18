@@ -99,6 +99,14 @@ function menu()
         }
     }
 
+    $ord = [];
+    foreach ($root_items as $key => $row) {
+      $ord[$key]  = $row['ord'];
+    }
+
+    array_multisort($ord, SORT_ASC, $root_items);
+
+
     $menu_res['neighbours'] = $neighbour_set;
     $menu_res['category'] = $category_set;
     $menu_res['root'] = $root_items;

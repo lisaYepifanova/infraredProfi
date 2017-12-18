@@ -1,4 +1,4 @@
-<main>
+<main id="fur-handler-page">
 
   <h1 class="page-header container hsmall text-capitalize left-padding">FÜR HÄNDLER</h1>
 
@@ -11,7 +11,7 @@
 
   <div class="container left-padding">
     <div class="registration-leistungen-wrapper">
-      <h3> <?php echo $data['main_info']['service_title']; ?></h3>
+      <h3 class="leistungen-header"> <?php echo $data['main_info']['service_title']; ?></h3>
       <div class="registration-leistungen"
            style="background-image: url(<?php echo IMAGEPATH.$data['main_info']['service_bg'] ?>)">
           <?php
@@ -30,8 +30,11 @@
 
   <div class="registration-properties">
     <div class="registration-properties-row">
-      <div class="properties-side left-side"
-           style="background-image: url(<?php echo IMAGEPATH.$data['main_info']['angebot_bg'] ?>)"></div>
+      <div class="properties-side left-side">
+        <div class="left-side-bg"
+             style="background-image: url(<?php echo IMAGEPATH.$data['main_info']['angebot_bg'] ?>)"> </div>
+
+      </div>
       <div class="properties-side right-side-wrapper">
         <?php
           echo '<h3 class="property-title registration-property-title left-padding">' .$data['main_info']['angebot_title'].'</h3>';

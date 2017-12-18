@@ -46,6 +46,22 @@ Handtuchheizung , Wandheizsystem , Glaskeramik , Glasheizung ">
   </head>
 <body>
 
+<header>
+  <div class="container">
+  <a class="left-panel aside-panel" href="#asideNavMenu" data-toggle="modal">
+  <div class="navbar navbar-default navbar-right-panel" role="navigation">
+    <div class="menu-link-button">
+      <div class="menu-link">
+        <span class="menu-link-line line1"></span>
+        <span class="menu-link-line line2"></span>
+        <span class="menu-link-line line3"></span>
+      </div>
+    </div>
+  </div>
+</a>
+  </div>
+</header>
+
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser.
   Please <a href="http://browsehappy.com/">upgrade
@@ -58,23 +74,13 @@ Handtuchheizung , Wandheizsystem , Glaskeramik , Glasheizung ">
     ?>
 </div>
 
-<a class="left-panel aside-panel" href="#asideNavMenu" data-toggle="modal">
-  <div class="navbar navbar-default navbar-right-panel" role="navigation">
-    <div class="menu-link-button">
-      <div class="menu-link">
-        <span class="menu-link-line line1"></span>
-        <span class="menu-link-line line2"></span>
-        <span class="menu-link-line line3"></span>
-      </div>
-    </div>
-  </div>
-</a>
+
 
 <?php
 include 'application/views/'.$content_view;
 ?>
 
-<div class="contacts container box-same-vmargin left-padding">
+<div id="contactBlock" class="contacts container box-same-vmargin left-padding">
   <div class="row">
       <?php
       $index = 1;
@@ -85,7 +91,7 @@ include 'application/views/'.$content_view;
           if ($row['name'] == 'phone') {
               echo '<div class="phone-wrapper">';
               foreach ($default['phones'] as $phone_row) {
-                  echo '<a href="tel:'.$phone_row['tel'].'" class="contact-item-value phone-value">'.$phone_row['text'].'</a>';
+                  echo '<a href="'.$phone_row['tel'].'" class="contact-item-value phone-value">'.$phone_row['text'].'</a>';
               }
               echo '</div>';
           } else {
@@ -126,6 +132,7 @@ include 'application/views/'.$content_view;
 <div id="asideNavMenu" class="modal fade in aside-nav-menu"
      style="display: none;">
   <div class="modal-dialog aside-modal-dialog">
+    <div class="modal-bg"></div>
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"
@@ -167,6 +174,11 @@ include 'application/views/'.$content_view;
   </div>
 </div>
 
+<?php
+
+?>
+
+
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
 
@@ -175,6 +187,7 @@ include 'application/views/'.$content_view;
 echo '
   <script src="'.JSPATH.'vendor/modernizr-2.8.3.min.js"></script>
   <script src="'.JSPATH.'vendor/jquery-1.12.0.min.js"></script>
+  <script src="'.JSPATH.'vendor/jquery.foggy.min.js"></script>
   <script src="'.JSPATH.'vendor.min.js"></script>
   <script src="'.JSPATH.'build.min.js"></script>
   <script src="'.JSPATH.'vendor/google-analytics.js"></script>';

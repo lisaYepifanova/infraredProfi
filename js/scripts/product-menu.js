@@ -35,11 +35,11 @@ $(function () {
     }
 
     function setMenuWidth() {
-        $menuMaxWidth = (parseInt($(document).width()) - parseInt($('.container').width())) / 2 - 20;
+        $menuMaxWidth = (parseInt($(document).width()) - parseInt($('.container').width())) / 2 - 20 - $('.navbar-right-panel').width();
         $('.product-menu').css('maxWidth', $menuMaxWidth + 'px');
         $menuWidth = parseInt($('.product-menu').css('width'));
         $margin = ($menuMaxWidth - $menuWidth) / 2;
-        if (parseInt($(document).width()) > 1366) {
+        if (parseInt($(document).width()) > 1200) {
             $('.product-menu').css('margin-left', $margin + 'px');
             $('.product-menu').css('margin-right', $margin + 'px');
         }

@@ -2,11 +2,11 @@
 
 class Model_Fur_handler extends Model {
   public function set_data() {
-    $to = "hybrotech.de@gmail.com";
+    $to = "info@infrared24.com";
     $subject = "=?utf-8?B?" . base64_encode("HÄNDLER ANFRAGE") . "?=";
     $subject_dealer = "=?utf-8?B?" . base64_encode("Empfangsbestätigung") . "?=";
     $headers = "Content-type: text/html; charset=utf-8 \r\n";
-    $headers .= "From: kontakt@infraredprofi.de\r\n";
+    $headers .= "From: info@infrared24.com\r\n";
 
 
     $name = 'не указано';

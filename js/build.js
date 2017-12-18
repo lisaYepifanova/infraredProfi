@@ -836,7 +836,11 @@ $('.aside-modal-dialog').on('mouseleave', function(){
 }
 
 
-;(function ($) {
+;$('.modal-bg').foggy({
+   blurRadius: 2,          // In pixels.
+   opacity: 0.8,           // Falls back to a filter for IE.
+   cssFilterSupport: true  // Use "-webkit-filter" where available.
+ });;(function ($) {
     setTimeout(function () {
         orderCount();
     }, 1000);
@@ -873,7 +877,103 @@ function numOfItemsValid(evt) {
 }
 
 
-;// Avoid `console` errors in browsers that lack a console.
+;(function () {
+    function smoothAppearance($mainRegion, $target, $startPos, $speed) {
+        $($target).css('opacity', '0');
+        if (document.getElementById($mainRegion) !== null) {
+            var target = $($target);
+            var targetPos = target.offset().top;
+            var winHeight = $(window).height();
+            var targetH = target.height();
+
+            var scrollToElem = targetPos - winHeight + $(window).height() * $startPos;
+            var winScrollTop = $(this).scrollTop();
+
+            $(window).scroll(function () {
+                winScrollTop = $(this).scrollTop();
+
+                if (winScrollTop > scrollToElem) {
+                    var ind = (winScrollTop - scrollToElem) / ($(window).height() * $startPos);
+
+                    if (ind <= 1 && ind > $($target).css('opacity')) {
+                        $($target).css('opacity', ind);
+                    } else {
+                        $($target).animate({
+                            opacity: '1'
+                        }, $speed, 'easeInCubic');
+                    }
+                }
+
+
+            });
+
+            if (winScrollTop > scrollToElem + $(window).height() * $startPos) {
+                $($target).animate({
+                    opacity: '1'
+                }, $speed, 'easeInCubic');
+            }
+        }
+    }
+
+    function simpleSmooth($target, $speed) {
+        if (document.getElementsByClassName($target) !== null) {
+            $($target).css('opacity', '0');
+            $($target).animate({
+                opacity: '1'
+            }, $speed, 'easeInCubic');
+        }
+
+
+    }
+
+    $mainRegion = 'main-page';
+    $target = "#main-page  .philosophy";
+    $startPos = 0.3;
+    $speed = 2000;
+
+    smoothAppearance($mainRegion, $target, $startPos, $speed);
+
+    $target = "#main-page  .homepage-header-title-wrapper";
+    simpleSmooth($target, 2000);
+
+    smoothAppearance('contactBlock', '#contactBlock .row', $startPos, $speed);
+
+    //fur-handler
+
+    $target = "#fur-handler-page  .registration-top-block";
+    simpleSmooth($target, 2000);
+
+    simpleSmooth('#fur-handler-page h3:nth-child(2)', 2000);
+
+    smoothAppearance('fur-handler-page', '#fur-handler-page .registration-description', $startPos, $speed);
+    smoothAppearance('fur-handler-page', '#fur-handler-page .right-side-wrapper', $startPos, 2000);
+
+    //tech
+    simpleSmooth('.technology-description', 2000);
+
+    smoothAppearance('technologyPage', '#technologyPage .description-img-wrapper', $startPos, 2000);
+    smoothAppearance('technologyPage', '#technologyPage .description-scheme-title', $startPos, 2000);
+
+
+    if ($(window).width() < 768) {
+        smoothAppearance('technologyPage', '.comparison-title-left', $startPos, 2000);
+        smoothAppearance('technologyPage', '.left-img-comparison-row .comparison-img', $startPos, 2000);
+        smoothAppearance('technologyPage', '.left-img-comparison-row .comparison-text-wrapper', $startPos, 2000);
+
+        smoothAppearance('technologyPage', '.comparison-title-right', $startPos, 2000);
+        smoothAppearance('technologyPage', '.right-img-comparison-row .comparison-img', $startPos, 2000);
+        smoothAppearance('technologyPage', '.right-img-comparison-row .comparison-text-wrapper', $startPos, 2000);
+
+        smoothAppearance('technologyPage', '.convect-house-title', $startPos, 2000);
+        smoothAppearance('technologyPage', '.convect-house-img', $startPos, 2000);
+        smoothAppearance('technologyPage', '.convect-house-description', $startPos, 2000);
+
+        smoothAppearance('technologyPage', '.infra-house-title', $startPos, 2000);
+        smoothAppearance('technologyPage', '.infra-house-img', $startPos, 2000);
+        smoothAppearance('technologyPage', '.infra-house-description', $startPos, 2000);
+    }
+
+}());;// Avoid `console` errors in browsers that lack a console.
 (function() {
     var method;
     var noop = function () {};
@@ -949,11 +1049,11 @@ $('.homepage-gallery-carousel').carousel({
     }
 
     function setMenuWidth() {
-        $menuMaxWidth = (parseInt($(document).width()) - parseInt($('.container').width())) / 2 - 20;
+        $menuMaxWidth = (parseInt($(document).width()) - parseInt($('.container').width())) / 2 - 20 - $('.navbar-right-panel').width();
         $('.product-menu').css('maxWidth', $menuMaxWidth + 'px');
         $menuWidth = parseInt($('.product-menu').css('width'));
         $margin = ($menuMaxWidth - $menuWidth) / 2;
-        if (parseInt($(document).width()) > 1366) {
+        if (parseInt($(document).width()) > 1200) {
             $('.product-menu').css('margin-left', $margin + 'px');
             $('.product-menu').css('margin-right', $margin + 'px');
         }
@@ -1013,7 +1113,88 @@ $('.homepage-gallery-carousel').carousel({
         $($productArrow).css('display', 'none');
     }
 }());
-;function arrowsFaqRotation($accTitle) {
+;(function () {
+    function appearanceFromSides($mainReg, $itemsBlock, $itemsTitle, $itemReg, $leftPropertySide) {
+
+        if (document.getElementById($mainReg) !== null) {
+            var target = $($itemsBlock);
+            var targetPos = target.offset().top;
+            var winHeight = $(window).height();
+            var targetH = target.height();
+
+            //items properties at the start
+            $($itemsTitle).css('margin-left', '50%');
+            $($itemsTitle).css('opacity', '0');
+            $($itemReg).css('margin-left', '50%');
+            $($itemReg).css('opacity', '0');
+
+            //left side properties at the start
+            $($leftPropertySide).css('margin-left', '-50%');
+            $($leftPropertySide).css('opacity', '0');
+
+
+            var scrollToElem = targetPos - winHeight + $(window).height() / 4;
+            var winScrollTop = $(this).scrollTop();
+
+            $(window).scroll(function () {
+                winScrollTop = $(this).scrollTop();
+
+                if (winScrollTop > scrollToElem) {
+                    $($itemsTitle).animate({
+                        marginLeft: '0',
+                        opacity: '1'
+
+                    }, 1000, 'easeOutCirc');
+
+                    $($leftPropertySide).animate({
+                        marginLeft: '0',
+                        opacity: '1'
+
+                    }, 1000, 'easeOutCirc');
+
+
+                    for (var i = 1; i < $($itemReg).length + 1; i++) {
+
+                        var itemH = $($itemReg + i).height();
+                        var itemTop = $($itemReg + i).offset().top;
+                        var scrollToItem = itemTop - winHeight + itemH / 2;
+                        if (winScrollTop > scrollToItem) {
+                            $($itemReg + i).delay(300 * i).animate({
+                                marginLeft: '0',
+                                opacity: '1'
+
+                            }, 1000, 'easeOutCirc');
+                        }
+                    }
+                }
+
+
+            });
+             if (winScrollTop > scrollToElem + $(window).height() * 0.25) {
+                    for (var i = 1; i < $($itemReg).length + 1; i++) {
+                        $($itemReg + i).delay(300 * i).animate({
+                            marginLeft: '0',
+                            opacity: '1'
+                        }, 1000, 'easeOutCirc');
+                    }
+                }
+        }
+    }
+    $mainReg = 'main-page';
+    $itemsBlock = '#main-page  .homepage-properties ';
+    $itemsTitle = "#main-page  .property-title";
+    $itemReg = "#main-page .property-item";
+    $leftPropertySide = "#main-page .properties-side .left-side-bg";
+    appearanceFromSides($mainReg, $itemsBlock, $itemsTitle, $itemReg, $leftPropertySide);
+
+    $mainReg = 'fur-handler-page';
+    $itemsBlock = '#fur-handler-page  .registration-properties ';
+    $itemsTitle = "#fur-handler-page  .property-title";
+    $itemReg = "#fur-handler-page .property-item";
+    $leftPropertySide = "#fur-handler-page .properties-side .left-side-bg";
+    appearanceFromSides($mainReg, $itemsBlock, $itemsTitle, $itemReg, $leftPropertySide);
+
+}());;function arrowsFaqRotation($accTitle) {
     $($accTitle).on('click', function () {
         $open_height = $('.price-list-content').height() + 20;
         if ($(this).hasClass('opened')) {
@@ -1311,4 +1492,95 @@ if ($l > 3) {
     technologyTextHover('.convect-house-description', '.convect-house-description .comparison-text',$height);
     technologyTextHover('.infra-house-description', '.infra-house-description .comparison-text',$height);
 
+}());;(function () {
+    function leftSideAppear($mainReg, $sideBlock, $startM) {
+        if (document.getElementById($mainReg) !== null) {
+            var target = $($sideBlock);
+            var targetPos = target.offset().top;
+            var winHeight = $(window).height();
+            var targetH = target.height();
+
+            $($sideBlock).css('margin-left', $startM);
+            $($sideBlock).css('opacity', '0');
+
+            var scrollToElem = targetPos - winHeight;
+            var winScrollTop = $(this).scrollTop();
+
+            $(window).scroll(function () {
+
+                winScrollTop = $(this).scrollTop();
+
+                if (winScrollTop > scrollToElem) {
+                    console.log('test');
+                    $($sideBlock).animate({
+                        marginLeft: '0',
+                        opacity: '1'
+
+                    }, 2000, 'easeOutCirc');
+                }
+
+
+            });
+            if (winScrollTop > scrollToElem + $(window).height() * 0.5) {
+                $($sideBlock).animate({
+                    marginLeft: '0',
+                    opacity: '1'
+                }, 2000, 'easeOutCirc');
+            }
+        }
+    }
+
+    function rightSideAppear($mainReg, $sideBlock, $startM) {
+        if (document.getElementById($mainReg) !== null) {
+            var target = $($sideBlock);
+            var targetPos = target.offset().top;
+            var winHeight = $(window).height();
+            var targetH = target.height();
+
+            $($sideBlock).css('margin-right', $startM);
+            $($sideBlock).css('opacity', '0');
+
+            var scrollToElem = targetPos - winHeight;
+            var winScrollTop = $(this).scrollTop();
+
+            $(window).scroll(function () {
+                winScrollTop = $(this).scrollTop();
+
+                if (winScrollTop > scrollToElem) {
+                    $($sideBlock).animate({
+                        marginRight: '0',
+                        opacity: '1'
+
+                    }, 2000, 'easeOutCirc');
+                }
+
+
+            });
+            if (winScrollTop > scrollToElem + $(window).height() * 0.5) {
+                $($sideBlock).animate({
+                    marginRight: '0',
+                    opacity: '1'
+                }, 2000, 'easeOutCirc');
+            }
+
+
+        }
+
+    }
+
+
+    $mainTwoSideReg = 'technologyPage';
+
+    if ($(window).width() > 767) {
+        leftSideAppear($mainTwoSideReg, '.comparison-title-left', '-50%');
+        rightSideAppear($mainTwoSideReg, '.comparison-title-right', '-50%');
+        leftSideAppear($mainTwoSideReg, '.left-img-comparison-row .comparison-img img', '-50%');
+        leftSideAppear($mainTwoSideReg, '.left-img-comparison-row .comparison-text', '50%');
+
+        leftSideAppear($mainTwoSideReg, '.right-img-comparison-row .comparison-img img', '50%');
+        leftSideAppear($mainTwoSideReg, '.right-img-comparison-row .comparison-text', '-50%');
+
+        leftSideAppear($mainTwoSideReg, '.convect-house-block', '-50%');
+        rightSideAppear($mainTwoSideReg, '.infrared-house-block', '-50%');
+    }
 }());

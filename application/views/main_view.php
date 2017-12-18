@@ -1,4 +1,4 @@
-<main>
+<main id="main-page">
   <div class="homepage-header">
     <div id="homepageCarousel"
          class="carousel slide homepage-carousel swipe-carousel"
@@ -54,7 +54,7 @@
 
 
 <div class="philosophy container box-vmargin left-padding">
-  <h3 class="philosophy-title text-center">PHILOSOPHIE</h3>
+
 
   <?php
   include 'application/connection.php';
@@ -63,42 +63,29 @@
 
   if ($query) {
     while ($r = mysqli_fetch_assoc($query)) {
-      echo '<div class="">' . $r['text'] . '</div>';
+      echo '<div class="philosophy-text">' . $r['text'] . '</div>';
     }
   }
 
-  $q = "SELECT sign_image FROM homepage_info";
-  $query = $mysqli->query($q);
 
-  if ($query) {
-    while ($r = mysqli_fetch_assoc($query)) {
-      echo '<div class="sign-wrapper text-center">';
       ?>
 
-      <div>
-        <img id="imagesign_image"
-             src="<?php echo IMAGEPATH . '' . $r['sign_image']; ?>"
-             alt=""/>
-
-      </div>
-
-      <?php
-    }
-  }
-  ?>
 
 </div>
 </div>
 
   <div class="homepage-properties ">
     <div class="homepage-properties-row ">
-      <div class="properties-side left-side" style="background-image: url(<?php echo IMAGEPATH.$data['property_image']?>)"></div>
-      <?php
-          echo '<h3 class="property-title left-padding ">' .$data['property_title'].'</h3>';
-          ?>
+      <div class="properties-side left-side" >
+        <div class="left-side-bg" style="background-image: url(<?php echo IMAGEPATH.$data['property_image']?>)" ></div>
+      </div>
+
       <div class="properties-side right-side left-padding">
 
           <?php
+
+          echo '<h3 class="property-title left-padding ">' .$data['property_title'].'</h3>';
+
           $index = 1;
           foreach ($data['property_items'] as $row) {
               echo '<div class="property-item property-item'.$index.'">

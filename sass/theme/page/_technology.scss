@@ -1,9 +1,12 @@
 .description-img-comparison-wrapper {
   //background-color: #bcbdc1;
+  overflow: hidden;
+}
+.description-img-scheme {
+  display: flex;
 }
 
 .comparison-row {
-  display: flex;
   //align-items: center;
 
   @media all and (max-width: 767px) {
@@ -18,11 +21,13 @@
 
 .description-img-comparison .row {
 
+  
   &:nth-child(2n) {
     margin: 0 0 2rem 0;
   }
 
   &:nth-child(4n) {
+    display: flex;
     flex-direction: row-reverse;
     margin: 0;
   }
@@ -32,9 +37,9 @@
 .comparison-text-wrapper {
   margin: 2rem auto;
   max-height: 470px;
-  overflow-y: hidden;
-  position: relative;
+  overflow: hidden;
   padding: 0 2rem;
+  display: block;
 
   @media all and (max-width: 767px) {
     height: auto;
@@ -45,6 +50,7 @@
     margin: 0;
     max-height: 100%;
     text-align: left;
+    width: 100%;
   }
   /*
 
@@ -146,9 +152,24 @@
 
 .infrared-house-wrapper,
 .convect-house-wrapper {
+  display: block;
+  width: 50%;
+  padding: 1rem;
+  position: relative;
+
   @media all and (max-width: 767px) {
     padding: 0;
   }
+}
+
+.infrared-house-block,
+.convect-house-block {
+  width: 100%;
+  display: block;
+}
+
+.infrared-house-block {
+  float: right;
 }
 
 .convect-house-description,

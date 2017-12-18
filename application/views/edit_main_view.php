@@ -64,7 +64,7 @@
 
 
     <div class="philosophy container box-vmargin left-padding">
-  <h3 class="philosophy-title text-center">PHILOSOPHIE</h3>
+  <label for="philosophy_text">Description:</label>
 
   <?php
   include 'application/connection.php';
@@ -73,7 +73,7 @@
 
   if ($query) {
     while ($r = mysqli_fetch_assoc($query)) {
-      echo '<textarea name="philosophy_text" class="full-textarea editor-area">' . $r['text'] . '</textarea>';
+      echo '<textarea name="philosophy_text" id="philosophy_text" class="full-textarea editor-area">' . $r['text'] . '</textarea>';
     }
   }
 

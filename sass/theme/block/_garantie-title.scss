@@ -19,6 +19,14 @@
     }
   }
 
+  .modal-dialog {
+    width: auto;
+
+    @media all and (min-width: 768px) {
+      width: 600px;
+    }
+  }
+
   .modal-body {
     @media all and (min-width: 768px) {
       padding: 32px;

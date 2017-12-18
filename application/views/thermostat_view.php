@@ -1,7 +1,7 @@
 <main class="product">
 
   <h1 class="page-header container text-capitalize left-padding"><?php echo $data[0]['title']; ?></h1>
-  <div class="product-menu-wrapper col-sm-3">
+  <div class="product-menu-wrapper col-sm-3 left-padding">
     <div class="product-menu floating">
       <ul>
           <?php
@@ -150,7 +150,7 @@ echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
 <?php if ($data[0]['has_qualities'] == '1') { ?>
   <div class="technische-thermostat-container technische-container">
 
-    <div class="container">
+    <div class="container daten-container">
       <div class="row">
         <!--Technische daten table-->
         <div class="product-technische-daten product-main">

@@ -3,10 +3,16 @@
 }
 
 .menu-link-button {
-  transform: translateX(-50%) translateY(-50%);
+  transform: translateX(50%) translateY(50%);
   position: absolute;
+
+
+  @media (min-width: $screen-sm) {
+      transform: translateX(-50%) translateY(-50%);
   top: 50%;
   left: 50%;
+  }
+
 
 }
 
@@ -20,8 +26,11 @@
   position: relative;
   //height: 0.5rem;
   background-size: 100% 100%;
-
   cursor: pointer;
+
+  @media all and (max-width: 480px) {
+    width: 1.5rem;
+  }
 
   .menu-link-line {
     display: block;

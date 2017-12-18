@@ -179,13 +179,13 @@
   </div>
 
   <div class="technische-container">
-    <div class="container">
+    <div class="container model-container">
       <h4 class="size-title ">MODELLE UND GRÖßEN</h4>
 
       <div class="row technische-row size-row">
 
           <?php
-          echo '<div class="product-sizes sizes-rectangles col-xs-12 col-sm-4';
+          echo '<div class="product-sizes sizes-rectangles col-xs-12 col-mb-4';
           echo '">';
           echo $data[0]['size_markup'];
           echo '</div>';
@@ -193,25 +193,25 @@
 
 
           <?php
-          echo '<div class="product-sizes col-xs-12 right-padding col-sm-8';
+          echo '<div class="product-sizes col-xs-12 right-padding col-mb-8';
           echo '">';
           ?>
 
           <?php
           echo '<table cellpadding="4">';
           echo '<tr>
-                    <th style="width: 5%;">Modell</th>
-                    <th style="width: 7%;">Abmessungen (mm)</th>
-                    <th style="width: 7%;">Beheizte Raumgröße (m² / m3)</th>';
+                    <th>Modell</th>
+                    <th>Abmessungen (mm)</th>
+                    <th>Beheizte Raumgröße (m² / m3)</th>';
 
           if ($data[0]['has_height'] == '1') {
-              echo '<th style="width: 6%;">Einbauhöhe (m)</th>';
+              echo '<th>Einbauhöhe (m)</th>';
           }
 
 
-          echo '<th style="width: 5%;">Leistung (Watt +/-5%)</th>
+          echo '<th>Leistung (Watt +/-5%)</th>
                     
-                    <th style="width: 4%;">Gewicht  (kg)</th>
+                    <th>Gewicht  (kg)</th>
                   </tr>';
           $ind = 1;
           foreach ($data['sizes'] as $row) {
@@ -244,7 +244,7 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="container daten-container">
     <div class="row technische-row">
       <!--Technische daten table-->
       <div class="product-technische-daten product-main">

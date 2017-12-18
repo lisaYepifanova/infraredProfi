@@ -86,8 +86,13 @@
   color: $footer-bg;
   //text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.9);
   margin: 24px 0;
+font-weight: 600;
 
   @media all and (min-width: 580px){
     margin-bottom: 12px;
+  }
+
+  @media all and (min-width: 1020px){
+    font-size: 3rem;
   }
 }
