@@ -9,8 +9,10 @@
     <form enctype="multipart/form-data" role="form" action="" method="post">
 
       <?php echo '<input type="hidden" name="max_id" id="max_id" value="' . $data['add']['max_id'] . '">'; ?>
+      <?php echo '<input type="hidden" name="max_link_id" id="max_link_id" value="' . $data['add']['max_link_id'] . '">'; ?>
       <?php echo '<input type="hidden" name="max_id_phone" id="max_id_phone" value="' . $data['add']['max_id_phone'] . '">'; ?>
-      <?php echo '<input type="hidden" name="max_id_meni" id="max_id_menu" value="' . $data['add']['max_id_menu'] . '">'; ?>
+      <?php echo '<input type="hidden" name="max_id_menu" id="max_id_menu" value="' . $data['add']['max_id_menu'] . '">'; ?>
+      <?php echo '<input type="hidden" name="max_header_link_id" id="max_header_link_id" value="' . $data['add']['max_header_link_id'] . '">'; ?>
       <div class="edit-logo box-mid-margin">
         <!-- site logo -->
         <label for="logo_image">Logo image:</label>
@@ -30,15 +32,52 @@
 
       </div>
 
+      <div class="edit-header-links box-mid-margin">
+        <h4>Header links:</h4>
+        <?php foreach ($default['header_links'] as $id => $item) { ?>
+          <div class="header-link-item box-mid-margin">
+            <label for="header-link-title-'.$id.'">Link title:</label>
+            <?php echo '<input type="text" id="header-link-title-' . $id . '" class="" name="header_links[' . $id . '][title]" value="' . $item['title'] . '">'; ?>
+
+            <label for="header-link-path-'.$id.'">Link path:</label>
+            <?php echo '<input type="text" id="header-link-path-' . $id . '"  name="header_links[' . $id . '][link]" value="' . $item['link'] . '">'; ?>
+
+             <?php echo '<input type="hidden" name="header_links[' . $id . '][id]"  value="' . $item['id'] . '">'; ?>
+          </div>
+        <?php } ?>
+
+        <a class="glyphicon glyphicon-plus add-new-header-link">Add new header
+          link</a>
+      </div>
+
+
       <div class="edit-footer-service-links box-mid-margin">
+        <h4>Footer links:</h4>
+        <?php foreach ($default['footer_links'] as $id => $item) { ?>
+          <div class="service-link-item box-mid-margin">
+            <label for="link-title-'.$id.'">Link title:</label>
+            <?php echo '<input type="text" id="link-title-' . $id . '" class="" name="footer_links[' . $id . '][title]" value="' . $item['title'] . '">'; ?>
+
+            <label for="link-path-'.$id.'">Link path:</label>
+            <?php echo '<input type="text" id="link-path-' . $id . '"  name="footer_links[' . $id . '][link]" value="' . $item['link'] . '">'; ?>
+
+             <?php echo '<input type="hidden" name="footer_links[' . $id . '][id]"  value="' . $item['id'] . '">'; ?>
+          </div>
+        <?php } ?>
+
+        <a class="glyphicon glyphicon-plus add-new-link">Add new service
+          link</a>
+      </div>
+
+       <div class="edit-footer-service-links box-mid-margin">
         <h4>Footer service links:</h4>
         <?php foreach ($default['footer_service_links'] as $id => $item) { ?>
           <div class="service-link-item box-mid-margin">
             <label for="link-title-'.$id.'">Link title:</label>
-            <?php echo '<input type="text" id="link-title-' . $id . '" class="" name="footer_service_links[' . $id . '][title]" value="' . $item['title'] . '">'; ?>
+            <?php echo '<input type="text" id="slink-title-' . $id . '" class="" name="footer_service_links[' . $id . '][title]" value="' . $item['title'] . '">'; ?>
 
             <label for="link-path-'.$id.'">Link path:</label>
-            <?php echo '<input type="text" id="link-path-' . $id . '"  name="footer_service_links[' . $id . '][link]" value="' . $item['link'] . '">'; ?>
+            <?php echo '<input type="text" id="slink-path-' . $id . '"  name="footer_service_links[' . $id . '][link]" value="' . $item['link'] . '">'; ?>
 
              <?php echo '<input type="hidden" name="footer_service_links[' . $id . '][id]"  value="' . $item['id'] . '">'; ?>
           </div>

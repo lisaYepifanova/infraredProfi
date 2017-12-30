@@ -8,7 +8,7 @@
 
     <form enctype="multipart/form-data" role="form" action="" method="post">
       <div class="technology-description box-mid-margin">
-        <input type="hidden" name="MAX_FILE_SIZE" value="409600"/>
+        <input type="hidden" name="MAX_FILE_SIZE" value="4096000"/>
         <label>Description (before)</label>
         <?php
         echo '<textarea name="description_before" class="description-before-items editor-area">' . $data['add']['description_before'] . '</textarea>';

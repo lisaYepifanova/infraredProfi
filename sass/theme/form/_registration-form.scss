@@ -3,8 +3,18 @@
     margin-left: 0;
     margin-right: 0;
   }
+
+  .form-group {
+    padding-right: 0;
+  }
+
+  .row .form-group:first-child {
+    @media (min-width: $screen-sm) {
+      padding-right: 1rem;
+    }
+  }
 }
 
 .registration-form-title {
-  padding-right: 15px;
+
 }

@@ -42,9 +42,9 @@
 
                         var itemH = $($itemReg + i).height();
                         var itemTop = $($itemReg + i).offset().top;
-                        var scrollToItem = itemTop - winHeight + itemH / 2;
+                        var scrollToItem = itemTop - winHeight + itemH / 3;
                         if (winScrollTop > scrollToItem) {
-                            $($itemReg + i).delay(300 * i).animate({
+                            $($itemReg + i).delay(200 * i).animate({
                                 marginLeft: '0',
                                 opacity: '1'
 
@@ -55,9 +55,9 @@
 
 
             });
-             if (winScrollTop > scrollToElem + $(window).height() * 0.25) {
+             if (winScrollTop > scrollToElem + $(window).height() * 0.3) {
                     for (var i = 1; i < $($itemReg).length + 1; i++) {
-                        $($itemReg + i).delay(300 * i).animate({
+                        $($itemReg + i).delay(200 * i).animate({
                             marginLeft: '0',
                             opacity: '1'
                         }, 1000, 'easeOutCirc');

@@ -13,6 +13,24 @@ class Model_Edit_default_info extends Model {
 
     $res['max_id'] = max($rr['arr_of_id']);
 
+    $query = $mysqli->query("SELECT id FROM footer_links");
+    if ($query) {
+      while ($r = mysqli_fetch_assoc($query)) {
+        $rr['arr_of_id'][] = $r['id'];
+      }
+    }
+
+    $res['max_link_id'] = max($rr['arr_of_id']);
+
+
+        $query = $mysqli->query("SELECT id FROM header_links");
+    if ($query) {
+      while ($r = mysqli_fetch_assoc($query)) {
+        $rh['arr_of_id'][] = $r['id'];
+      }
+    }
+
+    $res['max_header_link_id'] = max($rh['arr_of_id']);
 
     //phones
     $query = $mysqli->query("SELECT id FROM phones");
@@ -82,6 +100,55 @@ class Model_Edit_default_info extends Model {
                 $add_mi = "DELETE FROM footer_service_links  WHERE id='".$item['id']."'";
               } else {
               $add_mi = "UPDATE footer_service_links SET title = '" . $item['title'] . "', link = '" . $item['link'] . "' WHERE id = '" . $item['id'] . "' ";
+            }
+          }
+
+          $adding_info_query = $mysqli->query($add_mi);
+        }
+      }
+    }
+
+
+     //footer links
+    if (isset($_POST['footer_links'])) {
+      foreach ($_POST['footer_links'] as $name => $item) {
+        if (isset($_POST['footer_links'][$name])) {
+
+          $isId = mysqli_fetch_assoc($mysqli->query("SELECT id FROM footer_links WHERE id='" . $item['id'] . "'"));
+
+          if ($isId['id'] == NULL) {
+            $add_mi = 'INSERT INTO footer_links (id, title, link) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['link'] . '")';
+          }
+          else {
+            if ($item['title'] == '' and $item['link'] == '') {
+              $add_mi = "DELETE FROM footer_links  WHERE id='" . $item['id'] . "'";
+            }
+            else {
+              $add_mi = "UPDATE footer_links SET title = '" . $item['title'] . "', link = '" . $item['link'] . "' WHERE id = '" . $item['id'] . "' ";
+            }
+          }
+
+          $adding_info_query = $mysqli->query($add_mi);
+        }
+      }
+    }
+
+
+           //header links
+    if (isset($_POST['header_links'])) {
+      foreach ($_POST['header_links'] as $name => $item) {
+        if (isset($_POST['header_links'][$name])) {
+
+          $isId = mysqli_fetch_assoc($mysqli->query("SELECT id FROM header_links WHERE id='" . $item['id'] . "'"));
+
+          if ($isId['id'] == NULL) {
+            $add_mi = 'INSERT INTO header_links (id, title, link) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['link'] . '")';
+          }
+          else {
+            if($item['title'] == '' and $item['link'] == '') {
+                $add_mi = "DELETE FROM header_links  WHERE id='".$item['id']."'";
+              } else {
+              $add_mi = "UPDATE header_links SET title = '" . $item['title'] . "', link = '" . $item['link'] . "' WHERE id = '" . $item['id'] . "' ";
             }
           }
 

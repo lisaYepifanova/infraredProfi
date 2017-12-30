@@ -5,6 +5,12 @@ footer {
     margin-bottom: 1rem;
   }
 
+  .footer-link-row {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+  }
+
   .footer-links {
     max-width: 720px;
     margin: auto;
@@ -12,9 +18,16 @@ footer {
 
   .footer-service-links {
     opacity: 0.5;
-    margin: auto;
-    max-width: 30rem;
-    display: inline-block;
+
+    @media (min-width: $screen-sm) {
+      float: right;
+    }
+  }
+
+  .footer-cp {
+     @media (min-width: $screen-sm) {
+      float: right;
+    }
   }
 
   .footer-link {
@@ -22,12 +35,14 @@ footer {
     color: $text-color;
     text-decoration: none;
     padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
+    padding-bottom: 0.5rem;
     display: block;
     width: 100%;
+    padding: 0.25rem 0 0.5rem 0;
 
     @media all and (min-width: 480px) {
       width: auto;
+      padding: 0.25rem 1rem 0.5rem 1rem;
     }
 
   }

@@ -2,7 +2,7 @@
 
   <h1 class="page-header container text-capitalize left-padding">ÜBER UNS</h1>
 
-  <div class="about-us-right-image container box-same-vmargin left-padding">
+  <div class="about-us-right-image container box-mid-margin left-padding">
     <div class="row">
       <div class="about-us-image col-xs-7">
         <?php
@@ -22,7 +22,7 @@
     </div>
   </div>
 
-  <div class="about-us-left-image container box-same-vmargin left-padding">
+  <div class="about-us-left-image container box-mid-margin left-padding">
     <div class="row">
       <div class="about-us-image  col-xs-7">
         <?php

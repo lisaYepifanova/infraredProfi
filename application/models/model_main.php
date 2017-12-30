@@ -3,6 +3,50 @@
 class Model_Main extends Model {
   public function get_data() {
     include 'application/connection.php';
+/*
+    $query = "ALTER TABLE `categories` ADD COLUMN `isOnHomepage` INT NULL AFTER `ord`";
+    $upd = $mysqli->query($query);
+    $query = "ALTER TABLE `products` ADD COLUMN `isOnHomepage` INT(11) NULL AFTER `isInPriceList`";
+$upd = $mysqli->query($query);
+    $query = "UPDATE `categories` SET `isOnHomepage`='0' WHERE `id`='7'";
+    $upd = $mysqli->query($query);
+
+    $query = "UPDATE `categories` SET `isOnHomepage`='0' WHERE `id`='8'";
+    $upd = $mysqli->query($query);
+
+    $query = "UPDATE `categories` SET `isOnHomepage`='0' WHERE `id`='9'";
+    $upd = $mysqli->query($query);
+
+    $query = "UPDATE `categories` SET `isOnHomepage`='1' WHERE `id`='10'";
+$upd = $mysqli->query($query);
+
+$query = "UPDATE `products` SET `isOnHomepage`='0' WHERE `id`='7'";
+$upd = $mysqli->query($query);
+
+    $query = "UPDATE `products` SET `isOnHomepage`='0' WHERE `id`='8'";
+$upd = $mysqli->query($query);
+
+    $query = "UPDATE `products` SET `isOnHomepage`='1' WHERE `id`='6'";
+$upd = $mysqli->query($query);
+
+    $query = "UPDATE `products` SET `isOnHomepage`='0' WHERE `id`='5'";
+$upd = $mysqli->query($query);
+
+    $query = "UPDATE `products` SET `isOnHomepage`='1' WHERE `id`='4'";
+$upd = $mysqli->query($query);
+
+    $query = "UPDATE `products` SET `isOnHomepage`='1' WHERE `id`='3'";
+$upd = $mysqli->query($query);
+
+    $query = "UPDATE `products` SET `isOnHomepage`='1' WHERE `id`='2'";
+$upd = $mysqli->query($query);
+
+    $query = "UPDATE `products` SET `isOnHomepage`='1' WHERE `id`='1'";
+$upd = $mysqli->query($query);
+
+$query = "ALTER TABLE `thermostat` ADD COLUMN `isOnHomepage` INT NULL DEFAULT 0 AFTER `ord`";
+$upd = $mysqli->query($query);
+*/
 
     $query = $mysqli->query("SELECT id FROM header_properties");
     if ($query) {
@@ -58,15 +102,15 @@ class Model_Main extends Model {
         $res['property_items'][] = $r;
       }
     }
+    /*
+        $query = $mysqli->query("SELECT * FROM gallery_images");
 
-    $query = $mysqli->query("SELECT * FROM gallery_images");
-
-    if ($query) {
-      while ($r = mysqli_fetch_assoc($query)) {
-        $res['gallery'][] = $r;
-      }
-    }
-
+        if ($query) {
+          while ($r = mysqli_fetch_assoc($query)) {
+            $res['gallery'][] = $r;
+          }
+        }
+    */
     $query = $mysqli->query("SELECT * FROM gallery_bg");
 
     if ($query) {
@@ -74,6 +118,20 @@ class Model_Main extends Model {
         $res['gallery_bg'] = $r;
       }
     }
+
+    $query = $mysqli->query(
+      "SELECT id, name, image, title, short_description, ord, isOnHomepage FROM products  WHERE parent_id=0 AND isOnHomepage=1 " .
+      " UNION SELECT id, name, image, title, short_description, ord, isOnHomepage FROM  categories  WHERE parent_id=0  AND isOnHomepage=1 " .
+      " UNION SELECT id, name, image, title, short_description, ord, isOnHomepage FROM thermostat  WHERE parent_id=0  AND isOnHomepage=1 " .
+      " ORDER BY ord"
+    );
+
+    if ($query) {
+      while ($r = mysqli_fetch_assoc($query)) {
+        $res['gallery_items'][] = $r;
+      }
+    }
+
 
     return $res;
   }
@@ -107,7 +165,7 @@ class Model_Main extends Model {
                 }
               }
 
-               $sel = 'SELECT id FROM header_slider WHERE id=' . $curr_id;
+              $sel = 'SELECT id FROM header_slider WHERE id=' . $curr_id;
               $query = $mysqli->query($sel);
 
               $isId = mysqli_fetch_assoc($query);
@@ -298,23 +356,23 @@ class Model_Main extends Model {
                 }
               }
 
-               $sel = 'SELECT id FROM gallery_images WHERE id=' . $curr_id;
+              $sel = 'SELECT id FROM gallery_images WHERE id=' . $curr_id;
               $query = $mysqli->query($sel);
 
               $isId = mysqli_fetch_assoc($query);
 
               if ($isId['id'] == NULL) {
                 $add_mi = 'INSERT INTO gallery_images ' .
-                  '(id, path, panel_displaying, alt, title) '.
+                  '(id, path, panel_displaying, alt, title) ' .
                   'VALUES ("' . $curr_id . '", "homepage-gallery/' . $gallery . '", "' . $curr_is_on_main . '", "' . $curr_title . '", "' . $curr_title . '")';
               }
               else {
                 $add_mi = 'UPDATE gallery_images ' .
-                'SET path = "homepage-gallery/' . $gallery . '", ' .
-                'panel_displaying = "' . $curr_is_on_main . '", ' .
-                'alt = "' . $curr_title . '", ' .
-                'title = "' . $curr_title . '" ' .
-                'WHERE id="' . $curr_id . '"';
+                  'SET path = "homepage-gallery/' . $gallery . '", ' .
+                  'panel_displaying = "' . $curr_is_on_main . '", ' .
+                  'alt = "' . $curr_title . '", ' .
+                  'title = "' . $curr_title . '" ' .
+                  'WHERE id="' . $curr_id . '"';
               }
 
               $adding_miq = $mysqli->query($add_mi);
@@ -387,8 +445,6 @@ class Model_Main extends Model {
         }
       }
     }
-
-
 
 
     //собственно запрос

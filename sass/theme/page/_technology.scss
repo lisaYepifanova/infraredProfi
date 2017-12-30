@@ -1,9 +1,19 @@
+#technologyPage {
+  overflow: hidden;
+}
+
 .description-img-comparison-wrapper {
   //background-color: #bcbdc1;
   overflow: hidden;
 }
 .description-img-scheme {
   display: flex;
+  margin-top: 3rem;
+  flex-direction: column;
+
+  @media (min-width: $screen-sm) {
+    flex-direction: row;
+  }
 }
 
 .comparison-row {
@@ -21,24 +31,37 @@
 
 .description-img-comparison .row {
 
-  
+  margin: 0;
+
   &:nth-child(2n) {
     margin: 0 0 2rem 0;
   }
 
   &:nth-child(4n) {
     display: flex;
-    flex-direction: row-reverse;
+flex-direction: column;
     margin: 0;
+
+    @media (min-width: $screen-sm) {
+      flex-direction: row-reverse;
+    }
   }
 
+}
+
+.comparison-wrapper-1 {
+  padding: 0 0 0 2rem;
+}
+
+.comparison-wrapper-2 {
+  padding: 0 2rem 0 0;
 }
 
 .comparison-text-wrapper {
   margin: 2rem auto;
   max-height: 470px;
   overflow: hidden;
-  padding: 0 2rem;
+  text-align: justify;
   display: block;
 
   @media all and (max-width: 767px) {
@@ -90,6 +113,7 @@
 
   .arrow-down {
     display: block;
+    text-align: center;
     position: absolute;
     bottom: 0;
     top: unset;
@@ -114,10 +138,11 @@
 
 .comparison-title {
   text-align: left;
+  padding: 0;
 
   @media all and (max-width: 767px) {
     float: none;
-    padding-left: 8px;
+    padding-left: 0;
   }
 
   @media all and (max-width: 480px) {
@@ -143,6 +168,7 @@
 .comparison-img {
   align-self: baseline;
   margin: 2rem 0;
+  padding: 0;
 
   @media all and (max-width: 767px) {
     padding: 0;
@@ -154,11 +180,24 @@
 .convect-house-wrapper {
   display: block;
   width: 50%;
-  padding: 1rem;
+
   position: relative;
 
   @media all and (max-width: 767px) {
     padding: 0;
+    width: 100%;
+  }
+}
+
+.infrared-house-wrapper {
+  @media all and (min-width: $screen-sm) {
+    padding: 0 0 0 1rem;
+  }
+}
+
+.convect-house-wrapper {
+  @media all and (min-width: $screen-sm) {
+    padding: 0 1rem 0 0;
   }
 }
 
@@ -184,7 +223,7 @@
     align-items: center;
 
   @media all and (max-width: 400px) {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   @media all and (min-width: 768px) {
