@@ -1177,8 +1177,6 @@ $('.homepage-gallery-carousel').carousel({
           centerMode: true,
   centerPadding: '20px',
         arrows: true,
-        prevArrow: '<button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: block;">Previous</button>',
-        nextArrow: '',
   slidesToShow: 3,
   responsive: [
     {
