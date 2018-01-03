@@ -1,25 +1,28 @@
 .site-logo-wrapper {
-  display: none;
+  z-index: 2;
+  text-align: center;
+  display: inline-block;
+  margin-left: auto;
 
-  @media all and (min-width: 1100px) {
-    position: fixed;
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-    width: calc((100vw - 1000px) / 2 + 3rem);
-    z-index: 2;
-    text-align: center;
+
+  float: right;
+  height: 100%;
+
+  a {
     display: flex;
     align-items: center;
+    height: 100%;
+    padding: 0.25rem 0;
+  }
 
-    a {
-      display: block;
-    }
+  img {
+    font-size: 3rem;
+    max-height: 100%;
+    width: auto;
+    max-width: calc(100vw - 32px - 44px);
 
-    img {
-      width: 94%;
-      margin: auto;
-      max-width: 540px;
-      font-size: 48px;
+    @media (min-width: $screen-sm) and (max-width: $screen-lg) {
+      max-width: 18rem;
     }
   }
 }

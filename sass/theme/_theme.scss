@@ -4,7 +4,7 @@ Blocks
 @import "block/philosophy";
 @import "block/homepage-carousel";
 @import "block/homepage-properties";
-@import "block/homepage-products";
+//@import "block/homepage-products";
 @import "block/contacts";
 @import "block/footer";
 @import "block/nav-menu";
@@ -12,6 +12,7 @@ Blocks
 @import "block/product-menu";
 @import "block/product-slider";
 @import "block/garantie-title";
+@import "block/homepage-gallery";
 
 /**
 Pages
@@ -37,4 +38,9 @@ Forms
 @import "form/handler-adding-form";
 @import "form/del-form";
 @import "form/edit-content";
+
+/**
+Regions
+ */
+@import "region/header";
 

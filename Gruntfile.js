@@ -81,6 +81,8 @@ module.exports = function (grunt) {
                 files: {
                     'css/style.min.css': 'css/style.css',
                     'css/normalize.min.css': 'css/normalize.css'
+                   /* 'css/slick.min.css': 'libs/slick/slick/slick.css',
+                    'css/slick-theme.min.css': 'libs/slick/slick/slick-theme.css'*/
                 }
             }
         },

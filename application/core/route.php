@@ -27,7 +27,7 @@ class Route
         if (!empty($routes[1])) {
             $controller_name = $routes[1];
 
-            if ($routes[1] == 'unsere-produkte') {
+            if ($routes[1] == 'produkte') {
                 $last = end($routes);
 
                 $result_category = $mysqli->query(
@@ -44,7 +44,7 @@ class Route
 
                 $action_name = 'index';
                 if ($result_category->num_rows !== 0 || empty($routes[2])) {
-                    $controller_name = 'unsere-produkte';
+                    $controller_name = 'produkte';
                 } else {
                     if ($result_product->num_rows !== 0) {
                         $controller_name = 'product';

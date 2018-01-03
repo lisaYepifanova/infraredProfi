@@ -10,7 +10,7 @@
           $routes = explode('/', $_SERVER['REQUEST_URI']);
           $last = end($routes);
 
-          echo '<h4><a class="product-menu-item" href="/unsere-produkte">UNSERE PRODUKTE</a></h4>';
+          echo '<h4><a class="product-menu-item" href="/produkte">PRODUKTE</a></h4>';
 
           foreach ($data['menu']['root'] as $row) {
               echo '<li>';
@@ -22,10 +22,10 @@
               if ($routes[2] == $row['name']) {
                   echo 'bold-item';
               }
-              echo '" href="/unsere-produkte/'.$row['name'].'">'.$row['title'].'</a>';
+              echo '" href="/produkte/'.$row['name'].'">'.$row['title'].'</a>';
               if ($routes[2] == $row['name']) {
                   $c = $data['menu']['category'];
-                  $link = "/unsere-produkte/".$row['name'];
+                  $link = "/produkte/".$row['name'];
                   while ($c['next'] !== "") {
                       echo '<ul>';
                       echo '<li><a href="'.$link.'/'.$c['next']['name'].'">'.$c['next']['title'].'</a>';
@@ -209,7 +209,7 @@ echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
         <!--Similar product-->
         <div class="similar-products-wrapper">
           <div class="similar-products">
-            <h3 class="similar-products-title">UNSERE PRODUKTE</h3>
+            <h2 class="similar-products-title">WEITERE PRODUKTE</h2>
             <div class="row left-padding">
                 <?php
                 include 'application/connection.php';

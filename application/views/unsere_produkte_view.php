@@ -3,7 +3,7 @@
   <h1 class="page-header container text-capitalize left-padding"><?php echo strtoupper(
         $pageTitle
       ); ?></h1>
-    <?php if ($pageTitle !== 'Unsere Produkte') { ?>
+    <?php if ($pageTitle !== 'Produkte') { ?>
       <div class="product-menu-wrapper col-sm-3 left-padding">
         <div class="product-menu floating">
           <ul>
@@ -14,7 +14,7 @@
               $routes = explode('/', $_SERVER['REQUEST_URI']);
               $last = end($routes);
 
-              echo '<h4><a class="product-menu-item" href="/unsere-produkte">UNSERE PRODUKTE</a></h4>';
+              echo '<h4><a class="product-menu-item" href="/produkte">UNSERE PRODUKTE</a></h4>';
 
 
               foreach ($data['menu']['root'] as $row) {
@@ -28,7 +28,7 @@
                       echo 'bold-item';
                   }
 
-                  echo '" href="/unsere-produkte/'.$row['name'].'">'.$row['title'].'</a>';
+                  echo '" href="/produkte/'.$row['name'].'">'.$row['title'].'</a>';
 
                   echo '</li>';
               }
@@ -38,12 +38,12 @@
         </div>
       </div>
     <?php } ?>
-  <div class="gallery container left-padding">
+  <div class="gallery-product-page container box-m-mg-top">
     <div class='row'>
         <?php
         if (!empty($data['items'])) {
             foreach ($data['items'] as $row) {
-                if ($_SERVER['REQUEST_URI'] == "/unsere-produkte/") {
+                if ($_SERVER['REQUEST_URI'] == "/produkte/") {
                     $link = $_SERVER['REQUEST_URI'].$row['name'];
                 } else {
                     $link = $_SERVER['REQUEST_URI'].'/'.$row['name'];

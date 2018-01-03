@@ -17,11 +17,11 @@ class Model_Technologie extends Model {
 
   public function update_data() {
     include 'application/connection.php';
-
+$uploaddir = '/kunden/homepages/7/d709554119/htdocs/img/technology/';
+//        $uploaddir = '/home/lisabeth/Projects/infraredprofi/img/technology/';
     //загрузка фото на сервер
     if (isset($_FILES)) {
       if ($_FILES['description_image']['size'] > 0) {
-        $uploaddir = '/home/lisabeth/Projects/infraredprofi/img/technologie/';
         $uploadfile = $uploaddir . basename($_FILES['description_image']['name']);
         if ($_FILES['description_image']['size'] <= $_POST['MAX_FILE_SIZE']) {
           if (move_uploaded_file($_FILES['description_image']['tmp_name'], $uploadfile)) {
@@ -33,18 +33,16 @@ class Model_Technologie extends Model {
             $description_image = $_FILES['description_image']['name'];
           }
 
-          $add_mi = 'UPDATE technologie SET description_image = "technologie/' . $description_image . '"';
+          $add_mi = 'UPDATE technologie SET description_image = "technology/' . $description_image . '"';
           $adding_miq = $mysqli->query($add_mi);
         }
         else {
           $result['info'][] = 'Image is too large.';
         }
       }
-    }
 
-    if (isset($_FILES)) {
+
       if ($_FILES['comparison_infra_image']['size'] > 0) {
-        $uploaddir = '/home/lisabeth/Projects/infraredprofi/img/technologie/';
         $uploadfile = $uploaddir . basename($_FILES['comparison_infra_image']['name']);
         if ($_FILES['comparison_infra_image']['size'] <= $_POST['MAX_FILE_SIZE']) {
           if (move_uploaded_file($_FILES['comparison_infra_image']['tmp_name'], $uploadfile)) {
@@ -56,18 +54,18 @@ class Model_Technologie extends Model {
             $comparison_infra = $_FILES['comparison_infra_image']['name'];
           }
 
-          $add_mi = 'UPDATE technologie SET comparison_infra = "technologie/' . $comparison_infra . '"';
+          $add_mi = 'UPDATE technologie SET comparison_infra = "technology/' . $comparison_infra . '"';
           $adding_miq = $mysqli->query($add_mi);
         }
         else {
           $result['info'][] = 'Image is too large.';
         }
       }
+
     }
 
     if (isset($_FILES)) {
       if ($_FILES['comparison_convect_image']['size'] > 0) {
-        $uploaddir = '/home/lisabeth/Projects/infraredprofi/img/technologie/';
         $uploadfile = $uploaddir . basename($_FILES['comparison_convect_image']['name']);
         if ($_FILES['comparison_convect_image']['size'] <= $_POST['MAX_FILE_SIZE']) {
           if (move_uploaded_file($_FILES['comparison_convect_image']['tmp_name'], $uploadfile)) {
@@ -79,7 +77,7 @@ class Model_Technologie extends Model {
             $comparison_convect = $_FILES['comparison_convect_image']['name'];
           }
 
-          $add_mi = 'UPDATE technologie SET comparison_convect = "technologie/' . $comparison_convect . '"';
+          $add_mi = 'UPDATE technologie SET comparison_convect = "technology/' . $comparison_convect . '"';
           $adding_miq = $mysqli->query($add_mi);
         }
         else {
@@ -88,9 +86,8 @@ class Model_Technologie extends Model {
       }
     }
 
-    if (isset($_FILES)) {
+
       if ($_FILES['convect_house_image']['size'] > 0) {
-        $uploaddir = '/home/lisabeth/Projects/infraredprofi/img/technologie/';
         $uploadfile = $uploaddir . basename($_FILES['convect_house_image']['name']);
         if ($_FILES['convect_house_image']['size'] <= $_POST['MAX_FILE_SIZE']) {
           if (move_uploaded_file($_FILES['convect_house_image']['tmp_name'], $uploadfile)) {
@@ -102,18 +99,16 @@ class Model_Technologie extends Model {
             $convect_house_image = $_FILES['convect_house_image']['name'];
           }
 
-          $add_mi = 'UPDATE technologie SET convect_house_image = "technologie/' . $convect_house_image . '"';
+          $add_mi = 'UPDATE technologie SET convect_house_image = "technology/' . $convect_house_image . '"';
           $adding_miq = $mysqli->query($add_mi);
         }
         else {
           $result['info'][] = 'Image is too large.';
         }
       }
-    }
 
-    if (isset($_FILES)) {
+
       if ($_FILES['infra_house_image']['size'] > 0) {
-        $uploaddir = '/home/lisabeth/Projects/infraredprofi/img/technologie/';
         $uploadfile = $uploaddir . basename($_FILES['infra_house_image']['name']);
         if ($_FILES['infra_house_image']['size'] <= $_POST['MAX_FILE_SIZE']) {
           if (move_uploaded_file($_FILES['infra_house_image']['tmp_name'], $uploadfile)) {
@@ -125,14 +120,13 @@ class Model_Technologie extends Model {
             $infra_house_image = $_FILES['infra_house_image']['name'];
           }
 
-          $add_mi = 'UPDATE technologie SET infra_house_image = "technologie/' . $infra_house_image . '"';
+          $add_mi = 'UPDATE technologie SET infra_house_image = "technology/' . $infra_house_image . '"';
           $adding_miq = $mysqli->query($add_mi);
         }
         else {
           $result['info'][] = 'Image is too large.';
         }
       }
-    }
 
     $description_before = NULL;
     if (isset($_POST['description_before'])) {

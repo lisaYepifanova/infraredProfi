@@ -367,6 +367,47 @@ setTimeout(function () {
     $('.add-new-service-link').on('click', function () {
         $id = $('#max_id').val();
         addServiceLinkField(parseInt($id) + 1, this);
+        $('#max_id').val($id+1);
+    });
+
+    ///////
+
+        function addLinkField($id, $btn) {
+        $new_field = '<div class="service-link-item box-mid-margin"> \
+            <label for="link-title-'+ $id +'">Link title:</label> \
+            <input type="text" id="link-title-' + $id + '" class="" name="footer_links[' + $id + '][title]" > \
+            <label for="link-path-' + $id + '">Link path:</label> \
+            <input type="text" id="link-path-' + $id + '"  name="footer_links[' + $id + '][link]" > \
+            <input type="hidden" name="footer_links[' + $id + '][id]"  value="' + $id + '"> \
+          </div>';
+
+        $($btn).prev().after($new_field);
+    }
+
+    $('.add-new-link').on('click', function () {
+        $id = $('#max_link_id').val();
+        addLinkField(parseInt($id) + 1, this);
+        $('#max_link_id').val($id+1);
+    });
+
+            ///////
+
+        function addHeaderLinkField($id, $btn) {
+        $new_field = '<div class="header-link-item box-mid-margin"> \
+            <label for="header-link-title-' + $id + '">Link title:</label> \
+            <input type="text" id="header-link-title-' + $id + '" class="" name="header_links[' + $id + '][title]"> \
+            <label for="header-link-path-'+$id+'">Link path:</label> \
+            <input type="text" id="header-link-path-' + $id + '"  name="header_links[' + $id + '][link]"> \
+            <input type="hidden" name="header_links[' + $id + '][id]"  value="' + $id + '">\
+          </div>';
+
+        $($btn).prev().after($new_field);
+    }
+
+    $('.add-new-header-link').on('click', function () {
+        $id = $('#max_header_link_id').val();
+        addHeaderLinkField(parseInt($id) + 1, this);
+        $('#max_header_link_id').val($id+1);
     });
 })(jQuery);
 ;(function () {
@@ -661,20 +702,20 @@ $(".close-logo-image").on('click', function () {
 
         $(contactCol).css('width', itemSize(0.9));
         $(contactCol).css('height', itemSize(0.9));
-        $(contactCol).css('padding-left', '0.5rem');
-        $(contactCol).css('padding-right', '0.5rem');
+        $(contactCol).css('padding-left', '1rem');
+        $(contactCol).css('padding-right', '1rem');
 
         setItemSize(0.9);
 
         if ($(window).width() < 390) {
-            $(contactCol).css('width', '96%');
+            $(contactCol).css('width', '100%');
 
             $(contactCol).css('height', itemSize(1));
-            setItemSize(0.85);
+            setItemSize(1);
         }
 
         if ($(window).width() > 389 && $(window).width() < 721) {
-            $(contactCol).css('width', '48%');
+            $(contactCol).css('width', '50%');
             $(contactCol).css('height', itemSize(1));
             setItemSize(1);
         }
@@ -686,7 +727,7 @@ $(".close-logo-image").on('click', function () {
         }
 
         if ($(window).width() > 720) {
-            $(contactCol).css('width', '24.8%');
+            $(contactCol).css('width', '25%');
             $(contactCol).css('height', itemSize(1));
             setItemSize(1);
         }
@@ -768,6 +809,52 @@ $(".close-logo-image").on('click', function () {
     }
 
 
+}());
+;(function () {
+    function homepageGalleryOnHover($current) {
+        console.log("." + $current);
+        $("." + $current).siblings().animate(
+            {
+                opacity: 0.6
+            }, 500
+        );
+        $("." + $current).animate(
+            {
+                opacity: 1,
+            }, 500
+        )
+/*
+        $("." + $current + " .homepage-gallery-item-title").animate(
+            {
+                top: '20%'
+            }, 500
+        )
+*/
+
+    }
+
+    $homepageGallery = ".homepage-products";
+    $homepageGalleryItem = ".homepage-gallery-item-wrapper";
+
+
+    $($homepageGalleryItem).on({
+        mouseenter: function () {
+            $curr = $(this).attr('class').split(" ");
+            homepageGalleryOnHover($curr[1]);
+
+        }
+    });
+
+    $($homepageGallery).on({
+        mouseleave: function () {
+            $('.homepage-products div').animate(
+                {
+                    opacity: 1
+                }, 300
+            )
+
+        }
+    });
 }());
 ;$(function () {
     var includes = $('[data-include]');
@@ -936,7 +1023,7 @@ function numOfItemsValid(evt) {
     $target = "#main-page  .homepage-header-title-wrapper";
     simpleSmooth($target, 2000);
 
-    smoothAppearance('contactBlock', '#contactBlock .row', $startPos, $speed);
+    smoothAppearance('contactBlock', '#contactBlock .row', $startPos, 1000);
 
     //fur-handler
 
@@ -973,6 +1060,8 @@ function numOfItemsValid(evt) {
         smoothAppearance('technologyPage', '.infra-house-description', $startPos, 2000);
     }
 
+    simpleSmooth('.contacts-info-wrapper', 2000);
+
 }());;// Avoid `console` errors in browsers that lack a console.
 (function() {
     var method;
@@ -998,7 +1087,7 @@ function numOfItemsValid(evt) {
 
 // Place any jQuery/helper plugins in here.
 ;$('.product-carousel').carousel({
-    interval: 6000,
+    interval: 5000,
     pause: "hover"
 });
 
@@ -1083,7 +1172,34 @@ $('.homepage-gallery-carousel').carousel({
 
     }
 });
-;(function () {
+;$(document).ready(function () {
+    $('.slider-prod').slick({
+          centerMode: true,
+  centerPadding: '20px',
+        arrows: true,
+  slidesToShow: 3,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: true,
+        centerMode: true,
+        centerPadding: '10px',
+        slidesToShow: 3
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    }
+  ]
+    });
+});;(function () {
     $textWrapper = '.product-full-description-wrapper';
     $textBlock = '.product-full-description-wrapper';
     $productArrow = '.product-full-description-wrapper .arrow-down';
@@ -1157,9 +1273,9 @@ $('.homepage-gallery-carousel').carousel({
 
                         var itemH = $($itemReg + i).height();
                         var itemTop = $($itemReg + i).offset().top;
-                        var scrollToItem = itemTop - winHeight + itemH / 2;
+                        var scrollToItem = itemTop - winHeight + itemH / 3;
                         if (winScrollTop > scrollToItem) {
-                            $($itemReg + i).delay(300 * i).animate({
+                            $($itemReg + i).delay(200 * i).animate({
                                 marginLeft: '0',
                                 opacity: '1'
 
@@ -1170,9 +1286,9 @@ $('.homepage-gallery-carousel').carousel({
 
 
             });
-             if (winScrollTop > scrollToElem + $(window).height() * 0.25) {
+             if (winScrollTop > scrollToElem + $(window).height() * 0.3) {
                     for (var i = 1; i < $($itemReg).length + 1; i++) {
-                        $($itemReg + i).delay(300 * i).animate({
+                        $($itemReg + i).delay(200 * i).animate({
                             marginLeft: '0',
                             opacity: '1'
                         }, 1000, 'easeOutCirc');
@@ -1370,13 +1486,35 @@ for ($i = 1; $i <= 30; $i++) {
 $("#logo_image").change(function () {
     readURL(this, '#imagelogo_image', '.close-logo-image');
 });;(function () {
-     $h = $('.page-header').css('height');
-        $('.site-logo-wrapper').css('height', $h);
-    $('.page-header').on('resize', function () {
-        $h = $('.page-header').css('height');
-        $('.site-logo-wrapper').css('height', $h);
-    });
-}());;(function () {
+    function setLogoSize() {
+        $window = parseInt($(window).width());
+        $paddings = parseInt($('.header-wrapper').css('padding-left')) + parseInt($('.header-wrapper').css('padding-right'));
+        $menuButtonPadding = parseInt($('.menu-link-button').css('padding-right'));
+        $menuButtonSize = parseInt($('.menu-link').width());
+        $w = $window - $paddings - $menuButtonSize - $menuButtonPadding ;
+
+        return $w;
+    }
+
+
+    if (parseInt($(window).width()) < 460) {
+        $('.site-logo-wrapper img').css('width', setLogoSize() + 'px');
+    } else {
+        $('.site-logo-wrapper img').css('width', '360px');
+    }
+
+
+ window.onresize =  function () {
+        if (parseInt($(window).width()) < 460) {
+    console.log(parseInt($(window).width()));
+            $('.site-logo-wrapper img').css('width', setLogoSize() + 'px');
+        } else {
+            $('.site-logo-wrapper img').css('width', '360px');
+        }
+    };
+
+}());
+;(function () {
     function sizeRect(i) {
         $('.row-' + i).on('click', function () {
             $('tr').removeClass('active-row');

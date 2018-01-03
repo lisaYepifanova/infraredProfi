@@ -1,5 +1,5 @@
 $('.product-carousel').carousel({
-    interval: 6000,
+    interval: 5000,
     pause: "hover"
 });
 

@@ -106,7 +106,7 @@
   .close {
     border: 1px solid black;
     z-index: 9999;
-    border-radius: 16px;
+    border-radius: 1rem;
     cursor: pointer;
     width: 24px;
     height: 24px;
@@ -193,7 +193,7 @@
 
 #homepageGalleryCarousel {
   height: 75%;
-  padding-bottom: 16px;
+  padding-bottom: 1rem;
 
   .carousel-inner > .item {
     height: 100%;
@@ -216,3 +216,4 @@
 .carousel-control {
   opacity: 1;
 }
+

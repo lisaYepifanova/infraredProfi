@@ -57,7 +57,7 @@
     $target = "#main-page  .homepage-header-title-wrapper";
     simpleSmooth($target, 2000);
 
-    smoothAppearance('contactBlock', '#contactBlock .row', $startPos, $speed);
+    smoothAppearance('contactBlock', '#contactBlock .row', $startPos, 1000);
 
     //fur-handler
 
@@ -93,5 +93,7 @@
         smoothAppearance('technologyPage', '.infra-house-img', $startPos, 2000);
         smoothAppearance('technologyPage', '.infra-house-description', $startPos, 2000);
     }
+
+    simpleSmooth('.contacts-info-wrapper', 2000);
 
 }());

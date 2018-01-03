@@ -8,10 +8,10 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-      padding-left: 2.25rem;
+     /* padding-left: 2.25rem;
     @media (min-width: $screen-xs) {
       padding-left: $nav-panel-width;
-    }
+    }*/
 
         @media (min-width: $screen-sm) {
       flex-direction: row;
@@ -39,7 +39,8 @@ width: 100%;
 
   .right-side {
     width: 50%;
-    padding-left: 3rem;
+    padding-left: 3.8rem;
+    padding-right: 1rem;
 
     @media (min-width: $screen-sm-min) {
       width: $container-sm/2;
@@ -101,11 +102,11 @@ width: 100%;
 
   @for $i from 1 through 10 {
     .property-item#{$i} .property-item-image {
-      width: 32px;
+      width: 2rem;
       height: 36px;
       display: inline-block;
       position: absolute;
-      left: -32px * 1.325;
+      left: -2.8rem;
       background-size: contain;
       background-repeat: no-repeat;
     }
@@ -117,16 +118,6 @@ width: 100%;
     width: 95%;
     display: inline-block;
     margin-right: 0;
-      padding-left: 1rem;
-
-
-    @media all and (min-width: 400px) {
-      padding-left: 2rem;
-    }
-
-    @media all and (min-width: 480px) {
-      padding-left: 3rem;
-    }
   }
 
   .right-side {

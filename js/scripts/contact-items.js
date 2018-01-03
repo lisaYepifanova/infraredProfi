@@ -20,20 +20,20 @@
 
         $(contactCol).css('width', itemSize(0.9));
         $(contactCol).css('height', itemSize(0.9));
-        $(contactCol).css('padding-left', '0.5rem');
-        $(contactCol).css('padding-right', '0.5rem');
+        $(contactCol).css('padding-left', '1rem');
+        $(contactCol).css('padding-right', '1rem');
 
         setItemSize(0.9);
 
         if ($(window).width() < 390) {
-            $(contactCol).css('width', '96%');
+            $(contactCol).css('width', '100%');
 
             $(contactCol).css('height', itemSize(1));
-            setItemSize(0.85);
+            setItemSize(1);
         }
 
         if ($(window).width() > 389 && $(window).width() < 721) {
-            $(contactCol).css('width', '48%');
+            $(contactCol).css('width', '50%');
             $(contactCol).css('height', itemSize(1));
             setItemSize(1);
         }
@@ -45,7 +45,7 @@
         }
 
         if ($(window).width() > 720) {
-            $(contactCol).css('width', '24.8%');
+            $(contactCol).css('width', '25%');
             $(contactCol).css('height', itemSize(1));
             setItemSize(1);
         }

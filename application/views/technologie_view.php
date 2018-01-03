@@ -72,7 +72,7 @@
   </div>
   <div class="container left-padding">
     <h3 class="description-scheme-title text-center"><?php echo $data['scheme_title']; ?></h3>
-    <div class="description-img-scheme box-mid-margin text-center">
+    <div class="description-img-scheme text-center">
         <?php
         echo '<div class="convect-house-wrapper">';
         echo '<div class="convect-house-block">';
@@ -93,5 +93,4 @@
         ?>
     </div>
   </div>
-
 </main>
