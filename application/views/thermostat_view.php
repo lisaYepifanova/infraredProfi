@@ -65,75 +65,19 @@
       <div class="product-main col-sm-12">
 
         <!-- Gallery carousel -->
-        <div class="carousel-wrapper">
-          <div id="carousel"
-               class="carousel slide product-carousel product-carousel-top swipe-carousel">
-            <div class="carousel-inner">
+                      <div class="slider-prod">
                 <?php
-                $activeIndex = true;
                 if (!empty($data['gallery'])) {
-                    foreach ($data['gallery'] as $row) {
-                        echo '<div class="item large-item ';
-                        if ($activeIndex) {
-                            echo ' active';
-                            $activeIndex = false;
-                        }
-                        echo '" style="background-image: url('.IMAGEPATH.$row['path'].')"></div>';
-                    }
-                }
-                ?>
-            </div>
-          </div>
-          <div class="clearfix">
-            <div id="thumbcarousel"
-                 class="carousel slide product-carousel carousel-showmanymoveone">
-              <div class="carousel-inner">
-                  <?php
-                  $activeIndex = true;
-                  $itemIndex = 0;
-                  if (!empty($data['gallery']) and count(
-                      $data['gallery']
-                    ) > 1
-                  ) {
-                      foreach ($data['gallery'] as $row) {
-                          echo '<div class="item ';
-                          if ($activeIndex) {
-                              echo 'active';
-                              $activeIndex = false;
-                          }
-                          echo '">';
+                  foreach ($data['gallery'] as $row) {
+                    echo '<div class="item-gallery';
+                    echo '" ">
+                <div class="item-image" style="background-image: url(' . IMAGEPATH . $row['path'] . ')"> </div>
 
-                          echo '<div data-target="#carousel" data-slide-to="';
-                          echo $itemIndex;
-                          echo '" class="thumb thumb-image " style="background-image:url('.IMAGEPATH.$row['path'].')"></div>';
-                          $itemIndex = $itemIndex + 1;
-
-                          echo '</div>';
-
-                      }
+                </div>';
                   }
-                  ?>
-
-              </div>
-
-                <?php
-                if (!empty($data['gallery']) and count($data['gallery']) > 3) {
-                    ?>
-                  <a class="left carousel-control" href="#thumbcarousel"
-                     role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                  </a>
-                  <a class="right carousel-control" href="#thumbcarousel"
-                     role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                  </a>
-                    <?php
                 }
                 ?>
-
-            </div>
-          </div>
-        </div>
+              </div>
 
                   <!-- Description of the product-->
         <div class="product-description-wrapper product-full-description-wrapper">

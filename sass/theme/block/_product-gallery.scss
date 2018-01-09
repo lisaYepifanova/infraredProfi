@@ -102,11 +102,18 @@
 
 .slider-prod .slick-slide {
   height: 200px;
+    background-color: #ffffffcf;
+
   .item-image {
-    height: 200px;
+    height:200px;
      background-position: center center;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
+
+
+    @media (min-width: 768px) {
+      background-size: cover;
+    }
   }
 
 
@@ -115,19 +122,30 @@
 .slider-prod {
     .slick-center .item-image {
     transform: scale(1.25);
+      box-shadow: 0px 1px 10px 2px rgba(0, 0, 0, 0.72);
   }
 
   .slick-track {
-    padding: 2rem 0;
+    padding: 4rem 0;
   }
 
-  .slick-next {
-    right: 25px;
-}
 
-  .slick-prev {
-    left: 0px;
-    z-index: 999;
-}
+    .slick-arrow {
+      color: $footer-bg;
+      font-size: 2rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+  }
+
+  .glyphicon-chevron-left {
+    left: 0;
+    z-index: 99;
+  }
+
+    .glyphicon-chevron-right {
+    right: 0;
+  }
 }
 
