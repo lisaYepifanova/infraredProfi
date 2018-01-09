@@ -30,8 +30,7 @@ $pageTitle = "Infrared24";
   <?php
   echo '
       <link rel="apple-touch-icon" href="' . ROOTPATH . 'apple-touch-icon.png">
-      <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
-<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+  
       <link rel="stylesheet" href="' . CSSPATH . 'normalize.min.css">
       <link rel="stylesheet" href="' . CSSPATH . 'style.min.css">
       <link rel="stylesheet" href="' . CSSPATH . 'slick.min.css">

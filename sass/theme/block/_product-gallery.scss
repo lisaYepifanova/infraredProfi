@@ -10,123 +10,142 @@
   .carousel {
     margin-top: 40px;
   }
-  /*
-    .carousel-inner {
-      height: 100px;
-      overflow: visible;
-      transition: all 600ms cubic-bezier(0.165, 0.84, 0.44, 1);
 
-      @media all and (min-width: 400px) {
-        height: 120px;
-      }
+  .carousel-inner {
+    height: 100px;
+    overflow: visible;
+    transition: all 600ms cubic-bezier(0.165, 0.84, 0.44, 1);
 
-      @media all and (min-width: 560px) {
-        height: 150px;
-      }
-
-      @media all and (min-width: 660px) {
-        height: 200px;
-      }
+    @media all and (min-width: 400px) {
+      height: 120px;
     }
 
-    .large-item {
-      height: 180px;
-
-      @media all and (min-width: 400px) {
-        height: 230px;
-      }
-
-      @media all and (min-width: 560px) {
-        height: 350px;
-      }
-
-      @media all and (min-width: 660px) {
-        height: 560px;
-      }
-
+    @media all and (min-width: 560px) {
+      height: 150px;
     }
 
-    .thumb-image {
-      height: 60px;
-      transition: all 600ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    @media all and (min-width: 660px) {
+      height: 200px;
+    }
+  }
 
-      @media all and (min-width: 400px) {
-        height: 80px;
-      }
+  .large-item {
+    height: 180px;
 
-      @media all and (min-width: 560px) {
-        height: 110px;
-      }
-
-      @media all and (min-width: 660px) {
-        height: 160px;
-      }
+    @media all and (min-width: 400px) {
+      height: 230px;
     }
 
-    .large-item {
-      width: 100%;
-      background-position: center center;
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
-    .thumb-image {
-      width: 100%;
-      background-position: center center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      transition: all 600ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    @media all and (min-width: 560px) {
+      height: 350px;
     }
 
-    .item .thumb {
-      width: 29%;
-      cursor: pointer;
-      float: left;
-      margin-right: 5.2%;
-      transition: all 600ms cubic-bezier(0.165, 0.84, 0.44, 1);
-
-      &:last-child {
-        margin-right: 0;
-      }
+    @media all and (min-width: 660px) {
+      height: 560px;
     }
 
-    .item .thumb img {
-      width: 100%;
-      margin: 2px;
+  }
+
+  .thumb-image {
+    height: 60px;
+    transition: all 600ms cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    @media all and (min-width: 400px) {
+      height: 80px;
     }
 
-    .item img {
-      width: 100%;
+    @media all and (min-width: 560px) {
+      height: 110px;
     }
-  */
-}
 
-.slider-prod .slick-slide {
-  height: 280px;
-  .item-image {
-    height: 280px;
+    @media all and (min-width: 660px) {
+      height: 160px;
+    }
+  }
+
+  .large-item {
+    width: 100%;
     background-position: center center;
     background-size: contain;
     background-repeat: no-repeat;
   }
+  .thumb-image {
+    width: 100%;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: all 600ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .item .thumb {
+    width: 29%;
+    cursor: pointer;
+    float: left;
+    margin-right: 5.2%;
+    transition: all 600ms cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .item .thumb img {
+    width: 100%;
+    margin: 2px;
+  }
+
+  .item img {
+    width: 100%;
+  }
+
+}
+
+.slider-prod .slick-slide {
+  height: 200px;
+    background-color: #ffffffcf;
+
+  .item-image {
+    height:200px;
+     background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+
+    @media (min-width: 768px) {
+      background-size: cover;
+    }
+  }
+
 
 }
 
 .slider-prod {
-  .slick-center .item-image {
-    transform: scale(1.875);
+    .slick-center .item-image {
+    transform: scale(1.25);
+      box-shadow: 0px 1px 10px 2px rgba(0, 0, 0, 0.72);
   }
 
   .slick-track {
-    padding: 7rem 0;
+    padding: 4rem 0;
   }
 
-  .slick-next {
-    right: 25px;
+
+    .slick-arrow {
+      color: $footer-bg;
+      font-size: 2rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
   }
 
-  .slick-prev {
-    left: 0px;
-    z-index: 999;
+  .glyphicon-chevron-left {
+    left: 0;
+    z-index: 99;
+  }
+
+    .glyphicon-chevron-right {
+    right: 0;
   }
 }
 
