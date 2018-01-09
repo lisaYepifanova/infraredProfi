@@ -18,11 +18,12 @@
   img {
     font-size: 3rem;
     max-height: 100%;
-    width: auto;
     max-width: calc(100vw - 32px - 44px);
+    width: 360px;
 
-    @media (min-width: $screen-sm) and (max-width: $screen-lg) {
-      max-width: 18rem;
+    @media (min-width: $screen-lg)  {
+      max-width: 30rem;
+      width: 480px;
     }
   }
 }

@@ -1174,30 +1174,30 @@ $('.homepage-gallery-carousel').carousel({
 });
 ;$(document).ready(function () {
     $('.slider-prod').slick({
-          centerMode: true,
-  centerPadding: '20px',
-        arrows: true,
-  slidesToShow: 3,
-  responsive: [
-    {
-      breakpoint: 768,
-      settings: {
-        arrows: true,
         centerMode: true,
-        centerPadding: '10px',
-        slidesToShow: 3
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        arrows: false,
-        centerMode: true,
-        centerPadding: '40px',
-        slidesToShow: 1
-      }
-    }
-  ]
+        centerPadding: '20px',
+        arrows: true,
+        slidesToShow: 3,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    arrows: true,
+                    centerMode: true,
+                    centerPadding: '10px',
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '40px',
+                    slidesToShow: 1
+                }
+            }
+        ]
     });
 });;(function () {
     $textWrapper = '.product-full-description-wrapper';
@@ -1491,7 +1491,7 @@ $("#logo_image").change(function () {
         $paddings = parseInt($('.header-wrapper').css('padding-left')) + parseInt($('.header-wrapper').css('padding-right'));
         $menuButtonPadding = parseInt($('.menu-link-button').css('padding-right'));
         $menuButtonSize = parseInt($('.menu-link').width());
-        $w = $window - $paddings - $menuButtonSize - $menuButtonPadding ;
+        $w = $window - $paddings - $menuButtonSize - $menuButtonPadding;
 
         return $w;
     }
@@ -1499,17 +1499,21 @@ $("#logo_image").change(function () {
 
     if (parseInt($(window).width()) < 460) {
         $('.site-logo-wrapper img').css('width', setLogoSize() + 'px');
-    } else {
+    } else if (parseInt($(window).width()) < 1200) {
         $('.site-logo-wrapper img').css('width', '360px');
+    } else {
+        $('.site-logo-wrapper img').css('width', '480px');
     }
 
 
- window.onresize =  function () {
+    window.onresize = function () {
         if (parseInt($(window).width()) < 460) {
-    console.log(parseInt($(window).width()));
+            console.log(parseInt($(window).width()));
             $('.site-logo-wrapper img').css('width', setLogoSize() + 'px');
-        } else {
+        } else if (parseInt($(window).width()) < 1200) {
             $('.site-logo-wrapper img').css('width', '360px');
+        } else {
+            $('.site-logo-wrapper img').css('width', '480px');
         }
     };
 
