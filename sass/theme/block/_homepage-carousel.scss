@@ -86,7 +86,22 @@
   color: $footer-bg;
   //text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.9);
   margin: 24px 0;
-font-weight: 600;
+font-weight: 700;
+  font-size: 21px;
+  font-family: Montserrat,sans-serif;
+    line-height: 1.2;
+
+
+
+background: #dddddd59;
+    box-shadow: 0 0 20px 16px #dddddd59;
+    display: inline-block;
+    text-shadow: 1px 1px #4b0e0b;
+    border: 0;
+
+  @media (min-width: 480px) {
+    font-size: 28px;
+}
 
   @media all and (min-width: 580px){
     margin-bottom: 12px;

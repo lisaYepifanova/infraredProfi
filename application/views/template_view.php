@@ -5,6 +5,21 @@
 $pageTitle = "Infrared24";
 ?>
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async
+          src="https://www.googletagmanager.com/gtag/js?id=UA-112408135-1"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+          dataLayer.push(arguments);
+      }
+
+      gtag('js', new Date());
+
+      gtag('config', 'UA-112408135-1');
+  </script>
+
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>
@@ -64,34 +79,70 @@ entdecken!">';
 <body>
 
 <header>
-  <div class="header-wrapper container">
-    <a class="left-panel aside-panel" href="#asideNavMenu" data-toggle="modal">
+  <div class="header-top-line">
+    <?php
+    echo '<div class="container"><div class="top-phones">Telefon ';
 
-      <div class="menu-link-button">
-        <div class="menu-link">
-          <span class="menu-link-line line1"></span>
-          <span class="menu-link-line line2"></span>
-          <span class="menu-link-line line3"></span>
-        </div>
+    $index = 0;
+    foreach ($default['phones'] as $phone_row) {
+      echo '<a href="' . $phone_row['tel'] . '" class="contact-item-value header-phone-value">' . $phone_row['text'] . '</a>';
+      $index += 1;
+      if (count($default['phones']) > $index) {
+        echo ',  ';
+      }
+    }
 
-      </div>
-    </a>
+    echo '</div>';
+    ?>
 
-    <div class="header-items-wrapper">
-      <div class="header-items">
-        <?php
-        foreach ($default['header_links'] as $row) {
-          echo '<a href="' . $row['link'] . '" class="header-link ">' . $row['title'] . '</a>';
-        }
-        ?>
-      </div>
+    <div class="top-lang">
+      <a class="lang-link">DE</a>
     </div>
 
+  </div>
+  </div>
+  <div class="header-wrapper ">
     <div class="site-logo-wrapper">
       <?php
       echo '<a href="/"><img src="' . IMAGEPATH . $default['logo'][0]['site_logo'] . '" alt="logo"></a>'
       ?>
     </div>
+
+
+    <div class="header-menu-wrapper">
+      <a class="left-panel aside-panel" href="#asideNavMenu"
+         data-toggle="modal">
+
+        <div class="menu-link-button">
+          <div class="menu-link">
+            <span class="menu-link-line line1"></span>
+            <span class="menu-link-line line2"></span>
+            <span class="menu-link-line line3"></span>
+          </div>
+
+        </div>
+      </a>
+
+      <div class="header-items-wrapper">
+        <div class="header-items">
+          <?php
+          foreach ($default['header_links'] as $row) {
+            echo '<a href="' . $row['link'] . '" class="header-link ">' . $row['title'] . '</a>';
+          }
+          ?>
+        </div>
+      </div>
+
+    </div>
+    <div class="header-social-items-wrapper">
+      <div class="header-social-items">
+        <?php
+        echo '<div class="social-links"><a target="_blank" href="https://www.facebook.com/infrared24" class=" social-link"><img src="' . IMAGEPATH . 'fb.png" alt="facebook link"></a>
+         <a href="https://twitter.com/@InfraRed24" target="_blank" class="social-link"><img src="' . IMAGEPATH . 'twitter.png" alt="twitter link"></a></div>';
+        ?>
+      </div>
+    </div>
+
   </div>
 </header>
 
@@ -160,7 +211,7 @@ include 'application/views/' . $content_view;
 
           <?php
           echo '<div class="col-sm-4 footer-link"><a target="_blank" href="https://www.facebook.com/infrared24" class=" social-link"><img src="' . IMAGEPATH . 'fb.png" alt="facebook link"></a>
-         <a href="https://twitter.com/" class="social-link"><img src="' . IMAGEPATH . 'twitter.png" alt="twitter link"></a></div>';
+         <a href="https://twitter.com/@InfraRed24" target="_blank" class="social-link"><img src="' . IMAGEPATH . 'twitter.png" alt="twitter link"></a></div>';
           ?>
         </div>
       </div>
@@ -175,7 +226,8 @@ include 'application/views/' . $content_view;
           ?>
         </div>
       </div>
-      <div class="footer-link col-sm-4 footer-cp">© 2017 InfraRed24 GmbH</div>
+      <div class="footer-links footer-cp">© 2017 InfraRed24 GmbH</div>
+      <div class="footer-links footer-mit"><a class="footer-mit-link" href="/mitglied"><img src="<?php echo IMAGEPATH .'footer/mitglied.png'; ?>"></a></div>
     </div>
   </div>
 </footer>
@@ -218,9 +270,8 @@ include 'application/views/' . $content_view;
       <div class="modal-footer">
         <?php
         echo '<a target="_blank" href="https://www.facebook.com/infrared24" class="social-link"><img src="' . IMAGEPATH . 'fb.png" alt="facebook link"></a>
-          <a href="https://twitter.com/" class="social-link"><img src="' . IMAGEPATH . 'twitter.png" alt="twitter link"></a>';
+          <a href="https://twitter.com/@InfraRed24" target="_blank" class="social-link"><img src="' . IMAGEPATH . 'twitter.png" alt="twitter link"></a>';
         ?>
-
 
       </div>
     </div>
@@ -231,9 +282,7 @@ include 'application/views/' . $content_view;
 
 ?>
 
-
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-
 
 <?php
 echo '
@@ -243,8 +292,7 @@ echo '
   
 <script src="' . LIBPATH . 'slick/slick/slick.min.js"></script>
   <script src="' . JSPATH . 'vendor.min.js"></script>
-  <script src="' . JSPATH . 'build.min.js"></script>
-  <script src="' . JSPATH . 'vendor/google-analytics.js"></script>';
+  <script src="' . JSPATH . 'build.js"></script>';
 
 ?>
 

@@ -160,9 +160,36 @@ class Model_Default extends Model {
 
     */
 
+    /*
 
     $query = $mysqli->query("UPDATE `garantie` SET `text`='<h3>GARANTIEBEDINGUNGEN</h3>\n\n<p>Die Herstellergarantie gilt nicht bei Sch&auml;den, die durch eigene Nachl&auml;ssigkeit entstanden sind oder durch Missbrauch der Nutzung elektrischen Ger&auml;ten verursacht worden sind.</p>\n\n<p>Nachfolgenden F&auml;lle die eine Garantie ausschlie&szlig;en sind:</p>\n<ol>\n<li>Defekte und Sch&auml;den, die durch Missbrauch bei Nutzung des Produkts verursacht worden sind.</li>\n\n<li>Jeder Fehler und Schaden, der nach der Anlieferung beim Beladen, Entladen oder beim Transport des Ger&auml;tes entstanden ist.</li>\n\n<li>Defekte und Sch&auml;den, die durch erh&ouml;hte oder verringerte Netzspannung oder durch anschlie&szlig;en des Ger&auml;tes an Netzspannungen und Frequenzen, die den vorgeschriebenen nicht entsprechen, verursacht worden sind.</li>\n\n<li>Falsche Installation oder Deinstallation.</li>\n\n<li>Defekte und Sch&auml;den, die durch Reparatur in nicht spezifizierten Servicezentren entstanden sind.</li>\n\n<li>Bedingt durch die Beschichtungseigenschaften sind geringe Planit&auml;tsabweichungen nicht zu vermeiden. Diese sind insbesondere bei Spiegeln m&ouml;glicherweise sichtbar und stellen keinen Reklamationsgrund dar.</li>\n</ol>\n<p>Achtung! Bei oben genannten F&auml;llen und Sch&auml;den verliert der Garantieanspruch seine G&uuml;ltigkeit. Garantiekarte OHNE H&auml;ndler Stempel, H&auml;ndleranschrift, Unterschrift des Verk&auml;ufers und Verkaufsdatum wird als ung&uuml;ltig betrachtet.</p>\n\n<p>Reparatur oder Austausch wird nur in spezialisierten Service-Centern oder vom autorisiertem Fach-H&auml;ndler \"Infrared24\" durchgef&uuml;hrt.\n</p>' WHERE `id`='1'");
    $upd = $mysqli->query($query);
+*/
+/*
+    $query = $mysqli->query("CREATE TABLE `mitglied` (`id` INT NOT NULL AUTO_INCREMENT, `info` TEXT NULL, PRIMARY KEY (`id`))");
+    $upd = $mysqli->query($query);
+*/
+
+/*
+$query = $mysqli->query("INSERT INTO `mitglied` (`id`) VALUES ('1')");
+$upd = $mysqli->query($query);
+*/
+/*
+$query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/item_decken.gif' WHERE `id`='2'");
+$upd = $mysqli->query($query);
+$query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/item_decken.gif' WHERE `id`='7'");
+$upd = $mysqli->query($query);
+$query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/item_decken.gif' WHERE `id`='8'");
+$upd = $mysqli->query($query);
+
+$query = $mysqli->query("CREATE TABLE `product_energie` (`id` INT NOT NULL AUTO_INCREMENT, `image` TEXT NULL,  PRIMARY KEY (`id`))");
+$upd = $mysqli->query($query);
+
+$query = $mysqli->query("INSERT INTO `product_energie` (`id`, `image`) VALUES ('1', 'product-energie/energie_de.png')");
+$upd = $mysqli->query($query);
+*/
+
+
 
     $query = $mysqli->query("SELECT * FROM default_info");
 

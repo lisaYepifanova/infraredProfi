@@ -357,6 +357,17 @@ $upd = $mysqli->query($query);
       }
     }
 
+     $query = $mysqli->query(
+      "SELECT * FROM product_energie"
+    );
+
+    if ($query) {
+      while ($row = mysqli_fetch_assoc($query)) {
+        $res['energie'] = $row;
+
+      }
+    }
+
     return $res;
   }
 }

@@ -102,8 +102,12 @@
                 if (!empty($data['gallery'])) {
                   foreach ($data['gallery'] as $row) {
                     echo '<div class="item-gallery';
+                    /* echo '" ">
+                 <div class="item-image" style="background-image: url(' . IMAGEPATH . $row['path'] . ')"> </div>
+
+                 </div>';*/
                     echo '" ">
-                <div class="item-image" style="background-image: url(' . IMAGEPATH . $row['path'] . ')"> </div>
+                <img class="item-image" src="' . IMAGEPATH . $row['path'] . '"> 
 
                 </div>';
                   }
@@ -272,10 +276,31 @@
     <div class="row technische-row">
       <div class="product-thermostat">
         <?php
+
+        if (isset($data['energie'])) {
+            echo '<div class="col-xs-12 col-sm-4 product-thermostat-item">
+                        <div class="product-thermostat-image" style="background-image: url(' . IMAGEPATH . $data['energie']['image'] . ')"></div>';
+            if (isset($data['energie']['title'])) {
+              echo ' <div class="product-thermostat-title">
+                   ' . $data['energie']['title'] . '
+                   </div>
+                 ';
+            }
+
+            if (isset($data['energie']['description'])) {
+              echo '
+                        <div class="product-thermostat-description">
+                        ' . $data['energie']['description'] . '
+                        </div>
+                      ';
+            }
+            echo '</div>';
+
+        }
         if (isset($data['principles'])) {
           foreach ($data['principles'] as $row) {
             echo '
-                      <div class="col-xs-12 col-sm-6 product-thermostat-item">
+                      <div class="col-xs-12 col-sm-4 product-thermostat-item">
                         <div class="product-thermostat-image" style="background-image: url(' . IMAGEPATH . $row['image'] . ')"></div>
                         <div class="product-thermostat-title">
                         ' . $row['title'] . '
@@ -289,7 +314,7 @@
         if ($data[0]['has_thermostat'] == '1') {
           foreach ($data['thermostats_info'] as $row) {
             echo '
-                      <div class="col-xs-12 col-sm-6 product-thermostat-item">
+                      <div class="col-xs-12 col-sm-4 product-thermostat-item">
                         <div class="product-thermostat-image" style="background-image: url(' . IMAGEPATH . $row['image'] . ')"></div>
                         <div class="product-thermostat-title">
                         ' . $row['title'] . '

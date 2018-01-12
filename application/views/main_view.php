@@ -44,11 +44,11 @@
       </div>
     </div>
     <div class="homepage-header-title-wrapper left-padding container">
-      <h2 class="homepage-header-title">
+      <div class="homepage-header-title">
         <?php
         echo $data['header_title'];
         ?>
-      </h2>
+      </div>
     </div>
   </div>
 
@@ -72,7 +72,6 @@
 
 
   </div>
-  </div>
 
   <div class="homepage-properties ">
     <div class="homepage-properties-row ">
@@ -92,7 +91,7 @@
           echo '<div class="property-item property-item' . $index . '">
               <div class="property-item-image" style="background-image: url(' . IMAGEPATH . $row['icon'] . ')"></div>
               <h4 class="property-item-title">' . $row['title'] . '</h4>
-              <p class="property-item-description">' . $row['description'] . '</p>
+              <div class="property-item-description">' . $row['description'] . '</div>
               </div>';
 
           $index = $index + 1;
@@ -112,7 +111,7 @@
       <div class='homepage-gallery-item' style='background-image: url(" . IMAGEPATH . $row['image'] . ")'>
       <h2 class='homepage-gallery-item-title'>".$row['title']."</h2>
 </div>";
-      echo "<button class='btn read-more-btn' >Mehr lesen</button>";
+      echo "<div class='btn read-more-btn' >Mehr lesen</div>";
       echo " 
       </a></div>";
     }
