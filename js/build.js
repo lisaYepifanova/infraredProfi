@@ -1,25 +1,28 @@
 $l = $('.carousel-showmanymoveone .item').length;
 
 
-$('#thumbcarousel').carousel({interval: false});
-if ($l<4) {
-  $('#thumbcarousel').carousel({interval: false});
+$('#product-carousel').carousel({
+    interval: 4000
+});
+
+if ($l < 4) {
+    $('#product-carousel').carousel({interval: false});
 }
 
-$('.carousel-showmanymoveone .item').each(function(){
-  var next = $(this).next();
-  if (!next.length) {
-    next = $(this).siblings(':first');
-  }
-  next.children(':first-child').clone().appendTo($(this));
+$('.carousel-showmanymoveone .item').each(function () {
+    var next = $(this).next();
+    if (!next.length) {
+        next = $(this).siblings(':first');
+    }
+    next.children(':first-child').clone().appendTo($(this));
 
 
-  if (next.next().length>0) {
-    next.next().children(':first-child').clone().appendTo($(this));
-  }
-  else if ($l>3){
-    $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
-  }
+    if (next.next().length > 0) {
+        next.next().children(':first-child').clone().appendTo($(this));
+    }
+    else if ($l > 2) {
+        $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+    }
 });
 ;$(function () {
 
@@ -1086,20 +1089,59 @@ function numOfItemsValid(evt) {
 }());
 
 // Place any jQuery/helper plugins in here.
-;$('.product-carousel').carousel({
-    interval: 5000,
-    pause: "hover"
+;$('#product-carousel').carousel({
+    //interval: 4000,
+    //pause: "hover"
 });
 
 
 $('#homepageGalleryCarousel').carousel({
-    pause:true,
-    interval:false
+    pause: true,
+    interval: false
 });
 
 $('.homepage-gallery-carousel').carousel({
-    pause:true,
-    interval:false
+    pause: true,
+    interval: false
+});
+
+
+if ($('.item.active .thumb').length > 2) {
+    $('.item .thumb:nth-child(2)').css('transform', 'scale(1.85)');
+    $('.item .thumb:nth-child(2)').css('z-index', '999');
+    $('.item .thumb:nth-child(2)').css('position', 'relative');
+    $('.item .thumb:nth-child(2)').css('box-shadow', 'rgb(251, 251, 251) 0px 0px 20px 9px');
+    $('.item .thumb:nth-child(2)').css('border', '1px solid #dcdcdc52');
+} else {
+    $('.item .thumb').css('transform', 'scale(1)');
+    $('.item .thumb').css('z-index', '1');
+    $('.item .thumb:nth-child(2)').css('box-shadow', '0');
+    $('.item .thumb:nth-child(2)').css('border', '0');
+}
+
+
+$('#product-carousel').on('slide.bs.carousel', function () {
+    $('.item .thumb').css('transform', 'scale(1)');
+    $('.item .thumb').css('z-index', '1');
+     $('.item .thumb:nth-child(2)').css('box-shadow', '0');
+     $('.item .thumb:nth-child(2)').css('border', '0');
+});
+
+
+$('#product-carousel').on('slid.bs.carousel', function () {
+    if ($('.item.active .thumb').length > 2) {
+        $('.item .thumb:nth-child(2)').css('transform', 'scale(1.85)');
+        $('.item .thumb:nth-child(2)').css('z-index', '999');
+        $('.item .thumb:nth-child(2)').css('position', 'relative');
+        $('.item .thumb:nth-child(2)').css('box-shadow', 'rgb(251, 251, 251) 0px 0px 20px 9px');
+        $('.item .thumb:nth-child(2)').css('border', '1px solid #dcdcdc52');
+    } else {
+        $('.item .thumb').css('transform', 'scale(1)');
+        $('.item .thumb').css('z-index', '1');
+         $('.item .thumb:nth-child(2)').css('box-shadow', '0');
+         $('.item .thumb:nth-child(2)').css('border', '0');
+    }
+
 });
 ;$(function () {
 
@@ -1174,17 +1216,28 @@ $('.homepage-gallery-carousel').carousel({
 });
 ;$(document).ready(function () {
     $('.slider-prod').slick({
-        centerMode: true,
-        centerPadding: '20px',
-        arrows: true,
+
+
+                dots: false,
+        infinite: true,
         slidesToShow: 3,
-        autoplay: true,
+        slidesToScroll: 2,
+        centerMode: true,
+
+
+
+
+
+
+        arrows: true,
+        autoplay: false,
         autoplaySpeed: 4000,
         prevArrow: '<span class="glyphicon glyphicon-chevron-left"></span>',
         nextArrow: '<span class="glyphicon glyphicon-chevron-right"></span>',
         cssEase: 'linear',
         focusOnSelect: true,
         speed: 200,
+        initialSlide: 1,
         responsive: [
 
             {
@@ -1192,13 +1245,17 @@ $('.homepage-gallery-carousel').carousel({
                 settings: {
                     arrows: false,
                     centerMode: true,
-                    centerPadding: '40px',
+                    centerPadding: '60px',
                     slidesToShow: 1
                 }
             }
         ]
     });
-});;(function () {
+
+    $('.slick-slide').width($('.slick-list').width()*0.31);
+});
+
+;(function () {
     $textWrapper = '.product-full-description-wrapper';
     $textBlock = '.product-full-description-wrapper';
     $productArrow = '.product-full-description-wrapper .arrow-down';
@@ -1503,7 +1560,7 @@ $("#logo_image").change(function () {
         $logo_padd = parseInt($('.site-logo-wrapper').css('padding-left')) + parseInt($('.site-logo-wrapper').css('padding-right'));
 
 
-        $w = $window - $menu - $social - $logo_padd - $hw - 32;
+        $w = $window - $menu - $social - $logo_padd - $hw - 32 - 15;
 
         return $w;
     }
@@ -1521,18 +1578,56 @@ $("#logo_image").change(function () {
     }
 
 
-    window.onresize = function () {
-        if (parseInt($(window).width()) < 460) {
+
+
+    var addEvent = function(object, type, callback) {
+    if (object == null || typeof(object) == 'undefined') return;
+    if (object.addEventListener) {
+        object.addEventListener(type, callback, false);
+    } else if (object.attachEvent) {
+        object.attachEvent("on" + type, callback);
+    } else {
+        object["on"+type] = callback;
+    }
+};
+
+    addEvent(window, "resize", function(event) {
+          if (parseInt($(window).width()) < 460-15) {
             $('.site-logo-wrapper img').css('width', setMLogoSize() + 'px');
-        } else if (parseInt($(window).width()) < 992) {
+        } else if (parseInt($(window).width()) < 992-15) {
             $('.site-logo-wrapper img').css('width', '320px');
         }
-        else if (parseInt($(window).width()) < 1400) {
+        else if (parseInt($(window).width()) < 1400-15) {
             $('.site-logo-wrapper img').css('width', setDLogoSize() + 'px');
         } else {
             $('.site-logo-wrapper img').css('width', '480px');
         }
-    };
+});
+
+    function getLogoOffset() {
+        return parseInt($('.site-logo-wrapper img').offset().left)+'px';
+    }
+
+    if($('.site-logo-wrapper img').offset().left > 0) {
+        $('.header-top-line').css('padding-left', getLogoOffset);
+        $('.header-top-line').css('padding-right', getLogoOffset);
+    } else {
+       $('.header-top-line').css('padding-left', '0px');
+        $('.header-top-line').css('padding-right', '0px');
+    }
+
+
+
+        addEvent(window, "resize", function(event) {
+          console.log($(window).width());
+        if($('.site-logo-wrapper img').offset().left > 0) {
+        $('.header-top-line').css('padding-left', getLogoOffset);
+        $('.header-top-line').css('padding-right', getLogoOffset);
+    } else {
+       $('.header-top-line').css('padding-left', '0px');
+        $('.header-top-line').css('padding-right', '0px');
+    }
+});
 
 }());
 ;(function () {
@@ -1590,8 +1685,8 @@ if ($('#homepageGalleryCarousel').length !== 0) {
 
 $l = $('.carousel-showmanymoveone .item').length;
 if ($l > 3) {
-    var hammer = new Hammer(document.querySelector('#thumbcarousel'));
-    var $carousel = $("#thumbcarousel").carousel({"interval": 0});
+    var hammer = new Hammer(document.querySelector('#product-carousel'));
+    var $carousel = $("#product-carousel").carousel({"interval": 0});
     hammer.get("swipe");
 
     hammer.on("swipeleft", function () {
@@ -1651,7 +1746,12 @@ if ($l > 3) {
     technologyTextHover('.convect-house-description', '.convect-house-description .comparison-text',$height);
     technologyTextHover('.infra-house-description', '.infra-house-description .comparison-text',$height);
 
-}());;(function () {
+}());;$(function () {
+
+
+
+});
+;(function () {
     function leftSideAppear($mainReg, $sideBlock, $startM) {
         if (document.getElementById($mainReg) !== null) {
             var target = $($sideBlock);

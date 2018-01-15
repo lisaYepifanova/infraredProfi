@@ -102,7 +102,7 @@ $upd = $mysqli->query($query);
         $res['property_items'][] = $r;
       }
     }
-    /*
+
         $query = $mysqli->query("SELECT * FROM gallery_images");
 
         if ($query) {
@@ -110,7 +110,7 @@ $upd = $mysqli->query($query);
             $res['gallery'][] = $r;
           }
         }
-    */
+
     $query = $mysqli->query("SELECT * FROM gallery_bg");
 
     if ($query) {
@@ -118,7 +118,7 @@ $upd = $mysqli->query($query);
         $res['gallery_bg'] = $r;
       }
     }
-
+/*
     $query = $mysqli->query(
       "SELECT id, name, image, title, short_description, ord, isOnHomepage FROM products  WHERE parent_id=0 AND isOnHomepage=1 " .
       " UNION SELECT id, name, image, title, short_description, ord, isOnHomepage FROM  categories  WHERE parent_id=0  AND isOnHomepage=1 " .
@@ -131,7 +131,7 @@ $upd = $mysqli->query($query);
         $res['gallery_items'][] = $r;
       }
     }
-
+*/
 
     return $res;
   }

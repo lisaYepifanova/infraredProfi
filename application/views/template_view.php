@@ -48,8 +48,8 @@ $pageTitle = "Infrared24";
   
       <link rel="stylesheet" href="' . CSSPATH . 'normalize.min.css">
       <link rel="stylesheet" href="' . CSSPATH . 'style.min.css">
-      <link rel="stylesheet" href="' . CSSPATH . 'slick.min.css">
-      <link rel="stylesheet" href="' . CSSPATH . 'slick-theme.min.css">
+      <link rel="stylesheet" href="' . LIBPATH . 'slick/slick/slick.css">
+      <link rel="stylesheet" href="' . LIBPATH . 'slick/slick/slick-theme.css">
       ';
   ?>
   <meta name="keywords" content="Infrared Profi, Infrarot Profi, Heizung,
@@ -81,11 +81,11 @@ entdecken!">';
 <header>
   <div class="header-top-line">
     <?php
-    echo '<div class="container"><div class="top-phones">Telefon ';
+    echo '<div class="header-top-line-content"><div class="top-phones">Telefon ';
 
     $index = 0;
     foreach ($default['phones'] as $phone_row) {
-      echo '<a href="' . $phone_row['tel'] . '" class="contact-item-value header-phone-value">' . $phone_row['text'] . '</a>';
+      echo '<a href="tel:' . $phone_row['tel'] . '" class="contact-item-value header-phone-value">' . $phone_row['text'] . '</a>';
       $index += 1;
       if (count($default['phones']) > $index) {
         echo ',  ';
@@ -168,7 +168,7 @@ include 'application/views/' . $content_view;
       if ($row['name'] == 'phone') {
         echo '<div class="phone-wrapper">';
         foreach ($default['phones'] as $phone_row) {
-          echo '<a href="' . $phone_row['tel'] . '" class="contact-item-value phone-value">' . $phone_row['text'] . '</a>';
+          echo '<a href="tel:' . $phone_row['tel'] . '" class="contact-item-value phone-value">' . $phone_row['text'] . '</a>';
         }
         echo '</div>';
       }
@@ -186,7 +186,7 @@ include 'application/views/' . $content_view;
 
 <footer id="footer" class="footer text-center">
   <div class="footer-links-wrapper container">
-    <div class="footer-left-side col-xs-6">
+    <div class="footer-left-side col-xs-6 col-sm-4">
       <div class="footer-links">
         <div class="footer-link-row row">
           <?php
@@ -216,7 +216,7 @@ include 'application/views/' . $content_view;
         </div>
       </div>
     </div>
-    <div class="footer-right-side col-xs-6">
+    <div class="footer-right-side col-xs-6 col-sm-4">
       <div class="footer-links footer-service-links ">
         <div class="footer-link-row">
           <?php
@@ -227,13 +227,17 @@ include 'application/views/' . $content_view;
         </div>
       </div>
       <div class="footer-links footer-cp">© 2017 InfraRed24 GmbH</div>
-      <div class="footer-links footer-mit"><a class="footer-mit-link" href="/mitglied"><img src="<?php echo IMAGEPATH .'footer/mitglied.png'; ?>"></a></div>
+
     </div>
+    <div class="footer-links footer-mit col-xs-6 col-sm-4"><a class="footer-mit-link"
+                                            href="#mitgliedModal"
+         data-toggle="modal"><img
+            src="<?php echo IMAGEPATH . 'footer/mitglied.png'; ?>"></a></div>
   </div>
 </footer>
 
 <!-- Modal -->
-<div id="asideNavMenu" class="modal fade in aside-nav-menu"
+<div id="asideNavMenu" class="modal fade in aside-nav-menu "
      style="display: none;">
   <div class="modal-dialog aside-modal-dialog">
     <div class="modal-bg"></div>
@@ -278,6 +282,23 @@ include 'application/views/' . $content_view;
   </div>
 </div>
 
+
+  <div id="mitgliedModal" class="modal fade in mitglied-modal" style="display: none;">
+    <div class="modal-dialog aside-modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close glyphicon glyphicon-remove"
+                  data-dismiss="modal" aria-hidden="true"></button>
+          <?php
+
+          if (isset($default['mitglied'])) {
+            echo '<div>' . $default['mitglied']['info'] . '</div>';
+          }
+          ?>
+        </div>
+      </div>
+    </div>
+  </div>
 <?php
 
 ?>
@@ -292,7 +313,7 @@ echo '
   
 <script src="' . LIBPATH . 'slick/slick/slick.min.js"></script>
   <script src="' . JSPATH . 'vendor.min.js"></script>
-  <script src="' . JSPATH . 'build.js"></script>';
+  <script src="' . JSPATH . 'build.min.js"></script>';
 
 ?>
 

@@ -102,156 +102,151 @@
     </div>
   </div>
 
-
-  <div class="homepage-products  clearfix">
-    <?php
-    foreach ($data['gallery_items'] as $row) {
-      echo "<div class='homepage-gallery-item-wrapper home-gallery-item-".$row['id']."  col-sm-4'>";
-      echo "<a class='homepage-produkt-link' href='/produkte/".$row['name']."/'>
-      <div class='homepage-gallery-item' style='background-image: url(" . IMAGEPATH . $row['image'] . ")'>
-      <h2 class='homepage-gallery-item-title'>".$row['title']."</h2>
-</div>";
-      echo "<div class='btn read-more-btn' >Mehr lesen</div>";
-      echo " 
-      </a></div>";
-    }
+      <?php
+    echo '<div class="homepage-products-wrapper" style="background-image:url('.IMAGEPATH.$data['gallery_bg']['path'].')">';
     ?>
 
+  <div class="homepage-products-bg">
+    <div class="homepage-products container box-same-vpadding">
+      <div class="homepage-products-row row">
+          <?php
+          $index = 1;
 
-    <!-- <div class="homepage-products-row row">
-        $index = 1;
+          foreach ($data['gallery'] as $row) {
 
-        foreach ($data['gallery'] as $row) {
+              if ($row['panel_displaying'] == '1') {
+                  echo '<div class="item-wrapper col-sm-';
+                  if (($index - 3) % 5 == 0 or ($index - 4) % 5 == 0) {
+                      $size = 3;
+                  } else {
+                      $size = 6;
+                  }
+                  echo $size.'">
+                <a href="#imageNavMenu" class="imageNavMenuLink  item-'.$row['id'].'" data-toggle="modal">
+                <div class="homepage-product-item item-'.$index.'" style="background-image: url('.IMAGEPATH.$row['path'].')">
+                </div>
+                </a>
+              </div>';
 
-            if ($row['panel_displaying'] == '1') {
-                echo '<div class="item-wrapper col-sm-';
-                if (($index - 3) % 5 == 0 or ($index - 4) % 5 == 0) {
-                    $size = 3;
-                } else {
-                    $size = 6;
-                }
-                echo $size.'">
-              <a href="#imageNavMenu" class="imageNavMenuLink '.$row['alt'].'" data-toggle="modal">
-              <div class="homepage-product-item item-'.$index.'" style="background-image: url('.IMAGEPATH.$row['path'].')">
-              </div>
-              </a>
-            </div>';
+                  $index = $index + 1;
+              }
+          }
+          /**
+           * foreach ($data['gallery']['items'] as $row) {
+           * echo '<div class="item-wrapper col-sm-';
+           * if(($index-3)%5 == 0 or ($index-4)%5==0) {
+           * $size = 3;
+           * } else {
+           * $size = 6;
+           * }
+           * echo $size.'">
+           * <div class="homepage-product-item item-'.$index.'" style="background-image: url('.IMAGEPATH.$row['image'].')">
+           * <div class="item-image">
+           * <a href="/products/'.$row['name'].'" class="link-to-product">'.$row['title'].'
+           * <span class="arrow">›</span>
+           * </a>
+           * </div>
+           * </div>
+           * </div>';
+           *
+           * $index = $index + 1;
+           * }*/
 
-                $index = $index + 1;
-            }
-        }
-        /**
-         * foreach ($data['gallery']['items'] as $row) {
-         * echo '<div class="item-wrapper col-sm-';
-         * if(($index-3)%5 == 0 or ($index-4)%5==0) {
-         * $size = 3;
-         * } else {
-         * $size = 6;
-         * }
-         * echo $size.'">
-         * <div class="homepage-product-item item-'.$index.'" style="background-image: url('.IMAGEPATH.$row['image'].')">
-         * <div class="item-image">
-         * <a href="/products/'.$row['name'].'" class="link-to-product">'.$row['title'].'
-         * <span class="arrow">›</span>
-         * </a>
-         * </div>
-         * </div>
-         * </div>';
-         *
-         * $index = $index + 1;
-         * }*/
 
-    </div> -->
-
+          ?>
+      </div>
+    </div>
+  </div>
   </div>
 </main>
 
-<!--
 <div id="imageNavMenu" class="modal fade image-nav-menu container"
-             style="display: none;">
-          <div class="modal-dialog aside-modal-dialog">
-            <div class="modal-content">
+     style="display: none;">
+  <div class="modal-dialog aside-modal-dialog">
+    <div class="modal-content">
 
-              <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <div class="carousel-wrapper">
-                  <div id="homepageGalleryCarousel"
-                       class="carousel slide product-carousel-top">
-                    <div class="carousel-inner">
-                        <?php
-$activeIndex = TRUE;
-if (!empty($data['gallery'])) {
-  foreach ($data['gallery'] as $row) {
-    echo '<div class="item large-item ' . $row['alt'];
-    if ($activeIndex) {
-      echo ' active';
-      $activeIndex = FALSE;
-    }
-    echo '" style="background-image: url(' . IMAGEPATH . $row['path'] . ')"></div>';
-  }
-}
-?>
-                    </div>
-                  </div>
-                  <div class="clearfix">
-                    <div id="thumbcarousel"
-                         class="carousel slide homepage-gallery-carousel carousel-showmanymoveone">
-                      <div class="carousel-inner">
-                          <?php
-$activeIndex = TRUE;
-$itemIndex = 0;
-if (!empty($data['gallery']) and count(
-    $data['gallery']
-  ) > 1
-) {
-  foreach ($data['gallery'] as $row) {
-    echo '<div class="item ';
-    if ($activeIndex) {
-      echo ' active';
-      $activeIndex = FALSE;
-    }
-    echo '">';
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-hidden="true">×
+        </button>
+        <div class="carousel-wrapper">
+          <div id="homepageGalleryCarousel"
+               class="carousel slide product-carousel-top">
+            <div class="carousel-inner">
+              <?php
 
-    echo '<div data-target="#homepageGalleryCarousel" data-slide-to="';
-    echo $itemIndex;
-    echo '" class="thumb thumb-image ' . $row['alt'] . '" style="background-image:url(' . IMAGEPATH . $row['path'] . ')"></div>';
-    $itemIndex = $itemIndex + 1;
+              if (!empty($data['gallery'])) {
+                $activeIndex = TRUE;
+                foreach ($data['gallery'] as $row) {
+                  echo '<div class="item large-item item-'.$row['id'].' ';
+                  if ($activeIndex) {
+                    echo ' active ';
+                    $activeIndex = FALSE;
+                  }
+                  echo '" style="background-image: url(' . IMAGEPATH . $row['path'] . ')"></div>';
+                }
+              }
+              ?>
+            </div>
+          </div>
+          <div class="clearfix">
+            <div id="thumbcarousel"
+                 class="carousel slide homepage-gallery-carousel carousel-showmanymoveone">
+              <div class="carousel-inner">
+                <?php
+                $activeIndex = TRUE;
+                $itemIndex = 0;
+                if (!empty($data['gallery']) and count(
+                    $data['gallery']
+                  ) > 1
+                ) {
+                  foreach ($data['gallery'] as $row) {
+                    echo '<div class="item ';
+                    if ($activeIndex) {
+                      echo ' active';
+                      $activeIndex = FALSE;
+                    }
+                    echo ' item-'.$row['id'].'">';
 
-    echo '</div>';
+                    echo '<div data-target="#homepageGalleryCarousel" data-slide-to="';
+                    echo $itemIndex;
+                    echo '" class="thumb thumb-image item-'.$row['id'].'" style="background-image:url(' . IMAGEPATH . $row['path'] . ')"></div>';
+                    $itemIndex = $itemIndex + 1;
 
-  }
-}
-?>
+                    echo '</div>';
 
-                      </div>
+                  }
+                }
+                ?>
 
-                        <?php
-if (!empty($data['gallery']) and count(
-    $data['gallery']
-  ) > 3
-) {
-  ?>
-                          <a class="left carousel-control" href="#thumbcarousel"
-                             role="button" data-slide="prev">
+              </div>
+
+              <?php
+              if (!empty($data['gallery']) and count(
+                  $data['gallery']
+                ) > 3
+              ) {
+                ?>
+                <a class="left carousel-control" href="#thumbcarousel"
+                   role="button" data-slide="prev">
                             <span
                                 class="glyphicon glyphicon-chevron-left"></span>
-                          </a>
-                          <a class="right carousel-control"
-                             href="#thumbcarousel"
-                             role="button" data-slide="next">
+                </a>
+                <a class="right carousel-control"
+                   href="#thumbcarousel"
+                   role="button" data-slide="next">
                             <span
                                 class="glyphicon glyphicon-chevron-right"></span>
-                          </a>
-                            <?php
-}
-?>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
+                </a>
+                <?php
+              }
+              ?>
 
             </div>
           </div>
         </div>
--->
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -76,63 +76,76 @@
         <!-- Gallery carousel -->
         <?php if (!empty($data['gallery'])) { ?>
           <div class="carousel-wrapper">
-            <!--     <div id="carousel"
-                   class="carousel slide product-carousel product-carousel-top swipe-carousel">
-                <div class="carousel-inner">
-                    <?php
-            /* $activeIndex = true;
-             if (!empty($data['gallery'])) {
-                 foreach ($data['gallery'] as $row) {
-                     echo '<div class="item large-item ';
-                     if ($activeIndex) {
-                         echo ' active';
-                         $activeIndex = false;
-                     }
-                     echo '" style="background-image: url('.IMAGEPATH.$row['path'].')"></div>';
-                 }
-             }*/
-            ?>
-                </div>
-              </div> -->
+
             <div class="clearfix">
+              <div id="product-carousel"
+                   class="carousel slide product-carousel carousel-showmanymoveone  swipe-carousel">
+                <div class="carousel-inner">
+                  <?php
+                  $activeIndex = TRUE;
+                  $itemIndex = 0;
+                  if (!empty($data['gallery']) and count(
+                      $data['gallery']
+                    ) > 1
+                  ) {
+                    foreach ($data['gallery'] as $row) {
+                      echo '<div class="item ';
+                      if ($activeIndex) {
+                        echo 'active';
+                        $activeIndex = FALSE;
+                      }
+                      echo '">';
 
+                      echo '<div class="thumb thumb-image " style="background-image:url(' . IMAGEPATH . $row['path'] . ')"></div>';
+                      $itemIndex = $itemIndex + 1;
 
-              <div class="slider-prod">
-                <?php
-                if (!empty($data['gallery'])) {
-                  foreach ($data['gallery'] as $row) {
-                    echo '<div class="item-gallery';
-                    /* echo '" ">
-                 <div class="item-image" style="background-image: url(' . IMAGEPATH . $row['path'] . ')"> </div>
+                      echo '</div>';
 
-                 </div>';*/
-                    echo '" ">
-                <img class="item-image" src="' . IMAGEPATH . $row['path'] . '"> 
-
-                </div>';
+                    }
                   }
+                  ?>
+
+                </div>
+
+                <?php
+                if (!empty($data['gallery']) and count(
+                    $data['gallery']
+                  ) > 3
+                ) {
+                  ?>
+                  <a class="left carousel-control" href="#product-carousel"
+                     role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                  </a>
+                  <a class="right carousel-control" href="#product-carousel"
+                     role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                  </a>
+                  <?php
                 }
                 ?>
+
               </div>
-
-
             </div>
           </div>
         <?php } ?>
 
-        <!-- Description of the product-->
-        <div
-            class="product-description-wrapper product-full-description-wrapper">
-          <?php
-
-          echo '<div class="product-description product-full-description">' . $data[0]['description'] . '</div>';
-          echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
-          ?>
-        </div>
-
-
       </div>
+
+
+      <!-- Description of the product-->
+      <div
+          class="product-description-wrapper product-full-description-wrapper">
+        <?php
+
+        echo '<div class="product-description product-full-description">' . $data[0]['description'] . '</div>';
+        echo '<p class="arrow-down 	glyphicon glyphicon-menu-down text-center"></p>';
+        ?>
+      </div>
+
+
     </div>
+  </div>
   </div>
 
   <div class="technische-container">
@@ -278,23 +291,23 @@
         <?php
 
         if (isset($data['energie'])) {
-            echo '<div class="col-xs-12 col-sm-4 product-thermostat-item">
+          echo '<div class="col-xs-12 col-sm-4 product-thermostat-item">
                         <div class="product-thermostat-image" style="background-image: url(' . IMAGEPATH . $data['energie']['image'] . ')"></div>';
-            if (isset($data['energie']['title'])) {
-              echo ' <div class="product-thermostat-title">
+          if (isset($data['energie']['title'])) {
+            echo ' <div class="product-thermostat-title">
                    ' . $data['energie']['title'] . '
                    </div>
                  ';
-            }
+          }
 
-            if (isset($data['energie']['description'])) {
-              echo '
+          if (isset($data['energie']['description'])) {
+            echo '
                         <div class="product-thermostat-description">
                         ' . $data['energie']['description'] . '
                         </div>
                       ';
-            }
-            echo '</div>';
+          }
+          echo '</div>';
 
         }
         if (isset($data['principles'])) {

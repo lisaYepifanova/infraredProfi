@@ -28,8 +28,8 @@ if ($('#homepageGalleryCarousel').length !== 0) {
 
 $l = $('.carousel-showmanymoveone .item').length;
 if ($l > 3) {
-    var hammer = new Hammer(document.querySelector('#thumbcarousel'));
-    var $carousel = $("#thumbcarousel").carousel({"interval": 0});
+    var hammer = new Hammer(document.querySelector('#product-carousel'));
+    var $carousel = $("#product-carousel").carousel({"interval": 0});
     hammer.get("swipe");
 
     hammer.on("swipeleft", function () {

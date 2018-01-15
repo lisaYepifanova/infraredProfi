@@ -164,17 +164,28 @@ class Model_Default extends Model {
 
     $query = $mysqli->query("UPDATE `garantie` SET `text`='<h3>GARANTIEBEDINGUNGEN</h3>\n\n<p>Die Herstellergarantie gilt nicht bei Sch&auml;den, die durch eigene Nachl&auml;ssigkeit entstanden sind oder durch Missbrauch der Nutzung elektrischen Ger&auml;ten verursacht worden sind.</p>\n\n<p>Nachfolgenden F&auml;lle die eine Garantie ausschlie&szlig;en sind:</p>\n<ol>\n<li>Defekte und Sch&auml;den, die durch Missbrauch bei Nutzung des Produkts verursacht worden sind.</li>\n\n<li>Jeder Fehler und Schaden, der nach der Anlieferung beim Beladen, Entladen oder beim Transport des Ger&auml;tes entstanden ist.</li>\n\n<li>Defekte und Sch&auml;den, die durch erh&ouml;hte oder verringerte Netzspannung oder durch anschlie&szlig;en des Ger&auml;tes an Netzspannungen und Frequenzen, die den vorgeschriebenen nicht entsprechen, verursacht worden sind.</li>\n\n<li>Falsche Installation oder Deinstallation.</li>\n\n<li>Defekte und Sch&auml;den, die durch Reparatur in nicht spezifizierten Servicezentren entstanden sind.</li>\n\n<li>Bedingt durch die Beschichtungseigenschaften sind geringe Planit&auml;tsabweichungen nicht zu vermeiden. Diese sind insbesondere bei Spiegeln m&ouml;glicherweise sichtbar und stellen keinen Reklamationsgrund dar.</li>\n</ol>\n<p>Achtung! Bei oben genannten F&auml;llen und Sch&auml;den verliert der Garantieanspruch seine G&uuml;ltigkeit. Garantiekarte OHNE H&auml;ndler Stempel, H&auml;ndleranschrift, Unterschrift des Verk&auml;ufers und Verkaufsdatum wird als ung&uuml;ltig betrachtet.</p>\n\n<p>Reparatur oder Austausch wird nur in spezialisierten Service-Centern oder vom autorisiertem Fach-H&auml;ndler \"Infrared24\" durchgef&uuml;hrt.\n</p>' WHERE `id`='1'");
    $upd = $mysqli->query($query);
-*/
-/*
+
+
     $query = $mysqli->query("CREATE TABLE `mitglied` (`id` INT NOT NULL AUTO_INCREMENT, `info` TEXT NULL, PRIMARY KEY (`id`))");
     $upd = $mysqli->query($query);
 */
+///current live
+///current live
+///current live
+///current live
+///current live
+///current live
+///current live
+///current live
+///current live
+///current live
+///
+///
 
-/*
+    /*
 $query = $mysqli->query("INSERT INTO `mitglied` (`id`) VALUES ('1')");
 $upd = $mysqli->query($query);
-*/
-/*
+
 $query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/item_decken.gif' WHERE `id`='2'");
 $upd = $mysqli->query($query);
 $query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/item_decken.gif' WHERE `id`='7'");
@@ -187,9 +198,123 @@ $upd = $mysqli->query($query);
 
 $query = $mysqli->query("INSERT INTO `product_energie` (`id`, `image`) VALUES ('1', 'product-energie/energie_de.png')");
 $upd = $mysqli->query($query);
+
+
+
+    $query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/zwei.gif' WHERE `id`='1'");
+$upd = $mysqli->query($query);
+
+    $query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/zwei.gif' WHERE `id`='3'");
+$upd = $mysqli->query($query);
+
+
+    $query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/zwei.gif' WHERE `id`='4'");
+$upd = $mysqli->query($query);
+
+    $query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/zwei.gif' WHERE `id`='6'");
+$upd = $mysqli->query($query);
+
+    $query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/drei.gif' WHERE `id`='5'");
+$upd = $mysqli->query($query);
+
+
+
+$query = $mysqli->query("INSERT INTO `products` (`id`, `name`, `parent_id`, `image`, `title`, `description`, `category_size_id`, `has_thermostat`, `size_markup`, `has_height`, `ord`) VALUES ('9', 'spiegelheizungen', '0', 'products/spiegelheizungen/spiegel02.jpg', 'SPIEGELHEIZUNGEN', '<p>Da der RED AGE Spiegelheizung mit Infrarot Strahlungswärme heizt, wird weniger die Luft im Raum erwärmt sondern mehr die Gegenstände, die sich im Raum befinden, den menschlichen Körper mit eingeschlossen, dies alles wird ermöglicht durch das Prinzip der Sonnenstrahlung. Die Umgebung, welche die Wärme gespeichert hat gibt diese dann nach und nach wieder an den Raum ab, sprich in die Luft und man bekommt ein angenehmes Wohlfühlklima. Spiegelheizpaneele haben zudem noch die Eigenschaft, dass der Wirkungsgrad der Wärmestrahlung sehr hoch ist und die Wärme, ohne in dem Material gespeichert zu werden, direkt in die Umgebung abgegeben wird. </p>\n\n<p>Der Spiegelheizung ist im ganzen Wohnbereich einsetzbar, er passt sich Ihren Gestaltungswünschen perfekt an. Weiterhin hat die Infrarotheizung ein sehr rahmenloses edles Design und durch die qualitative Verarbeitung von hochwertigen Materialien die höchste Qualität, was sich auch bei der Technik besonders bemerkbar macht. Die Lebensdauer einer Spiegelheizung ist nahezu unbegrenzt (über 120.000 Stunden) und die Heizelemente sind fast verschleiß frei. \n</p>\n\n<p>\nAllergiker werden sich mit der Infrarotspiegelheizung ebenfalls wohler fühlen, denn der Staub wird nicht mehr aufgewirbelt oder verbrannt. \n</p>\n\n<p>\nSie kann nicht nur als Komplett-Heizsystem bzw. Vollheizung eingesetzt werden, sondern auch als Zusatzheizung, Teilheizung oder Übergangsheizung. Durch das Anwenden von Strahlungswärme schonen Sie zudem auch Ihren Geldbeutel, denn Sie können hierdurch bis zu 60 % an Stromkosten im Vergleich zu herkömmlichen Heizsystemen sparen, da die Geräte eine sehr hohe Energieeffizienz haben.\nWenn Sie sich zwischen zwei Heizleistungen nicht entscheiden können, raten wir Ihnen dazu die stärkere Heizleistung zu nehmen. Damit haben Sie nicht zwingend einen höheren Energieverbrauch, da die gewünschte Temperatur schneller erreicht wird und der Thermostat die Heizung früher abschalten kann.\nInfrarot Spiegelheizungen aus ESG Sicherheitsglas besitzen eine leichte Tönung und stellen keinen Reklamationsgrund dar.\n</p>\n\n<p>\n<strong>Spiegelheizungen Vorteile:</strong>\n<ul>\n<li>Modern und effizient</li>\n<li>Wohltuende natürliche Wärme</li>\n<li>\nUnabhängigkeit von Öl und Gas</li>\n<li>\nWartungsfrei und extrem langlebig</li>\n<li>\nGesunde Raumluftt</li>\n<li>\nEinfache Installation</li>\n<li>\nZeitlos modern und schön</li>\n\n</ul>\n</p>\n\n<i>\nSollten Sie mehr Informationen benötigen oder weitere Fragen zu den technischen Details die Glasheizungen haben wenden Sie sich einfach an uns. Wir helfen Ihnen gerne weiter\n</i>', 'spiegelheizungen', '1', '<div class=\"rectangle-wrapper\" style=\"height: 317px\">  \n <div id=\"row7\" class=\"rectangle\" style=\"width:83px;height:117px;bottom:200px;left:0;\">\n            500x700\n  </div>\n   <div id=\"row6\" class=\"rectangle\"\n               style=\"width:100px;height:100px;bottom:200px;left:83px;\">\n            600x600\n  </div>\n   <div id=\"row5\" class=\"rectangle\"  style=\"width:67px;height:134px;bottom:167px;left:183px;\">  400x800</div><div id=\"row4\" class=\"rectangle\"         style=\"width:67px;height:167px;bottom:0;left:250px;\">     400x1000\n  </div>\n   <div id=\"row3\" class=\"rectangle\"\n               style=\"width:67px;height:200px;bottom:0;left:100px;\">\n            400x1200\n  </div>\n   <div id=\"row2\" class=\"rectangle\"\n               style=\"width:83px;height:167px;bottom:0;left:167px;\">\n            500x1000\n  </div>\n   <div id=\"row1\" class=\"rectangle\"\n               style=\"width:100px;height:200px;bottom:0;left:0;\">\n            600x1200\n  </div>\n  </div>', '0', '4')");
+$upd = $mysqli->query($query);
+
+
+$query = $mysqli->query("UPDATE `products` SET `ord`='5' WHERE `id`='1'");
+$upd = $mysqli->query($query);
+
+
+$query = $mysqli->query("UPDATE `products` SET `ord`='6' WHERE `id`='6'");
+$upd = $mysqli->query($query);
+
+
+$query = $mysqli->query("UPDATE `products` SET `ord`='7' WHERE `id`='2'");
+$upd = $mysqli->query($query);
+
+
+
+$query = $mysqli->query("UPDATE `images` SET `prod_id`='6' WHERE `id`='123'");
+$upd = $mysqli->query($query);
+
+$query = $mysqli->query("INSERT INTO `images` (`id`, `path`, `prod_id`) VALUES ('124', 'products/spiegelheizungen/spiegel01.jpg', '9')");
+$upd = $mysqli->query($query);
+
+$query = $mysqli->query("INSERT INTO `images` (`id`, `path`, `prod_id`) VALUES ('125', 'products/spiegelheizungen/spiegel02.jpg', '9')");
+$upd = $mysqli->query($query);
+
+$query = $mysqli->query("INSERT INTO `images` (`id`, `path`, `prod_id`) VALUES ('126', 'products/spiegelheizungen/spiegel03.jpg', '9')");
+$upd = $mysqli->query($query);
+
+
+
+
+
+$query = $mysqli->query("INSERT INTO `product_features` (`id`, `feature`, `value`, `product_id`) VALUES ('88', 'Hoher Wirkungsgrad', '85-90% Infrarotstrahlung, 10-15 % Konvektionsw&auml;rme ', '9')");
+$upd = $mysqli->query($query);
+
+$query = $mysqli->query("INSERT INTO `product_features` (`id`, `feature`, `value`, `product_id`) VALUES ('89', 'Netzspannung', '230 V / 50-60 Hz', '9')");
+$upd = $mysqli->query($query);
+
+
+
+
+$query = $mysqli->query("INSERT INTO `product_features` (`id`, `feature`, `value`, `product_id`) VALUES ('90', 'Oberfl&auml;chentemperatur vorne', '85&deg; +/-5&deg;C Max', '9')");
+$upd = $mysqli->query($query);
+$query = $mysqli->query("INSERT INTO `product_features` (`id`, `feature`, `value`, `product_id`) VALUES ('91', 'Oberfl&auml;chentemperatur hinten', '85&deg; +/-5&deg;C Max', '9')");
+$upd = $mysqli->query($query);
+$query = $mysqli->query("INSERT INTO `product_features` (`id`, `feature`, `value`, `product_id`) VALUES ('92', 'Strahlungsweite', '< 3,50 Meter', '9')");
+$upd = $mysqli->query($query);
+$query = $mysqli->query("INSERT INTO `product_features` (`id`, `feature`, `value`, `product_id`) VALUES ('93', 'Strahlungswinkel', 'ca. 90-100&deg;', '9')");
+$upd = $mysqli->query($query);
+$query = $mysqli->query("INSERT INTO `product_features` (`id`, `feature`, `value`, `product_id`) VALUES ('94', 'W&auml;rmeeffekt', 'schon nach wenigen Minuten', '9')");
+$upd = $mysqli->query($query);
+$query = $mysqli->query("INSERT INTO `product_features` (`id`, `feature`, `value`, `product_id`) VALUES ('95', 'Abstand von der Wand', '40 mm', '9')");
+$upd = $mysqli->query($query);
+$query = $mysqli->query("INSERT INTO `product_features` (`id`, `feature`, `value`, `product_id`) VALUES ('96', 'Vorderseite', '6 mm  ESG Glas', '9')");
+$upd = $mysqli->query($query);
+$query = $mysqli->query("INSERT INTO `product_features` (`id`, `feature`, `value`, `product_id`) VALUES ('97', 'Schutzgrad', 'IP 44', '9')");
+$upd = $mysqli->query($query);
+$query = $mysqli->query("INSERT INTO `product_features` (`id`, `feature`, `value`, `product_id`) VALUES ('98', 'Inklusive Wandbefestigungsmaterial', 'JA', '9')");
+$upd = $mysqli->query($query);
+$query = $mysqli->query("INSERT INTO `product_features` (`id`, `feature`, `value`, `product_id`) VALUES ('99', 'Zertifikate', 'CE, RoHs-Zertifiziert, entsprechen EU- Sicherheitsstandarten', '9')");
+$upd = $mysqli->query($query);
+$query = $mysqli->query("INSERT INTO `product_features` (`id`, `feature`, `value`, `product_id`) VALUES ('100', 'Garantie', '5 Jahre volle Garantie', '4')");
+$upd = $mysqli->query($query);
+
+
+$query = $mysqli->query("INSERT INTO `product_principle` (`id`, `image`, `title`, `description`, `product_id`) VALUES ('9', 'product-thermostat/zwei.gif', 'ZWEI RAUMHEIZPRINZIPIEN:', '- Infrarot W&auml;rmestrahlung <br>- Nat&uuml;rliche Konvektion', '9')");
+$upd = $mysqli->query($query);
+
+$query = $mysqli->query("INSERT INTO `products_colours` (`id`, `product_id`, `colour_id`) VALUES ('23', '9', '3')");
+$upd = $mysqli->query($query);
+
+$query = $mysqli->query("INSERT INTO `sizes` (`id`, `modell`, `sizex`, `sizey`, `sizez`, `raumgrose`, `leistung`, `gewicht`, `category_size_id`) VALUES ('25', 'IGH 6012', '600', '1200', '8', '13-16 / bis 41', '800', '14.9', 'spiegelheizungen')");
+$upd = $mysqli->query($query);
+$query = $mysqli->query("INSERT INTO `sizes` (`id`, `modell`, `sizex`, `sizey`, `sizez`, `raumgrose`, `leistung`, `gewicht`, `category_size_id`) VALUES ('26', 'IGH 5010', '500', '1000', '8', ' 9-11 / bis 29', '500', '11.9', 'spiegelheizungen')");
+$upd = $mysqli->query($query);
+$query = $mysqli->query("INSERT INTO `sizes` (`id`, `modell`, `sizex`, `sizey`, `sizez`, `raumgrose`, `leistung`, `gewicht`, `category_size_id`) VALUES ('27', 'IGH 4012', '400', '1200', '8', ' 9-11 / bis 29 ', '500', '9.8', 'spiegelheizungen')");
+$upd = $mysqli->query($query);
+$query = $mysqli->query("INSERT INTO `sizes` (`id`, `modell`, `sizex`, `sizey`, `sizez`, `raumgrose`, `leistung`, `gewicht`, `category_size_id`) VALUES ('28', 'IGH 4010', '400', '1000', '8', '7-9 / bis 25', '420', '7.8', 'spiegelheizungen')");
+$upd = $mysqli->query($query);
+$query = $mysqli->query("INSERT INTO `sizes` (`id`, `modell`, `sizex`, `sizey`, `sizez`, `raumgrose`, `leistung`, `gewicht`, `category_size_id`) VALUES ('29', 'IGH 4080', '400', '800', '8', '6-8 / bis 22', '350', '6.1', 'spiegelheizungen')");
+$upd = $mysqli->query($query);
+$query = $mysqli->query("INSERT INTO `sizes` (`id`, `modell`, `sizex`, `sizey`, `sizez`, `raumgrose`, `leistung`, `gewicht`, `category_size_id`) VALUES ('30', 'IGH 6060', '600', '600', '8', '7-9 / bis 25', '400', '7.5', 'spiegelheizungen')");
+$upd = $mysqli->query($query);
+$query = $mysqli->query("INSERT INTO `sizes` (`id`, `modell`, `sizex`, `sizey`, `sizez`, `raumgrose`, `leistung`, `gewicht`, `category_size_id`) VALUES ('31', 'IGH 5070', '500', '700', '8', '7-9 / bis 25', '400', '7.5', 'spiegelheizungen')");
+$upd = $mysqli->query($query);
+
+
 */
+$query = $mysqli->query("SELECT * FROM mitglied");
 
-
+    if ($query) {
+      while ($r = mysqli_fetch_assoc($query)) {
+        $res['mitglied'] = $r;
+      }
+    }
 
     $query = $mysqli->query("SELECT * FROM default_info");
 

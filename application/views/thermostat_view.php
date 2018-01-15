@@ -64,20 +64,62 @@
 
       <div class="product-main col-sm-12">
 
-        <!-- Gallery carousel -->
-                      <div class="slider-prod">
-                <?php
-                if (!empty($data['gallery'])) {
-                  foreach ($data['gallery'] as $row) {
-                    echo '<div class="item-gallery';
-                    echo '" ">
-                <div class="item-image" style="background-image: url(' . IMAGEPATH . $row['path'] . ')"> </div>
+              <!-- Gallery carousel -->
+        <?php if (!empty($data['gallery'])) { ?>
+          <div class="carousel-wrapper">
 
-                </div>';
+            <div class="clearfix">
+              <div id="product-carousel"
+                   class="carousel slide product-carousel carousel-showmanymoveone">
+                <div class="carousel-inner">
+                  <?php
+                  $activeIndex = TRUE;
+                  $itemIndex = 0;
+                  if (!empty($data['gallery']) and count(
+                      $data['gallery']
+                    ) > 1
+                  ) {
+                    foreach ($data['gallery'] as $row) {
+                      echo '<div class="item ';
+                      if ($activeIndex) {
+                        echo 'active';
+                        $activeIndex = FALSE;
+                      }
+                      echo '">';
+
+                      echo '<div class="thumb thumb-image " style="background-image:url(' . IMAGEPATH . $row['path'] . ')"></div>';
+                      $itemIndex = $itemIndex + 1;
+
+                      echo '</div>';
+
+                    }
                   }
+                  ?>
+
+                </div>
+
+                <?php
+                if (!empty($data['gallery']) and count(
+                    $data['gallery']
+                  ) > 3
+                ) {
+                  ?>
+                  <a class="left carousel-control" href="#product-carousel"
+                     role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                  </a>
+                  <a class="right carousel-control" href="#product-carousel"
+                     role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                  </a>
+                  <?php
                 }
                 ?>
+
               </div>
+            </div>
+          </div>
+        <?php } ?>
 
                   <!-- Description of the product-->
         <div class="product-description-wrapper product-full-description-wrapper">

@@ -24,12 +24,18 @@ footer {
     }
   }
 
-  .footer-cp,
+
   .footer-mit{
+    float: left;
      @media (min-width: $screen-sm) {
       float: right;
-       width: 100%;
     text-align: right;
+    }
+  }
+
+  .footer-cp {
+         @media (min-width: $screen-sm) {
+      float: right;
     }
   }
 
@@ -37,7 +43,11 @@ footer {
   .footer-mit-link {
     display: block;
     width: 120px;
-    margin-left: auto;
+    margin: auto;
+
+         @media (min-width: $screen-sm) {
+     margin-left: auto;
+    }
   }
 
   .footer-mit img{
@@ -52,10 +62,32 @@ footer {
     width: 100%;
     padding: 0.25rem 0 0.5rem 0;
 
+
+
     @media all and (min-width: 480px) {
       width: auto;
-      padding: 0.25rem 1rem 0.5rem 1rem;
+      padding: 0.25rem 1rem 0.5rem 0;
+
+
+
+    &:last-child {
+      padding-right: 0;
+    }
     }
 
+  }
+
+  .footer-left-side,
+  .footer-right-side {
+    padding: 0;
+  }
+
+  .footer-right-side {
+    .footer-link {
+               @media (min-width: $screen-sm) {
+      float: right;
+                 padding: 0.25rem 0 0.5rem 1rem;
+    }
+    }
   }
 }

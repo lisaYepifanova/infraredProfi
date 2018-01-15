@@ -17,8 +17,13 @@ class Model_Technologie extends Model {
 
   public function update_data() {
     include 'application/connection.php';
-$uploaddir = '/kunden/homepages/7/d709554119/htdocs/img/technology/';
-//        $uploaddir = '/home/lisabeth/Projects/infraredprofi/img/technology/';
+
+
+  //  $uploaddir = '/kunden/homepages/7/d709554119/htdocs/img/technology/';
+   // $uploaddir = '/kunden/homepages/7/d709554119/htdocs/img/technology/';
+   //     $uploaddir = '/home/lisabeth/Projects/infraredprofi/img/technology/';
+
+    $uploaddir = IMG_PROJ_PATH.'technology/';
     //загрузка фото на сервер
     if (isset($_FILES)) {
       if ($_FILES['description_image']['size'] > 0) {
@@ -87,46 +92,46 @@ $uploaddir = '/kunden/homepages/7/d709554119/htdocs/img/technology/';
     }
 
 
-      if ($_FILES['convect_house_image']['size'] > 0) {
-        $uploadfile = $uploaddir . basename($_FILES['convect_house_image']['name']);
-        if ($_FILES['convect_house_image']['size'] <= $_POST['MAX_FILE_SIZE']) {
-          if (move_uploaded_file($_FILES['convect_house_image']['tmp_name'], $uploadfile)) {
-            $result['info'][] = 'Image uploaded successfully.';
-          }
-
-          $convect_house_image = NULL;
-          if (isset($_FILES['convect_house_image']['name'])) {
-            $convect_house_image = $_FILES['convect_house_image']['name'];
-          }
-
-          $add_mi = 'UPDATE technologie SET convect_house_image = "technology/' . $convect_house_image . '"';
-          $adding_miq = $mysqli->query($add_mi);
+    if ($_FILES['convect_house_image']['size'] > 0) {
+      $uploadfile = $uploaddir . basename($_FILES['convect_house_image']['name']);
+      if ($_FILES['convect_house_image']['size'] <= $_POST['MAX_FILE_SIZE']) {
+        if (move_uploaded_file($_FILES['convect_house_image']['tmp_name'], $uploadfile)) {
+          $result['info'][] = 'Image uploaded successfully.';
         }
-        else {
-          $result['info'][] = 'Image is too large.';
+
+        $convect_house_image = NULL;
+        if (isset($_FILES['convect_house_image']['name'])) {
+          $convect_house_image = $_FILES['convect_house_image']['name'];
         }
+
+        $add_mi = 'UPDATE technologie SET convect_house_image = "technology/' . $convect_house_image . '"';
+        $adding_miq = $mysqli->query($add_mi);
       }
-
-
-      if ($_FILES['infra_house_image']['size'] > 0) {
-        $uploadfile = $uploaddir . basename($_FILES['infra_house_image']['name']);
-        if ($_FILES['infra_house_image']['size'] <= $_POST['MAX_FILE_SIZE']) {
-          if (move_uploaded_file($_FILES['infra_house_image']['tmp_name'], $uploadfile)) {
-            $result['info'][] = 'Image uploaded successfully.';
-          }
-
-          $infra_house_image = NULL;
-          if (isset($_FILES['infra_house_image']['name'])) {
-            $infra_house_image = $_FILES['infra_house_image']['name'];
-          }
-
-          $add_mi = 'UPDATE technologie SET infra_house_image = "technology/' . $infra_house_image . '"';
-          $adding_miq = $mysqli->query($add_mi);
-        }
-        else {
-          $result['info'][] = 'Image is too large.';
-        }
+      else {
+        $result['info'][] = 'Image is too large.';
       }
+    }
+
+
+    if ($_FILES['infra_house_image']['size'] > 0) {
+      $uploadfile = $uploaddir . basename($_FILES['infra_house_image']['name']);
+      if ($_FILES['infra_house_image']['size'] <= $_POST['MAX_FILE_SIZE']) {
+        if (move_uploaded_file($_FILES['infra_house_image']['tmp_name'], $uploadfile)) {
+          $result['info'][] = 'Image uploaded successfully.';
+        }
+
+        $infra_house_image = NULL;
+        if (isset($_FILES['infra_house_image']['name'])) {
+          $infra_house_image = $_FILES['infra_house_image']['name'];
+        }
+
+        $add_mi = 'UPDATE technologie SET infra_house_image = "technology/' . $infra_house_image . '"';
+        $adding_miq = $mysqli->query($add_mi);
+      }
+      else {
+        $result['info'][] = 'Image is too large.';
+      }
+    }
 
     $description_before = NULL;
     if (isset($_POST['description_before'])) {

@@ -77,6 +77,11 @@ header {
     padding-right: 1rem;
     padding-left: 1rem;
   }
+
+    @media (min-width: $screen-lg) {
+    font-size: 14px;
+  }
+
 }
 
 .header-phone-value {
@@ -117,4 +122,14 @@ header {
 
 .social-links {
   display: flex;
+}
+
+.header-top-line-content {
+  display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.lang-link {
+  margin-right: 10px;
 }

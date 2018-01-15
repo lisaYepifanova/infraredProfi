@@ -98,3 +98,13 @@
 .slick-arrow.slick-hidden {
     display: none;
 }
+
+.slick-no-slide .slick-track {
+    width: 100% !important ;
+    text-align: center !important;
+    transform: inherit !important;
+}
+.slick-no-slide .slick-slide {
+    float: none !important;
+    display: inline-block !important;
+}
