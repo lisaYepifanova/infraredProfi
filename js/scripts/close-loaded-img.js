@@ -113,7 +113,7 @@ $(".close-gallery_bg").on('click', function () {
 
 for (var i = 1; i <= 10; i++) {
     $("#close-carousel_image_" + i).on('click', function (x) {
-        return function() {
+        return function () {
             $('#imagecarousel_image_' + x).attr('src', '#');
             $('#carousel_image_' + x).val('');
             $("#close-carousel_image_" + x).css('display', 'none');
@@ -125,7 +125,7 @@ for (var i = 1; i <= 10; i++) {
 //main properties
 for (var i = 1; i <= 10; i++) {
     $("#close-prop_image_" + i).on('click', function (x) {
-        return function() {
+        return function () {
             $('#imageprop_image_' + x).attr('src', '#');
             $('#prop_image_' + x).val('');
             $("#close-prop_image_" + x).css('display', 'none');
@@ -136,7 +136,7 @@ for (var i = 1; i <= 10; i++) {
 //main gallery
 for (var i = 1; i <= 30; i++) {
     $("#close-gallery_item_" + i).on('click', function (x) {
-        return function() {
+        return function () {
             $('#imagegallery_item_' + x).attr('src', '#');
             $('#gallery_item_' + x).val('');
             $("#close-gallery_item_" + x).css('display', 'none');
@@ -150,3 +150,28 @@ $(".close-logo-image").on('click', function () {
     $('#logo_image').val('');
     $('.close-logo-image').css('display', 'none');
 });
+
+//add cat
+$(".close-category_image").on('click', function () {
+    $('#category_image').attr('src', '#');
+    $('#category_image_field').val('');
+    $('.close-category_image').css('display', 'none');
+});
+
+//add main prod
+$(".close-prod_main_image").on('click', function () {
+    $('#prod_main_image').attr('src', '#');
+    $('#prod_main_image_field').val('');
+    $('.close-prod_main_image').css('display', 'none');
+});
+
+
+//prod gallery
+
+$(".close-prod_image-1").on('click', function () {
+    $('#prod_image-1').attr('src', '#');
+    $('#prod_image_field-1').val('');
+    $(".close-prod_image-1").css('display', 'none');
+});
+
+

@@ -36,9 +36,9 @@ class Model_Download extends Model {
 
     //названия категорий
     if (isset($_POST['category'])) {
-      foreach ($_POST['category'] as $id => $category_name) {
+      foreach ($_POST['category'] as $cid => $category_name) {
         if ($category_name != '') {
-          $add_q = "UPDATE document_categories SET category_name = '" . $category_name . "' WHERE id = '" . $id . "' ";
+          $add_q = "UPDATE document_categories SET category_name = '" . $category_name . "' WHERE id = '" . $cid . "' ";
           $info_query = $mysqli->query($add_q);
         }
       }
@@ -47,48 +47,45 @@ class Model_Download extends Model {
     //все файлы в файловую систему и в базу
     if (isset($_FILES)) {
       if (isset($_FILES['doc'])) {
-        foreach ($_FILES['doc']['name'] as $name => $item) {
-          if ($_FILES['doc']['name'][$name] !== "") {
+        foreach ($_FILES['doc']['name'] as $id => $item) {
+          if ($_FILES['doc']['name'][$id] !== "") {
             $uploaddir = DOC_PROJ_PATH;
 
 
-            $cid = $_POST['doc'][$name]['cid'];
+            $cid = $_POST['doc'][$id]['cid'];
 
-            $category_name = mysqli_fetch_assoc($mysqli->query("SELECT category_name FROM document_categories WHERE id='" . $id . "'"));
-
+            $category_name = mysqli_fetch_assoc($mysqli->query("SELECT category_name FROM document_categories WHERE id='" . $cid . "'"));
 
             $uploadfile = $uploaddir . strtolower($category_name['category_name']) . '/' . basename($item);
-            if (move_uploaded_file($_FILES['doc']['tmp_name'][$name], $uploadfile)) {
+            if (move_uploaded_file($_FILES['doc']['tmp_name'][$id], $uploadfile)) {
               $result['info'][] = 'Document uploaded successfully.';
             }
 
             $curr_name = NULL;
             if (!empty($_POST)) {
               if (!empty($_POST['doc'])) {
-                if (!empty($_POST['doc'][$name]['name'])) {
-                  $curr_name = $_POST['doc'][$name]['name'];
+                if (!empty($_POST['doc'][$id]['name'])) {
+                  $curr_name = $_POST['doc'][$id]['name'];
                 }
               }
             }
 
-            $path_name = mysqli_fetch_assoc($mysqli->query("SELECT path FROM documents WHERE id='" . $name . "'"));
+            $path_name = mysqli_fetch_assoc($mysqli->query("SELECT path FROM documents WHERE id='" . $id . "'"));
 
             if ($path_name['path'] == NULL) {
-              $add_mi = 'INSERT INTO documents (id, path, name, category) VALUES ("' . $name . '", "' . strtolower($category_name['category_name']) . '/' . $item . '", "' . $curr_name . '", "' . $cid . '")';
+              $add_mi = 'INSERT INTO documents (id, path, name, category) VALUES ("' . $id . '", "' . strtolower($category_name['category_name']) . '/' . $item . '", "' . $curr_name . '", "' . $cid . '")';
             }
             else {
-              $add_mi = "UPDATE documents 
-                          SET path = '" . strtolower($category_name['category_name']) . '/' . $item . "' , name = '" . $curr_name . "', category = '" . $cid . "' 
-                          WHERE id = '" . $id . "' ";
+              $add_mi = "UPDATE documents " .
+                " SET path = '" . strtolower($category_name['category_name']) . '/' . $item . "' , name = '" . $curr_name . "', category = '" . $cid . "' " .
+                " WHERE id = '" . $id . "' ";
             }
-
 
             $adding_miq = $mysqli->query($add_mi);
           }
         }
       }
     }
-
 
     if (isset($_POST['doc'])) {
       foreach ($_POST['doc'] as $id => $item) {
@@ -119,10 +116,11 @@ class Model_Download extends Model {
       $del_file = "SELECT path FROM documents WHERE id = " . $id . " ";
       $filename = mysqli_fetch_assoc($mysqli->query($del_file));
 
-      if(file_exists($filename['path'])){
-          unlink($filename['path']);
-      }else{
-          $result['info'] = "File not exist";
+      if (file_exists($filename['path'])) {
+        unlink($filename['path']);
+      }
+      else {
+        $result['info'] = "File not exist";
       }
 
       $del_q = "DELETE FROM documents WHERE id = " . $id . " ";

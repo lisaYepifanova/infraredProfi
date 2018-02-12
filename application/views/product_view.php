@@ -1,6 +1,17 @@
 <main class="product">
 
   <h1 class="page-header container text-capitalize left-padding left-padding"><?php echo $data[0]['title']; ?></h1>
+  <?php
+
+      if (isAuth() ) {
+        echo '<div class="container produkte-del box-small-margin "><a href="#delConfirm"
+         data-toggle="modal" class="glyphicon glyphicon-trash"> Delete this produkte</a></div>';
+                 echo '<div class="container produkte-del box-small-margin "><a href="'.$_SERVER['REQUEST_URI'].'/edit"
+           class="glyphicon glyphicon-pencil"> Edit this produkte</a></div>';
+      }
+      ?>
+
+
   <div class="product-menu-wrapper col-sm-3 left-padding">
     <div class="product-menu floating">
       <ul>
@@ -74,61 +85,81 @@
       <div class="product-main">
 
         <!-- Gallery carousel -->
-        <?php if (!empty($data['gallery'])) { ?>
-          <div class="carousel-wrapper">
-
-            <div class="clearfix">
-              <div id="product-carousel"
-                   class="carousel slide product-carousel carousel-showmanymoveone  swipe-carousel">
+               <!-- Gallery carousel -->
+          <?php if (!empty($data['gallery'])) { ?>
+            <div class="carousel-wrapper">
+              <div id="carousel"
+                   class="carousel slide product-carousel product-carousel-top swipe-carousel">
                 <div class="carousel-inner">
-                  <?php
-                  $activeIndex = TRUE;
-                  $itemIndex = 0;
-                  if (!empty($data['gallery']) and count(
-                      $data['gallery']
-                    ) > 1
-                  ) {
-                    foreach ($data['gallery'] as $row) {
-                      echo '<div class="item ';
-                      if ($activeIndex) {
-                        echo 'active';
-                        $activeIndex = FALSE;
-                      }
-                      echo '">';
-
-                      echo '<div class="thumb thumb-image " style="background-image:url(' . IMAGEPATH . $row['path'] . ')"></div>';
-                      $itemIndex = $itemIndex + 1;
-
-                      echo '</div>';
-
+                    <?php
+                    $activeIndex = true;
+                    if (!empty($data['gallery'])) {
+                        foreach ($data['gallery'] as $row) {
+                            echo '<div class="item large-item ';
+                            if ($activeIndex) {
+                                echo ' active';
+                                $activeIndex = false;
+                            }
+                            echo '" style="background-image: url('.IMAGEPATH.$row['path'].')"></div>';
+                        }
                     }
-                  }
-                  ?>
+                    ?>
+                </div>
+              </div>
+              <div class="clearfix">
+                <div id="thumbcarousel"
+                     class="carousel slide product-carousel carousel-showmanymoveone">
+                  <div class="carousel-inner">
+                      <?php
+                      $activeIndex = true;
+                      $itemIndex = 0;
+                      if (!empty($data['gallery']) and count(
+                          $data['gallery']
+                        ) > 1
+                      ) {
+                          foreach ($data['gallery'] as $row) {
+                              echo '<div class="item ';
+                              if ($activeIndex) {
+                                  echo 'active';
+                                  $activeIndex = false;
+                              }
+                              echo '">';
+
+                              echo '<div data-target="#carousel" data-slide-to="';
+                              echo $itemIndex;
+                              echo '" class="thumb thumb-image" style="background-image:url('.IMAGEPATH.$row['path'].')"></div>';
+                              $itemIndex = $itemIndex + 1;
+
+                              echo '</div>';
+
+                          }
+                      }
+                      ?>
+
+                  </div>
+
+                    <?php
+                    if (!empty($data['gallery']) and count(
+                        $data['gallery']
+                      ) > 3
+                    ) {
+                        ?>
+                      <a class="left carousel-control" href="#thumbcarousel"
+                         role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                      </a>
+                      <a class="right carousel-control" href="#thumbcarousel"
+                         role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                      </a>
+                        <?php
+                    }
+                    ?>
 
                 </div>
-
-                <?php
-                if (!empty($data['gallery']) and count(
-                    $data['gallery']
-                  ) > 3
-                ) {
-                  ?>
-                  <a class="left carousel-control" href="#product-carousel"
-                     role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                  </a>
-                  <a class="right carousel-control" href="#product-carousel"
-                     role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                  </a>
-                  <?php
-                }
-                ?>
-
               </div>
             </div>
-          </div>
-        <?php } ?>
+          <?php } ?>
 
       </div>
 
@@ -440,3 +471,32 @@
     </div>
   </div>
 </main>
+
+
+<div id="delConfirm" class="modal fade in"
+     style="display: none;">
+  <div class="modal-dialog aside-modal-dialog">
+    <div class="modal-bg"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-hidden="true">x
+        </button>
+        <h5 class="modal-title">
+Confirm the deletion
+        </h5>
+
+      </div>
+      <div class="modal-body">
+        Do you want to delete <?php echo strtoupper($pageTitle); ?> ?
+      </div>
+      <div class="modal-footer">
+        <button type="button btn-danger"> <a href="<?php echo $_SERVER['REQUEST_URI'];?>/delete">Delete </a>
+       </button>
+        <button type="button"  data-dismiss="modal"
+                aria-hidden="true"> Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

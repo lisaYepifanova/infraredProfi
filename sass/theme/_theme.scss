@@ -14,6 +14,8 @@ Blocks
 @import "block/garantie-title";
 @import "block/homepage-gallery";
 @import "block/mitglied-modal";
+@import "block/add-new-product-links";
+@import "block/bildmotive-gallery";
 
 /**
 Pages
@@ -30,6 +32,10 @@ Pages
 @import "page/order-page";
 @import "page/edit-fur-handler";
 @import "page/404";
+@import "page/add-new-category";
+@import "page/add-new-product";
+@import "page/edit-prod";
+
 
 
 /**

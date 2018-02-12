@@ -117,3 +117,31 @@ for ($i = 1; $i <= 30; $i++) {
 $("#logo_image").change(function () {
     readURL(this, '#imagelogo_image', '.close-logo-image');
 });
+
+$("#category_image_field").change(function () {
+    readURL(this, '#category_image', '.close-category_image');
+});
+
+//edit product
+
+$("#prod_main_image_field").change(function () {
+    readURL(this, '#prod_main_image', '.close-prod_main_image');
+});
+
+//prod gallery
+
+$("#prod_image_field-1").change(function () {
+    readURL(this, '#prod_image-1', '.close-prod_image-1');
+});
+
+
+//edit bildmotive
+//main gallery
+for ($i = 1; $i <= 300; $i++) {
+    $("#prod_image_field-" + $i).change(function (x) {
+        return function () {
+            readURL(this, '#prod_image-' + x, '.close-bild_image-' + x);
+        }
+    }($i));
+}
+

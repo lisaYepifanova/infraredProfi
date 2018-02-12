@@ -2,10 +2,12 @@
 <!doctype html>
 <html lang="de">
 <?php
-$pageTitle = "Infrared24";
+$pageTitle = "InfraRed 24 - Infrarot Heizsysteme, Deutscher Hersteller, umweltschonend";
 ?>
 <head>
   <!-- Global site tag (gtag.js) - Google Analytics -->
+
+  <!--
   <script async
           src="https://www.googletagmanager.com/gtag/js?id=UA-112408135-1"></script>
   <script>
@@ -19,7 +21,7 @@ $pageTitle = "Infrared24";
 
       gtag('config', 'UA-112408135-1');
   </script>
-
+-->
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>
@@ -81,16 +83,19 @@ entdecken!">';
 <header>
   <div class="header-top-line">
     <?php
-    echo '<div class="header-top-line-content"><div class="top-phones">Telefon ';
+    echo '<div class="header-top-line-content"><div class="top-phones">Telefon: ';
 
     $index = 0;
-    foreach ($default['phones'] as $phone_row) {
-      echo '<a href="tel:' . $phone_row['tel'] . '" class="contact-item-value header-phone-value">' . $phone_row['text'] . '</a>';
-      $index += 1;
-      if (count($default['phones']) > $index) {
-        echo ',  ';
+    if (isset($default['header_phones'])) {
+      foreach ($default['header_phones'] as $phone_row) {
+        echo '<a href="tel:'.$phone_row['tel'] . '" class="contact-item-value header-phone-value">' . $phone_row['text'] . '</a>';
+        $index += 1;
+        if (count($default['header_phones']) > $index) {
+          echo ',  ';
+        }
       }
     }
+
 
     echo '</div>';
     ?>
@@ -229,9 +234,10 @@ include 'application/views/' . $content_view;
       <div class="footer-links footer-cp">© 2017 InfraRed24 GmbH</div>
 
     </div>
-    <div class="footer-links footer-mit col-xs-6 col-sm-4"><a class="footer-mit-link"
-                                            href="#mitgliedModal"
-         data-toggle="modal"><img
+    <div class="footer-links footer-mit col-xs-6 col-sm-4"><a
+          class="footer-mit-link"
+          href="#mitgliedModal"
+          data-toggle="modal"><img
             src="<?php echo IMAGEPATH . 'footer/mitglied.png'; ?>"></a></div>
   </div>
 </footer>
@@ -283,22 +289,23 @@ include 'application/views/' . $content_view;
 </div>
 
 
-  <div id="mitgliedModal" class="modal fade in mitglied-modal" style="display: none;">
-    <div class="modal-dialog aside-modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body">
-          <button type="button" class="close glyphicon glyphicon-remove"
-                  data-dismiss="modal" aria-hidden="true"></button>
-          <?php
+<div id="mitgliedModal" class="modal fade in mitglied-modal"
+     style="display: none;">
+  <div class="modal-dialog aside-modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close glyphicon glyphicon-remove"
+                data-dismiss="modal" aria-hidden="true"></button>
+        <?php
 
-          if (isset($default['mitglied'])) {
-            echo '<div>' . $default['mitglied']['info'] . '</div>';
-          }
-          ?>
-        </div>
+        if (isset($default['mitglied'])) {
+          echo '<div>' . $default['mitglied']['info'] . '</div>';
+        }
+        ?>
       </div>
     </div>
   </div>
+</div>
 <?php
 
 ?>
@@ -312,7 +319,7 @@ echo '
   <script src="' . JSPATH . 'vendor/jquery.foggy.min.js"></script>
   
 <script src="' . LIBPATH . 'slick/slick/slick.min.js"></script>
-  <script src="' . JSPATH . 'vendor.min.js"></script>
+  <script src="' . JSPATH . 'vendor.js"></script>
   <script src="' . JSPATH . 'build.min.js"></script>';
 
 ?>

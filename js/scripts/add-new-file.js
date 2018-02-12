@@ -25,6 +25,8 @@
         $cid = $splitClass[$splitClass.length - 1];
 
         addFileField(parseInt($id) + 1, this, $cid);
+
+        $('#max_id').val(parseInt($id) + 1);
     });
 
 

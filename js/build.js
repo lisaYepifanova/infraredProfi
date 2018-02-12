@@ -51,6 +51,28 @@ CKEDITOR.replaceAll( 'editor-area', {
         $('.image-nav-menu .item.' + $lastLinkClass).addClass('active');
     });
 });
+
+
+
+$('.item-wrapper a').each(function () {
+    $linkClass = $(this).attr('class').split(' ');
+    $lastLinkClass = $linkClass[$linkClass.length - 1];
+
+    $(this).on('click', function () {
+        $('.image-nav-menu .large-item').removeClass('active');
+
+        $linkClass = $(this).attr('class').split(' ');
+        $lastLinkClass = $linkClass[$linkClass.length - 1];
+
+        $('.homepage-gallery-carousel .item').each(function () {
+            if ($(this).children('.' + $lastLinkClass).length !== 0) {
+                $('.homepage-gallery-carousel .item').removeClass('active');
+                $(this).addClass('active');
+            }
+        });
+        $('.image-nav-menu .item.' + $lastLinkClass).addClass('active');
+    });
+});
 ;(function($) {
 setTimeout(function () {
 
@@ -133,6 +155,71 @@ setTimeout(function () {
         $id = $('#max_id_angebot').val();
         addAngebotField(parseInt($id) + 1, this);
     });
+})(jQuery);
+;(function ($) {
+    function addBildmotiveItemField($id, $btn) {
+
+        $new_field = '<div class="row edit-gallery-image-item edit-gallery-image-item-' + $id + '    \
+            box-mid-margin"> \
+              <div \
+                  class=" col-sm-6 product-image-block prod-image-block-' + $id + ' \
+                  image-item-' + $id + '"> \
+                <div> \
+                  <img id="prod_image-' + $id + '"\
+                       src=""\
+                       alt=""/>\
+                  <a class="close-prod close-bild_image-' + $id + '">\
+                    <button type="button">Reset</button>\
+                  </a>\
+                  <a class="delete-bild-image prod-' + $id + '">\
+                    <button type="button">Delete</button>\
+                  </a>\
+                </div>\
+                <input type="file" class="form-control prod-img"\
+                       id="prod_image_field-' + $id + '"\
+                       name="prod_image[' + $id + '][image]">\
+                <input type="hidden"\
+                       name="prod_image[' + $id + '][id]"\
+                       value="' + $id + '">\
+              </div>\
+              <div class="product-image-block  col-sm-6">\
+                <label for="prod_image[' + $id + '][name]">\
+                  Name </label>\
+                <input type="text"\
+                       id="prod_image[' + $id + '][name]"\
+                       name="prod_image[' + $id + '][name]">\
+              </div>\
+            </div>';
+
+        $($btn).prev().after($new_field);
+
+        $("#prod_image_field-" + $id).change(function (x) {
+            return function () {
+                readURL(this, '#prod_image-' + x, '#close-bild_image-' + x);
+            }
+        }($id));
+    }
+
+    $('.add-new-bildmotive-image-button').on('click', function () {
+        $id = $('#max_gallery_id').val();
+        addBildmotiveItemField(parseInt($id) + 1, this);
+        $('#max_gallery_id').val(parseInt($id) + 1);
+    });
+
+
+    for (var i = 1; i <= 200; i++) {
+        $(".close-bild_image-" + i).on('click', function (x) {
+            return function () {
+                $('#prod_image-' + x).attr('src', '#');
+                $('#prod_image_field-' + x).val('');
+                $(".close-bild_image-" + x).css('display', 'none');
+                console.log('close' + x);
+            }
+
+        }(i));
+    }
+
+
 })(jQuery);
 ;(function ($) {
     function addCarouselItemField($id, $btn) {
@@ -239,6 +326,8 @@ setTimeout(function () {
         $cid = $splitClass[$splitClass.length - 1];
 
         addFileField(parseInt($id) + 1, this, $cid);
+
+        $('#max_id').val(parseInt($id) + 1);
     });
 
 
@@ -280,6 +369,30 @@ setTimeout(function () {
     $('.add-new-gallery-item').on('click', function () {
         $id = $('#max_gallery_id').val();
         addGalleryItemField(parseInt($id) + 1, this);
+    });
+})(jQuery);
+;(function ($) {
+    function addHeaderPhoneField($id, $btn) {
+        $new_field = '<div class="header-phone-item    box-mid-margin"> \
+            <label for="header-phone-title-'+$id+'">Text:</label> \
+            <input type="text" id="header-phone-title-'+$id+'" name="header_phones['+$id+'][text]" value=""> \
+            <label for="header-phone-num-'+$id+'">Phone:</label> \
+            <input type="text" id="header-phone-num-'+$id+'"  name="header_phones['+$id+'][tel]" value=""> \
+            <input type="hidden" name="header_phones[' + $id +'][id]"  value="' + $id +'">\
+          </div>';
+
+        if($id == 1) {
+            $($btn).parent().children('h4').after($new_field);
+        } else {
+            $($btn).prev().after($new_field);
+        }
+
+    }
+
+    $('.add-new-header-phone').on('click', function () {
+        $id = $('#max_id_header_phone').val();
+        addHeaderPhoneField(parseInt($id) + 1, this);
+        $('#max_id_header_phone').val(parseInt($id) + 1);
     });
 })(jQuery);
 ;(function ($) {
@@ -355,6 +468,223 @@ setTimeout(function () {
     });
 })(jQuery);
 ;(function ($) {
+    function addProdFeatureField($index) {
+        $new_field = '<div class="row box-small-margin product-feature-block prod-feature-block-' + $index + '" id="prod-feature-block-' + $index + '"> \
+             <div class="col-sm-6"><label for="prod_feature_field[' + $index + '][name]">Name:</label> \
+            <input type="text" class="form-control prod-feature-name" \
+                   id="prod_feature_field[' + $index + '][name]" \
+                   name="prod_feature[' + $index + '][name]"> \
+            </div><div class="col-sm-6"><label for="prod_feature_field[' + $index + '][value]">Value:</label> \
+            <input type="text" class="form-control prod-feature-value" \
+                   id="prod_feature_field[' + $index + '][value]" \
+                   name="prod_feature[' + $index + '][value]"> \
+            </div></div>';
+
+        $('.product-feature-block').last().after($new_field);
+    }
+
+    $('.add-new-feature-button').on('click', function () {
+        $lastId = $('.product-feature-block').last().attr('id');
+        $split = $lastId.split('-');
+        $index = $split[$split.length - 1];
+        addProdFeatureField(parseInt($index) + 1);
+    });
+
+    if ($('#has-prod-feature').prop('checked')) {
+        $('.edit-therm-features').css('display', 'block');
+    } else {
+        $('.edit-therm-features').css('display', 'none');
+    }
+
+    $('#has-prod-feature').on('click', function () {
+        if ($('#has-prod-feature').prop('checked')) {
+            $('.edit-therm-features').css('display', 'block');
+        } else {
+            $('.edit-therm-features').css('display', 'none');
+        }
+    });
+
+})(jQuery);
+;(function ($) {
+    function addProdImageField($index) {
+        $new_field = '<div class="box-small-margin product-image-block prod-image-block-' + $index + ' "> \
+            <div> \
+              <img id="prod_image-' + $index + '" \
+                   src="" \
+                   alt=""/> \
+              <a  class="close-prod_image-' + $index + '"> \
+                <button type="button">Reset</button> \
+              </a> \
+            </div> \
+            <input type="file" class="form-control prod-img" id="prod_image_field-' + $index + '" \
+                   name="prod_image[' + $index + ']"> \
+            <input type="hidden" name="prod_image[' + $index + '][id]"  value="' + $index + '"> \
+          </div>';
+
+
+        $('.product-image-block').last().after($new_field);
+    }
+
+
+    $('.add-new-product-image-button').on('click', function () {
+        $lastId = $('.product-image-block .prod-img').last().attr('id');
+
+        $split = $lastId.split('-');
+        $index = $split[$split.length - 1];
+
+        addProdImageField(parseInt($index) + 1);
+
+        //show
+        $currentInd = parseInt($index) + 1;
+
+        $("#prod_image_field-" + $currentInd).change(function () {
+    readURL(this, '#prod_image-' + $currentInd, '.close-prod_image-' + $currentInd);
+});
+
+        //reset
+
+        $(".close-prod_image-" + $currentInd).on('click', function () {
+            $('#prod_image-' + $currentInd).attr('src', '#');
+            $('#prod_image_field-' + $currentInd).val('');
+            $(".close-prod_image-" + $currentInd).css('display', 'none');
+        });
+
+
+    });
+
+
+})(jQuery);
+;(function ($) {
+    function addProdSizesField($index) {
+        $new_field = '<div class="row box-small-margin product-sizes-block prod-sizes-block-' + $index + '" \
+                          id="prod-sizes-block-' + $index + '"> \
+                        <div class="col-xs-6 col-sm-3 box-small-margin"> \
+                          <label for="prod_sizes_field[' + $index + '][model]">Model name:</label> \
+                          <input type="text" class="form-control prod-size-model" \
+                                 id="prod_sizes_field[' + $index + '][model]" \
+                                 name="prod_sizes_field[' + $index + '][model]"> \
+                        </div> \
+                        <div class="col-xs-6 col-sm-3 box-small-margin"> \
+                          <label for="prod_sizes_field[' + $index + '][w]">Width (mm):</label> \
+                          <input type="text" class="form-control prod-size-w" \
+                                 id="prod_sizes_field[' + $index + '][w]" \
+                                 name="prod_sizes_field[' + $index + '][w]"> \
+                        </div> \
+                        <div class="col-xs-6 col-sm-3 box-small-margin"> \
+                          <label for="prod_sizes_field[' + $index + '][h]">Height (mm):</label> \
+                          <input type="text" class="form-control prod-size-h" \
+                                 id="prod_sizes_field[' + $index + '][h]" \
+                                 name="prod_sizes_field[' + $index + '][h]"> \
+                        </div> \
+                        <div class="col-xs-6 col-sm-3 box-small-margin"> \
+                          <label for="prod_sizes_field[' + $index + '][l]">Thickness (mm):</label> \
+                          <input type="text" class="form-control prod-size-l" \
+                                 id="prod_sizes_field[' + $index + '][l]" \
+                                 name="prod_sizes_field[' + $index + '][l]"> \
+                        </div> \
+                        <div class="col-xs-6 col-sm-3 box-small-margin"> \
+              <label for="prod_sizes_field[' + $index + '][left]">Left:</label> \
+              <input type="number" class="form-control prod-size-left" \
+                     id="prod_sizes_field[' + $index + '][left]" \
+                     name="prod_sizes_field[' + $index + '][left]" \
+                      value="0"> \
+            </div> \
+            <div class="col-xs-6 col-sm-3 box-small-margin"> \
+              <label for="prod_sizes_field[' + $index + '][bottom]">Bottom:</label> \
+              <input type="number" class="form-control prod-size-bottom" \
+                     id="prod_sizes_field[' + $index + '][bottom]" \
+                     name="prod_sizes_field[' + $index + '][bottom]" \
+                      value="0"> \
+            </div> \
+                        <div class="col-xs-6 col-sm-3 box-small-margin"> \
+                          <label for="prod_sizes_field[' + $index + '][raumgrosse]">Raumgrosse:</label> \
+                          <input type="text" class="form-control prod-size-raumgrosse" \
+                                 id="prod_sizes_field[' + $index + '][raumgrosse]" \
+                                 name="prod_sizes_field[' + $index + '][raumgrosse]"> \
+                        </div> \
+                       <div class="col-xs-6 col-sm-3 box-small-margin"> \
+                          <label for="prod_sizes_field[' + $index + '][leistung]">Leistung:</label> \
+                          <input type="text" class="form-control prod-size-leistung" \
+                                 id="prod_sizes_field[' + $index + '][leistung]" \
+                                 name="prod_sizes_field[' + $index + '][leistung]"> \
+                        </div> \
+                        <div class="col-xs-6 col-sm-3 box-small-margin"> \
+                          <label for="prod_sizes_field[' + $index + '][gewicht]">Gewicht:</label> \
+                          <input type="text" class="form-control prod-size-gewicht" \
+                                 id="prod_sizes_field[' + $index + '][gewicht]" \
+                                 name="prod_sizes_field[' + $index + '][gewicht]"> \
+                        </div> \
+                        <div class="col-xs-6 col-sm-3 box-small-margin"> \
+                          <label for="prod_sizes_field[' + $index + '][einbauhohe]">Einbauhohe:</label>  \
+                          <input type="text" class="form-control prod-size-einbauhohe" \
+                                 id="prod_sizes_field['  + $index + '][einbauhohe]" \
+                                 name="prod_sizes_field[' + $index + '][einbauhohe]"> \
+                        </div>\
+                                 </div>';
+
+
+        $('.product-sizes-block').last().after($new_field);
+
+
+        $new_rect = '<div class="rect-item rect-' + $index  + '">' + $index  + '</div>';
+        $('.rect-item').last().after($new_rect);
+    }
+
+
+
+        ///
+    // illustration
+    $('.prod-sizes-block-1 .prod-size-w').on('change', function() {
+       $('.rect-1').width($('.prod-sizes-block-1 .prod-size-w').val()/5 + 'px');
+    });
+    $('.prod-sizes-block-1 .prod-size-h').on('change', function() {
+       $('.rect-1').height($('.prod-sizes-block-1 .prod-size-h').val()/5 + 'px');
+    });
+
+    $('.prod-sizes-block-1 .prod-size-left').on('change', function() {
+       $('.rect-1').css('left', $('.prod-sizes-block-1 .prod-size-left').val()/5 + 'px');
+    });
+
+    $('.prod-sizes-block-1 .prod-size-bottom').on('change', function() {
+       $('.rect-1').css('bottom', $('.prod-sizes-block-1 .prod-size-bottom').val()/5 + 'px');
+    });
+
+
+
+
+
+    $('.add-new-model-button').on('click', function () {
+        $lastId = $('.product-sizes-block').last().attr('id');
+
+        $split = $lastId.split('-');
+        $index = $split[$split.length - 1];
+
+        addProdSizesField(parseInt($index) + 1);
+
+        $ind = parseInt($index) + 1;
+
+
+        //illustration
+        $('.prod-sizes-block-'+$ind+' .prod-size-w').on('change', function() {
+       $('.rect-'+$ind).width($('.prod-sizes-block-'+$ind+' .prod-size-w').val()/5 + 'px');
+    });
+    $('.prod-sizes-block-'+$ind+' .prod-size-h').on('change', function() {
+       $('.rect-'+$ind).height($('.prod-sizes-block-'+$ind+' .prod-size-h').val()/5 + 'px');
+    });
+
+    $('.prod-sizes-block-'+$ind+' .prod-size-left').on('change', function() {
+       $('.rect-'+$ind).css('left', $('.prod-sizes-block-'+$ind+' .prod-size-left').val()/5 + 'px');
+    });
+
+    $('.prod-sizes-block-'+$ind+' .prod-size-bottom').on('change', function() {
+       $('.rect-'+$ind).css('bottom', $('.prod-sizes-block-'+$ind+' .prod-size-bottom').val()/5 + 'px');
+    });
+
+    });
+
+
+})(jQuery);
+;(function ($) {
     function addServiceLinkField($id, $btn) {
         $new_field = '<div class="service-link-item box-small-mb"> \
             <label for="link-title-'+$id+'">Link title:</label> \
@@ -412,6 +742,36 @@ setTimeout(function () {
         addHeaderLinkField(parseInt($id) + 1, this);
         $('#max_header_link_id').val($id+1);
     });
+})(jQuery);
+;(function ($) {
+    function addSSLinkField($index) {
+        $new_field = '<div class="edition-site-settings-link-item box-small-mb"> \
+        <input type="hidden" name="link['+$index+'][id]" value="'+$index+'" > \
+          <label for="link-name-'+$index+'">Name: </label> \
+          <input type="text" \
+                 name="link['+$index+'][name]" \
+                 id="link-name-'+$index+'>" > \
+          <label for="link-path-'+$index+'">Link: </label> \
+          <input type="text" \
+                 name="link['+$index+'][path]" \
+                 id="link-path-'+$index+'"> \
+        </div>';
+
+
+        $('.edition-site-settings-link-item').last().after($new_field);
+
+    }
+
+    $('.add-new-site-settings-link-button').on('click', function () {
+        $lastId = $('.edition-site-settings-link-item input').last().attr('id');
+
+        $split = $lastId.split('-');
+        $index = $split[$split.length - 1];
+
+        addSSLinkField(parseInt($index) + 1);
+    });
+
+
 })(jQuery);
 ;(function () {
     function disableSubmit(login, pass, pass_r) {
@@ -530,6 +890,7 @@ function closeModal($modal, $dialog) {
 }
 
 closeModal('#imageNavMenu', '#imageNavMenu .modal-dialog');
+closeModal('#imageShow', '#imageShow .modal-dialog');
 closeModal('.delete-item-modal', '.delete-item-modal .modal-dialog .modal-content');
 ;function closeImg(input) {
 
@@ -646,7 +1007,7 @@ $(".close-gallery_bg").on('click', function () {
 
 for (var i = 1; i <= 10; i++) {
     $("#close-carousel_image_" + i).on('click', function (x) {
-        return function() {
+        return function () {
             $('#imagecarousel_image_' + x).attr('src', '#');
             $('#carousel_image_' + x).val('');
             $("#close-carousel_image_" + x).css('display', 'none');
@@ -658,7 +1019,7 @@ for (var i = 1; i <= 10; i++) {
 //main properties
 for (var i = 1; i <= 10; i++) {
     $("#close-prop_image_" + i).on('click', function (x) {
-        return function() {
+        return function () {
             $('#imageprop_image_' + x).attr('src', '#');
             $('#prop_image_' + x).val('');
             $("#close-prop_image_" + x).css('display', 'none');
@@ -669,7 +1030,7 @@ for (var i = 1; i <= 10; i++) {
 //main gallery
 for (var i = 1; i <= 30; i++) {
     $("#close-gallery_item_" + i).on('click', function (x) {
-        return function() {
+        return function () {
             $('#imagegallery_item_' + x).attr('src', '#');
             $('#gallery_item_' + x).val('');
             $("#close-gallery_item_" + x).css('display', 'none');
@@ -683,6 +1044,31 @@ $(".close-logo-image").on('click', function () {
     $('#logo_image').val('');
     $('.close-logo-image').css('display', 'none');
 });
+
+//add cat
+$(".close-category_image").on('click', function () {
+    $('#category_image').attr('src', '#');
+    $('#category_image_field').val('');
+    $('.close-category_image').css('display', 'none');
+});
+
+//add main prod
+$(".close-prod_main_image").on('click', function () {
+    $('#prod_main_image').attr('src', '#');
+    $('#prod_main_image_field').val('');
+    $('.close-prod_main_image').css('display', 'none');
+});
+
+
+//prod gallery
+
+$(".close-prod_image-1").on('click', function () {
+    $('#prod_image-1').attr('src', '#');
+    $('#prod_image_field-1').val('');
+    $(".close-prod_image-1").css('display', 'none');
+});
+
+
 ;(function () {
 
     var contactCol = ".contacts .contact-item-wrapper";
@@ -781,6 +1167,39 @@ $(".close-logo-image").on('click', function () {
         $(".title-"+$index).remove();
         $("#answer-"+$index).remove();
     });
+})(jQuery);;(function ($) {
+    $('.delete-prod-image').on('click', function() {
+        $classes = $(this).attr('class');
+        $classes_arr = $classes.split(' ');
+
+        $itemClass = $classes_arr[1];
+
+        $split = $itemClass.split('-');
+        $index = $split[$split.length - 1];
+
+        console.log($index);
+
+        $(".image-item-" +  $index).after("<input type='hidden' name='del-image[]' value='"+$index+"'> ");
+
+        $(".image-item-" +  $index).remove();
+    });
+
+
+        $('.delete-bild-image').on('click', function() {
+        $classes = $(this).attr('class');
+        $classes_arr = $classes.split(' ');
+
+        $itemClass = $classes_arr[1];
+
+        $split = $itemClass.split('-');
+        $index = $split[$split.length - 1];
+
+        console.log($index);
+
+        $(".edit-gallery-image-item-" +  $index).after("<input type='hidden' name='del-image[]' value='"+$index+"'> ");
+
+        $(".edit-gallery-image-item-" +  $index).remove();
+    });
 })(jQuery);;(function () {
 
     function checkPass(pass, passr) {
@@ -811,6 +1230,34 @@ $(".close-logo-image").on('click', function () {
         });
     }
 
+
+}());
+;(function () {
+    function isFurHandlerFilled() {
+        if ($('#name').val()!=='' && $('#telephone').val()!=='' && $('#country').val() && $('#email').val()!=='' && $('#ihre_nachricht').val()!=='') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    $furHandlerButton = '.fur-handler-form button';
+
+    if (isFurHandlerFilled()) {
+       $($furHandlerButton).removeAttr('disabled');
+    } else {
+        $($furHandlerButton).attr('disabled', true);
+
+    }
+
+    $(  ".fur-handler-form .form-control").change(function () {
+        if (isFurHandlerFilled()) {
+            $($furHandlerButton).removeAttr('disabled');
+
+        } else {
+            $($furHandlerButton).attr('disabled', true);
+        }
+    });
 
 }());
 ;(function () {
@@ -1105,31 +1552,34 @@ $('.homepage-gallery-carousel').carousel({
     interval: false
 });
 
+$prodItem = '#product-carousel .item .thumb';
+$prodMidItem = '#product-carousel .item .thumb:nth-child(2)';
+$prodActItem = '#product-carousel .item.active .thumb';
 
-if ($('.item.active .thumb').length > 2) {
-    $('.item .thumb:nth-child(2)').css('transform', 'scale(1.85)');
-    $('.item .thumb:nth-child(2)').css('z-index', '999');
-    $('.item .thumb:nth-child(2)').css('position', 'relative');
-    $('.item .thumb:nth-child(2)').css('box-shadow', 'rgb(251, 251, 251) 0px 0px 20px 9px');
-    $('.item .thumb:nth-child(2)').css('border', '1px solid #dcdcdc52');
+if ($($prodActItem).length > 2) {
+    $($prodMidItem).css('transform', 'scale(1.85)');
+    $($prodMidItem).css('z-index', '999');
+    $($prodMidItem).css('position', 'relative');
+    $($prodMidItem).css('box-shadow', 'rgb(251, 251, 251) 0px 0px 20px 9px');
+    $($prodMidItem).css('border', '1px solid #dcdcdc52');
 } else {
-    $('.item .thumb').css('transform', 'scale(1)');
-    $('.item .thumb').css('z-index', '1');
-    $('.item .thumb:nth-child(2)').css('box-shadow', '0');
-    $('.item .thumb:nth-child(2)').css('border', '0');
+    $('#product-carousel .item .thumb').css('transform', 'scale(1)');
+    $('#product-carousel .item .thumb').css('z-index', '1');
+    $($prodMidItem).css('box-shadow', '0');
+    $($prodMidItem).css('border', '0');
 }
 
 
 $('#product-carousel').on('slide.bs.carousel', function () {
-    $('.item .thumb').css('transform', 'scale(1)');
-    $('.item .thumb').css('z-index', '1');
-     $('.item .thumb:nth-child(2)').css('box-shadow', '0');
-     $('.item .thumb:nth-child(2)').css('border', '0');
+    $($prodItem).css('transform', 'scale(1)');
+    $($prodItem).css('z-index', '1');
+     $($prodMidItem).css('box-shadow', '0');
+     $($prodMidItem).css('border', '0');
 });
 
 
 $('#product-carousel').on('slid.bs.carousel', function () {
-    if ($('.item.active .thumb').length > 2) {
+    if ($('#product-carousel .item.active .thumb').length > 2) {
         $('.item .thumb:nth-child(2)').css('transform', 'scale(1.85)');
         $('.item .thumb:nth-child(2)').css('z-index', '999');
         $('.item .thumb:nth-child(2)').css('position', 'relative');
@@ -1394,10 +1844,10 @@ $('#product-carousel').on('slid.bs.carousel', function () {
         /* $(this).next().on('shown.bs.collapse', function () {
             */
             if ($(this).parent().prev().hasClass($accTitle)) {
-                $('html, body').animate({scrollTop: parseInt($(this).parent().prev().offset().top) - $open_height + 'px'}, 300);
+                $('html, body').animate({scrollTop: parseInt($(this).parent().prev().offset().top) - $open_height - parseInt($('header').height()) + 'px'}, 300);
                 console.log(parseInt($(this).parent().prev().offset().top));
             } else {
-                $('html, body').animate({scrollTop: parseInt($(this).parent().offset().top) - $open_height + 'px'}, 300);
+                $('html, body').animate({scrollTop: parseInt($(this).parent().offset().top) - $open_height - parseInt($('header').height()) + 'px'}, 300);
                 console.log(parseInt($(this).parent().offset().top));
             }
         /* });*/
@@ -1423,7 +1873,18 @@ $(document).ready(function () {
     arrowsDocRotation('.download-page .faq-item-title');
 });
 
-;function readURL(input, $image, $closeImg) {
+;(function ($) {
+    if($('#parent_id').length) {
+        $('#parent_id').on('change', function () {
+            $('.add-category-place .select-place-category').css('display', 'none');
+            $('.add-category-place .select-place-category').attr('disabled', true);
+            $id = $( "#parent_id option:selected" ).val();
+
+$('.add-category-place .select-place-category.category-'+$id).css('display', 'block');
+ $('.add-category-place .select-place-category.category-'+$id).removeAttr('disabled');
+        });
+    }
+})(jQuery);;function readURL(input, $image, $closeImg) {
 
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -1541,7 +2002,36 @@ for ($i = 1; $i <= 30; $i++) {
 //default
 $("#logo_image").change(function () {
     readURL(this, '#imagelogo_image', '.close-logo-image');
-});;(function () {
+});
+
+$("#category_image_field").change(function () {
+    readURL(this, '#category_image', '.close-category_image');
+});
+
+//edit product
+
+$("#prod_main_image_field").change(function () {
+    readURL(this, '#prod_main_image', '.close-prod_main_image');
+});
+
+//prod gallery
+
+$("#prod_image_field-1").change(function () {
+    readURL(this, '#prod_image-1', '.close-prod_image-1');
+});
+
+
+//edit bildmotive
+//main gallery
+for ($i = 1; $i <= 300; $i++) {
+    $("#prod_image_field-" + $i).change(function (x) {
+        return function () {
+            readURL(this, '#prod_image-' + x, '.close-bild_image-' + x);
+        }
+    }($i));
+}
+
+;(function () {
     function setMLogoSize() {
         $window = parseInt($(window).width());
         $paddings = parseInt($('.header-wrapper').css('padding-left')) + parseInt($('.header-wrapper').css('padding-right'));
@@ -1666,9 +2156,11 @@ $("#logo_image").change(function () {
         $carousel.carousel("prev");
     });
 }
+
 if ($('.swipe-carousel').length !== 0) {
     hammerSwipe('.swipe-carousel');
 }
+
 if ($('#homepageGalleryCarousel').length !== 0) {
     var hammer = new Hammer(document.querySelector('#homepageGalleryCarousel'));
     var $car = $("#homepageGalleryCarousel").carousel({"pause":true,"interval":false});
@@ -1682,21 +2174,47 @@ if ($('#homepageGalleryCarousel').length !== 0) {
     });
 }
 
-
-$l = $('.carousel-showmanymoveone .item').length;
-if ($l > 3) {
-    var hammer = new Hammer(document.querySelector('#product-carousel'));
-    var $carousel = $("#product-carousel").carousel({"interval": 0});
+if ($('#bildGalleryCarousel').length !== 0) {
+    var hammer = new Hammer(document.querySelector('#bildGalleryCarousel'));
+    var $car = $("#bildGalleryCarousel").carousel({"pause":true,"interval":false});
     hammer.get("swipe");
 
     hammer.on("swipeleft", function () {
-        $carousel.carousel("next");
+        $car.carousel("next");
     });
     hammer.on("swiperight", function () {
-        $carousel.carousel("prev");
+        $car.carousel("prev");
     });
 }
-;(function () {
+
+$l = $('.carousel-showmanymoveone .item').length;
+if($('#product-carousel').length !== 0) {
+    if ($l > 3) {
+        var hammer = new Hammer(document.querySelector('#product-carousel'));
+        var $carousel = $("#product-carousel").carousel({"interval": 0});
+        hammer.get("swipe");
+
+        hammer.on("swipeleft", function () {
+            $carousel.carousel("next");
+        });
+        hammer.on("swiperight", function () {
+            $carousel.carousel("prev");
+        });
+    }
+}
+/*
+if ($('#thumbcarousel').length !== 0) {
+    var hammer = new Hammer(document.querySelector('#thumbcarousel'));
+    var $car = $("#thumbcarousel").carousel({"pause":true,"interval":false});
+    hammer.get("swipe");
+
+    hammer.on("swipeleft", function () {
+        $car.carousel("next");
+    });
+    hammer.on("swiperight", function () {
+        $car.carousel("prev");
+    });
+}*/;(function () {
 
     function showArrow($element) {
         $($element).find('.arrow-down').css('display', 'block');

@@ -1,0 +1,44 @@
+.prod-farb-option {
+
+  .farb-img {
+        height: 1.5rem;
+    width: 3rem;
+    margin: 0 0.5rem;
+  }
+}
+
+.prod-features-option,
+.prod-principles-option {
+  label {
+    margin-left: 1rem;
+  }
+}
+.show-similar-label {
+  margin-left: 1rem;
+}
+
+.product-sizes-rect {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  max-width: 400px;
+  margin-left: 0;
+  margin-right: 0;
+  border: 2px solid $footer-bg;
+}
+
+.rect-item {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(194, 34, 26, 0.66);
+  border: 1px solid $footer-bg;
+
+}
+
+.product-sizes-block {
+  background-color: rgba(251, 43, 32, 0.04);
+  margin-bottom: 1rem;
+  margin-left: 0;
+  margin-right: 0;
+}

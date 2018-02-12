@@ -33,12 +33,12 @@ class Controller_site_settings extends Controller
 
                 if ($update_data_res)
                 {
-                    $content_view = 'edit_agb_result_view.php';
+                    $content_view = 'edit_site_settings_result_view.php';
                 } else {
-                    $content_view = 'edit_agb_view.php';
+                    $content_view = 'edit_site_settings_view.php';
                 }
             } else {
-                $content_view = 'edit_agb_view.php';
+                $content_view = 'edit_site_settings_view.php';
             }
 
 

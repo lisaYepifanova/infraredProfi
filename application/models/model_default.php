@@ -4,6 +4,7 @@ class Model_Default extends Model {
   public function get_data() {
 
     include 'application/connection.php';
+
     /*
 
         $query = $mysqli->query("DROP TABLE product_principle");
@@ -158,9 +159,7 @@ class Model_Default extends Model {
     $query = $mysqli->query("INSERT INTO `header_links` (`id`, `title`, `link`) VALUES ('1','TECHNOLOGIE', '/technologie')");
     $upd = $mysqli->query($query);
 
-    */
 
-    /*
 
     $query = $mysqli->query("UPDATE `garantie` SET `text`='<h3>GARANTIEBEDINGUNGEN</h3>\n\n<p>Die Herstellergarantie gilt nicht bei Sch&auml;den, die durch eigene Nachl&auml;ssigkeit entstanden sind oder durch Missbrauch der Nutzung elektrischen Ger&auml;ten verursacht worden sind.</p>\n\n<p>Nachfolgenden F&auml;lle die eine Garantie ausschlie&szlig;en sind:</p>\n<ol>\n<li>Defekte und Sch&auml;den, die durch Missbrauch bei Nutzung des Produkts verursacht worden sind.</li>\n\n<li>Jeder Fehler und Schaden, der nach der Anlieferung beim Beladen, Entladen oder beim Transport des Ger&auml;tes entstanden ist.</li>\n\n<li>Defekte und Sch&auml;den, die durch erh&ouml;hte oder verringerte Netzspannung oder durch anschlie&szlig;en des Ger&auml;tes an Netzspannungen und Frequenzen, die den vorgeschriebenen nicht entsprechen, verursacht worden sind.</li>\n\n<li>Falsche Installation oder Deinstallation.</li>\n\n<li>Defekte und Sch&auml;den, die durch Reparatur in nicht spezifizierten Servicezentren entstanden sind.</li>\n\n<li>Bedingt durch die Beschichtungseigenschaften sind geringe Planit&auml;tsabweichungen nicht zu vermeiden. Diese sind insbesondere bei Spiegeln m&ouml;glicherweise sichtbar und stellen keinen Reklamationsgrund dar.</li>\n</ol>\n<p>Achtung! Bei oben genannten F&auml;llen und Sch&auml;den verliert der Garantieanspruch seine G&uuml;ltigkeit. Garantiekarte OHNE H&auml;ndler Stempel, H&auml;ndleranschrift, Unterschrift des Verk&auml;ufers und Verkaufsdatum wird als ung&uuml;ltig betrachtet.</p>\n\n<p>Reparatur oder Austausch wird nur in spezialisierten Service-Centern oder vom autorisiertem Fach-H&auml;ndler \"Infrared24\" durchgef&uuml;hrt.\n</p>' WHERE `id`='1'");
    $upd = $mysqli->query($query);
@@ -168,23 +167,7 @@ class Model_Default extends Model {
 
     $query = $mysqli->query("CREATE TABLE `mitglied` (`id` INT NOT NULL AUTO_INCREMENT, `info` TEXT NULL, PRIMARY KEY (`id`))");
     $upd = $mysqli->query($query);
-*/
-///current live
-///current live
-///current live
-///current live
-///current live
-///current live
-///current live
-///current live
-///current live
-///current live
-///
-///
 
-    /*
-$query = $mysqli->query("INSERT INTO `mitglied` (`id`) VALUES ('1')");
-$upd = $mysqli->query($query);
 
 $query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/item_decken.gif' WHERE `id`='2'");
 $upd = $mysqli->query($query);
@@ -204,37 +187,29 @@ $upd = $mysqli->query($query);
     $query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/zwei.gif' WHERE `id`='1'");
 $upd = $mysqli->query($query);
 
-    $query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/zwei.gif' WHERE `id`='3'");
+$query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/zwei.gif' WHERE `id`='3'");
 $upd = $mysqli->query($query);
 
-
-    $query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/zwei.gif' WHERE `id`='4'");
+$query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/zwei.gif' WHERE `id`='4'");
 $upd = $mysqli->query($query);
 
-    $query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/zwei.gif' WHERE `id`='6'");
+$query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/zwei.gif' WHERE `id`='6'");
 $upd = $mysqli->query($query);
 
-    $query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/drei.gif' WHERE `id`='5'");
+$query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/drei.gif' WHERE `id`='5'");
 $upd = $mysqli->query($query);
-
-
 
 $query = $mysqli->query("INSERT INTO `products` (`id`, `name`, `parent_id`, `image`, `title`, `description`, `category_size_id`, `has_thermostat`, `size_markup`, `has_height`, `ord`) VALUES ('9', 'spiegelheizungen', '0', 'products/spiegelheizungen/spiegel02.jpg', 'SPIEGELHEIZUNGEN', '<p>Da der RED AGE Spiegelheizung mit Infrarot Strahlungswärme heizt, wird weniger die Luft im Raum erwärmt sondern mehr die Gegenstände, die sich im Raum befinden, den menschlichen Körper mit eingeschlossen, dies alles wird ermöglicht durch das Prinzip der Sonnenstrahlung. Die Umgebung, welche die Wärme gespeichert hat gibt diese dann nach und nach wieder an den Raum ab, sprich in die Luft und man bekommt ein angenehmes Wohlfühlklima. Spiegelheizpaneele haben zudem noch die Eigenschaft, dass der Wirkungsgrad der Wärmestrahlung sehr hoch ist und die Wärme, ohne in dem Material gespeichert zu werden, direkt in die Umgebung abgegeben wird. </p>\n\n<p>Der Spiegelheizung ist im ganzen Wohnbereich einsetzbar, er passt sich Ihren Gestaltungswünschen perfekt an. Weiterhin hat die Infrarotheizung ein sehr rahmenloses edles Design und durch die qualitative Verarbeitung von hochwertigen Materialien die höchste Qualität, was sich auch bei der Technik besonders bemerkbar macht. Die Lebensdauer einer Spiegelheizung ist nahezu unbegrenzt (über 120.000 Stunden) und die Heizelemente sind fast verschleiß frei. \n</p>\n\n<p>\nAllergiker werden sich mit der Infrarotspiegelheizung ebenfalls wohler fühlen, denn der Staub wird nicht mehr aufgewirbelt oder verbrannt. \n</p>\n\n<p>\nSie kann nicht nur als Komplett-Heizsystem bzw. Vollheizung eingesetzt werden, sondern auch als Zusatzheizung, Teilheizung oder Übergangsheizung. Durch das Anwenden von Strahlungswärme schonen Sie zudem auch Ihren Geldbeutel, denn Sie können hierdurch bis zu 60 % an Stromkosten im Vergleich zu herkömmlichen Heizsystemen sparen, da die Geräte eine sehr hohe Energieeffizienz haben.\nWenn Sie sich zwischen zwei Heizleistungen nicht entscheiden können, raten wir Ihnen dazu die stärkere Heizleistung zu nehmen. Damit haben Sie nicht zwingend einen höheren Energieverbrauch, da die gewünschte Temperatur schneller erreicht wird und der Thermostat die Heizung früher abschalten kann.\nInfrarot Spiegelheizungen aus ESG Sicherheitsglas besitzen eine leichte Tönung und stellen keinen Reklamationsgrund dar.\n</p>\n\n<p>\n<strong>Spiegelheizungen Vorteile:</strong>\n<ul>\n<li>Modern und effizient</li>\n<li>Wohltuende natürliche Wärme</li>\n<li>\nUnabhängigkeit von Öl und Gas</li>\n<li>\nWartungsfrei und extrem langlebig</li>\n<li>\nGesunde Raumluftt</li>\n<li>\nEinfache Installation</li>\n<li>\nZeitlos modern und schön</li>\n\n</ul>\n</p>\n\n<i>\nSollten Sie mehr Informationen benötigen oder weitere Fragen zu den technischen Details die Glasheizungen haben wenden Sie sich einfach an uns. Wir helfen Ihnen gerne weiter\n</i>', 'spiegelheizungen', '1', '<div class=\"rectangle-wrapper\" style=\"height: 317px\">  \n <div id=\"row7\" class=\"rectangle\" style=\"width:83px;height:117px;bottom:200px;left:0;\">\n            500x700\n  </div>\n   <div id=\"row6\" class=\"rectangle\"\n               style=\"width:100px;height:100px;bottom:200px;left:83px;\">\n            600x600\n  </div>\n   <div id=\"row5\" class=\"rectangle\"  style=\"width:67px;height:134px;bottom:167px;left:183px;\">  400x800</div><div id=\"row4\" class=\"rectangle\"         style=\"width:67px;height:167px;bottom:0;left:250px;\">     400x1000\n  </div>\n   <div id=\"row3\" class=\"rectangle\"\n               style=\"width:67px;height:200px;bottom:0;left:100px;\">\n            400x1200\n  </div>\n   <div id=\"row2\" class=\"rectangle\"\n               style=\"width:83px;height:167px;bottom:0;left:167px;\">\n            500x1000\n  </div>\n   <div id=\"row1\" class=\"rectangle\"\n               style=\"width:100px;height:200px;bottom:0;left:0;\">\n            600x1200\n  </div>\n  </div>', '0', '4')");
 $upd = $mysqli->query($query);
 
-
 $query = $mysqli->query("UPDATE `products` SET `ord`='5' WHERE `id`='1'");
 $upd = $mysqli->query($query);
-
 
 $query = $mysqli->query("UPDATE `products` SET `ord`='6' WHERE `id`='6'");
 $upd = $mysqli->query($query);
 
-
 $query = $mysqli->query("UPDATE `products` SET `ord`='7' WHERE `id`='2'");
 $upd = $mysqli->query($query);
-
-
 
 $query = $mysqli->query("UPDATE `images` SET `prod_id`='6' WHERE `id`='123'");
 $upd = $mysqli->query($query);
@@ -248,18 +223,11 @@ $upd = $mysqli->query($query);
 $query = $mysqli->query("INSERT INTO `images` (`id`, `path`, `prod_id`) VALUES ('126', 'products/spiegelheizungen/spiegel03.jpg', '9')");
 $upd = $mysqli->query($query);
 
-
-
-
-
 $query = $mysqli->query("INSERT INTO `product_features` (`id`, `feature`, `value`, `product_id`) VALUES ('88', 'Hoher Wirkungsgrad', '85-90% Infrarotstrahlung, 10-15 % Konvektionsw&auml;rme ', '9')");
 $upd = $mysqli->query($query);
 
 $query = $mysqli->query("INSERT INTO `product_features` (`id`, `feature`, `value`, `product_id`) VALUES ('89', 'Netzspannung', '230 V / 50-60 Hz', '9')");
 $upd = $mysqli->query($query);
-
-
-
 
 $query = $mysqli->query("INSERT INTO `product_features` (`id`, `feature`, `value`, `product_id`) VALUES ('90', 'Oberfl&auml;chentemperatur vorne', '85&deg; +/-5&deg;C Max', '9')");
 $upd = $mysqli->query($query);
@@ -306,9 +274,402 @@ $upd = $mysqli->query($query);
 $query = $mysqli->query("INSERT INTO `sizes` (`id`, `modell`, `sizex`, `sizey`, `sizez`, `raumgrose`, `leistung`, `gewicht`, `category_size_id`) VALUES ('31', 'IGH 5070', '500', '700', '8', '7-9 / bis 25', '400', '7.5', 'spiegelheizungen')");
 $upd = $mysqli->query($query);
 
+    $query = $mysqli->query("CREATE TABLE `mitglied` (`id` INT NOT NULL AUTO_INCREMENT, `info` TEXT NULL, PRIMARY KEY (`id`))");
+    $upd = $mysqli->query($query);
+
+$query = $mysqli->query("INSERT INTO `mitglied` (`id`) VALUES ('1')");
+$upd = $mysqli->query($query);
+
+    $query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/item2.png' WHERE `id`='9'");
+$upd = $mysqli->query($query);
+
+    $query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/item2.png' WHERE `id`='3'");
+$upd = $mysqli->query($query);
+
+
+    $query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/item2.png' WHERE `id`='4'");
+$upd = $mysqli->query($query);
+
+    $query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/item2.png' WHERE `id`='6'");
+$upd = $mysqli->query($query);
+
+    $query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/item3.png' WHERE `id`='5'");
+$upd = $mysqli->query($query);
+
 
 */
-$query = $mysqli->query("SELECT * FROM mitglied");
+
+////////////////////
+////////////////////
+////////////////////
+////////////////////
+////////////////////
+////////////////////curr live
+/// /*
+
+
+    /*
+            $query = $mysqli->query("UPDATE `products` SET `ord`='50' WHERE `id`='1'");
+            $upd = $mysqli->query($query);
+
+
+            $query = $mysqli->query("UPDATE `products` SET `ord`='80' WHERE `id`='2'");
+            $upd = $mysqli->query($query);
+            $query = $mysqli->query("UPDATE `products` SET `ord`='20' WHERE `id`='3'");
+            $upd = $mysqli->query($query);
+
+            $query = $mysqli->query("UPDATE `products` SET `ord`='30' WHERE `id`='4'");
+            $upd = $mysqli->query($query);
+            $query = $mysqli->query("UPDATE `products` SET `ord`='90' WHERE `id`='5'");
+            $upd = $mysqli->query($query);
+            $query = $mysqli->query("UPDATE `products` SET `ord`='60' WHERE `id`='6'");
+            $upd = $mysqli->query($query);
+            $query = $mysqli->query("UPDATE `products` SET `ord`='120' WHERE `id`='7'");
+            $upd = $mysqli->query($query);
+
+            $query = $mysqli->query("UPDATE `products` SET `ord`='110' WHERE `id`='8'");
+            $upd = $mysqli->query($query);
+            $query = $mysqli->query("UPDATE `products` SET `ord`='40' WHERE `id`='9'");
+            $upd = $mysqli->query($query);
+            $query = $mysqli->query("UPDATE `categories` SET `ord`='110' WHERE `id`='7'");
+            $upd = $mysqli->query($query);
+
+            $query = $mysqli->query("UPDATE `categories` SET `ord`='100' WHERE `id`='8'");
+            $upd = $mysqli->query($query);
+            $query = $mysqli->query("UPDATE `categories` SET `ord`='120' WHERE `id`='9'");
+            $upd = $mysqli->query($query);
+            $query = $mysqli->query("UPDATE `categories` SET `ord`='70' WHERE `id`='10'");
+            $upd = $mysqli->query($query);
+
+
+            $query = $mysqli->query("UPDATE `product_principle` SET `image`='product-thermostat/item2.gif' WHERE `id`='1'");
+            $upd = $mysqli->query($query);
+
+            $query = $mysqli->query("ALTER TABLE `categories` CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT");
+            $upd = $mysqli->query($query);
+
+
+            $query = $mysqli->query("UPDATE `thermostat` SET `ord` = '310' WHERE `id` = '1'");
+            $upd = $mysqli->query($query);
+
+            $query = $mysqli->query("UPDATE `thermostat` SET `ord` = '320' WHERE `id` = '2'");
+            $upd = $mysqli->query($query);
+
+            $query = $mysqli->query("UPDATE `thermostat` SET `ord` = '330' WHERE `id` = '3'");
+            $upd = $mysqli->query($query);
+
+        $query = $mysqli->query("UPDATE `thermostat` SET `ord` = '340' WHERE `id` = '4'");
+            $upd = $mysqli->query($query);
+
+            $query = $mysqli->query("UPDATE `thermostat` SET `ord` = '350' WHERE `id` = '5'");
+            $upd = $mysqli->query($query);
+
+            $query = $mysqli->query("UPDATE `thermostat` SET `ord` = '360' WHERE `id` = '6'");
+            $upd = $mysqli->query($query);
+
+        $query = $mysqli->query("UPDATE `thermostat` SET `ord` = '370' WHERE `id` = '7'");
+            $upd = $mysqli->query($query);
+
+       $query = $mysqli->query(" DELETE FROM `colours` WHERE `name` = 'Spiegel'");
+        $upd = $mysqli->query($query);
+
+
+        $query = $mysqli->query(" ALTER TABLE `products` CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT");
+        $upd = $mysqli->query($query);
+
+        $query = $mysqli->query(" DELETE FROM `product_features` WHERE `id` = '0'");
+        $upd = $mysqli->query($query);
+
+        $query = $mysqli->query(" ALTER TABLE `product_features` CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT");
+        $upd = $mysqli->query($query);
+
+        $query = $mysqli->query("ALTER TABLE `product_principle` CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT");
+        $upd = $mysqli->query($query);
+
+         $query = $mysqli->query("UPDATE `products_colours` SET `colour_id` = '6' WHERE `id` = '3'");
+        $upd = $mysqli->query($query);
+
+       $query = $mysqli->query("UPDATE `products_colours` SET `colour_id` = '6' WHERE `id` = '10'");
+        $upd = $mysqli->query($query);
+
+        $query = $mysqli->query("UPDATE `products_colours` SET `colour_id` = '6' WHERE `id` = '23'");
+        $upd = $mysqli->query($query);
+
+
+        $query = $mysqli->query("ALTER TABLE `products_colours` CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT");
+        $upd = $mysqli->query($query);
+
+         $query = $mysqli->query("ALTER TABLE `sizes` CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT");
+        $upd = $mysqli->query($query);
+
+        $query = $mysqli->query(" ALTER TABLE `products` CHANGE COLUMN `ord` `ord` REAL NULL DEFAULT NULL");
+        $upd = $mysqli->query($query);
+
+
+
+       $query = $mysqli->query("ALTER TABLE `thermostat` CHANGE COLUMN `ord` `ord` REAL NULL DEFAULT NULL");
+        $upd = $mysqli->query($query);
+
+        $query = $mysqli->query("ALTER TABLE `categories` CHANGE COLUMN `ord` `ord` REAL NULL DEFAULT NULL");
+        $upd = $mysqli->query($query);
+
+
+          ////
+        //thermo
+
+        ////
+
+
+        $query = $mysqli->query(" CREATE TABLE `thermostat_feature` (`id` INT NOT NULL AUTO_INCREMENT, `feature` TEXT NULL, `value` TEXT NULL, `product_id` VARCHAR(45) NULL, PRIMARY KEY(`id`))");
+        $upd = $mysqli->query($query);
+
+         $query = $mysqli->query("INSERT INTO `thermostat_feature` (`feature`, `value`, `product_id`) VALUES('abmessungen', '90 x 113 x 23 mm', '1')");
+        $upd = $mysqli->query($query);
+
+         $query = $mysqli->query("INSERT INTO `thermostat_feature` (`feature`, `value`, `product_id`) VALUES('sensortyp', 'NTC 10&deg;K (enthalten)', '1')");
+        $upd = $mysqli->query($query);
+
+         $query = $mysqli->query("INSERT INTO `thermostat_feature` (`feature`, `value`, `product_id`) VALUES('displaygr&ouml;&szlig;e', '45 x 50 mm', '1')");
+        $upd = $mysqli->query($query);
+
+
+        $query = $mysqli->query("INSERT INTO `thermostat_feature` (`feature`, `value`, `product_id`) VALUES('schutzgrad', 'IP20', '1')");
+        $upd = $mysqli->query($query);
+
+        $query = $mysqli->query("INSERT INTO `thermostat_feature` (`feature`, `value`, `product_id`) VALUES('betriebsspannung', '240/230 V: 50Hz', '1')");
+        $upd = $mysqli->query($query);
+
+         $query = $mysqli->query("INSERT INTO `thermostat_feature` (`feature`, `value`, `product_id`) VALUES('max._geschaltete_last', '16A (Ohmsche Last), 1A (Induktive Last)', '1')");
+        $upd = $mysqli->query($query);
+
+         $query = $mysqli->query("INSERT INTO `thermostat_feature` (`feature`, `value`, `product_id`) VALUES('programmfunktion', '4-Phasen/7-Tage-Programm', '1')");
+        $upd = $mysqli->query($query);
+
+         $query = $mysqli->query("INSERT INTO `thermostat_feature` (`feature`, `value`, `product_id`) VALUES('pr&uuml;fzeichen', 'CE, ASTA BEAB', '1')");
+        $upd = $mysqli->query($query);
+
+         $query = $mysqli->query("INSERT INTO `thermostat_feature` (`feature`, `value`, `product_id`) VALUES('sensortyp', 'NTC 10&deg;K (enthalten)', '2')");
+        $upd = $mysqli->query($query);
+
+         $query = $mysqli->query("INSERT INTO `thermostat_feature` (`feature`, `value`, `product_id`) VALUES('displaygr&ouml;&szlig;e', '2,4&quot;', '2')");
+        $upd = $mysqli->query($query);
+
+         $query = $mysqli->query("INSERT INTO `thermostat_feature` (`feature`, `value`, `product_id`) VALUES('schutzgrad', 'IP20', '2')");
+        $upd = $mysqli->query($query);
+
+        $query = $mysqli->query("INSERT INTO `thermostat_feature` (`feature`, `value`, `product_id`) VALUES('betriebsspannung', '240/230 V: 50 Hz', '2')");
+        $upd = $mysqli->query($query);
+
+        $query = $mysqli->query("INSERT INTO `thermostat_feature` (`feature`, `value`, `product_id`) VALUES('max._geschaltete_last', '16A (Ohmsche Last), 1A (Induktive Last)', '2')");
+        $upd = $mysqli->query($query);
+
+        $query = $mysqli->query("INSERT INTO `thermostat_feature` (`feature`, `value`, `product_id`) VALUES('programmfunktion', '10-Phasen / 7-Tage-Programm', '2')");
+        $upd = $mysqli->query($query);
+
+        $query = $mysqli->query("INSERT INTO `thermostat_feature` (`feature`, `value`, `product_id`) VALUES('abmessungen', '(H/B/T) 90 x 110 x 18 mm', '3')");
+        $upd = $mysqli->query($query);
+
+         $query = $mysqli->query("INSERT INTO `thermostat_feature` (`feature`, `value`, `product_id`) VALUES('sensortyp', 'Luft und Boden/Umgebungsf&uuml;hler NTC10K ', '3')");
+        $upd = $mysqli->query($query);
+
+         $query = $mysqli->query("INSERT INTO `thermostat_feature` (`feature`, `value`, `product_id`) VALUES('installationstiefe', 'Zur Installation empfehlen wir Hohlraumdosen', '3')");
+        $upd = $mysqli->query($query);
+
+
+        $query = $mysqli->query("INSERT INTO `thermostat_feature` (`feature`, `value`, `product_id`) VALUES('displaygr&ouml;&szlig;e', '3,5\"e;, vollfarbiger Touch - Screen', '3')");
+        $upd = $mysqli->query($query);
+
+
+        $query = $mysqli->query("INSERT INTO `thermostat_feature` (`feature`, `value`, `product_id`) VALUES('schutzgrad', 'IP33', '3')");
+        $upd = $mysqli->query($query);
+            $query = $mysqli->query("INSERT INTO `thermostat_feature` (`feature`, `value`, `product_id`) VALUES('garantie', '3 Jahre', '3')");
+        $upd = $mysqli->query($query);
+            $query = $mysqli->query("ALTER TABLE `thermostat` DROP COLUMN `isOnHomepage`, DROP COLUMN `pr&uuml;fzeichen`, DROP COLUMN `programmfunktion`, DROP COLUMN `max._geschaltete_last`, DROP COLUMN `betriebsspannung`, DROP COLUMN `garantie`, DROP COLUMN `schutzgrad`, DROP COLUMN `displaygr&ouml;&szlig;e`, DROP COLUMN `installationstiefe`, DROP COLUMN `sensortyp`, DROP COLUMN `abmessungen`, CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT");
+        $upd = $mysqli->query($query);
+
+
+
+        $query = $mysqli->query("UPDATE `products` SET `ord` = '90' WHERE `id` = '2'");
+        $upd = $mysqli->query($query);
+        $query = $mysqli->query("UPDATE `products` SET `ord` = '110' WHERE `id` = '5'");
+        $upd = $mysqli->query($query);
+        $query = $mysqli->query("UPDATE `categories` SET `ord` = '100' WHERE `id` = '10'");
+        $upd = $mysqli->query($query);
+
+        $query = $mysqli->query("UPDATE `categories` SET `ord` = '120' WHERE `id` = '8'");
+        $upd = $mysqli->query($query);
+
+
+        $query = $mysqli->query("CREATE TABLE `header_phones` (`id` INT NOT NULL AUTO_INCREMENT, `text` TEXT NULL, `tel` TEXT NULL, PRIMARY KEY (`id`))");
+        $upd = $mysqli->query($query);
+
+
+    */
+
+
+////
+///
+///
+///
+///
+
+
+/*
+
+
+    $query = $mysqli->query("ALTER TABLE `thermostat` CHANGE COLUMN `image` `image` TEXT NULL DEFAULT NULL ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" ALTER TABLE `sizes`ADD COLUMN `bottom` INT(11) NULL AFTER `einbauhohe`, ADD COLUMN `left` INT(11) NULL AFTER `bottom`");
+    $upd = $mysqli->query($query);
+
+
+        $query = $mysqli->query("UPDATE `sizes` SET `bottom`='0', `left`='0' WHERE `id`='1' ");
+    $upd = $mysqli->query($query);
+
+        $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='0', `left`='600' WHERE `id`='2'");
+    $upd = $mysqli->query($query);
+
+        $query = $mysqli->query("UPDATE `sizes` SET `bottom`='0', `left`='1100' WHERE `id`='3' ");
+    $upd = $mysqli->query($query);
+
+        $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='620', `left`='0' WHERE `id`='4'");
+    $upd = $mysqli->query($query);
+
+        $query = $mysqli->query("UPDATE `sizes` SET `bottom`='0', `left`='0' WHERE `id`='5' ");
+    $upd = $mysqli->query($query);
+
+        $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='0', `left`='0' WHERE `id`='25'");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='0', `left`='1000' WHERE `id`='26' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='0', `left`='600' WHERE `id`='27' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='0', `left`='1500' WHERE `id`='28' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='1000', `left`='1100' WHERE `id`='29' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='1200', `left`='500' WHERE `id`='30' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='1200', `left`='0' WHERE `id`='31' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='0', `left`='0' WHERE `id`='6' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='0', `left`='0' WHERE `id`='7' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='0', `left`='1000' WHERE `id`='8' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='0', `left`='600' WHERE `id`='9' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='0', `left`='1500' WHERE `id`='10' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='1000', `left`='1100' WHERE `id`='11' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='1200', `left`='500' WHERE `id`='12' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='1200', `left`='0' WHERE `id`='13' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='0', `left`='0' WHERE `id`='14' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='560', `left`='0' WHERE `id`='15' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='0', `left`='700' WHERE `id`='16' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='0', `left`='0' WHERE `id`='17' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='560', `left`='1130' WHERE `id`='18' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='320', `left`='0' WHERE `id`='22' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='160', `left`='0' WHERE `id`='23' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='0', `left`='0' WHERE `id`='24' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='872', `left`='0' WHERE `id`='19' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='436', `left`='0' WHERE `id`='20' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" UPDATE `sizes` SET `bottom`='0', `left`='0' WHERE `id`='21' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" CREATE TABLE `bildmotive_catalog` (`id` INT NOT NULL, `title` TEXT NULL, `image` TEXT NULL, `description` TEXT NULL, `ord` INT NULL, PRIMARY KEY (`id`)) ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" ALTER TABLE `bildmotive_catalog` ADD COLUMN `parent_id` INT NULL AFTER `ord` ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" INSERT INTO `bildmotive_catalog` (`id`, `title`, `image`, `description`, `ord`, `parent_id`) VALUES ('1', 'Bildmotive', '10012.jpg', '<p>Bildmotive catalog description</p>', '400', '0') ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query("  ALTER TABLE `bildmotive_catalog` ADD COLUMN `name` TEXT NULL AFTER `parent_id`, ADD COLUMN `short_description` TEXT NULL AFTER `name` ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" CREATE TABLE `bildmotive` (`id` INT NOT NULL AUTO_INCREMENT, `name` TEXT NULL, `title` TEXT NULL, `image` TEXT NULL, `ord` INT NULL, PRIMARY KEY (`id`)) ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" INSERT INTO `bildmotive` (`id`, `name`, `title`, `image`, `ord`) VALUES ('1', 'abstraktionen', 'ABSTRAKTIONEN', '19004.jpg', '10') ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" INSERT INTO `bildmotive` (`id`, `name`, `title`, `image`, `ord`) VALUES ('2', 'autos', 'AUTOS', '17001.jpg', '20') ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" INSERT INTO `bildmotive` (`id`, `name`, `title`, `image`, `ord`) VALUES ('3', 'blumen', 'BLUMEN', '7041.jpg', '30') ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" CREATE TABLE `bildmotive_images` (`id` INT NOT NULL AUTO_INCREMENT, `name` TEXT NULL, `image` TEXT NULL, PRIMARY KEY (`id`)) ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" INSERT INTO `bildmotive_images` (`id`, `name`, `image`) VALUES ('1', '19001', '19001.jpg') ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" INSERT INTO `bildmotive_images` (`id`, `name`, `image`) VALUES ('2', '19002', '19002.jpg') ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" INSERT INTO `bildmotive_images` (`id`, `name`, `image`) VALUES ('3', '19003', '19003.jpg') ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query(" ALTER TABLE `bildmotive_images` ADD COLUMN `category_id` INT NULL AFTER `image`");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query("UPDATE `bildmotive_images` SET `category_id`='1' WHERE `id`='1' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query("UPDATE `bildmotive_images` SET `category_id`='1' WHERE `id`='2' ");
+    $upd = $mysqli->query($query);
+
+    $query = $mysqli->query("UPDATE `bildmotive_images` SET `category_id`='1' WHERE `id`='3' ");
+    $upd = $mysqli->query($query);
+*/
+    //////////////////////////////
+
+
+
+    $query = $mysqli->query("SELECT * FROM mitglied");
 
     if ($query) {
       while ($r = mysqli_fetch_assoc($query)) {
@@ -353,6 +714,14 @@ $query = $mysqli->query("SELECT * FROM mitglied");
     if ($query) {
       while ($r = mysqli_fetch_assoc($query)) {
         $res['phones'][] = $r;
+      }
+    }
+
+    $query = $mysqli->query("SELECT * FROM header_phones");
+
+    if ($query) {
+      while ($r = mysqli_fetch_assoc($query)) {
+        $res['header_phones'][] = $r;
       }
     }
 

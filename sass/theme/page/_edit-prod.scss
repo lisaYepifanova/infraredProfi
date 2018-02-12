@@ -1,0 +1,55 @@
+.edit-product {
+  .prod-name input {
+    width: 100%;
+  }
+}
+
+.prod-gallery-carousel-images,
+.main-prod-image-prev {
+  img,
+  .prod-img {
+    max-width: 19rem;
+    width: 100%;
+  }
+}
+
+.bildmotive-edit-title {
+  display: block;
+  width: 100%;
+
+  @media (min-width: $screen-sm) {
+    margin-right: 1rem;
+  }
+}
+
+.edit-gallery-image-item {
+
+
+  background-color: #c21e190a;
+  padding: 1rem 0;
+
+  @media (min-width: $screen-sm) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.product-image-block {
+  padding: 1rem;
+
+  label {
+    padding-right: 1rem;
+  }
+}
+
+.close-prod,
+.delete-prod-image {
+  display: inline-block;
+  margin: 1rem 1rem 1rem 0;
+}
+
+.edit-bildmotive-main-image {
+      max-width: 19rem;
+    width: 100%;
+}

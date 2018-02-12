@@ -26,10 +26,10 @@ function arrowsFaqRotation($accTitle) {
         /* $(this).next().on('shown.bs.collapse', function () {
             */
             if ($(this).parent().prev().hasClass($accTitle)) {
-                $('html, body').animate({scrollTop: parseInt($(this).parent().prev().offset().top) - $open_height + 'px'}, 300);
+                $('html, body').animate({scrollTop: parseInt($(this).parent().prev().offset().top) - $open_height - parseInt($('header').height()) + 'px'}, 300);
                 console.log(parseInt($(this).parent().prev().offset().top));
             } else {
-                $('html, body').animate({scrollTop: parseInt($(this).parent().offset().top) - $open_height + 'px'}, 300);
+                $('html, body').animate({scrollTop: parseInt($(this).parent().offset().top) - $open_height - parseInt($('header').height()) + 'px'}, 300);
                 console.log(parseInt($(this).parent().offset().top));
             }
         /* });*/

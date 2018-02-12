@@ -102,12 +102,15 @@
     </div>
   </div>
 
-      <?php
+  <?php
     echo '<div class="homepage-products-wrapper" style="background-image:url('.IMAGEPATH.$data['gallery_bg']['path'].')">';
     ?>
 
   <div class="homepage-products-bg">
     <div class="homepage-products container box-same-vpadding">
+      <div class="homepage-gallery-title">
+        <p>GALERIE</p>
+      </div>
       <div class="homepage-products-row row">
           <?php
           $index = 1;
@@ -160,7 +163,7 @@
   </div>
 </main>
 
-<div id="imageNavMenu" class="modal fade image-nav-menu container"
+<div id="imageNavMenu" class="modal fade image-nav-menu "
      style="display: none;">
   <div class="modal-dialog aside-modal-dialog">
     <div class="modal-content">

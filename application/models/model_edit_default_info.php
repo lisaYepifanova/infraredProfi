@@ -23,7 +23,7 @@ class Model_Edit_default_info extends Model {
     $res['max_link_id'] = max($rr['arr_of_id']);
 
 
-        $query = $mysqli->query("SELECT id FROM header_links");
+    $query = $mysqli->query("SELECT id FROM header_links");
     if ($query) {
       while ($r = mysqli_fetch_assoc($query)) {
         $rh['arr_of_id'][] = $r['id'];
@@ -41,6 +41,21 @@ class Model_Edit_default_info extends Model {
     }
 
     $res['max_id_phone'] = max($rp['arr_of_id']);
+
+
+    //header phones
+    $query = $mysqli->query("SELECT id FROM header_phones");
+    if ($query) {
+      while ($r = mysqli_fetch_assoc($query)) {
+        $rhp['arr_of_id'][] = $r['id'];
+      }
+    }
+    if (isset($rhp)) {
+      $res['max_id_header_phone'] = max($rhp['arr_of_id']);
+    }
+    else {
+      $res['max_id_header_phone'] = 0;
+    }
 
 
     //modal menu
@@ -96,9 +111,10 @@ class Model_Edit_default_info extends Model {
             $add_mi = 'INSERT INTO footer_service_links (id, title, link) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['link'] . '")';
           }
           else {
-            if($item['title'] == '' and $item['link'] == '') {
-                $add_mi = "DELETE FROM footer_service_links  WHERE id='".$item['id']."'";
-              } else {
+            if ($item['title'] == '' and $item['link'] == '') {
+              $add_mi = "DELETE FROM footer_service_links  WHERE id='" . $item['id'] . "'";
+            }
+            else {
               $add_mi = "UPDATE footer_service_links SET title = '" . $item['title'] . "', link = '" . $item['link'] . "' WHERE id = '" . $item['id'] . "' ";
             }
           }
@@ -109,7 +125,7 @@ class Model_Edit_default_info extends Model {
     }
 
 
-     //footer links
+    //footer links
     if (isset($_POST['footer_links'])) {
       foreach ($_POST['footer_links'] as $name => $item) {
         if (isset($_POST['footer_links'][$name])) {
@@ -134,7 +150,7 @@ class Model_Edit_default_info extends Model {
     }
 
 
-           //header links
+    //header links
     if (isset($_POST['header_links'])) {
       foreach ($_POST['header_links'] as $name => $item) {
         if (isset($_POST['header_links'][$name])) {
@@ -145,9 +161,10 @@ class Model_Edit_default_info extends Model {
             $add_mi = 'INSERT INTO header_links (id, title, link) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['link'] . '")';
           }
           else {
-            if($item['title'] == '' and $item['link'] == '') {
-                $add_mi = "DELETE FROM header_links  WHERE id='".$item['id']."'";
-              } else {
+            if ($item['title'] == '' and $item['link'] == '') {
+              $add_mi = "DELETE FROM header_links  WHERE id='" . $item['id'] . "'";
+            }
+            else {
               $add_mi = "UPDATE header_links SET title = '" . $item['title'] . "', link = '" . $item['link'] . "' WHERE id = '" . $item['id'] . "' ";
             }
           }
@@ -171,10 +188,39 @@ class Model_Edit_default_info extends Model {
               $add_mi = 'INSERT INTO phones (id, text, tel) VALUES ("' . $item['id'] . '", "' . $item['text'] . '", "' . $item['tel'] . '")';
             }
             else {
-              if($item['text'] == '' and $item['tel'] == '') {
-                $add_mi = "DELETE FROM phones WHERE id='".$item['id']."'";
-              } else {
+              if ($item['text'] == '' and $item['tel'] == '') {
+                $add_mi = "DELETE FROM phones WHERE id='" . $item['id'] . "'";
+              }
+              else {
                 $add_mi = "UPDATE phones SET text = '" . $item['text'] . "', tel = '" . $item['tel'] . "' WHERE id = '" . $item['id'] . "' ";
+              }
+            }
+
+            $adding_info_query = $mysqli->query($add_mi);
+          }
+        }
+      }
+    }
+
+
+    //header phones
+    if (isset($_POST['header_phones'])) {
+      foreach ($_POST['header_phones'] as $name => $item) {
+        if (isset($_POST['header_phones'][$name])) {
+
+          if (isset($_POST['header_phones'][$name]['tel'])) {
+            $isId = mysqli_fetch_assoc($mysqli->query("SELECT id FROM header_phones WHERE id='" . $item['id'] . "'"));
+
+
+            if ($isId == NULL) {
+              $add_mi = 'INSERT INTO header_phones (id, text, tel) VALUES ("' . $item['id'] . '", "' . $item['text'] . '", "' . $item['tel'] . '")';
+            }
+            else {
+              if ($item['text'] == '' and $item['tel'] == '') {
+                $add_mi = "DELETE FROM header_phones WHERE id='" . $item['id'] . "'";
+              }
+              else {
+                $add_mi = "UPDATE header_phones SET text = '" . $item['text'] . "', tel = '" . $item['tel'] . "' WHERE id = '" . $item['id'] . "' ";
               }
             }
 
@@ -203,9 +249,10 @@ class Model_Edit_default_info extends Model {
             $add_mi = 'INSERT INTO modal_menu (id, title, link) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['link'] . '")';
           }
           else {
-            if($item['title'] == '' and $item['link'] == '') {
-                $add_mi = "DELETE FROM modal_menu WHERE id='".$item['id']."'";
-              } else {
+            if ($item['title'] == '' and $item['link'] == '') {
+              $add_mi = "DELETE FROM modal_menu WHERE id='" . $item['id'] . "'";
+            }
+            else {
               $add_mi = "UPDATE modal_menu SET title = '" . $item['title'] . "', link = '" . $item['link'] . "' WHERE id = '" . $item['id'] . "' ";
             }
           }

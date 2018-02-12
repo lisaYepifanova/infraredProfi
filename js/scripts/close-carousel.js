@@ -15,4 +15,5 @@ function closeModal($modal, $dialog) {
 }
 
 closeModal('#imageNavMenu', '#imageNavMenu .modal-dialog');
+closeModal('#imageShow', '#imageShow .modal-dialog');
 closeModal('.delete-item-modal', '.delete-item-modal .modal-dialog .modal-content');

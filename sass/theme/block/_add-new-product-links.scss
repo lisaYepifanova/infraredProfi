@@ -1,0 +1,9 @@
+.add-new-product-links {
+  .glyphicon-plus:before {
+    margin-right: 0.25rem;
+    @media (min-width: $screen-sm){
+      margin-right: 1rem;
+    }
+
+  }
+}

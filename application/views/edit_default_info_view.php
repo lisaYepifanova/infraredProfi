@@ -11,6 +11,7 @@
       <?php echo '<input type="hidden" name="max_id" id="max_id" value="' . $data['add']['max_id'] . '">'; ?>
       <?php echo '<input type="hidden" name="max_link_id" id="max_link_id" value="' . $data['add']['max_link_id'] . '">'; ?>
       <?php echo '<input type="hidden" name="max_id_phone" id="max_id_phone" value="' . $data['add']['max_id_phone'] . '">'; ?>
+      <?php echo '<input type="hidden" name="max_id_header_phone" id="max_id_header_phone" value="' . $data['add']['max_id_header_phone'] . '">'; ?>
       <?php echo '<input type="hidden" name="max_id_menu" id="max_id_menu" value="' . $data['add']['max_id_menu'] . '">'; ?>
       <?php echo '<input type="hidden" name="max_header_link_id" id="max_header_link_id" value="' . $data['add']['max_header_link_id'] . '">'; ?>
       <div class="edit-logo box-mid-margin">
@@ -85,6 +86,27 @@
 
         <a class="glyphicon glyphicon-plus add-new-service-link">Add new service
           link</a>
+      </div>
+
+
+      <div class="edit-header-phones box-mid-margin">
+        <h4>Header phones:</h4>
+        <?php
+        if (isset($default['header_phones'])) {
+          foreach ($default['header_phones'] as $id => $item) { ?>
+            <div class="header-phone-item box-mid-margin">
+              <label for="header-phone-title-'.$id.'">Text:</label>
+              <?php echo '<input type="text" id="header-phone-title-' . $item['id'] . '" name="header_phones[' . $item['id'] . '][text]" value="' . $item['text'] . '">'; ?>
+
+              <label for="header-phone-num-'.$id.'">Phone:</label>
+              <?php echo '<input type="text" id="header-phone-num-' . $item['id'] . '"  name="header_phones[' . $item['id'] . '][tel]" value="' . $item['tel'] . '">'; ?>
+
+              <?php echo '<input type="hidden" name="header_phones[' . $item['id'] . '][id]"  value="' . $item['id'] . '">'; ?>
+            </div>
+          <?php }
+        }?>
+
+        <a class="glyphicon glyphicon-plus add-new-header-phone">Add new phone to the header</a>
       </div>
 
       <div class="edit-phones box-mid-margin">

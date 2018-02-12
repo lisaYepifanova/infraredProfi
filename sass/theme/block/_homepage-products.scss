@@ -13,14 +13,14 @@
 }
 
 .homepage-products-bg {
-  background-color: rgba(54, 54, 54, 0.5);
-      min-height: 100vh;
-    padding: 5rem 0;
+  //background-color: rgba(54, 54, 54, 0.5);
+  min-height: 100vh;
+  padding: 3rem 0 5rem 0;
 }
 
 .homepage-products-row {
-  width: 95%;
-  margin: 0;
+  width: 94%;
+  margin: auto;
 
   @media all and (min-width: 782px) {
     width: 100%;
@@ -28,12 +28,11 @@
 }
 
 .homepage-products {
-  padding:0;
+  padding: 0;
   padding-left: 3rem;
   @media (min-width: $screen-xs) {
-  padding-left: $nav-panel-width * 1.3;
+    padding-left: $nav-panel-width * 1.3;
   }
-
 
   @media (min-width: $screen-lg-min) {
     padding-right: 0;
@@ -92,30 +91,36 @@
   }
 }
 
+#imageShow,
 #imageNavMenu {
   display: flex;
   align-items: center;
   overflow: visible;
-  padding: 0!important;
-  
+  padding: 0 !important;
+
   .modal-dialog {
-    height: 90%;
+    height: 100%;
     width: 100%;
+    @media (min-width: $screen-sm) {
+      height: 90%;
+      width: 70%;
+    }
+
   }
 
   .close {
-    border: 1px solid black;
+    text-shadow: 1px 1px 6px #6e6d6d;
     z-index: 9999;
-    border-radius: 1rem;
+    color: white;
     cursor: pointer;
-    width: 24px;
-    height: 24px;
-    line-height: 22px;
+    width: 3rem;
+    height: 3rem;
     position: absolute;
     top: 20px;
     right: 20px;
     opacity: 0.9;
-    text-shadow: none;
+    font-size: 3.5rem;
+    font-weight: 800;
   }
 
   .modal-content {
@@ -153,7 +158,7 @@
         }
 
         .thumb-image {
-          height: 150px;
+          //height: 150px;
         }
 
         .large-item,
@@ -167,7 +172,6 @@
         .thumb-image {
           background-size: cover;
         }
-
 
         .item .thumb {
           width: 31.2%;

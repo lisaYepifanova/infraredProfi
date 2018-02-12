@@ -1,6 +1,7 @@
 .homepage-products {
   //margin: 0;
-  padding: 2.25rem 0 0 0;
+  //padding: 2.25rem 0 0 0;
+  padding: 0;
 }
 
 .homepage-gallery-item-wrapper {
@@ -83,4 +84,14 @@
     }
   }
 
+}
+
+.homepage-gallery-title {
+  color: $footer-bg;
+    font-weight: 700;
+    font-size: 3rem;
+  text-align: center;
+margin: 0 0 2rem;
+    text-shadow: 1px 1px #4b0e0b;
+    font-family: Montserrat, sans-serif;
 }

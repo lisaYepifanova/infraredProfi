@@ -5,22 +5,28 @@
     </a>
       <h3>Links to page edition forms</h3>
       <form enctype="multipart/form-data" role="form" action="" method="post">
-      <?php foreach ($data as $id=>$row) { ?>
-        <div class="edition-link-item box-small-mb">
-          <a href="<?php echo $row['link_path']; ?>">EDIT <?php echo $row['link_name']; ?></a>
-          <label for="link-name-<?php echo $id; ?>">Name: </label>
+      <?php
+
+      foreach ($data['add'] as $id=>$row) { ?>
+        <div class="edition-site-settings-link-item box-small-mb">
+
+          <input type="hidden" name="link[<?php echo $row['id']; ?>][id]" value="<?php echo $row['id']; ?>" >
+          <label for="link-name-<?php echo $row['id']; ?>">Name: </label>
           <input type="text"
-                 name="link-name-<?php echo $id; ?>"
-                 id="link-name-<?php echo $id; ?>"
+                 name="link[<?php echo $row['id']; ?>][name]"
+                 id="link-name-<?php echo $row['id']; ?>"
                  value="<?php echo $row['link_name']; ?>">
 
-          <label for="link-path-<?php echo $id; ?>">Link: </label>
+          <label for="link-path-<?php echo $row['id']; ?>">Link: </label>
           <input type="text"
-                 name="link-path-<?php echo $id; ?>"
-                 id="link-path-<?php echo $id; ?>"
+                 name="link[<?php echo $row['id']; ?>][path]"
+                 id="link-path-<?php echo $row['id']; ?>"
                  value="<?php echo $row['link_path']; ?>">
         </div>
-      <?php } ?>
+      <?php
+      }
+      echo '<a class="glyphicon glyphicon-plus add-new-site-settings-link-button">Add new link</a>';
+      ?>
         <button class="btn" type="submit">SAVE</button>
       </form>
     </div>

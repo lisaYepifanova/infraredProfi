@@ -1,0 +1,23 @@
+.add-category-place {
+padding-right: 0;
+
+  .select-place-category {
+    display: none;
+  }
+
+  .select-place-category.category-0 {
+    display: block;
+  }
+}
+
+.add-category-parent,
+.add-category-place {
+  padding-left: 0;
+}
+
+
+.add-category-form-wrapper {
+  input {
+    width: 100%;
+  }
+}

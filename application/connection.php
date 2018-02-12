@@ -18,6 +18,12 @@ $user = 'bhspyrqm_infra'; // имя пользователя
 $password = '23xyF18wpA'; // пароль
 
 
+/*
+$host = 'db709572782.db.1and1.com'; // адрес сервера
+$database = 'db709572782'; // имя базы данных
+$user = 'dbo709572782'; // имя пользователя
+$password = 'Infrared24sql#'; // пароль
+*/
 $mysqli = new mysqli($host, $user, $password, $database);
 if ($mysqli->connect_errno) {
     echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;

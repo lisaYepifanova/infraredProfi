@@ -1,0 +1,56 @@
+#bildGalleryCarousel {
+  height: 100%;
+
+  .carousel-inner > .item {
+    height: 100%;
+    background-position: center;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+  }
+
+  .carousel-inner {
+    height: 100%;
+  }
+
+  .carousel-control {
+    background-image: none;
+    display: none;
+    width: 10%;
+
+    @media (min-width: $screen-md) {
+      display: block;
+
+    }
+
+    @media (min-width: $screen-lg) {
+
+      &.left {
+        transform: translateX(-100%);
+      }
+
+      &.right {
+        transform: translateX(100%);
+      }
+    }
+
+  }
+
+  .item .item-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .item-image {
+    flex: 1;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .item-text {
+    height: 1.5rem;
+    padding: 0.25rem;
+    text-align: center;
+  }
+}
