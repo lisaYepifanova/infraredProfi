@@ -6139,8 +6139,8 @@ Reusable, discrete UI elements.
     font-size: 3rem;
     max-height: 100%;
     max-width: calc(100vw - 32px - 44px);
-    width: 360px; }
-    @media (min-width: 1200px) {
+    width: 320px; }
+    @media (min-width: 1400px) {
       .site-logo-wrapper img {
         max-width: 30rem;
         width: 480px; } }
@@ -6261,7 +6261,8 @@ Blocks
   -ms-transform: translate(-50%, 50%);
   transform: translate(-50%, 50%);
   padding-top: 1.25rem;
-  padding-bottom: 1.25rem; }
+  padding-bottom: 1.25rem;
+  opacity: 0; }
   @media all and (min-width: 480px) {
     .homepage-header-title-wrapper {
       bottom: 0;
@@ -7077,7 +7078,6 @@ body.modal-open {
     color: white;
     opacity: 1; }
   .aside-nav-menu .lang-link {
-    margin-right: 12px;
     color: #333333; }
 
 #asideNavMenu.modal.fade:not(.in) .modal-dialog {
@@ -7486,6 +7486,31 @@ body.modal-open {
     height: 1.5rem;
     padding: 0.25rem;
     text-align: center; }
+
+.lang-checkbox {
+  width: 1px;
+  height: 1px; }
+
+.lang-item {
+  display: inline-block;
+  margin-right: 1rem;
+  opacity: 0.7; }
+  .lang-item:last-child {
+    margin-right: 0; }
+  .lang-item img {
+    margin-right: 0.5rem;
+    width: 2rem; }
+  .lang-item label {
+    cursor: pointer;
+    margin: 0;
+    font-weight: 400; }
+  .lang-item.selected {
+    opacity: 1; }
+    .lang-item.selected label {
+      font-weight: 800; }
+
+.menu-top-lang {
+  display: inline-block; }
 
 /**
 Pages
@@ -8187,7 +8212,8 @@ h5.container-info-title {
   text-align: center;
   color: white;
   background-color: #c2221a;
-  margin: 2rem 0; }
+  margin: 2rem 0;
+  opacity: 0; }
 
 .registration-leistungen-wrapper {
   text-align: center;
@@ -8894,7 +8920,15 @@ header {
 
 .header-top-line {
   background: linear-gradient(#c4c4c4, #ddd);
-  background: -ms-linear-gradient(#c4c4c4, #ddd); }
+  background: -ms-linear-gradient(#c4c4c4, #ddd);
+  padding-left: 3.1%;
+  padding-right: 3.1%;
+  font-size: 14px;
+  display: none; }
+  @media (min-width: 992px) {
+    .header-top-line {
+      display: -ms-flexbox;
+      display: flex; } }
 
 .header-wrapper {
   height: 100%;
@@ -8955,20 +8989,13 @@ header {
 .header-phone-value {
   padding-left: 1rem; }
 
-.header-top-line {
-  font-size: 14px;
-  display: none; }
-  @media (min-width: 992px) {
-    .header-top-line {
-      display: -ms-flexbox;
-      display: flex; } }
-
 .top-lang {
   float: right; }
 
 .top-phones,
 .top-lang {
-  display: inline-block; }
+  display: inline-block;
+  margin: 0.5rem 0; }
 
 .header-social-items-wrapper {
   display: none; }
@@ -8994,7 +9021,8 @@ header {
   width: 100%; }
 
 .lang-link {
-  margin-right: 10px; }
+  margin-right: 0.75rem;
+  margin-bottom: 0; }
 
 /**
 Images

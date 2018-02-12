@@ -26,5 +26,20 @@ $password = 'Infrared24sql#'; // пароль
 */
 $mysqli = new mysqli($host, $user, $password, $database);
 if ($mysqli->connect_errno) {
-    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+  echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
+
+//language variable
+if (isset($_POST)) {
+  if (isset($_POST['lang'])) {
+    $lang = $_POST['lang'];
+  }
+  else {
+    $lang = 'DE';
+  }
+}
+else {
+  $lang = 'DE';
+}
+
+$_SESSION['language'] = $lang;

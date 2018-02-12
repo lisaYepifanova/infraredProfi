@@ -88,7 +88,7 @@ entdecken!">';
     $index = 0;
     if (isset($default['header_phones'])) {
       foreach ($default['header_phones'] as $phone_row) {
-        echo '<a href="tel:'.$phone_row['tel'] . '" class="contact-item-value header-phone-value">' . $phone_row['text'] . '</a>';
+        echo '<a href="tel:' . $phone_row['tel'] . '" class="contact-item-value header-phone-value">' . $phone_row['text'] . '</a>';
         $index += 1;
         if (count($default['header_phones']) > $index) {
           echo ',  ';
@@ -101,7 +101,44 @@ entdecken!">';
     ?>
 
     <div class="top-lang">
-      <a class="lang-link">DE</a>
+      <form enctype="multipart/form-data" role="form" action="" method="post"
+            id="lang_form">
+        <?php
+        if (isset($default['languages'])) {
+          if (isset($_SESSION)) {
+            if (isset($_SESSION['language'])) {
+              $lang = $_SESSION['language'];
+            }
+            else {
+              $lang = 'DE';
+            }
+          }
+          else {
+            $lang = 'DE';
+          }
+
+          foreach ($default['languages'] as $row) {
+            echo '<div class="lang-item ';
+
+            if (strcasecmp($lang, $row['title']) == 0) {
+              echo ' selected ';
+            }
+
+            echo '">';
+            echo '<input class="lang-checkbox" type="radio" name="lang" 
+               id="lang-' . $row['id'] . '"
+               value="' . $row['title'] . '"';
+            if (strcasecmp($lang, $row['title']) == 0) {
+              echo ' selected ';
+            }
+
+            echo '  onchange="document.getElementById(\'lang_form\').submit()">';
+            echo '<label class="lang-link" for="lang-' . $row['id'] . '"><img alt=' . $row['name'] . ' src="' . IMAGEPATH . 'languages/' . $row['icon'] . '">' . $row['title'] . '</label>';
+            echo '</div>';
+          }
+        }
+        ?>
+      </form>
     </div>
 
   </div>
@@ -252,9 +289,34 @@ include 'application/views/' . $content_view;
         <button type="button" class="close" data-dismiss="modal"
                 aria-hidden="true">›
         </button>
-        <h5 class="modal-title">
-          <a class="lang-link">DE</a>
-        </h5>
+        <div class="menu-top-lang">
+          <form enctype="multipart/form-data" role="form" action=""
+                method="post" id="lang_form">
+            <?php
+            if (isset($default['languages'])) {
+              foreach ($default['languages'] as $row) {
+                echo '<div class="lang-item ';
+
+                if (strcasecmp($lang, $row['title']) == 0) {
+                  echo ' selected ';
+                }
+
+                echo ' ">';
+                echo '<input class="lang-checkbox" type="radio" name="lang" 
+               id="lang-' . $row['id'] . '"';
+
+                if (strcasecmp($lang, $row['title']) == 0) {
+                  echo ' selected ';
+                }
+
+                echo ' value="' . $row['title'] . '"  onchange="document.getElementById(\'lang_form\').submit()">';
+                echo '<label class="lang-link" for="lang-' . $row['id'] . '"><img alt=' . $row['name'] . ' src="' . IMAGEPATH . 'languages/' . $row['icon'] . '">' . $row['title'] . '</label>';
+                echo '</div>';
+              }
+            }
+            ?>
+          </form>
+        </div>
         <h5 class="modal-title profile-links">
           <?php
           if (isAuth()) {
@@ -306,9 +368,6 @@ include 'application/views/' . $content_view;
     </div>
   </div>
 </div>
-<?php
-
-?>
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 

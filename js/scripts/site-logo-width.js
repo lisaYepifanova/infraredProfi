@@ -35,55 +35,52 @@
     }
 
 
+    var addEvent = function (object, type, callback) {
+        if (object == null || typeof(object) == 'undefined') return;
+        if (object.addEventListener) {
+            object.addEventListener(type, callback, false);
+        } else if (object.attachEvent) {
+            object.attachEvent("on" + type, callback);
+        } else {
+            object["on" + type] = callback;
+        }
+    };
 
-
-    var addEvent = function(object, type, callback) {
-    if (object == null || typeof(object) == 'undefined') return;
-    if (object.addEventListener) {
-        object.addEventListener(type, callback, false);
-    } else if (object.attachEvent) {
-        object.attachEvent("on" + type, callback);
-    } else {
-        object["on"+type] = callback;
-    }
-};
-
-    addEvent(window, "resize", function(event) {
-          if (parseInt($(window).width()) < 460-15) {
+    addEvent(window, "resize", function (event) {
+        if (parseInt($(window).width()) < 460 ) {
             $('.site-logo-wrapper img').css('width', setMLogoSize() + 'px');
-        } else if (parseInt($(window).width()) < 992-15) {
+        } else if (parseInt($(window).width()) < 992) {
             $('.site-logo-wrapper img').css('width', '320px');
         }
-        else if (parseInt($(window).width()) < 1400-15) {
+        else if (parseInt($(window).width()) < 1400) {
             $('.site-logo-wrapper img').css('width', setDLogoSize() + 'px');
         } else {
             $('.site-logo-wrapper img').css('width', '480px');
         }
-});
+    });
 
     function getLogoOffset() {
-        return parseInt($('.site-logo-wrapper img').offset().left)+'px';
+        return parseInt($('.site-logo-wrapper img').offset().left) + 'px';
     }
 
-    if($('.site-logo-wrapper img').offset().left > 0) {
+    if ($('.site-logo-wrapper img').offset().left > 0) {
         $('.header-top-line').css('padding-left', getLogoOffset);
         $('.header-top-line').css('padding-right', getLogoOffset);
     } else {
-       $('.header-top-line').css('padding-left', '0px');
+        $('.header-top-line').css('padding-left', '0px');
         $('.header-top-line').css('padding-right', '0px');
     }
 
 
-
-        addEvent(window, "resize", function(event) {
-          console.log($(window).width());
-        if($('.site-logo-wrapper img').offset().left > 0) {
-        $('.header-top-line').css('padding-left', getLogoOffset);
-        $('.header-top-line').css('padding-right', getLogoOffset);
-    } else {
-       $('.header-top-line').css('padding-left', '0px');
-        $('.header-top-line').css('padding-right', '0px');
-    }
-});
+    addEvent(window, "resize", function (event) {
+        console.log($(window).width());
+        if ($('.site-logo-wrapper img').offset().left > 0) {
+            $('.header-top-line').css('padding-left', getLogoOffset);
+            $('.header-top-line').css('padding-right', getLogoOffset);
+        } else {
+            $('.header-top-line').css('padding-left', '0px');
+            $('.header-top-line').css('padding-right', '0px');
+        }
+    });
 
 }());

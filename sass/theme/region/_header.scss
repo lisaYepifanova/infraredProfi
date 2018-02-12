@@ -15,6 +15,15 @@ header {
 .header-top-line {
   background: linear-gradient(#c4c4c4, #ddd);
   background: -ms-linear-gradient(#c4c4c4, #ddd);
+
+  padding-left: 3.1%;
+  padding-right: 3.1%;
+
+    font-size: 14px;
+  display: none;
+  @media (min-width: $screen-md) {
+    display: flex;
+  }
 }
 
 .header-wrapper {
@@ -90,13 +99,7 @@ header {
   padding-left: 1rem;
 }
 
-.header-top-line {
-  font-size: 14px;
-  display: none;
-  @media (min-width: $screen-md) {
-    display: flex;
-  }
-}
+
 
 .top-lang {
   float: right;
@@ -105,6 +108,7 @@ header {
 .top-phones,
 .top-lang {
   display: inline-block;
+  margin: 0.5rem 0;
 }
 
 .header-social-items-wrapper {
@@ -133,5 +137,6 @@ header {
 }
 
 .lang-link {
-  margin-right: 10px;
+  margin-right: 0.75rem;
+  margin-bottom: 0;
 }
