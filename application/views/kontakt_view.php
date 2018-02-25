@@ -1,5 +1,5 @@
 <main>
-  <h1 class="page-header container text-capitalize left-padding">KONTAKT</h1>
+  <h1 class="page-header container text-capitalize left-padding"><?php echo $data['name'] ?></h1>
 
   <div class="container contacts-info-wrapper box-mid-margin left-padding">
 

@@ -3,7 +3,8 @@
 class Model_Technologie extends Model {
   public function get_data() {
     include 'application/connection.php';
-    $query = $mysqli->query("SELECT * FROM technologie");
+    $lang = getLanguage();
+    $query = $mysqli->query("SELECT * FROM technologie WHERE lid=".$lang);
 
     if ($query) {
       while ($r = mysqli_fetch_assoc($query)) {
@@ -18,11 +19,7 @@ class Model_Technologie extends Model {
   public function update_data() {
     include 'application/connection.php';
 
-
-  //  $uploaddir = '/kunden/homepages/7/d709554119/htdocs/img/technology/';
-   // $uploaddir = '/kunden/homepages/7/d709554119/htdocs/img/technology/';
-   //     $uploaddir = '/home/lisabeth/Projects/infraredprofi/img/technology/';
-
+$lang = getLanguage();
     $uploaddir = IMG_PROJ_PATH.'technology/';
     //загрузка фото на сервер
     if (isset($_FILES)) {
@@ -188,19 +185,24 @@ class Model_Technologie extends Model {
       $infra_house_description = $_POST['infra_house_description'];
     }
 
+     $name = NULL;
+    if (isset($_POST['name'])) {
+      $name = $_POST['name'];
+    }
+
     //собственно запрос
-    $add_q = "UPDATE technologie SET description_before = '" . $description_before . "',
-                       description_after = '" . $description_after . "',
-                       infra_title = '" . $infra_title . "',
-                       infra_text = '" . $infra_text . "',
-                       convect_title = '" . $convect_title . "',
-                       convect_text = '" . $convect_text . "',
-                       scheme_title = '" . $scheme_title . "',
-                       convect_house_title = '" . $convect_house_title . "',
-                       convect_house_description = '" . $convect_house_description . "',
-                       infra_house_title = '" . $infra_house_title . "',
-                       infra_house_description = '" . $infra_house_description . "'
-                       ";
+    $add_q = "UPDATE technologie SET description_before = '" . $description_before . "',".
+                       "description_after = '" . $description_after . "',".
+                       "infra_title = '" . $infra_title . "',".
+                       "infra_text = '" . $infra_text . "',".
+                       "convect_title = '" . $convect_title . "',".
+                       "convect_text = '" . $convect_text . "',".
+                       "scheme_title = '" . $scheme_title . "',".
+                       "name = '" . $name . "',".
+                       "convect_house_title = '" . $convect_house_title . "',".
+                       "convect_house_description = '" . $convect_house_description . "',".
+                       "infra_house_title = '" . $infra_house_title . "',".
+                       "infra_house_description = '" . $infra_house_description . "' WHERE lid=".$lang;
 
     $adding_info_query = $mysqli->query($add_q);
 

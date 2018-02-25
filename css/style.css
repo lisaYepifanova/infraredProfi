@@ -6138,8 +6138,9 @@ Reusable, discrete UI elements.
   .site-logo-wrapper img {
     font-size: 3rem;
     max-height: 100%;
-    max-width: calc(100vw - 32px - 44px);
-    width: 320px; }
+    max-width: 480px;
+    width: 320px;
+    min-width: 180px; }
     @media (min-width: 1400px) {
       .site-logo-wrapper img {
         max-width: 30rem;
@@ -6153,7 +6154,8 @@ Reusable, discrete UI elements.
   margin: auto;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  font-size: 2rem;
+  padding-right: 0;
+  font-size: 1.7rem;
   word-wrap: break-word; }
   @media all and (min-width: 600px) {
     .page-header {
@@ -7816,7 +7818,7 @@ Pages
 .product-menu-wrapper {
   display: block;
   position: absolute;
-  top: 5.5rem; }
+  top: 7rem; }
   @media all and (max-width: 767px) {
     .product-menu-wrapper {
       display: none; } }

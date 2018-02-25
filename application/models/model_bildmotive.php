@@ -4,6 +4,8 @@ class Model_Bildmotive extends Model {
   public function get_data() {
     include 'application/connection.php';
 
+    $lang = getLanguage();
+
     $routes = explode('/', $_SERVER['REQUEST_URI']);
     $last = end($routes);
 
@@ -18,7 +20,7 @@ class Model_Bildmotive extends Model {
     $res = [];
 
 
-    $query = $mysqli->query("SELECT * FROM bildmotive_catalog");
+    $query = $mysqli->query("SELECT * FROM bildmotive_catalog WHERE lid='" . $lang . "'");
 
     if ($query) {
       while ($r = mysqli_fetch_assoc($query)) {
@@ -39,7 +41,7 @@ class Model_Bildmotive extends Model {
 
     $res['max_id_gallery'] = max($mm['arr_of_id']);
 
-    $query = $mysqli->query("SELECT * FROM bildmotive WHERE name='" . $curr . "'");
+    $query = $mysqli->query("SELECT * FROM bildmotive WHERE name='" . $curr . "' AND lid='" . $lang . "'");
 
     if ($query) {
       while ($r = mysqli_fetch_assoc($query)) {
@@ -47,7 +49,7 @@ class Model_Bildmotive extends Model {
       }
     }
 
-    $query = $mysqli->query("SELECT * FROM bildmotive  ORDER BY ord");
+    $query = $mysqli->query("SELECT * FROM bildmotive WHERE lid='" . $lang . "' ORDER BY ord ");
 
     if ($query) {
       while ($r = mysqli_fetch_assoc($query)) {
@@ -58,7 +60,9 @@ class Model_Bildmotive extends Model {
 
     $curr_id = $res[0]['id'];
 
-    $img_q = "SELECT * FROM bildmotive_images  WHERE category_id='" . $curr_id . "' ORDER BY name";
+
+
+    $img_q = "SELECT * FROM bildmotive_images  WHERE category_id_".$lang."='" . $curr_id . "' ORDER BY name";
     $query = $mysqli->query($img_q);
 
     if ($query) {
@@ -67,11 +71,13 @@ class Model_Bildmotive extends Model {
       }
     }
 
+
+
     $query = $mysqli->query(
-      "SELECT id, title, ord, parent_id FROM products  " .
-      " UNION SELECT id, title, ord, parent_id FROM  categories " .
-      " UNION SELECT id, title, ord, parent_id FROM thermostat  " .
-      " UNION SELECT id, title, ord, parent_id FROM bildmotive_catalog  " .
+      "SELECT id, title, ord, parent_id FROM products  WHERE lid='" . $lang . "' " .
+      " UNION SELECT id, title, ord, parent_id FROM  categories WHERE lid='" . $lang . "' " .
+      " UNION SELECT id, title, ord, parent_id FROM thermostat  WHERE lid='" . $lang . "' " .
+      " UNION SELECT id, title, ord, parent_id FROM bildmotive_catalog  WHERE lid='" . $lang . "' " .
       " ORDER BY ord"
     );
 
@@ -81,7 +87,7 @@ class Model_Bildmotive extends Model {
       }
     }
 
-    $query = $mysqli->query("SELECT * FROM categories");
+    $query = $mysqli->query("SELECT * FROM categories WHERE lid='" . $lang . "'");
 
     if ($query) {
       while ($r = mysqli_fetch_assoc($query)) {

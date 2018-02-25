@@ -1,15 +1,21 @@
 <main>
 
-  <h1 class="page-header container hsmall text-capitalize left-padding">FÜR HÄNDLER</h1>
+
   <form enctype="multipart/form-data" role="form" action="" method="post">
     <input type="hidden" name="MAX_FILE_SIZE" value="409600"/>
+    <h1 class="page-header container hsmall text-capitalize left-padding">
+    <input type="text" value="<?php echo  $data['add']['main_info']['title']; ?>" name="title">
+
+  </h1>
+
 
     <div class="container">
       <a class="admin-page-icons admin-icon-item" href="/site-settings"><img src="../img/user_pages/settings.png" alt="settings"><p class="icon-title">Site settings</p>
     </a>
     </div>
-    <div class="registration-top-block left-padding">
+    <div class="left-padding">
       <?php
+      $lang = getLanguage();
       echo '<h3 class=""><textarea name="top_block" class="full-textarea bg-field editor-area">' . $data['add']['main_info']['top_block'] . '</textarea></h3>';
       ?>
     </div>
@@ -68,7 +74,13 @@
             <?php
             echo '</div></div>';
             echo '<div class="leistungen-item-description-edit ">';
-            echo '<textarea class="editor-area" name="service_description_' . $row['id'] . '">' . $row['description'] . '</textarea>';
+            if($lang==1) {
+              echo '<textarea class="editor-area" name="service_description_' . $row['id'] . '">' . $row['description'] . '</textarea>';
+            }else if($lang==2) {
+              echo '<textarea class="editor-area" name="service_eng_description_' . $row['id'] . '">' . $row['eng_description'] . '</textarea>';
+            }
+
+
             echo '</div></div>';
 
             if ($ind == 3) {
@@ -141,14 +153,20 @@
 
               <?php
 
-
-              echo '
+                if($lang==1) {
+                   echo '
               
               <h4 class="property-item-title"><textarea class="bg-field full-textarea" name="'.'item-title_'.$row['id'].'">' . $row['title'] . '</textarea></h4>
-              <p class="property-item-description"><textarea class="bg-field full-textarea" name="'.'item-desc_'.$row['id'].'">' . $row['description'] . '</textarea></p>
-              
-              </div>';
+              <p class="property-item-description"><textarea class="bg-field full-textarea" name="'.'item-desc_'.$row['id'].'">' . $row['description'] . '</textarea></p>';
 
+                } else if($lang==2) {
+                   echo '
+              
+              <h4 class="property-item-title"><textarea class="bg-field full-textarea" name="'.'eng_item-title_'.$row['id'].'">' . $row['eng_title'] . '</textarea></h4>
+              <p class="property-item-description"><textarea class="bg-field full-textarea" name="'.'eng_item-desc_'.$row['id'].'">' . $row['eng_description'] . '</textarea></p>';
+
+                }
+              echo ' </div>';
 
             }
 
@@ -162,7 +180,13 @@
 
     <div class="registration-form container left-padding box-same-vmargin">
       <div class="registration-form-title registration-form-title-edit text-center">
+        <label>Form title</label>
         <?php echo '<textarea name="form_title" class="full-textarea editor-area">' . $data['add']['main_info']['form_title'] . '</textarea>'; ?>
+      </div>
+
+      <div class="registration-form-title registration-form-title-edit text-center">
+        <label>Form</label>
+        <?php echo '<textarea name="form_title" class="full-textarea editor-area">' . $data['add']['main_info']['form'] . '</textarea>'; ?>
       </div>
 
     </div>

@@ -68,7 +68,8 @@
 
   <?php
   include 'application/connection.php';
-  $q = "SELECT * FROM philosophy";
+
+  $q = "SELECT * FROM philosophy WHERE lid=".$lang;
   $query = $mysqli->query($q);
 
   if ($query) {
@@ -77,32 +78,7 @@
     }
   }
 
-  $q = "SELECT sign_image FROM homepage_info";
-  $query = $mysqli->query($q);
 
-  if ($query) {
-    while ($r = mysqli_fetch_assoc($query)) {
-      echo '<div class="sign-wrapper text-center box-s-mg-top">';
-      ?>
-
-      <label for="sign_image">Sign image:</label>
-      <div>
-        <img id="imagesign_image"
-             src="<?php echo IMAGEPATH . '' . $r['sign_image']; ?>"
-             alt=""/>
-        <a href="#" class="close-sign_image">
-          <button type="button">Reset</button>
-        </a>
-      </div>
-
-      <input type="file" class="form-control" id="sign_image"
-             name="sign_image"
-             value=<?php echo $r['sign_image']; ?>>
-      <span class="help-block"> Max filesize is 2mb</span>
-
-      <?php
-    }
-  }
   ?>
 
 </div>
@@ -179,6 +155,8 @@
 
     <?php
     echo '<div class="homepage-products-wrapper-edit">';
+    echo '<label for="gallery_name">Gallery name</label>';
+    echo '<input id="gallery_name" type="text" name="gallery_name" value="'.$data['add']['gallery_name'].'">';
     ?>
     <div class="container homepage-products-bg-edit left-padding">
       <label for="gallery_bg_image">Gallery image:</label>

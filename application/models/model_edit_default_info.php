@@ -3,8 +3,9 @@
 class Model_Edit_default_info extends Model {
   public function get_data() {
     include 'application/connection.php';
+$lang = getLanguage();
 
-    $query = $mysqli->query("SELECT id FROM footer_service_links");
+    $query = $mysqli->query("SELECT id FROM footer_service_links ");
     if ($query) {
       while ($r = mysqli_fetch_assoc($query)) {
         $rr['arr_of_id'][] = $r['id'];
@@ -100,6 +101,7 @@ class Model_Edit_default_info extends Model {
       }
     }
 
+    $lang = getLanguage();
     //footer links
     if (isset($_POST['footer_service_links'])) {
       foreach ($_POST['footer_service_links'] as $name => $item) {
@@ -108,7 +110,7 @@ class Model_Edit_default_info extends Model {
           $isId = mysqli_fetch_assoc($mysqli->query("SELECT id FROM footer_service_links WHERE id='" . $item['id'] . "'"));
 
           if ($isId['id'] == NULL) {
-            $add_mi = 'INSERT INTO footer_service_links (id, title, link) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['link'] . '")';
+            $add_mi = 'INSERT INTO footer_service_links (id, title, link, lid) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['link'] . '", "'.$lang.'")';
           }
           else {
             if ($item['title'] == '' and $item['link'] == '') {
@@ -133,7 +135,7 @@ class Model_Edit_default_info extends Model {
           $isId = mysqli_fetch_assoc($mysqli->query("SELECT id FROM footer_links WHERE id='" . $item['id'] . "'"));
 
           if ($isId['id'] == NULL) {
-            $add_mi = 'INSERT INTO footer_links (id, title, link) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['link'] . '")';
+            $add_mi = 'INSERT INTO footer_links (id, title, link, lid) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['link'] . '", "'.$lang.'")';
           }
           else {
             if ($item['title'] == '' and $item['link'] == '') {
@@ -158,7 +160,7 @@ class Model_Edit_default_info extends Model {
           $isId = mysqli_fetch_assoc($mysqli->query("SELECT id FROM header_links WHERE id='" . $item['id'] . "'"));
 
           if ($isId['id'] == NULL) {
-            $add_mi = 'INSERT INTO header_links (id, title, link) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['link'] . '")';
+            $add_mi = 'INSERT INTO header_links (id, title, link, lid) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['link'] . '", "'.$lang.'")';
           }
           else {
             if ($item['title'] == '' and $item['link'] == '') {
@@ -246,7 +248,7 @@ class Model_Edit_default_info extends Model {
           $isId = mysqli_fetch_assoc($mysqli->query("SELECT id FROM modal_menu WHERE id='" . $item['id'] . "'"));
 
           if ($isId['id'] == NULL) {
-            $add_mi = 'INSERT INTO modal_menu (id, title, link) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['link'] . '")';
+            $add_mi = 'INSERT INTO modal_menu (id, title, link, lid) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['link'] . '", "'.$lang.'")';
           }
           else {
             if ($item['title'] == '' and $item['link'] == '') {

@@ -3,7 +3,11 @@
 class Model_Download extends Model {
   public function get_data() {
     include 'application/connection.php';
-    $query = $mysqli->query("SELECT * FROM documents");
+
+    $lang = getLanguage();
+
+
+    $query = $mysqli->query("SELECT * FROM documents  WHERE lid='" . $lang . "'");
 
     if ($query) {
       while ($r = mysqli_fetch_assoc($query)) {
@@ -20,7 +24,7 @@ class Model_Download extends Model {
 
     $res['max_id'] = max($rr['arr_of_id']);
 
-    $query = $mysqli->query("SELECT * FROM document_categories");
+    $query = $mysqli->query("SELECT * FROM document_categories  WHERE lid='" . $lang . "'");
 
     if ($query) {
       while ($r = mysqli_fetch_assoc($query)) {
@@ -34,10 +38,11 @@ class Model_Download extends Model {
   public function update_data() {
     include 'application/connection.php';
 
+    $lang = getLanguage();
     //названия категорий
     if (isset($_POST['category'])) {
       foreach ($_POST['category'] as $cid => $category_name) {
-        if ($category_name != '') {
+        if ($category_name !== '') {
           $add_q = "UPDATE document_categories SET category_name = '" . $category_name . "' WHERE id = '" . $cid . "' ";
           $info_query = $mysqli->query($add_q);
         }
@@ -73,7 +78,7 @@ class Model_Download extends Model {
             $path_name = mysqli_fetch_assoc($mysqli->query("SELECT path FROM documents WHERE id='" . $id . "'"));
 
             if ($path_name['path'] == NULL) {
-              $add_mi = 'INSERT INTO documents (id, path, name, category) VALUES ("' . $id . '", "' . strtolower($category_name['category_name']) . '/' . $item . '", "' . $curr_name . '", "' . $cid . '")';
+              $add_mi = 'INSERT INTO documents (id, path, name, category, lid) VALUES ("' . $id . '", "' . strtolower($category_name['category_name']) . '/' . $item . '", "' . $curr_name . '", "' . $cid . '", "'.$lang.'")';
             }
             else {
               $add_mi = "UPDATE documents " .

@@ -5,7 +5,10 @@ class Model_Kontakt extends Model
     public function get_data()
     {
         include 'application/connection.php';
-        $query = $mysqli->query("SELECT * FROM contact_page");
+
+        $lang = getLanguage();
+
+        $query = $mysqli->query("SELECT * FROM contact_page  WHERE lid='" . $lang . "'");
 
         if ($query) {
             while ($r = mysqli_fetch_assoc($query)) {
@@ -19,7 +22,9 @@ class Model_Kontakt extends Model
         public function edit_data()
     {
         include 'application/connection.php';
-        $query = $mysqli->query("SELECT * FROM contact_page");
+
+        $lang = getLanguage();
+        $query = $mysqli->query("SELECT * FROM contact_page WHERE lid='" . $lang . "'");
 
         if ($query) {
             while ($r = mysqli_fetch_assoc($query)) {
@@ -32,6 +37,7 @@ class Model_Kontakt extends Model
 
     public function update_data() {
     include 'application/connection.php';
+$lang = getLanguage();
 
     $info = NULL;
     if (isset($_POST['info'])) {
@@ -43,7 +49,12 @@ class Model_Kontakt extends Model
       $map = $_POST['map'];
     }
 
-    $add_q = "UPDATE contact_page SET info = '" . $info. "', map = '" . $map. "'";
+        $name = NULL;
+    if (isset($_POST['name'])) {
+      $name = $_POST['name'];
+    }
+
+    $add_q = "UPDATE contact_page SET name = '" . $name. "', info = '" . $info. "', map = '" . $map. "'  WHERE lid='" . $lang . "'";
 
     $adding_info_query = $mysqli->query($add_q);
 

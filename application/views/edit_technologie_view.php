@@ -1,12 +1,21 @@
 <main>
 
-  <h1 class="page-header container hsmall text-capitalize left-padding">TECHNOLOGIE</h1>
+  <h1 class="page-header container hsmall text-capitalize left-padding"><?php echo $data['add']['name']; ?></h1>
 
   <div class="container left-padding">
     <a class="admin-page-icons admin-icon-item" href="/site-settings"><img src="<?php echo IMAGEPATH; ?>user_pages/settings.png" alt="settings"><p class="icon-title">Site settings</p>
     </a>
 
     <form enctype="multipart/form-data" role="form" action="" method="post">
+      <div class="technology-description box-mid-margin">
+        <input type="hidden" name="MAX_FILE_SIZE" value="4096000"/>
+        <label for="name">Page name</label>
+        <?php
+
+        echo '<input id="name" type="text" name="name" value="' . $data['add']['name'] . '">';
+
+        ?>
+      </div>
       <div class="technology-description box-mid-margin">
         <input type="hidden" name="MAX_FILE_SIZE" value="4096000"/>
         <label>Description (before)</label>

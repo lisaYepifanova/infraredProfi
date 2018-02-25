@@ -1,6 +1,6 @@
 <main class="about-us-page">
 
-  <h1 class="page-header container text-capitalize left-padding">ÜBER UNS</h1>
+  <h1 class="page-header container text-capitalize left-padding"><?php echo $data['name']; ?></h1>
 
   <div class="about-us-right-image container box-mid-margin left-padding">
     <div class="row">
@@ -43,7 +43,7 @@
 
   <div class="about-us-description-wrapper container left-padding">
     <div class="about-us-description">
-      <h4 class="left-padding">ÜBER UNS</h4>
+      <h4 class="left-padding"><?php echo $data['name']; ?></h4>
       <?php
       echo '<p class="about-us-paragraph">' . $data['about_us_description'] . '</p>';
       ?>

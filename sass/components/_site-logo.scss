@@ -22,14 +22,12 @@
   img {
     font-size: 3rem;
     max-height: 100%;
-    max-width: calc(100vw - 32px - 44px);
+    max-width: 480px;
     width: 320px;
-
+    min-width: 180px;
     @media (min-width: 1400px)  {
       max-width: 30rem;
       width: 480px;
     }
-
-
   }
 }

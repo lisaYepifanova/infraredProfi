@@ -58,7 +58,7 @@
 
     <?php
     include 'application/connection.php';
-    $q = "SELECT * FROM philosophy";
+    $q = "SELECT * FROM philosophy WHERE lid='".$lang."'";
     $query = $mysqli->query($q);
 
     if ($query) {
@@ -109,7 +109,8 @@
   <div class="homepage-products-bg">
     <div class="homepage-products container box-same-vpadding">
       <div class="homepage-gallery-title">
-        <p>GALERIE</p>
+        <p><?php echo $data['gallery_name']; ?></p>
+
       </div>
       <div class="homepage-products-row row">
           <?php

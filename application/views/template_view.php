@@ -75,7 +75,18 @@ entdecken!">';
   <?php
 
   echo '<script src="' . LIBPATH . 'ckeditor/ckeditor.js"></script>';
+
+
   ?>
+  <script>
+      function setCookie(name, value) {
+          var date = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000);
+          var updatedCookie = name + "=" + value + "; expires=" + date.toUTCString();
+
+          document.cookie = updatedCookie;
+          location.reload();
+      }
+  </script>
 
 </head>
 <body>
@@ -102,37 +113,37 @@ entdecken!">';
 
     <div class="top-lang">
       <form enctype="multipart/form-data" role="form" action="" method="post"
-            id="lang_form">
+            id="lang_form_top">
         <?php
         if (isset($default['languages'])) {
-          if (isset($_SESSION)) {
-            if (isset($_SESSION['language'])) {
-              $lang = $_SESSION['language'];
+          if (isset($_COOKIE)) {
+            if (isset($_COOKIE["language"])) {
+              $lang = $_COOKIE["language"];
             }
             else {
-              $lang = 'DE';
+              $lang = '1';
             }
           }
           else {
-            $lang = 'DE';
+            $lang = '1';
           }
 
           foreach ($default['languages'] as $row) {
             echo '<div class="lang-item ';
 
-            if (strcasecmp($lang, $row['title']) == 0) {
+            if ($lang == $row['id']) {
               echo ' selected ';
             }
 
             echo '">';
             echo '<input class="lang-checkbox" type="radio" name="lang" 
                id="lang-' . $row['id'] . '"
-               value="' . $row['title'] . '"';
-            if (strcasecmp($lang, $row['title']) == 0) {
-              echo ' selected ';
+               value="' . $row['id'] . '"';
+            if ($lang == $row['id']) {
+              //echo ' selected ';
             }
 
-            echo '  onchange="document.getElementById(\'lang_form\').submit()">';
+            echo '  onchange="setCookie(\'language\', ' . $row['id'] . ')">';
             echo '<label class="lang-link" for="lang-' . $row['id'] . '"><img alt=' . $row['name'] . ' src="' . IMAGEPATH . 'languages/' . $row['icon'] . '">' . $row['title'] . '</label>';
             echo '</div>';
           }
@@ -180,7 +191,10 @@ entdecken!">';
       <div class="header-social-items">
         <?php
         echo '<div class="social-links"><a target="_blank" href="https://www.facebook.com/infrared24" class=" social-link"><img src="' . IMAGEPATH . 'fb.png" alt="facebook link"></a>
-         <a href="https://twitter.com/@InfraRed24" target="_blank" class="social-link"><img src="' . IMAGEPATH . 'twitter.png" alt="twitter link"></a></div>';
+         <a href="https://twitter.com/@InfraRed24" target="_blank" class="social-link"><img src="' . IMAGEPATH . 'twitter.png" alt="twitter link"></a>
+<a target="_blank" href="https://www.instagram.com/infrared24gmbh/" class=" social-link"><img src="' . IMAGEPATH . 'inst.png" alt="instagram link"></a>
+         <a href="https://www.pinterest.de/infrared24/" target="_blank" class="social-link"><img src="' . IMAGEPATH . 'pinterest.png" alt="pinterest link"></a>
+</div>';
         ?>
       </div>
     </div>
@@ -252,8 +266,12 @@ include 'application/views/' . $content_view;
 
 
           <?php
-          echo '<div class="col-sm-4 footer-link"><a target="_blank" href="https://www.facebook.com/infrared24" class=" social-link"><img src="' . IMAGEPATH . 'fb.png" alt="facebook link"></a>
-         <a href="https://twitter.com/@InfraRed24" target="_blank" class="social-link"><img src="' . IMAGEPATH . 'twitter.png" alt="twitter link"></a></div>';
+          echo '<div class="col-sm-4 footer-link">
+          <a target="_blank" href="https://www.facebook.com/infrared24" class=" social-link"><img src="' . IMAGEPATH . 'fb.png" alt="facebook link"></a>
+         <a href="https://twitter.com/@InfraRed24" target="_blank" class="social-link"><img src="' . IMAGEPATH . 'twitter.png" alt="twitter link"></a>
+         <a target="_blank" href="https://www.instagram.com/infrared24gmbh/" class=" social-link"><img src="' . IMAGEPATH . 'inst.png" alt="instagram link"></a>
+         <a href="https://www.pinterest.de/infrared24/" target="_blank" class="social-link"><img src="' . IMAGEPATH . 'pinterest.png" alt="pinterest link"></a>
+         </div>';
           ?>
         </div>
       </div>
@@ -291,13 +309,13 @@ include 'application/views/' . $content_view;
         </button>
         <div class="menu-top-lang">
           <form enctype="multipart/form-data" role="form" action=""
-                method="post" id="lang_form">
+                method="post" id="lang_form_modal">
             <?php
             if (isset($default['languages'])) {
               foreach ($default['languages'] as $row) {
                 echo '<div class="lang-item ';
 
-                if (strcasecmp($lang, $row['title']) == 0) {
+                if ($lang == $row['id']) {
                   echo ' selected ';
                 }
 
@@ -305,11 +323,11 @@ include 'application/views/' . $content_view;
                 echo '<input class="lang-checkbox" type="radio" name="lang" 
                id="lang-' . $row['id'] . '"';
 
-                if (strcasecmp($lang, $row['title']) == 0) {
-                  echo ' selected ';
+                if ($lang == $row['id']) {
+                  //echo ' selected ';
                 }
 
-                echo ' value="' . $row['title'] . '"  onchange="document.getElementById(\'lang_form\').submit()">';
+                echo ' value="' . $row['id'] . '"  onchange="setCookie(\'language\', ' . $row['id'] . ')">';
                 echo '<label class="lang-link" for="lang-' . $row['id'] . '"><img alt=' . $row['name'] . ' src="' . IMAGEPATH . 'languages/' . $row['icon'] . '">' . $row['title'] . '</label>';
                 echo '</div>';
               }
@@ -342,7 +360,9 @@ include 'application/views/' . $content_view;
       <div class="modal-footer">
         <?php
         echo '<a target="_blank" href="https://www.facebook.com/infrared24" class="social-link"><img src="' . IMAGEPATH . 'fb.png" alt="facebook link"></a>
-          <a href="https://twitter.com/@InfraRed24" target="_blank" class="social-link"><img src="' . IMAGEPATH . 'twitter.png" alt="twitter link"></a>';
+          <a href="https://twitter.com/@InfraRed24" target="_blank" class="social-link"><img src="' . IMAGEPATH . 'twitter.png" alt="twitter link"></a>
+          <a target="_blank" href="https://www.instagram.com/infrared24gmbh/" class=" social-link"><img src="' . IMAGEPATH . 'inst.png" alt="instagram link"></a>
+         <a href="https://www.pinterest.de/infrared24/" target="_blank" class="social-link"><img src="' . IMAGEPATH . 'pinterest.png" alt="pinterest link"></a>';
         ?>
 
       </div>

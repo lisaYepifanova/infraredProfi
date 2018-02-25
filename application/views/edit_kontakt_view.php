@@ -5,6 +5,8 @@
      <a class="admin-page-icons admin-icon-item" href="/site-settings"><img src="../img/user_pages/settings.png" alt="settings"><p class="icon-title">Site settings</p>
     </a>
     <form enctype="multipart/form-data" role="form" action="" method="post">
+      <label for="name">Page name</label>
+      <input id="name" name="name" type="text" class="page-header container text-capitalize left-padding" value=" <?php echo $data['add']['name']; ?>">
       <div class="info-wrapper box-mid-margin  ">
         <label>Kontakt info</label>
         <textarea name="info"

@@ -3,50 +3,7 @@
 class Model_Main extends Model {
   public function get_data() {
     include 'application/connection.php';
-/*
-    $query = "ALTER TABLE `categories` ADD COLUMN `isOnHomepage` INT NULL AFTER `ord`";
-    $upd = $mysqli->query($query);
-    $query = "ALTER TABLE `products` ADD COLUMN `isOnHomepage` INT(11) NULL AFTER `isInPriceList`";
-$upd = $mysqli->query($query);
-    $query = "UPDATE `categories` SET `isOnHomepage`='0' WHERE `id`='7'";
-    $upd = $mysqli->query($query);
-
-    $query = "UPDATE `categories` SET `isOnHomepage`='0' WHERE `id`='8'";
-    $upd = $mysqli->query($query);
-
-    $query = "UPDATE `categories` SET `isOnHomepage`='0' WHERE `id`='9'";
-    $upd = $mysqli->query($query);
-
-    $query = "UPDATE `categories` SET `isOnHomepage`='1' WHERE `id`='10'";
-$upd = $mysqli->query($query);
-
-$query = "UPDATE `products` SET `isOnHomepage`='0' WHERE `id`='7'";
-$upd = $mysqli->query($query);
-
-    $query = "UPDATE `products` SET `isOnHomepage`='0' WHERE `id`='8'";
-$upd = $mysqli->query($query);
-
-    $query = "UPDATE `products` SET `isOnHomepage`='1' WHERE `id`='6'";
-$upd = $mysqli->query($query);
-
-    $query = "UPDATE `products` SET `isOnHomepage`='0' WHERE `id`='5'";
-$upd = $mysqli->query($query);
-
-    $query = "UPDATE `products` SET `isOnHomepage`='1' WHERE `id`='4'";
-$upd = $mysqli->query($query);
-
-    $query = "UPDATE `products` SET `isOnHomepage`='1' WHERE `id`='3'";
-$upd = $mysqli->query($query);
-
-    $query = "UPDATE `products` SET `isOnHomepage`='1' WHERE `id`='2'";
-$upd = $mysqli->query($query);
-
-    $query = "UPDATE `products` SET `isOnHomepage`='1' WHERE `id`='1'";
-$upd = $mysqli->query($query);
-
-$query = "ALTER TABLE `thermostat` ADD COLUMN `isOnHomepage` INT NULL DEFAULT 0 AFTER `ord`";
-$upd = $mysqli->query($query);
-*/
+    $lang = getLanguage();
 
     $query = $mysqli->query("SELECT id FROM header_properties");
     if ($query) {
@@ -77,17 +34,18 @@ $upd = $mysqli->query($query);
 
     $res['max_gallery_id'] = max($rr['arr_of_id_gallery']);
 
-
-    $query = $mysqli->query("SELECT * FROM homepage_info");
+/////
+    $query = $mysqli->query("SELECT * FROM homepage_info WHERE lid='" . $lang . "'");
 
     if ($query) {
       $r = mysqli_fetch_assoc($query);
       $res['header_title'] = $r['header_title'];
       $res['property_title'] = $r['property_title'];
       $res['property_image'] = $r['property_image'];
+      $res['gallery_name'] = $r['gallery_name'];
     }
 
-    $query = $mysqli->query("SELECT * FROM header_slider");
+    $query = $mysqli->query("SELECT * FROM header_slider ");
 
     if ($query) {
       while ($r = mysqli_fetch_assoc($query)) {
@@ -95,7 +53,7 @@ $upd = $mysqli->query($query);
       }
     }
 
-    $query = $mysqli->query("SELECT * FROM header_properties");
+    $query = $mysqli->query("SELECT * FROM header_properties WHERE lid='" . $lang . "'");
 
     if ($query) {
       while ($r = mysqli_fetch_assoc($query)) {
@@ -138,6 +96,7 @@ $upd = $mysqli->query($query);
 
   public function update_data() {
     include 'application/connection.php';
+$lang = getLanguage();
 
     //загрузка карусели
     if (isset($_FILES)) {
@@ -234,30 +193,6 @@ $upd = $mysqli->query($query);
       }
     }
 
-    //загрузка подписи
-    if (isset($_FILES)) {
-      if ($_FILES['sign_image']['size'] > 0) {
-        $uploaddir = IMG_PROJ_PATH;
-        $uploadfile = $uploaddir . basename($_FILES['sign_image']['name']);
-        if ($_FILES['sign_image']['size'] <= $_POST['MAX_FILE_SIZE']) {
-          if (move_uploaded_file($_FILES['sign_image']['tmp_name'], $uploadfile)) {
-            $result['info'][] = 'Image uploaded successfully.';
-          }
-
-          $sign_image = NULL;
-          if (isset($_FILES['sign_image']['name'])) {
-            $sign_image = $_FILES['sign_image']['name'];
-          }
-
-          $add_mi = 'UPDATE homepage_info SET sign_image = "' . $sign_image . '"';
-          $adding_miq = $mysqli->query($add_mi);
-        }
-        else {
-          $result['info'][] = 'Image is too large.';
-        }
-
-      }
-    }
 
     //загрузка фона properties
     if (isset($_FILES)) {
@@ -403,6 +338,11 @@ $upd = $mysqli->query($query);
       $property_title = $_POST['property_title'];
     }
 
+        $gallery_name = '';
+    if (isset($_POST['gallery_name'])) {
+      $gallery_name = $_POST['gallery_name'];
+    }
+
     if (isset($_POST['property'])) {
       foreach ($_POST['property'] as $id => $item) {
         if (isset($_POST['property'][$id])) {
@@ -412,7 +352,7 @@ $upd = $mysqli->query($query);
           $isId = mysqli_fetch_assoc($query);
 
           if ($isId['id'] == NULL) {
-            $add_mi = 'INSERT INTO header_properties (id, title, description) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['description'] . '")';
+            $add_mi = 'INSERT INTO header_properties (id, title, description, lid) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['description'] . '", "'.$lang.'")';
           }
           else {
             if ($item['title'] == '' and $item['description'] == '') {
@@ -449,14 +389,14 @@ $upd = $mysqli->query($query);
 
     //собственно запрос
     $add_q = "UPDATE homepage_info " .
-      "SET header_title = '" . $header_title . "', " .
-      "property_title = '" . $property_title . "' WHERE id=1";
+      "SET gallery_name='".$gallery_name."',  header_title = '" . $header_title . "', " .
+      "property_title = '" . $property_title . "' WHERE lid=".$lang;
 
     $adding_info_query = $mysqli->query($add_q);
 
 
     $add_q = "UPDATE philosophy " .
-      "SET text = '" . $philosophy_text . "' WHERE id=1";
+      "SET text = '" . $philosophy_text . "' WHERE lid=".$lang;
 
     $adding_info_query = $mysqli->query($add_q);
 

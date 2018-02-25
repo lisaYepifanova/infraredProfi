@@ -62,6 +62,8 @@ class Model_Fur_handler extends Model {
   public function get_data() {
     include 'application/connection.php';
 
+    $lang = getLanguage();
+
      $query = $mysqli->query("SELECT id FROM registration_angebot");
     if ($query) {
       while ($r = mysqli_fetch_assoc($query)) {
@@ -72,7 +74,7 @@ class Model_Fur_handler extends Model {
     $res['max_id_angebot'] = max($rr['arr_of_id']);
 
     $query = $mysqli->query(
-      "SELECT * FROM registration_page WHERE id=1"
+      "SELECT * FROM registration_page WHERE lid='" . $lang . "'"
     );
 
     if ($query) {
@@ -119,6 +121,8 @@ class Model_Fur_handler extends Model {
   public function update_data() {
     include 'application/connection.php';
 
+    $lang = getLanguage();
+
     if (isset($_FILES)) {
       if ($_FILES['service_bg_image']['size'] > 0) {
         $uploaddir = IMG_PROJ_PATH . 'registration/';
@@ -133,7 +137,7 @@ class Model_Fur_handler extends Model {
             $service_bg_image = $_FILES['service_bg_image']['name'];
           }
 
-          $add_mi = 'UPDATE registration_page SET service_bg = "registration/' . $service_bg_image . '"';
+          $add_mi = 'UPDATE registration_page SET service_bg = "registration/' . $service_bg_image . '" WHERE lid="' . $lang . '"';
           $adding_miq = $mysqli->query($add_mi);
         }
         else {
@@ -156,7 +160,7 @@ class Model_Fur_handler extends Model {
             $ang_imagebg = $_FILES['ang_imagebg']['name'];
           }
 
-          $add_mi = 'UPDATE registration_page SET angebot_bg = "registration/' . $ang_imagebg . '"';
+          $add_mi = 'UPDATE registration_page SET angebot_bg = "registration/' . $ang_imagebg . '" WHERE lid="'. $lang .'"';
           $adding_miq = $mysqli->query($add_mi);
         }
         else {
@@ -167,6 +171,7 @@ class Model_Fur_handler extends Model {
 
     //service images
     for ($i = 1; $i <= 6; $i++) {
+
       if (isset($_FILES)) {
         if ($_FILES['service_image_' . $i]['size'] > 0) {
           $uploaddir = IMG_PROJ_PATH . 'registration/icons/';
@@ -180,8 +185,8 @@ class Model_Fur_handler extends Model {
             if (isset($_FILES['service_image_' . $i]['name'])) {
               $service_image = $_FILES['service_image_' . $i]['name'];
             }
-
-            $add_mi = 'UPDATE registration_services SET icon = "registration/icons/' . $service_image . '" WHERE id=' . $i;
+            $lid = $i * $lang;
+            $add_mi = 'UPDATE registration_services SET icon = "registration/icons/' . $service_image . '" WHERE id=' . $lid;
             $adding_miq = $mysqli->query($add_mi);
           }
           else {
@@ -243,13 +248,28 @@ class Model_Fur_handler extends Model {
       $form_title = $_POST['form_title'];
     }
 
+    $title = NULL;
+    if (isset($_POST['title'])) {
+      $title = $_POST['title'];
+    }
+
     for ($i = 1; $i <= 6; $i++) {
       $service_description = NULL;
       if (isset($_POST['service_description_' . $i])) {
         $service_description = $_POST['service_description_' . $i];
       }
 
-      $add_q = "UPDATE registration_services SET description = '" . $service_description . "' WHERE id=" . $i;
+      $service_eng_description = NULL;
+      if (isset($_POST['service_eng_description_' . $i])) {
+        $service_eng_description = $_POST['service_eng_description_' . $i];
+      }
+
+      if($lang==1) {
+        $add_q = "UPDATE registration_services SET description = '" . $service_description . "' WHERE id=".$i;
+      } else if($lang==2) {
+        $add_q = "UPDATE registration_services SET   eng_description = '" . $service_eng_description . "' WHERE id=".$i;
+      }
+
       $adding_d = $mysqli->query($add_q);
     }
 
@@ -266,14 +286,31 @@ class Model_Fur_handler extends Model {
         $item_desc = $_POST[$ind];
       }
 
-      $add_q = "UPDATE registration_angebot SET description = '" . $item_desc . "', title = '" . $item_title . "' WHERE id=" . $i;
+           $eng_item_title = NULL;
+      if (isset($_POST['eng_item-title_' . $i])) {
+        $ind='eng_item-title_' . $i;
+        $eng_item_title = $_POST[$ind];
+      }
+
+      $eng_item_desc = NULL;
+      if (isset($_POST['eng_item-desc_' . $i])) {
+        $ind='eng_item-desc_' . $i;
+        $eng_item_desc = $_POST[$ind];
+      }
+
+      if($lang==1) {
+        $add_q = "UPDATE registration_angebot SET description = '" . $item_desc . "', title = '" . $item_title ."' WHERE id=".$i ;
+      }else if($lang==2) {
+        $add_q = "UPDATE registration_angebot SET eng_description = '" . $eng_item_desc . "', eng_title = '" . $eng_item_title . "' WHERE id=".$i;
+      }
+
       $adding_d = $mysqli->query($add_q);
     }
 
 
     $add_q = "UPDATE registration_page ".
-      "SET form_title = '" . $form_title . "', angebot_title = '" . $angebot_title . "', description = '" . $description . "',".
-      " service_title = '" . $service_title . "', top_block = '" . $top_block . "'";
+      "SET title = '". $title ."', form_title = '" . $form_title . "', angebot_title = '" . $angebot_title . "', description = '" . $description . "',".
+      " service_title = '" . $service_title . "', top_block = '" . $top_block . "' WHERE lid='". $lang ."'";
     $adding_impressum_info_query = $mysqli->query($add_q);
 
     if ($adding_impressum_info_query) {

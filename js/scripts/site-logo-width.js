@@ -2,7 +2,7 @@
     function setMLogoSize() {
         $window = parseInt($(window).width());
         $paddings = parseInt($('.header-wrapper').css('padding-left')) + parseInt($('.header-wrapper').css('padding-right'));
-        $menuButtonPadding = parseInt($('.site-logo-wrapper').css('padding-right')) + parseInt($('.site-logo-wrapper').css('padding-left'));
+        $menuButtonPadding = parseInt($('.menu-link-button').css('padding-right')) + parseInt($('.menu-link-button').css('padding-left'));
         $menuButtonSize = parseInt($('.menu-link').width());
         $w = $window - $paddings - $menuButtonSize - $menuButtonPadding;
 

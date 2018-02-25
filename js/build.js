@@ -1128,6 +1128,22 @@ $(".close-prod_image-1").on('click', function () {
         contactItemResize()
     });
 
+}());;(function () {
+
+/*    function setCookie(name, value) {
+        var date = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000);
+        var updatedCookie = name + "=" + value + "; expires=" + date.toUTCString();
+
+        document.cookie = updatedCookie;
+        //location.reload();
+    }*/
+
+    function deleteCookie(name) {
+        setCookie(name, "", {
+            expires: -1
+        })
+    }
+
 }());;(function ($) {
     $('.delete-angebot-item').on('click', function() {
         $classes = $(this).attr('class');
@@ -2035,7 +2051,7 @@ for ($i = 1; $i <= 300; $i++) {
     function setMLogoSize() {
         $window = parseInt($(window).width());
         $paddings = parseInt($('.header-wrapper').css('padding-left')) + parseInt($('.header-wrapper').css('padding-right'));
-        $menuButtonPadding = parseInt($('.site-logo-wrapper').css('padding-right')) + parseInt($('.site-logo-wrapper').css('padding-left'));
+        $menuButtonPadding = parseInt($('.menu-link-button').css('padding-right')) + parseInt($('.menu-link-button').css('padding-left'));
         $menuButtonSize = parseInt($('.menu-link').width());
         $w = $window - $paddings - $menuButtonSize - $menuButtonPadding;
 

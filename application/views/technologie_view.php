@@ -1,6 +1,6 @@
 <main id="technologyPage">
 
-  <h1 class="page-header container hsmall text-capitalize left-padding">TECHNOLOGIE</h1>
+  <h1 class="page-header container hsmall text-capitalize left-padding"><?php echo $data['name']; ?></h1>
 
   <div class="container left-padding">
     <div class="technology-description box-mid-margin">

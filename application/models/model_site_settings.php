@@ -3,7 +3,9 @@
 class Model_Site_settings extends Model {
   public function get_data() {
     include 'application/connection.php';
-    $query = $mysqli->query("SELECT * FROM site_settings");
+    $lang = getLanguage();
+
+    $query = $mysqli->query("SELECT * FROM site_settings WHERE lid='" . $lang . "'");
 
     if ($query) {
       while ($r = mysqli_fetch_assoc($query)) {
@@ -17,7 +19,7 @@ class Model_Site_settings extends Model {
 
   public function update_data() {
     include 'application/connection.php';
-
+$lang = getLanguage();
 
     if (isset($_POST['link'])) {
       foreach ($_POST['link'] as $id => $item) {
@@ -26,7 +28,7 @@ class Model_Site_settings extends Model {
           $isId = mysqli_fetch_assoc($mysqli->query("SELECT id FROM site_settings WHERE id='" . $item['id'] . "'"));
 
           if ($isId['id'] == NULL) {
-            $add_mi = 'INSERT INTO site_settings (id, link_name, link_path) VALUES ("' . $item['id'] . '", "' . $item['name'] . '", "' . $item['path'] . '")';
+            $add_mi = 'INSERT INTO site_settings (id, link_name, link_path, lid) VALUES ("' . $item['id'] . '", "' . $item['name'] . '", "' . $item['path'] . '", "'.$lang.'")';
           }
           else {
             if($item['name'] == '' and $item['path'] == '') {
@@ -43,14 +45,8 @@ class Model_Site_settings extends Model {
 
 
 
-    //$upd_q = "UPDATE sssssss SET info = '" . $info. "' WHERE id='".$id."'";
-    //$upd_ss_info_query = $mysqli->query($upd_q);
-
-    //if($upd_ss_info_query) {
       $result['res'] = true;
-    //} else {
-      //$result['res'] = false;
-    //}
+
 
     return $result;
   }

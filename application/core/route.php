@@ -2,8 +2,10 @@
 
 class Route {
   static function start() {
-    include 'application/connection.php';
 
+    require_once 'application/language.php';
+
+ include 'application/connection.php';
     $controller_name = 'Main';
     $action_name = 'index';
     $arg = '';
@@ -56,9 +58,12 @@ class Route {
                   if ($last == 'edit') {
                     $action_name = 'edit';
                     $controller_name = 'bildmotive';
-                  } else if ($last == 'delete') {
-                    $action_name = 'delete';
-                    $controller_name = 'bildmotive';
+                  }
+                  else {
+                    if ($last == 'delete') {
+                      $action_name = 'delete';
+                      $controller_name = 'bildmotive';
+                    }
                   }
                 }
               }
@@ -218,6 +223,7 @@ class Route {
       //}
 
     }
+
 
   }
 
