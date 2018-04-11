@@ -1,4 +1,5 @@
 <?php
+
 function removeDirectory($dir) {
   if ($objs = glob($dir . "/*")) {
     foreach ($objs as $obj) {

@@ -2,7 +2,9 @@
 
   <h1 class="page-header container text-capitalize left-padding">EDIT RELATED
     PRODUCT</h1>
-  <?php if ($pageTitle !== 'Produkte') { ?>
+  <?php
+  $lang = getLanguage();
+  if ($pageTitle !== 'Produkte' && $pageTitle !== 'Products') { ?>
     <div class="product-menu-wrapper col-sm-3 left-padding">
       <div class="product-menu floating">
         <ul>
@@ -24,8 +26,12 @@
 
           $last = $curr;
 
-          echo '<h4><a class="product-menu-item" href="/produkte">PRODUKTE</a></h4>';
-
+          if ($lang == '2') {
+            echo '<h4><a class="product-menu-item" href="/products">PRODUCTS</a></h4>';
+          }
+          else {
+            echo '<h4><a class="product-menu-item" href="/produkte">PRODUKTE</a></h4>';
+          }
 
           foreach ($data['menu']['root'] as $row) {
             echo '<li>';
@@ -38,11 +44,23 @@
               echo 'bold-item';
             }
 
-            echo '" href="/produkte/' . $row['name'] . '">' . $row['title'] . '</a>';
+            if ($lang == '2') {
+              echo '" href="/products/' . $row['name'] . '">' . $row['title'] . '</a>';
+            }
+            else {
+              echo '" href="/produkte/' . $row['name'] . '">' . $row['title'] . '</a>';
+            }
+
 
             if ($routes[2] == $row['name'] and $routes[2] !== $data[0]['name']) {
               $c = $data['menu']['category'];
-              $link = "/produkte/" . $row['name'];
+              if ($lang == '2') {
+                $link = "/products/" . $row['name'];
+              }
+              else {
+                $link = "/produkte/" . $row['name'];
+              }
+
               if ($c !== "") {
                 while ($c['next'] !== "") {
                   echo '<ul>';
@@ -85,7 +103,13 @@
     <div class="add-new-product-links box-small-mb">
       <?php
       if (isAuth()) {
-        echo '<div class="produkte-add-links box-small-mb"><a href="/produkte/add" class="glyphicon glyphicon-plus"> Add new category</a></div>';
+        if ($lang == '2') {
+          echo '<div class="produkte-add-links box-small-mb"><a href="/products/add" class="glyphicon glyphicon-plus"> Add new category</a></div>';
+        }
+        else {
+          echo '<div class="produkte-add-links box-small-mb"><a href="/produkte/add" class="glyphicon glyphicon-plus"> Add new category</a></div>';
+        }
+
         echo '<div class="produkte-add-links box-small-mb"><a href="/product/add" class="glyphicon glyphicon-plus"> Add new product</a></div>';
         echo '<div class="produkte-add-links box-small-mb"><a href="/thermostat/add" class="glyphicon glyphicon-plus"> Add new thermostat, etc.</a></div>';
       }
@@ -101,7 +125,6 @@
           <input type="text" name="name" class="" id="name"
                  value="<?php echo $data[0]['title']; ?>">
         </div>
-
 
         <!--item position-->
         <div class="row ">
@@ -130,7 +153,6 @@
           <div class="box-mid-margin col-sm-6 add-category-place">
             <label for="id">Place this product after:</label>
 
-
             <select
             <?php
             if ($data[0]['parent_id'] !== "0") {
@@ -153,13 +175,10 @@
                   $placeid = $rowid;
                 }
               }
-
-
             }
 
             $t = array_search($placeid, $same_parent);
             $prev = $same_parent[$t - 1];
-
 
             $first = 5;
             echo '<option ';
@@ -169,7 +188,6 @@
             }
 
             echo ' value="' . $first . '">Place it first ' . $first . '</option>';
-
 
             foreach ($data['items'] as $rowid => $row) {
               if ($row['parent_id'] == 0 && $row['title'] !== $data[0]['title']) {
@@ -184,7 +202,6 @@
             ?>
             </select>
 
-
             <?php foreach ($data['categories'] as $rr) { ?>
               <select
                   class="form-control select-place-category category-<?php echo $rr['id']; ?>"
@@ -196,9 +213,7 @@
               else {
                 echo '  style="display:block;"';
               }
-
               echo '>';
-
 
               $placeid = -1;
               $prev = -1;
@@ -210,13 +225,10 @@
                     $placeid = $rowid;
                   }
                 }
-
-
               }
 
               $t = array_search($placeid, $same_parent);
               $prev = $same_parent[$t - 1];
-
               $first = 5;
               echo '<option ';
 
@@ -230,7 +242,6 @@
                 if ($row['parent_id'] == $rr['id'] && $row['title'] !== $data[0]['title']) {
                   $id = $row['ord'] + 1;
                   echo '<option ';
-
                   if ($prev == $rowid) {
                     echo ' selected ';
                   }
@@ -238,20 +249,25 @@
                 }
               }
               ?>
-
               </select>
-
 
             <?php } ?>
           </div>
         </div>
 
+        <!-- main product image -->
         <div class="box-mid-margin main-prod-image-prev">
           <label for="prod_main_image_item ">Main product image:</label>
           <div>
+
             <img id="prod_main_image"
-                 src="<?php echo IMAGEPATH . $data[0]['image']; ?>"
-                 alt=""/>
+                 src="<?php
+
+                 $row_path = $_SERVER['DOCUMENT_ROOT'] . '/img/' . $data[0]['image'];
+                 if (is_file($row_path)) {
+                   echo IMAGEPATH . $data[0]['image'];
+                 }
+                 ?>" alt=""/>
             <a href="#" class="close-prod_main_image">
               <button type="button">Reset</button>
             </a>
@@ -279,7 +295,14 @@
                          name="prod_gallery_id-<?php echo $rowid + 1; ?> value="<?php echo $row['id']; ?>
                   ">
                   <img id="prod_image-<?php echo $rowid + 1; ?>"
-                       src="<?php echo IMAGEPATH . $row['path']; ?>"
+                       src="<?php
+
+                       $row_path = $_SERVER['DOCUMENT_ROOT'] . '/img/' . $row['path'];
+                       if (is_file($row_path)) {
+                         echo IMAGEPATH . $row['path'];
+                       }
+
+                       ?>"
                        alt=""/>
                   <a class="close-prod_image-<?php echo $rowid + 1; ?>">
                     <button type="button">Reset</button>
@@ -301,41 +324,39 @@
           }
           else {
             ?>
-              <div
-                  class="box-small-margin product-image-block prod-image-block-1 image-item-1">
+            <div
+                class="box-small-margin product-image-block prod-image-block-1 image-item-1">
 
-                <div>
+              <div>
 
-                  <input type="hidden"
-                         name="prod_gallery_id-1 value="">
-                  <img id="prod_image-1"
-                       src=""
-                       alt=""/>
-                  <a class="close-prod_image-1">
-                    <button type="button">Reset</button>
-                  </a>
-                  <a class="delete-prod-image prod-1">
-                    <button type="button">Delete</button>
-                  </a>
-                </div>
-                <input type="file" class="form-control prod-img"
-                       id="prod_image_field-1"
-                       name="prod_image[1]">
                 <input type="hidden"
-                       name="prod_image[1][id]"
-                       value="">
+                       name="prod_gallery_id-1 value="">
+                <img id="prod_image-1"
+                     src=""
+                     alt=""/>
+                <a class="close-prod_image-1">
+                  <button type="button">Reset</button>
+                </a>
+                <a class="delete-prod-image prod-1">
+                  <button type="button">Delete</button>
+                </a>
               </div>
+              <input type="file" class="form-control prod-img"
+                     id="prod_image_field-1"
+                     name="prod_image[1]">
+              <input type="hidden"
+                     name="prod_image[1][id]"
+                     value="">
+            </div>
 
-              <?php
+            <?php
           }
           ?>
           <a class="glyphicon glyphicon-plus add-new-product-image-button">Add
             new image</a>
         </div>
 
-
         <!--description -->
-
         <div class="box-mid-margin">
           <label for="prod-description">Product description:</label>
           <textarea
@@ -345,8 +366,6 @@
         </div>
 
         <!--description -->
-
-
         <div class="box-mid-margin">
           <label for="short-prod-description">Short product description:</label>
           <textarea
@@ -354,7 +373,6 @@
               name="short-description-textarea"
               id="short-prod-description"><?php echo $data[0]['short_description']; ?></textarea>
         </div>
-
 
         <!-- Principles -->
         <div class="box-mid-margin">
@@ -367,17 +385,14 @@
           ?>
         </div>
 
-
         <!-- Features -->
         <div class="box-mid-margin edit-therm-features">
           <label for="prod_feature_item">Product features:</label>
-
 
           <?php
           if (isset($data['features'])) {
             foreach ($data['features'] as $rowid => $row) {
               $r = $rowid + 1;
-
               ?>
               <div
                   class="row box-small-margin product-feature-block prod-feature-block-<?php echo $r; ?>"
@@ -436,7 +451,6 @@
 
         </div>
 
-
         <!-- Principles -->
         <div class="box-mid-margin">
           <?php
@@ -454,5 +468,4 @@
       </form>
     </div>
   </div>
-
 </main>

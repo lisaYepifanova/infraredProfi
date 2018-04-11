@@ -8,7 +8,7 @@
   display: inline-block;
 
   img {
-        max-height: inherit;
+    max-height: inherit;
     height: 100%;
   }
 }
@@ -29,15 +29,13 @@
   height: auto;
 }
 
-
 .homepage-products-edit {
-.homepage-products-row {
-  margin: 0;
-  width: 100%;
-}
+  .homepage-products-row {
+    margin: 0;
+    width: 100%;
+  }
 
 }
-
 
 .item-wrapper-edit {
   margin-bottom: 3.5rem;
@@ -55,8 +53,35 @@
   width: 90%;
 }
 
-
 .add-new-site-settings-link-button {
   display: block;
   margin-bottom: 1rem;
+}
+
+.social-item-image-edit {
+  height: 9rem;
+  background-color: #e9e1f4;
+
+  img, div {
+    max-height: 100%;
+    height: 6rem;
+  }
+}
+
+.social-alt,
+.social-path {
+
+  label, input {
+    display: block;
+
+    max-width: 100%;
+
+    @media (min-width: $screen-md) {
+      display: inline-block;
+    }
+  }
+
+  input {
+    width: 26rem;
+  }
 }

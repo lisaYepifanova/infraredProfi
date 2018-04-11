@@ -35,5 +35,7 @@
     $('.add-new-gallery-item').on('click', function () {
         $id = $('#max_gallery_id').val();
         addGalleryItemField(parseInt($id) + 1, this);
+        $('#max_gallery_id').val(parseInt($id) + 1);
+
     });
 })(jQuery);

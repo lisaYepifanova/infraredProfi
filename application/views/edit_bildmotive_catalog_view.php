@@ -13,8 +13,14 @@
         $debug = TRUE;
         $routes = explode('/', $_SERVER['REQUEST_URI']);
         $last = end($routes);
+        $lang = getLanguage();
 
-        echo '<h4><a class="product-menu-item" href="/produkte">PRODUKTE</a></h4>';
+        if ($lang == 2) {
+          echo '<h4><a class="product-menu-item" href="/products">PRODUCTS</a></h4>';
+        }
+        else {
+          echo '<h4><a class="product-menu-item" href="/produkte">PRODUKTE</a></h4>';
+        }
 
 
         foreach ($data['menu']['root'] as $row) {
@@ -28,11 +34,25 @@
             echo 'bold-item';
           }
 
-          echo '" href="/produkte/' . $row['name'] . '">' . $row['title'] . '</a>';
+          if ($lang == 2) {
+            echo '" href="/products/' . $row['name'] . '">' . $row['title'] . '</a>';
+          }
+          else {
+            echo '" href="/produkte/' . $row['name'] . '">' . $row['title'] . '</a>';
+          }
+
 
           if ($routes[2] == $row['name'] and $routes[2] !== $data['bildmotive_catalog'][0]['name']) {
             $c = $data['menu']['category'];
-            $link = "/produkte/" . $row['name'];
+
+            if ($lang == 2) {
+              $link = "/products/" . $row['name'];
+            }
+            else {
+              $link = "/produkte/" . $row['name'];
+            }
+
+
             if ($c !== "") {
               while ($c['next'] !== "") {
                 echo '<ul>';
@@ -75,6 +95,7 @@
     <form enctype="multipart/form-data" role="form" action="" method="post">
       <input type="hidden" name="MAX_FILE_SIZE" value="40960000"/>
       <input type="hidden" name="id" value="<?php echo $data['bildmotive_catalog'][0]['id']; ?>"/>
+      <input type="hidden" name="old_name" value="<?php echo $data['bildmotive_catalog'][0]['title']; ?>"/>
 
       <!-- Name -->
       <div class="box-small-margin">
@@ -109,127 +130,127 @@
 
       <!-- Place after -->
       <div class="box-mid-margin col-sm-6 add-category-place">
-            <label for="id">Place this product after:</label>
+        <label for="id">Place this product after:</label>
 
 
-            <select
-            <?php
-            if ($data['bildmotive_catalog'][0]['parent_id'] !== "0") {
-              echo ' disabled="disabled" style="display:none;"';
-            }
-            else {
-              echo '  style="display:block;"';
-            }
+        <select
+        <?php
+        if ($data['bildmotive_catalog'][0]['parent_id'] !== "0") {
+          echo ' disabled="disabled" style="display:none;"';
+        }
+        else {
+          echo '  style="display:block;"';
+        }
 
-            echo ' class="form-control select-place-category category-0"
+        echo ' class="form-control select-place-category category-0"
                 id="id-0" name="ord">';
 
-            $placeid = 0;
+        $placeid = 0;
 
-            $prev = -1;
-            foreach ($data['items'] as $rowid => $row) {
-              if ($row['parent_id'] == 0) {
-                $same_parent[] = $rowid;
-                if ($row['title'] == $data['bildmotive_catalog'][0]['title']) {
-                  $placeid = $rowid;
-                }
-              }
-
-
+        $prev = -1;
+        foreach ($data['items'] as $rowid => $row) {
+          if ($row['parent_id'] == 0) {
+            $same_parent[] = $rowid;
+            if ($row['title'] == $data['bildmotive_catalog'][0]['title']) {
+              $placeid = $rowid;
             }
-
-            $t = array_search($placeid, $same_parent);
-            if($t!==0){
-              $prev = $same_parent[$t - 1];
-            }else {
-              $prev = 0;
-            }
+          }
 
 
+        }
 
-            $first = 5;
+        $t = array_search($placeid, $same_parent);
+        if ($t !== 0) {
+          $prev = $same_parent[$t - 1];
+        }
+        else {
+          $prev = 0;
+        }
+
+
+        $first = 5;
+        echo '<option ';
+
+        if ($prev == '-1') {
+          echo ' selected ';
+        }
+
+        echo ' value="' . $first . '">Place it first ' . $first . '</option>';
+
+
+        foreach ($data['items'] as $rowid => $row) {
+          if ($row['parent_id'] == 0 && $row['title'] !== $data['bildmotive_catalog'][0]['title']) {
+            $id = $row['ord'] + 1;
             echo '<option ';
-
-            if ($prev == '-1') {
+            if ($prev == $rowid) {
               echo ' selected ';
             }
+            echo ' value="' . $id . '">' . $row['ord'] . ' - ' . $row['title'] . '</option>';
+          }
+        }
+        ?>
+        </select>
 
-            echo ' value="' . $first . '">Place it first ' . $first . '</option>';
+
+        <?php foreach ($data['categories'] as $rr) { ?>
+          <select
+              class="form-control select-place-category category-<?php echo $rr['id']; ?>"
+              id="id-<?php echo $rr['id']; ?>" name="ord"
+          <?php
+          if ($data['bildmotive_catalog'][0]['parent_id'] !== $rr['id']) {
+            echo ' disabled="disabled" style="display:none;"';
+          }
+          else {
+            echo '  style="display:block;"';
+          }
+
+          echo '>';
 
 
-            foreach ($data['items'] as $rowid => $row) {
-              if ($row['parent_id'] == 0 && $row['title'] !== $data['bildmotive_catalog'][0]['title']) {
-                $id = $row['ord'] + 1;
-                echo '<option ';
-                if ($prev == $rowid) {
-                  echo ' selected ';
-                }
-                echo ' value="' . $id . '">' . $row['ord'] . ' - ' . $row['title'] . '</option>';
+          $placeid = -1;
+          $prev = -1;
+
+          foreach ($data['items'] as $rowid => $row) {
+            if ($row['parent_id'] == $data['bildmotive_catalog'][0]['parent_id']) {
+              $same_parent[] = $rowid;
+              if ($row['title'] == $data['bildmotive_catalog'][0]['title']) {
+                $placeid = $rowid;
               }
             }
-            ?>
-            </select>
 
 
-            <?php foreach ($data['categories'] as $rr) { ?>
-              <select
-                  class="form-control select-place-category category-<?php echo $rr['id']; ?>"
-                  id="id-<?php echo $rr['id']; ?>" name="ord"
-              <?php
-              if ($data['bildmotive_catalog'][0]['parent_id'] !== $rr['id']) {
-                echo ' disabled="disabled" style="display:none;"';
-              }
-              else {
-                echo '  style="display:block;"';
-              }
+          }
 
-              echo '>';
+          $t = array_search($placeid, $same_parent);
+          $prev = $same_parent[$t - 1];
 
+          $first = 5;
+          echo '<option ';
 
-              $placeid = -1;
-              $prev = -1;
+          if ($prev == '-1') {
+            echo ' selected ';
+          }
 
-              foreach ($data['items'] as $rowid => $row) {
-                if ($row['parent_id'] == $data['bildmotive_catalog'][0]['parent_id']) {
-                  $same_parent[] = $rowid;
-                  if ($row['title'] == $data['bildmotive_catalog'][0]['title']) {
-                    $placeid = $rowid;
-                  }
-                }
+          echo 'value="' . $first . '">Place it first ' . $first . '</option>';
 
-
-              }
-
-              $t = array_search($placeid, $same_parent);
-              $prev = $same_parent[$t - 1];
-
-              $first = 5;
+          foreach ($data['items'] as $rowid => $row) {
+            if ($row['parent_id'] == $rr['id'] && $row['title'] !== $data['bildmotive_catalog'][0]['title']) {
+              $id = $row['ord'] + 1;
               echo '<option ';
 
-              if ($prev == '-1') {
+              if ($prev == $rowid) {
                 echo ' selected ';
               }
+              echo ' value="' . $id . '">' . $row['ord'] . ' - ' . $row['title'] . '</option>';
+            }
+          }
+          ?>
 
-              echo 'value="' . $first . '">Place it first ' . $first . '</option>';
-
-              foreach ($data['items'] as $rowid => $row) {
-                if ($row['parent_id'] == $rr['id'] && $row['title'] !== $data['bildmotive_catalog'][0]['title']) {
-                  $id = $row['ord'] + 1;
-                  echo '<option ';
-
-                  if ($prev == $rowid) {
-                    echo ' selected ';
-                  }
-                  echo ' value="' . $id . '">' . $row['ord'] . ' - ' . $row['title'] . '</option>';
-                }
-              }
-              ?>
-
-              </select>
+          </select>
 
 
-            <?php } ?>
-          </div>
+        <?php } ?>
+      </div>
 
       <!-- Image -->
       <div class="box-mid-margin ">

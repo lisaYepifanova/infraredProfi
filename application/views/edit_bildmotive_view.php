@@ -1,7 +1,15 @@
 <main class="product">
 
-  <h1 class="page-header container text-capitalize left-padding left-padding">
-    EDIT <?php echo $data['bildmotive_catalog'][0]['title']; ?></h1>
+    <?php
+  $lang = getLanguage();
+
+  if($lang == '2') {
+    echo '<h1 class="page-header container text-capitalize left-padding left-padding">EDIT ' . $data[0]['eng_title'] . '</h1>';
+  } else {
+    echo '<h1 class="page-header container text-capitalize left-padding left-padding">EDIT ' . $data[0]['title'] . '</h1>';
+  }
+  ?>
+
 
 
   <div class="product-menu-wrapper col-sm-3 left-padding">
@@ -78,11 +86,20 @@
       <input type="hidden" id="max_gallery_id" name="max_gallery_id"
              value="<?php echo $data['max_id_gallery']; ?>"/>
       <input type="hidden" id="id" name="id"
-             value="<?php echo $data[0]['id'] + 1 ; ?>"/>
+             value="<?php echo $data[0]['id'] ; ?>"/>
+<input type="hidden" id="lan" name="lan"
+             value="<?php echo $lang ; ?>"/>
 
       <?php
       echo '<div class="box-small-margin "><label class="bildmotive-edit-title " for="category_name">Category title</label>';
-      echo '<input type="text" id="category_name" name="category_name" value="' . $data[0]['title'] . '"></div>';
+
+        if($lang == '2') {
+    echo '<input type="text" id="category_name" name="category_name" value="' . $data[0]['eng_title'] . '"></div>';
+  } else {
+    echo '<input type="text" id="category_name" name="category_name" value="' . $data[0]['title'] . '"></div>';
+  }
+
+
 
 
       ?>

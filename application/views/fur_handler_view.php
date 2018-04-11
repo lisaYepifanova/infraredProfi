@@ -5,7 +5,7 @@
 
   <div class="registration-top-block">
     <?php
-    echo '<h3 class="container  left-padding">' . $data['main_info']['top_block'] . '</h3>';
+    echo '<div class="container  left-padding">' . $data['main_info']['top_block'] . '</div>';
     ?>
   </div>
 
@@ -19,10 +19,13 @@
         foreach ($data['services'] as $row) {
           echo '<div class="leistungen-item"><div class="leistungen-item-img-wrap"><div class="leistungen-item-img" style="background-image: url(' . IMAGEPATH . $row['icon'] . ')"></div></div>';
 
-          if($lang == 1) {
+          if ($lang == 1) {
             echo '<div class="leistungen-item-description">' . $row['description'] . '</div></div>';
-          }else if($lang==2) {
-            echo '<div class="leistungen-item-description">' . $row['eng_description'] . '</div></div>';
+          }
+          else {
+            if ($lang == 2) {
+              echo '<div class="leistungen-item-description">' . $row['eng_description'] . '</div></div>';
+            }
           }
 
         }
@@ -55,16 +58,19 @@
             echo '<div class="property-item property-item' . $index . '">
               <div class="property-item-image" style="background-image: url(' . IMAGEPATH . $row['icon'] . ')"></div>';
 
-              if($lang==1) {
-                echo '<h4 class="property-item-title">' . $row['title'] . '</h4>
+            if ($lang == 1) {
+              echo '<h4 class="property-item-title">' . $row['title'] . '</h4>
               <p class="property-item-description">' . $row['description'] . '</p>';
-              } else if($lang==2){
+            }
+            else {
+              if ($lang == 2) {
                 echo '<h4 class="property-item-title">' . $row['eng_title'] . '</h4>
               <p class="property-item-description">' . $row['eng_description'] . '</p>';
               }
+            }
 
 
-              echo ' </div>';
+            echo ' </div>';
 
             $index = $index + 1;
           }
@@ -80,9 +86,18 @@
     <div class="registration-form-title text-center">
       <?php echo $data['main_info']['form_title']; ?>
 
-
     </div>
+    <form role="form" action="" method="post">
+      <?php echo $data['main_info']['form']; ?>
 
-   <?php echo $data['main_info']['form']; ?>
+      <div class="row text-center">
+        <button type="submit" class="btn" disabled="disabled">
+
+          <?php echo $data['main_info']['button']; ?>
+
+        </button>
+      </div>
+    </form>
+
   </div>
 </main>

@@ -1,19 +1,26 @@
 <main>
-  <h1 class="page-header container hsmall text-capitalize left-padding">ADD PRODUCT</h1>
+  <h1 class="page-header container hsmall text-capitalize left-padding">BILDMOTIVE EDITED</h1>
 
   <div class="container">
-    <h4>Product added successfully</h4>
-    <a class="orange-link" href="/produkte">Go to Produkte page</a>
-  <br/>
-    <a class="orange-link"  href="/product/add">Add new product</a>
-  </div>
+   <?php
+    if (isset($_COOKIE)) {
+      if (isset($_COOKIE['language'])) {
+        if ($_COOKIE['language'] == "2") {
+          echo '<a class="orange-link" href="/products">Go to Products page</a><br/>
+              <a  class="orange-link"  href="/products/add">Add new category</a>';
+        }
+        else {
+          echo '<a class="orange-link" href="/produkte">Go to Produkte page</a><br/>
+              <a  class="orange-link"  href="/produkte/add">Add new category</a>';
+        }
+      }
 
-   <div class="container">
-    <?php
-
-    foreach ($data as $row) {
-      //echo '<div>' . $row . '</div>';
+    }
+    else {
+      echo '<a class="orange-link" href="/produkte">Go to Produkte page</a><br/>
+              <a  class="orange-link"  href="/produkte/add">Add new category</a>';
     }
     ?>
   </div>
+
 </main>

@@ -2,7 +2,9 @@
 
   <h1 class="page-header container text-capitalize left-padding">ADD
     PRODUCT</h1>
-  <?php if ($pageTitle !== 'Produkte') { ?>
+  <?php
+  $lang = getLanguage();
+  if ($pageTitle !== 'Produkte' && $pageTitle !== 'Products') { ?>
     <div class="product-menu-wrapper col-sm-3 left-padding">
       <div class="product-menu floating">
         <ul>
@@ -13,8 +15,11 @@
           $routes = explode('/', $_SERVER['REQUEST_URI']);
           $last = end($routes);
 
-          echo '<h4><a class="product-menu-item" href="/produkte">PRODUKTE</a></h4>';
-
+          if($lang == '2') {
+            echo '<h4><a class="product-menu-item" href="/products">PRODUCTS</a></h4>';
+          } else {
+            echo '<h4><a class="product-menu-item" href="/produkte">PRODUKTE</a></h4>';
+          }
 
           foreach ($data['menu']['root'] as $row) {
             echo '<li>';
@@ -27,12 +32,15 @@
               echo 'bold-item';
             }
 
-            echo '" href="/produkte/' . $row['name'] . '">' . $row['title'] . '</a>';
+            if($lang == '2') {
+              echo '" href="/products/' . $row['name'] . '">' . $row['title'] . '</a>';
+            } else {
+              echo '" href="/produkte/' . $row['name'] . '">' . $row['title'] . '</a>';
+            }
 
             echo '</li>';
           }
           ?>
-
         </ul>
       </div>
     </div>
@@ -41,7 +49,11 @@
     <div class="add-new-product-links box-small-mb">
       <?php
       if (isAuth()) {
-        echo '<div class="produkte-add-links box-small-mb"><a href="/produkte/add" class="glyphicon glyphicon-plus"> Add new category</a></div>';
+        if($lang == '2') {
+          echo '<div class="produkte-add-links box-small-mb"><a href="/products/add" class="glyphicon glyphicon-plus"> Add new category</a></div>';
+        } else {
+          echo '<div class="produkte-add-links box-small-mb"><a href="/produkte/add" class="glyphicon glyphicon-plus"> Add new category</a></div>';
+        }
         echo '<div class="produkte-add-links box-small-mb"><a href="/product/add" class="glyphicon glyphicon-plus"> Add new product</a></div>';
         echo '<div class="produkte-add-links box-small-mb"><a href="/thermostat/add" class="glyphicon glyphicon-plus"> Add new thermostat, etc.</a></div>';
       }
@@ -56,7 +68,7 @@
           <input type="text" name="name" class="" id="name">
         </div>
 
-
+        <!-- parent category and place aftr -->
         <div class="row ">
           <div class="box-mid-margin col-sm-6">
             <label for="parent_id">Parent category:</label>
@@ -67,13 +79,11 @@
                 echo '<option value="' . $row['id'] . '">' . $row['title'] . '</option>';
               }
               ?>
-
             </select>
           </div>
 
           <div class="box-mid-margin col-sm-6 add-category-place">
             <label for="id">Place this product after:</label>
-
 
             <select class="form-control select-place-category category-0"
                     id="id-0" name="ord">
@@ -87,19 +97,17 @@
                 }
               }
               ?>
-
             </select>
-
 
             <?php foreach ($data['categories'] as $rr) { ?>
               <select
                   class="form-control select-place-category category-<?php echo $rr['id']; ?>"
-                  id="id-<?php echo $rr['id']; ?>" name="id" disabled="disabled">
+                  id="id-<?php echo $rr['id']; ?>" name="ord"
+                  disabled="disabled">
                 <?php
 
                 $first = 5;
                 echo '<option value="' . $first . '">Place it first ' . $first . '</option>';
-
                 foreach ($data['items'] as $row) {
                   if ($row['parent_id'] == $rr['id']) {
                     $id = $row['ord'] + 1;
@@ -107,14 +115,12 @@
                   }
                 }
                 ?>
-
               </select>
-
-
             <?php } ?>
           </div>
         </div>
 
+        <!-- main image -->
         <div class="box-mid-margin main-prod-image-prev">
           <label for="prod_main_image_item">Main product image:</label>
           <div>
@@ -153,9 +159,7 @@
             new image</a>
         </div>
 
-
         <!--description -->
-
         <div class="box-mid-margin">
           <label for="prod-description">Product description:</label>
           <textarea
@@ -166,20 +170,19 @@
         <!--farbvarianten -->
         <div class="box-mid-margin">
           <label for="prod-description">Farbvarianten:</label>
-
           <?php
           foreach ($data['colours'] as $row) {
             echo '<div class="prod-farb-option box-small-margin"><input type="checkbox" name="farb[]" value="' . $row['id'] . '" id="id-' . $row['id'] . '"><label for="id-' . $row['id'] . '"><img src="' . IMAGEPATH . $row['image'] . '" class="farb-img">' . $row['name'] . '</label></div>';
           }
           ?>
-
         </div>
 
         <!-- Sizes -->
         <div class="box-mid-margin ">
           <label for="prod_sizes_item">Product sizes:</label>
 
-          <div  class="row box-small-margin product-sizes-block product-sizes-rect"
+          <div
+              class="row box-small-margin product-sizes-block product-sizes-rect"
               id="prod-sizes-rect">
             <div class="rect-item rect-1">1</div>
           </div>
@@ -220,7 +223,7 @@
               <input type="number" class="form-control prod-size-left"
                      id="prod_sizes_field[1][left]"
                      name="prod_sizes_field[1][left]"
-                      value="0">
+                     value="0">
             </div>
 
             <div class="col-xs-6 col-sm-3 box-small-margin">
@@ -228,7 +231,7 @@
               <input type="number" class="form-control prod-size-bottom"
                      id="prod_sizes_field[1][bottom]"
                      name="prod_sizes_field[1][bottom]"
-                      value="0">
+                     value="0">
             </div>
 
 
@@ -268,7 +271,6 @@
 
         </div>
 
-
         <!-- Features -->
         <div class="box-mid-margin ">
           <label for="prod_feature_item">Product features:</label>
@@ -295,19 +297,26 @@
 
         </div>
 
-
         <!-- Principles -->
         <div class="box-mid-margin">
           <label for="prod-principles">Product principles:</label>
           <?php
-          echo '<div class="prod-principles-option box-small-margin"><input type="checkbox" name="zwei-principle" value="1" id="zwei-principle"><label for="zwei-principle">ZWEI RAUMHEIZPRINZIPIEN</label></div>';
-          echo '<div class="prod-principles-option box-small-margin"><input type="checkbox" name="drei-principle" value="1" id="drei-principle"><label for="drei-principle">DREI RAUMHEIZPRINZIPIEN</label></div>';
-          echo '<div class="prod-principles-option box-small-margin"><input type="checkbox" name="raum-principle" value="1" id="raum-principle"><label for="raum-principle">RAUMHEIZPRINZIPIEN</label></div>';
+          include 'application/string_convertion.php';
+
+           $principle_id = 1;
+          foreach ($data['principles'] as $row) {
+            $principle_name = stringConvertion($row['title']);
+            echo '<div class="prod-principles-option box-small-margin"><input type="checkbox" 
+                name="principle" value="' . $row['id'] . '" id="' . $principle_name . '"';
+
+            echo '>';
+            echo '<label for="' . $principle_name . '">' . $row['title'] . '</label></div>';
+          }
+
           echo '<div class="prod-principles-option box-small-margin"><input type="checkbox" name="optional-thermostat" value="1" id="optional-thermostat"><label for="optional-thermostat">OPTIONAL: THERMOSTAT</label></div>';
           echo '<div class="prod-principles-option box-small-margin"><input type="checkbox" name="is-decken" value="1" id="is-decken"><label for="is-decken">DECKEN</label></div>';
           ?>
         </div>
-
 
         <div class="btn-wrapper container box-mid-margin left-padding">
           <button class="btn" type="submit">SAVE</button>
@@ -315,5 +324,4 @@
       </form>
     </div>
   </div>
-
 </main>

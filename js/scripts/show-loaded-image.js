@@ -54,16 +54,26 @@ $("#service_bg_image").change(function () {
 
 var $i;
 
+
+
 for ($i = 1; $i <= 6; $i++) {
 //service fur handler
-    $("#service_image" + $i).change(function () {
-        readURL(this, '#imageservice_' + $i, '.close-imgm');
-    });
+    $("#service_image_" + $i).change(function (x) {
+        return function () {
+            readURL(this, '#imageservice_' + x, '.close-img-service_' + x);
+        }
 
+    }($i));
+}
+
+for ($i = 1; $i <= 6; $i++) {
 //angebot fur handler
-    $("#service_ang" + $i).change(function () {
-        readURL(this, '#imageang_' + $i, '.close-imgm');
-    });
+    $("#service_ang" + $i).change(function (x) {
+        return function () {
+            readURL(this, '#imageang' + x, '.close-img-ang_' + x);
+        }
+
+    }($i));
 }
 
 //fur handler ang bg
@@ -145,3 +155,12 @@ for ($i = 1; $i <= 300; $i++) {
     }($i));
 }
 
+
+//socials
+for ($i = 1; $i <= 10; $i++) {
+    $("#social_image_field-" + $i).change(function (x) {
+        return function () {
+            readURL(this, '#social_image-' + x, '.close-social_image-' + x);
+        }
+    }($i));
+}

@@ -1,7 +1,18 @@
 <main class="product">
-
-  <h1 class="page-header container text-capitalize left-padding left-padding"><?php echo $data[0]['title']; ?></h1>
   <?php
+  $lang = getLanguage();
+
+  if($lang == '2') {
+    echo '<h1 class="page-header container text-capitalize left-padding left-padding">' . $data[0]['eng_title'] . '</h1>';
+  } else {
+    echo '<h1 class="page-header container text-capitalize left-padding left-padding">' . $data[0]['title'] . '</h1>';
+  }
+  ?>
+
+
+  <?php
+  $lang = getLanguage();
+
   if (isAuth()) {
     echo '<div class="container produkte-del box-small-margin "><a href="#delConfirm"
          data-toggle="modal" class="glyphicon glyphicon-trash"> Delete this category</a></div>';
@@ -20,7 +31,12 @@
         $routes = explode('/', $_SERVER['REQUEST_URI']);
         $last = end($routes);
 
-        echo '<h4><a class="product-menu-item" href="/produkte">PRODUKTE</a></h4>';
+        if ($lang == 2) {
+          echo '<h4><a class="product-menu-item" href="/products">PRODUCTS</a></h4>';
+        }
+        else {
+          echo '<h4><a class="product-menu-item" href="/produkte">PRODUKTE</a></h4>';
+        }
 
 
         foreach ($data['menu']['root'] as $row) {
@@ -34,11 +50,21 @@
             echo 'bold-item';
           }
 
-          echo '" href="/produkte/' . $row['name'] . '">' . $row['title'] . '</a>';
+          if ($lang == 2) {
+            echo '" href="/products/' . $row['name'] . '">' . $row['title'] . '</a>';
+          }
+          else {
+            echo '" href="/produkte/' . $row['name'] . '">' . $row['title'] . '</a>';
+          }
 
           if ($routes[2] == $row['name'] and $routes[2] !== $data['bildmotive_catalog'][0]['name']) {
             $c = $data['menu']['category'];
-            $link = "/produkte/" . $row['name'];
+            if ($lang == 2) {
+              $link = "/products/" . $row['name'];
+            } else {
+              $link = "/produkte/" . $row['name'];
+            }
+
             if ($c !== "") {
               while ($c['next'] !== "") {
                 echo '<ul>';
@@ -85,8 +111,13 @@
         foreach ($data['images'] as $row) {
           echo '<div class="item-wrapper col-sm-4">';
           echo '<a href="#imageShow" class="imageNavMenuLink   item-' . $row['id'] . '" data-toggle="modal">';
-          echo '<div class="product-img" style="background-image:url(' . IMAGEPATH . 'bildmotive/' . $data[0]['name'] . '/' . $row['image'] . ')"></div>';
-          echo '<h4 class="product-name">' . $row['name'] . '</h4>';
+
+          if($row['image'] == null) {
+            echo '<div class="product-img"></div>';
+          } else {
+            echo '<div class="product-img" style="background-image:url(' . IMAGEPATH .  'products/bildmotive/' . $data[0]['name'] . '/' . $row['image'] . ')"></div>';
+          }
+           echo '<h4 class="product-name">' . $row['name'] . '</h4>';
           echo '</a></div>';
         }
       }
@@ -128,7 +159,13 @@
                   }
                   echo '" >';
                   echo '<div class="item-container">';
-                  echo '<div class="item-image" style="background-image: url(' . IMAGEPATH . 'bildmotive/' . $data[0]['name'] . '/' . $row['image'] . ')"></div>';
+
+                  if($row['image'] !== null) {
+                    echo '<div class="item-image" style="background-image: url(' . IMAGEPATH .  'products/bildmotive/' . $data[0]['name'] . '/' . $row['image'] . ')"></div>';
+                  } else {
+                    echo '<div class="item-image"></div>';
+                  }
+
                   echo '<div class="item-text" >' . $row['name'] . '</div>';
 
                   echo '</div>';
@@ -156,31 +193,38 @@
   </div>
 </div>
 
-<div id="delConfirm" class="modal fade in"
-     style="display: none;">
-  <div class="modal-dialog aside-modal-dialog">
-    <div class="modal-bg"></div>
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"
-                aria-hidden="true">x
-        </button>
-        <h5 class="modal-title">
-          Confirm the deletion
-        </h5>
+<?php
+  if(isAuth()) {
+    ?>
 
-      </div>
-      <div class="modal-body">
-        Do you want to delete <?php echo strtoupper($pageTitle); ?> ?
-      </div>
-      <div class="modal-footer">
-        <button type="button btn-danger"><a
-              href="<?php echo $_SERVER['REQUEST_URI']; ?>/delete">Delete </a>
-        </button>
-        <button type="button" data-dismiss="modal"
-                aria-hidden="true"> Cancel
-        </button>
+    <div id="delConfirm" class="modal fade in"
+         style="display: none;">
+      <div class="modal-dialog aside-modal-dialog">
+        <div class="modal-bg"></div>
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"
+                    aria-hidden="true">x
+            </button>
+            <h5 class="modal-title">
+              Confirm the deletion
+            </h5>
+
+          </div>
+          <div class="modal-body">
+            Do you want to delete <?php echo strtoupper($pageTitle); ?> ?
+          </div>
+          <div class="modal-footer">
+            <button type="button btn-danger"><a
+                  href="<?php echo $_SERVER['REQUEST_URI']; ?>/delete">Delete </a>
+            </button>
+            <button type="button" data-dismiss="modal"
+                    aria-hidden="true"> Cancel
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+
+    <?php
+  }

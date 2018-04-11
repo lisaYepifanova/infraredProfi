@@ -34,7 +34,7 @@
     $('.add-new-link').on('click', function () {
         $id = $('#max_link_id').val();
         addLinkField(parseInt($id) + 1, this);
-        $('#max_link_id').val($id+1);
+        $('#max_link_id').val(parseInt($id)+1);
     });
 
             ///////

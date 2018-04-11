@@ -3,13 +3,15 @@
   <h1 class="page-header container text-capitalize left-padding left-padding"><?php echo $data['bildmotive_catalog'][0]['title']; ?></h1>
 
   <?php
-      if (isAuth() ) {
-                 echo '<div class="container produkte-del box-small-margin "><a href="'.$_SERVER['REQUEST_URI'].'/edit"
+  $lang = getLanguage();
+
+  if (isAuth()) {
+    echo '<div class="container produkte-del box-small-margin "><a href="' . $_SERVER['REQUEST_URI'] . '/edit"
            class="glyphicon glyphicon-pencil"> Edit bildmotive catalog</a></div>';
-                 echo '<div class="container produkte-del box-small-margin "><a href="'.$_SERVER['REQUEST_URI'].'/add"
+    echo '<div class="container produkte-del box-small-margin "><a href="' . $_SERVER['REQUEST_URI'] . '/add"
            class="glyphicon glyphicon-pencil"> Add new bildmotive category</a></div>';
-      }
-      ?>
+  }
+  ?>
   <div class="product-menu-wrapper col-sm-3 left-padding">
     <div class="product-menu floating">
       <ul>
@@ -20,8 +22,12 @@
         $routes = explode('/', $_SERVER['REQUEST_URI']);
         $last = end($routes);
 
-        echo '<h4><a class="product-menu-item" href="/produkte">PRODUKTE</a></h4>';
-
+        if ($lang == 2) {
+          echo '<h4><a class="product-menu-item" href="/products">PRODUCTS</a></h4>';
+        }
+        else {
+          echo '<h4><a class="product-menu-item" href="/produkte">PRODUKTE</a></h4>';
+        }
 
         foreach ($data['menu']['root'] as $row) {
           echo '<li>';
@@ -34,11 +40,25 @@
             echo 'bold-item';
           }
 
-          echo '" href="/produkte/' . $row['name'] . '">' . $row['title'] . '</a>';
+          if ($lang == 2) {
+            echo '" href="/products/' . $row['name'] . '">' . $row['title'] . '</a>';
+          }
+          else {
+            echo '" href="/produkte/' . $row['name'] . '">' . $row['title'] . '</a>';
+          }
+
 
           if ($routes[2] == $row['name'] and $routes[2] !== $data['bildmotive_catalog'][0]['name']) {
             $c = $data['menu']['category'];
-            $link = "/produkte/" . $row['name'];
+
+
+            if ($lang == 2) {
+              $link = "/products/" . $row['name'];
+            }
+            else {
+              $link = "/produkte/" . $row['name'];
+            }
+
             if ($c !== "") {
               while ($c['next'] !== "") {
                 echo '<ul>';
@@ -79,7 +99,6 @@
 
   <div class=" container left-padding">
 
-
     <!-- Description of the product-->
     <div
         class="box-mid-margin product-full-description-wrapper">
@@ -92,19 +111,36 @@
 
     <div class='row'>
       <?php
+      $lang =getLanguage();
+
+
       if (!empty($data['bildmotive'])) {
         foreach ($data['bildmotive'] as $row) {
 
-          if ($_SERVER['REQUEST_URI'] == "/produkte/") {
-            $link = $_SERVER['REQUEST_URI'] . $row['name'];
+          if ($lang == "2") {
+            $link = $_SERVER['REQUEST_URI'] . '/' . $row['eng_name'];
           }
           else {
-            $link = $_SERVER['REQUEST_URI'] . '/' . $row['name'];
+              $link = $_SERVER['REQUEST_URI'] . '/' . $row['name'];
+
           }
 
           echo '<a href="' . $link . '" class="col-xs-6 col-sm-4 col-md-4 product-item">';
-          echo '<div class="product-img" style="background-image:url(' . IMAGEPATH . 'bildmotive/' . $row['name'] . '/' . $row['image'] . ')"></div>';
-          echo '<h4 class="product-name">' . $row['title'] . '</h4>';
+          if ($lang == 2) {
+            if($row['image']!==null) {
+              echo '<div class="product-img" style="background-image:url(' . IMAGEPATH . 'products/bildmotive/' . $row['name'] . '/' . $row['image'] . ')"></div>';
+            } else {
+              echo '<div class="product-img"></div>';
+            }
+
+            echo '<h4 class="product-name">' . $row['eng_title'] . '</h4>';
+          }
+          else {
+            echo '<div class="product-img" style="background-image:url(' . IMAGEPATH .  'products/bildmotive/' . $row['name'] . '/' . $row['image'] . ')"></div>';
+            echo '<h4 class="product-name">' . $row['title'] . '</h4>';
+          }
+
+
           echo '<p style="width:0; height:0; color: white;">' . $row['id'] . '</p>';
           echo '</a>';
         }

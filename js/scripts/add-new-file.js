@@ -10,7 +10,9 @@
               <input type="hidden" name="doc[' + $j + '][cid]" value="' + $cid + '">  \
               </div>';
 
-        $($btn).prev().after($new_field);
+            $($btn).before($new_field);
+
+
     }
 
     $('.add-new-document').on('click', function () {

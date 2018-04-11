@@ -58,7 +58,7 @@
 
     <?php
     include 'application/connection.php';
-    $q = "SELECT * FROM philosophy WHERE lid='".$lang."'";
+    $q = "SELECT * FROM philosophy WHERE lid='" . $lang . "'";
     $query = $mysqli->query($q);
 
     if ($query) {
@@ -103,8 +103,8 @@
   </div>
 
   <?php
-    echo '<div class="homepage-products-wrapper" style="background-image:url('.IMAGEPATH.$data['gallery_bg']['path'].')">';
-    ?>
+  echo '<div class="homepage-products-wrapper" style="background-image:url(' . IMAGEPATH . $data['gallery_bg']['path'] . ')">';
+  ?>
 
   <div class="homepage-products-bg">
     <div class="homepage-products container box-same-vpadding">
@@ -113,51 +113,31 @@
 
       </div>
       <div class="homepage-products-row row">
-          <?php
-          $index = 1;
+        <?php
+        $index = 1;
 
-          foreach ($data['gallery'] as $row) {
+        foreach ($data['gallery'] as $row) {
 
-              if ($row['panel_displaying'] == '1') {
-                  echo '<div class="item-wrapper col-sm-';
-                  if (($index - 3) % 5 == 0 or ($index - 4) % 5 == 0) {
-                      $size = 3;
-                  } else {
-                      $size = 6;
-                  }
-                  echo $size.'">
-                <a href="#imageNavMenu" class="imageNavMenuLink  item-'.$row['id'].'" data-toggle="modal">
-                <div class="homepage-product-item item-'.$index.'" style="background-image: url('.IMAGEPATH.$row['path'].')">
+          if ($row['panel_displaying'] == '1') {
+            echo '<div class="item-wrapper col-sm-';
+            if (($index - 3) % 5 == 0 or ($index - 4) % 5 == 0) {
+              $size = 3;
+            }
+            else {
+              $size = 6;
+            }
+            echo $size . '">
+                <a href="#imageNavMenu" class="imageNavMenuLink  item-' . $row['id'] . '" data-toggle="modal">
+                <div class="homepage-product-item item-' . $index . '" style="background-image: url(' . IMAGEPATH . $row['path'] . ')">
                 </div>
                 </a>
               </div>';
 
-                  $index = $index + 1;
-              }
+            $index = $index + 1;
           }
-          /**
-           * foreach ($data['gallery']['items'] as $row) {
-           * echo '<div class="item-wrapper col-sm-';
-           * if(($index-3)%5 == 0 or ($index-4)%5==0) {
-           * $size = 3;
-           * } else {
-           * $size = 6;
-           * }
-           * echo $size.'">
-           * <div class="homepage-product-item item-'.$index.'" style="background-image: url('.IMAGEPATH.$row['image'].')">
-           * <div class="item-image">
-           * <a href="/products/'.$row['name'].'" class="link-to-product">'.$row['title'].'
-           * <span class="arrow">›</span>
-           * </a>
-           * </div>
-           * </div>
-           * </div>';
-           *
-           * $index = $index + 1;
-           * }*/
+        }
 
-
-          ?>
+        ?>
       </div>
     </div>
   </div>
@@ -182,7 +162,7 @@
               if (!empty($data['gallery'])) {
                 $activeIndex = TRUE;
                 foreach ($data['gallery'] as $row) {
-                  echo '<div class="item large-item item-'.$row['id'].' ';
+                  echo '<div class="item large-item item-' . $row['id'] . ' ';
                   if ($activeIndex) {
                     echo ' active ';
                     $activeIndex = FALSE;
@@ -210,11 +190,11 @@
                       echo ' active';
                       $activeIndex = FALSE;
                     }
-                    echo ' item-'.$row['id'].'">';
+                    echo ' item-' . $row['id'] . '">';
 
                     echo '<div data-target="#homepageGalleryCarousel" data-slide-to="';
                     echo $itemIndex;
-                    echo '" class="thumb thumb-image item-'.$row['id'].'" style="background-image:url(' . IMAGEPATH . $row['path'] . ')"></div>';
+                    echo '" class="thumb thumb-image item-' . $row['id'] . '" style="background-image:url(' . IMAGEPATH . $row['path'] . ')"></div>';
                     $itemIndex = $itemIndex + 1;
 
                     echo '</div>';

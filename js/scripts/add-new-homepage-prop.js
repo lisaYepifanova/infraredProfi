@@ -26,11 +26,29 @@
               </textarea></p> \
               </div>';
 
-        $($btn).prev().after($new_field);
+
+        $($btn).before($new_field);
+
+        $("#prop_image_" + $id).change(function (x) {
+            return function () {
+                readURL(this, '#imageprop_image_' + x, '#close-prop_image_' + x);
+            }
+        }($id));
+
+        $("#close-prop_image_" + $id).on('click', function (x) {
+            return function () {
+                $('#imageprop_image_' + x).attr('src', '');
+                $('#prop_image_' + x).val('');
+                $("#close-prop_image_" + x).css('display', 'none');
+            }
+        }($id));
+
+
     }
 
     $('.add-new-prop').on('click', function () {
         $id = $('#max_prop_id').val();
         addPropField(parseInt($id) + 1, this);
+        $('#max_prop_id').val(parseInt($id) + 1);
     });
 })(jQuery);

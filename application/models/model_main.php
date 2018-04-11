@@ -61,13 +61,13 @@ class Model_Main extends Model {
       }
     }
 
-        $query = $mysqli->query("SELECT * FROM gallery_images");
+    $query = $mysqli->query("SELECT * FROM gallery_images");
 
-        if ($query) {
-          while ($r = mysqli_fetch_assoc($query)) {
-            $res['gallery'][] = $r;
-          }
-        }
+    if ($query) {
+      while ($r = mysqli_fetch_assoc($query)) {
+        $res['gallery'][] = $r;
+      }
+    }
 
     $query = $mysqli->query("SELECT * FROM gallery_bg");
 
@@ -76,27 +76,27 @@ class Model_Main extends Model {
         $res['gallery_bg'] = $r;
       }
     }
-/*
-    $query = $mysqli->query(
-      "SELECT id, name, image, title, short_description, ord, isOnHomepage FROM products  WHERE parent_id=0 AND isOnHomepage=1 " .
-      " UNION SELECT id, name, image, title, short_description, ord, isOnHomepage FROM  categories  WHERE parent_id=0  AND isOnHomepage=1 " .
-      " UNION SELECT id, name, image, title, short_description, ord, isOnHomepage FROM thermostat  WHERE parent_id=0  AND isOnHomepage=1 " .
-      " ORDER BY ord"
-    );
+    /*
+        $query = $mysqli->query(
+          "SELECT id, name, image, title, short_description, ord, isOnHomepage FROM products  WHERE parent_id=0 AND isOnHomepage=1 " .
+          " UNION SELECT id, name, image, title, short_description, ord, isOnHomepage FROM  categories  WHERE parent_id=0  AND isOnHomepage=1 " .
+          " UNION SELECT id, name, image, title, short_description, ord, isOnHomepage FROM thermostat  WHERE parent_id=0  AND isOnHomepage=1 " .
+          " ORDER BY ord"
+        );
 
-    if ($query) {
-      while ($r = mysqli_fetch_assoc($query)) {
-        $res['gallery_items'][] = $r;
-      }
-    }
-*/
+        if ($query) {
+          while ($r = mysqli_fetch_assoc($query)) {
+            $res['gallery_items'][] = $r;
+          }
+        }
+    */
 
     return $res;
   }
 
   public function update_data() {
     include 'application/connection.php';
-$lang = getLanguage();
+    $lang = $_POST['lang_id'];
 
     //загрузка карусели
     if (isset($_FILES)) {
@@ -104,7 +104,7 @@ $lang = getLanguage();
         foreach ($_FILES['carousel_image']['name'] as $name => $item) {
           if ($_FILES['carousel_image']['size'][$name] > 0) {
             $uploaddir = IMG_PROJ_PATH;
-            $uploadfile = $uploaddir . basename($_FILES['carousel_image']['name'][$name]);
+            $uploadfile = $uploaddir . 'slider/' . basename($_FILES['carousel_image']['name'][$name]);
             if ($_FILES['carousel_image']['size'][$name] <= $_POST['MAX_FILE_SIZE']) {
               if (move_uploaded_file($_FILES['carousel_image']['tmp_name'][$name], $uploadfile)) {
                 $result['info'][] = 'Image uploaded successfully.';
@@ -129,7 +129,7 @@ $lang = getLanguage();
 
               $isId = mysqli_fetch_assoc($query);
 
-              if ($isId['id'] == NULL) {
+              if ($isId == NULL) {
                 $add_mi = 'INSERT INTO header_slider (id, img) VALUES ("' . $curr_id . '", "slider/' . $carousel_image . '")';
               }
               else {
@@ -199,6 +199,7 @@ $lang = getLanguage();
       if ($_FILES['property_image']['size'] > 0) {
         $uploaddir = IMG_PROJ_PATH;
         $uploadfile = $uploaddir . basename($_FILES['property_image']['name']);
+
         if ($_FILES['property_image']['size'] <= $_POST['MAX_FILE_SIZE']) {
           if (move_uploaded_file($_FILES['property_image']['tmp_name'], $uploadfile)) {
             $result['info'][] = 'Image uploaded successfully.';
@@ -296,7 +297,7 @@ $lang = getLanguage();
 
               $isId = mysqli_fetch_assoc($query);
 
-              if ($isId['id'] == NULL) {
+              if ($isId == NULL) {
                 $add_mi = 'INSERT INTO gallery_images ' .
                   '(id, path, panel_displaying, alt, title) ' .
                   'VALUES ("' . $curr_id . '", "homepage-gallery/' . $gallery . '", "' . $curr_is_on_main . '", "' . $curr_title . '", "' . $curr_title . '")';
@@ -338,7 +339,7 @@ $lang = getLanguage();
       $property_title = $_POST['property_title'];
     }
 
-        $gallery_name = '';
+    $gallery_name = '';
     if (isset($_POST['gallery_name'])) {
       $gallery_name = $_POST['gallery_name'];
     }
@@ -351,8 +352,8 @@ $lang = getLanguage();
 
           $isId = mysqli_fetch_assoc($query);
 
-          if ($isId['id'] == NULL) {
-            $add_mi = 'INSERT INTO header_properties (id, title, description, lid) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['description'] . '", "'.$lang.'")';
+          if ($isId == NULL) {
+            $add_mi = 'INSERT INTO header_properties (id, title, description, lid) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['description'] . '", "' . $lang . '")';
           }
           else {
             if ($item['title'] == '' and $item['description'] == '') {
@@ -365,7 +366,7 @@ $lang = getLanguage();
               $add_mi = "DELETE FROM header_properties  WHERE id='" . $item['id'] . "'";
             }
             else {
-              $add_mi = "UPDATE header_properties SET title = '" . $item['title'] . "', description = '" . $item['description'] . "' WHERE id = '" . $item['id'] . "' ";
+              $add_mi = "UPDATE header_properties SET title = '" . $item['title'] . "', description = '" . $item['description'] . "', lid = '".$lang."'  WHERE id = '" . $item['id'] . "' ";
             }
           }
 
@@ -389,14 +390,14 @@ $lang = getLanguage();
 
     //собственно запрос
     $add_q = "UPDATE homepage_info " .
-      "SET gallery_name='".$gallery_name."',  header_title = '" . $header_title . "', " .
-      "property_title = '" . $property_title . "' WHERE lid=".$lang;
+      "SET gallery_name='" . $gallery_name . "',  header_title = '" . $header_title . "', " .
+      "property_title = '" . $property_title . "' WHERE lid=" . $lang;
 
     $adding_info_query = $mysqli->query($add_q);
 
 
     $add_q = "UPDATE philosophy " .
-      "SET text = '" . $philosophy_text . "' WHERE lid=".$lang;
+      "SET text = '" . $philosophy_text . "' WHERE lid=" . $lang;
 
     $adding_info_query = $mysqli->query($add_q);
 

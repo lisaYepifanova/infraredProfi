@@ -14,5 +14,6 @@
     $('.add-new-menu-item').on('click', function () {
         $id = $('#max_id_menu').val();
         addMenuItemField(parseInt($id) + 1, this);
+        $('#max_id_menu').val(parseInt($id) + 1);
     });
 })(jQuery);

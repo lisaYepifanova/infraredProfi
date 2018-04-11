@@ -24,6 +24,7 @@ class Controller_Bildmotive extends Controller {
         $save_data = $this->model->update_data();
         $save_data_res = $save_data;
 
+
         if ($save_data_res) {
           $data = '';
           $content_view = 'edit_bildmotive_result_view.php';
@@ -37,7 +38,6 @@ class Controller_Bildmotive extends Controller {
         $data = $this->model->get_data();
         $content_view = 'edit_bildmotive_view.php';
       }
-
 
 
       $data['save'] = $save_data;
@@ -72,7 +72,7 @@ class Controller_Bildmotive extends Controller {
           $content_view = 'add_bildmotive_result_view.php';
         }
         else {
-          $data =  $this->model->add_data();
+          $data = $this->model->add_data();
           $content_view = 'add_bildmotive_view.php';
         }
       }
@@ -80,7 +80,6 @@ class Controller_Bildmotive extends Controller {
         $data = $this->model->add_data();
         $content_view = 'add_bildmotive_view.php';
       }
-
 
 
       $data['save'] = $save_data;
@@ -99,7 +98,7 @@ class Controller_Bildmotive extends Controller {
     );
   }
 
-    function action_delete() {
+  function action_delete() {
     include 'application/auth.php';
     $default = $this->default_model->get_data();
 

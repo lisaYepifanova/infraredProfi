@@ -2,7 +2,9 @@
 
   <h1 class="page-header container text-capitalize left-padding">EDIT
     CATEGORY</h1>
-  <?php if ($pageTitle !== 'Produkte') { ?>
+  <?php
+  $lang = getLanguage();
+  if ($pageTitle !== 'Produkte' || $pageTitle !== 'Products' || $pageTitle !== 'Les Produits') { ?>
     <div class="product-menu-wrapper col-sm-3 left-padding">
       <div class="product-menu floating">
         <ul>
@@ -24,7 +26,17 @@
 
           $last = $curr;
 
-          echo '<h4><a class="product-menu-item" href="/produkte">PRODUKTE</a></h4>';
+          if ($lang == 2) {
+            echo '<h4><a class="product-menu-item" href="/products">PRODUCTS</a></h4>';
+          }
+          else {
+            if ($lang == 3) {
+              echo '<h4><a class="product-menu-item" href="/les-produits">LES PRODUITS</a></h4>';
+            }
+            else {
+              echo '<h4><a class="product-menu-item" href="/produkte">PRODUKTE</a></h4>';
+            }
+          }
 
 
           foreach ($data['menu']['root'] as $row) {
@@ -38,7 +50,18 @@
               echo 'bold-item';
             }
 
-            echo '" href="/produkte/' . $row['name'] . '">' . $row['title'] . '</a>';
+            if ($lang == 2) {
+              echo '" href="/products/' . $row['name'] . '">' . $row['title'] . '</a>';
+            }
+            else {
+              if ($lang == 3) {
+                echo '" href="/les-produits/' . $row['name'] . '">' . $row['title'] . '</a>';
+              }
+              else {
+                echo '" href="/produkte/' . $row['name'] . '">' . $row['title'] . '</a>';
+              }
+            }
+
 
             echo '</li>';
           }
@@ -52,7 +75,20 @@
     <div class="add-new-product-links box-small-mb">
       <?php
       if (isAuth()) {
-        echo '<div class="produkte-add-links box-small-mb"><a href="/produkte/add" class="glyphicon glyphicon-plus"> Add new category</a></div>';
+        if ($lang == "2") {
+          echo '<div class="produkte-add-links box-small-mb"><a href="/products/add" class="glyphicon glyphicon-plus"> Add new category</a></div>';
+        }
+        else {
+          if ($lang == '3') {
+            echo '<div class="produkte-add-links box-small-mb"><a href="/les-produits/add" class="glyphicon glyphicon-plus"> Add new category</a></div>';
+          }
+          else {
+            echo '<div class="produkte-add-links box-small-mb"><a href="/produkte/add" class="glyphicon glyphicon-plus"> Add new category</a></div>';
+
+          }
+        }
+
+
         echo '<div class="produkte-add-links box-small-mb"><a href="/product/add" class="glyphicon glyphicon-plus"> Add new product</a></div>';
         echo '<div class="produkte-add-links box-small-mb"><a href="/thermostat/add" class="glyphicon glyphicon-plus"> Add new thermostat, etc.</a></div>';
       }
@@ -62,11 +98,12 @@
     <div class='add-category-form-wrapper'>
       <form enctype="multipart/form-data" role="form" action="" method="post">
         <input type="hidden" name="MAX_FILE_SIZE" value="40960000"/>
-        <input type="hidden" name="id" value="<?php echo $data[0]['id']; ?>"/>
+        <input type="hidden" name="id"
+               value="<?php echo $data['main']['id']; ?>"/>
         <div class="box-mid-margin">
           <label for="name">Category name:</label>
           <input type="text" name="name" class="" id="name"
-                 value="<?php echo $data[0]['title']; ?>">
+                 value="<?php echo $data['main']['title']; ?>">
         </div>
 
 
@@ -77,13 +114,13 @@
               <?php
 
               echo '<option ';
-              if ($data[0]['parent_id'] == "0") {
+              if ($data['main']['parent_id'] == "0") {
                 echo ' selected ';
               }
               echo ' value="0">No root</option>';
               foreach ($data['categories'] as $row) {
                 echo '<option value="' . $row['id'] . '"';
-                if ($data[0]['parent_id'] == $row['id']) {
+                if ($data['main']['parent_id'] == $row['id']) {
                   echo ' selected ';
                 }
                 echo '>' . $row['title'] . '</option>';
@@ -99,7 +136,7 @@
 
             <select
             <?php
-            if ($data[0]['parent_id'] !== "0") {
+            if ($data['main']['parent_id'] !== "0") {
               echo ' disabled="disabled" style="display:none;"';
             }
             else {
@@ -115,17 +152,14 @@
             foreach ($data['items'] as $rowid => $row) {
               if ($row['parent_id'] == 0) {
                 $same_parent[] = $rowid;
-                if ($row['title'] == $data[0]['title']) {
+                if ($row['title'] == $data['main']['title']) {
                   $placeid = $rowid;
                 }
               }
-
-
             }
 
             $t = array_search($placeid, $same_parent);
             $prev = $same_parent[$t - 1];
-
 
             $first = 5;
             echo '<option ';
@@ -138,7 +172,7 @@
 
 
             foreach ($data['items'] as $rowid => $row) {
-              if ($row['parent_id'] == 0 && $row['title'] !== $data[0]['title']) {
+              if ($row['parent_id'] == 0 && $row['title'] !== $data['main']['title']) {
                 $id = $row['ord'] + 1;
                 echo '<option ';
                 if ($prev == $rowid) {
@@ -156,7 +190,7 @@
                   class="form-control select-place-category category-<?php echo $rr['id']; ?>"
                   id="id-<?php echo $rr['id']; ?>" name="ord"
               <?php
-              if ($data[0]['parent_id'] !== $rr['id']) {
+              if ($data['main']['parent_id'] !== $rr['id']) {
                 echo ' disabled="disabled" style="display:none;"';
               }
               else {
@@ -170,7 +204,7 @@
               $prev = -1;
 
               foreach ($data['items'] as $rowid => $row) {
-                if ($row['parent_id'] == 0 && $row['title'] == $data[0]['title']) {
+                if ($row['parent_id'] == 0 && $row['title'] == $data['main']['title']) {
                   $prev = $placeid;
                   $placeid = $rowid;
                 }
@@ -188,7 +222,7 @@
               echo 'value="' . $first . '">Place it first ' . $first . '</option>';
 
               foreach ($data['items'] as $rowid => $row) {
-                if ($row['parent_id'] == $rr['id'] && $row['title'] !== $data[0]['title']) {
+                if ($row['parent_id'] == $rr['id'] && $row['title'] !== $data['main']['title']) {
                   $id = $row['ord'] + 1;
                   echo '<option ';
 
@@ -211,7 +245,12 @@
           <label for="category_image_item">Category image:</label>
           <div>
             <img id="category_image"
-                 src="<?php echo IMAGEPATH . $data[0]['image']; ?>"
+                 src="<?php
+                 $row_path = $_SERVER['DOCUMENT_ROOT'] . '/img/' . $data['main']['image'];
+                 if (is_file($row_path)) {
+                   echo IMAGEPATH . $data['main']['image'];
+                 }
+                 ?>"
                  alt=""/>
             <a class="close-category_image">
               <button type="button">Reset</button>

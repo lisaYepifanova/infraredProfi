@@ -1,0 +1,22 @@
+.edit-main-page {
+  .homepage-properties-edit {
+    @media (min-width: 1200px) {
+      .container {
+        width: 1000px;
+      }
+    }
+  }
+
+  .homepage-properties .homepage-properties-row {
+    flex-direction: column;
+
+  }
+
+  .gallery-name {
+    padding-right: 2rem;
+  }
+}
+
+
+
+

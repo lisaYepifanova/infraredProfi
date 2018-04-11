@@ -14,5 +14,7 @@
     $('.add-new-phone').on('click', function () {
         $id = $('#max_id_phone').val();
         addPhoneField(parseInt($id) + 1, this);
+        $('#max_id_phone').val(parseInt($id) + 1);
+
     });
 })(jQuery);

@@ -123,31 +123,84 @@ setTimeout(function () {
 }, 100);
 
 })(jQuery);;(function ($) {
+    function addAliasField($index) {
+        $new_field = '<div class="alias-item container box-mid-margin" id="alias-' + $index + '">\
+            <input type="hidden" name="items[' + $index + '][id]" value="' + $index + '">\
+            <div class="alias-item-field-edit alias-id">Id ' + $index + '</div>\
+            <div class="alias-item-field-edit alias-de"><label for="de-' + $index + '">DE: </label><input type="text" name="items[' + $index + '][de]" id="de-' + $index + '" value=""></div>\
+            <div class="alias-item-field-edit alias-en"><label for="en-' + $index + '">EN: </label><input type="text" name="items[' + $index + '][en]" id="en-' + $index + '" value=""></div>\
+            </div>';
+
+        $('.alias-item').last().after($new_field);
+         //CKEDITOR.replaceAll( 'answer_' + $index );
+            $( "#max_id" ).val($index);
+    }
+
+    $('.add-new-alias').on('click', function () {
+        $lastId = $('#max_id').val();
+
+        addAliasField(parseInt($lastId) + 1);
+    });
+
+
+})(jQuery);
+;(function ($) {
     function addAngebotField($id, $btn) {
-        $new_field = '<div class="property-item property-item' + $id + '"> \
+
+        $lang = $('.lang').val();
+
+        if ($lang == '2') {
+            $new_field = '<div class="property-item property-item' + $id + '"> \
               <div class="property-item-image"></div> \
               <div> \
                 <img id="imageang' + $id + '" \
                      src="" \
                      alt=""/> \
-                <a href="#" class="close-img-ang_' + $id + '"> \
+                <a class="close-img-ang_' + $id + '"> \
                   <button type="button">Reset</button> \
                 </a> \
               </div> \
               <input type="file" class="form-control" id="service_ang' + $id + '" \
-                     name="ang_image' + $id +'"> \
+                     name="ang_image[' + $id + ']"> \
               <span class="help-block"> Max filesize is 400Kb</span> \
-              <h4 class="property-item-title"><textarea class="bg-field full-textarea" name="item-title_' + $id + '"></textarea></h4> \
-              <p class="property-item-description"><textarea class="bg-field full-textarea" name="item-desc_' + $id + '"></textarea></p> \
+              <h4 class="property-item-title"><textarea class="bg-field full-textarea" name="eng_item-title[' + $id + ']"></textarea></h4> \
+              <p class="property-item-description"><textarea class="bg-field full-textarea" name="eng_item-desc[' + $id + ']"></textarea></p> \
               </div>';
+        } else {
+            $new_field = '<div class="property-item property-item' + $id + '"> \
+              <div class="property-item-image"></div> \
+              <div> \
+                <img id="imageang' + $id + '" \
+                     src="" \
+                     alt=""/> \
+                <a class="close-img-ang_' + $id + '"> \
+                  <button type="button">Reset</button> \
+                </a> \
+              </div> \
+              <input type="file" class="form-control" id="service_ang' + $id + '" \
+                     name="ang_image[' + $id + ']"> \
+              <span class="help-block"> Max filesize is 400Kb</span> \
+              <h4 class="property-item-title"><textarea class="bg-field full-textarea" name="item-title[' + $id + ']"></textarea></h4> \
+              <p class="property-item-description"><textarea class="bg-field full-textarea" name="item-desc[' + $id + ']"></textarea></p> \
+              </div>';
+        }
+
 
         $($btn).prev().after($new_field);
 
-            $("#prop_image_" + $id).change(function (x) {
-        return function () {
-            readURL(this, '#imageprop_image_' + x, '#close-prop_image_' + x);
-        }
-    }($id));
+        $(".close-img-ang_" + $id).on('click', function (x) {
+            return function () {
+                $('#imageang' + x).attr('src', '');
+                $('#service_ang' + x).val('');
+                $(".close-img-ang_" + x).css('display', 'none');
+            }
+        }($id));
+
+        $("#service_ang" + $id).change(function (x) {
+            return function () {
+                readURL(this, '#imageang' + x, '.close-img-ang_' + x);
+            }
+        }($id));
 
     }
 
@@ -245,20 +298,56 @@ setTimeout(function () {
 
         $($btn).prev().after($new_field);
 
-         $("#carousel_image_" + $id).change(function (x) {
-        return function () {
-            readURL(this, '#imagecarousel_image_' + x, '#close-carousel_image_' + x);
-        }
-    }($id));
+        $("#close-carousel_image_" + $id).on('click', function (x) {
+            return function () {
+                $('#imagecarousel_image_' + x).attr('src', '#');
+                $('#carousel_image_' + x).val('');
+                $("#close-carousel_image_" + x).css('display', 'none');
+                console.log("clicked .close-carousel_image_" + x);
+            }
+        }($id));
+
+
+        $("#carousel_image_" + $id).change(function (x) {
+            return function () {
+                readURL(this, '#imagecarousel_image_' + x, '#close-carousel_image_' + x);
+            }
+        }($id));
     }
 
     $('.add-new-carousel-item').on('click', function () {
         $id = $('#max_carousel_id').val();
         addCarouselItemField(parseInt($id) + 1, this);
+
+        $('#max_carousel_id').val(parseInt($id) + 1);
     });
 })(jQuery);
 ;(function ($) {
-    function addQuestionField($index) {
+    function addDocCatField($j, $btn) {
+        $new_field = '<div class="faq-item panel panel-default doc-category doc-category-' + $j + '"> \
+                    <h4 class="faq-item-title opened" data-parent="#accordion" data-toggle="collapse" \
+                    data-target="#answer-' + $j + '" aria-expanded="true"> \
+                     <span class="glyphicon glyphicon-chevron-down arrow-down"></span> \
+                     <input type="text" class="full-textarea" name="category[' + $j + ']" value=""> \
+                     <input type="hidden" name="category_old[' + $j + ']" value=""> \
+                     </h4> \
+                    <div role="definition" id="answer-'+$j+'" class="faq-item-answer panel-collapse collapse in" \
+                    aria-expanded="true" style="">\
+                    <a class="glyphicon glyphicon-plus add-new-document add-new-document-'+$j+'">Add new document</a> \
+            </div></div>';
+
+        $($btn).before($new_field);
+    }
+
+    $('.add-new-doc-cat').on('click', function () {
+        $id = $('#max_cat_id').val();
+        addDocCatField(parseInt($id) + 1, this);
+        $('#max_cat_id').val(parseInt($id) + 1);
+    });
+
+})(jQuery);
+;(function ($) {
+    function addQuestionField($index, $btn) {
         $new_field = '<div class="faq-item panel box-mid-margin panel-default"> \
                     <h4 class="faq-item-title collapsed" \
                     data-parent="#accordion" \
@@ -268,33 +357,33 @@ setTimeout(function () {
                     <span class="glyphicon glyphicon-chevron-down arrow-down"> \
                      </span> \
                     <input type="text" placeholder="Question"\
-                              name="question_' + $index + '" \
+                              name="item[' + $index + '][question]" \
                               class="full-textarea"></h4> \
                     <div  role="definition" id="answer-' + $index + '" \
                     class="faq-item-answer panel-collapse collapse " \
                     aria-expanded="false" \
                     style="height: 0px;"><textarea\
                         class="editor-area full-textarea answer_' + $index + '" \
-                        name="answer_' + $index + '" \
+                        name="item[' + $index + '][answer]" \
                        ></textarea> \
-                       <input type="hidden" name="id_' +$index +'"  value="' + $index + '"> \
+                       <input type="hidden" name="item[' +$index +'][id]"  value="' + $index + '"> \
                         </div> \
                         <a class="glyphicon glyphicon-trash delete-faq-item">Delete</a> \
                        </div> \
                   </div>';
 
 
-        $('.faq-item').last().after($new_field);
+        $($btn).before($new_field);
          CKEDITOR.replaceAll( 'answer_' + $index );
     }
 
     $('.add-new-question-button').on('click', function () {
-        $lastId = $('.faq-item .faq-item-answer').last().attr('id');
 
-        $split = $lastId.split('-');
-        $index = $split[$split.length - 1];
+        $id = $('#max_id').val();
 
-        addQuestionField(parseInt($index) + 1);
+        addQuestionField(parseInt($id) + 1, this);
+
+        $('#max_id').val(parseInt($id) + 1);
     });
 
 
@@ -311,7 +400,9 @@ setTimeout(function () {
               <input type="hidden" name="doc[' + $j + '][cid]" value="' + $cid + '">  \
               </div>';
 
-        $($btn).prev().after($new_field);
+            $($btn).before($new_field);
+
+
     }
 
     $('.add-new-document').on('click', function () {
@@ -369,6 +460,8 @@ setTimeout(function () {
     $('.add-new-gallery-item').on('click', function () {
         $id = $('#max_gallery_id').val();
         addGalleryItemField(parseInt($id) + 1, this);
+        $('#max_gallery_id').val(parseInt($id) + 1);
+
     });
 })(jQuery);
 ;(function ($) {
@@ -423,12 +516,30 @@ setTimeout(function () {
               </textarea></p> \
               </div>';
 
-        $($btn).prev().after($new_field);
+
+        $($btn).before($new_field);
+
+        $("#prop_image_" + $id).change(function (x) {
+            return function () {
+                readURL(this, '#imageprop_image_' + x, '#close-prop_image_' + x);
+            }
+        }($id));
+
+        $("#close-prop_image_" + $id).on('click', function (x) {
+            return function () {
+                $('#imageprop_image_' + x).attr('src', '');
+                $('#prop_image_' + x).val('');
+                $("#close-prop_image_" + x).css('display', 'none');
+            }
+        }($id));
+
+
     }
 
     $('.add-new-prop').on('click', function () {
         $id = $('#max_prop_id').val();
         addPropField(parseInt($id) + 1, this);
+        $('#max_prop_id').val(parseInt($id) + 1);
     });
 })(jQuery);
 ;(function ($) {
@@ -447,6 +558,7 @@ setTimeout(function () {
     $('.add-new-menu-item').on('click', function () {
         $id = $('#max_id_menu').val();
         addMenuItemField(parseInt($id) + 1, this);
+        $('#max_id_menu').val(parseInt($id) + 1);
     });
 })(jQuery);
 ;(function ($) {
@@ -465,10 +577,12 @@ setTimeout(function () {
     $('.add-new-phone').on('click', function () {
         $id = $('#max_id_phone').val();
         addPhoneField(parseInt($id) + 1, this);
+        $('#max_id_phone').val(parseInt($id) + 1);
+
     });
 })(jQuery);
 ;(function ($) {
-    function addProdFeatureField($index) {
+    function addProdFeatureField($index, $btn) {
         $new_field = '<div class="row box-small-margin product-feature-block prod-feature-block-' + $index + '" id="prod-feature-block-' + $index + '"> \
              <div class="col-sm-6"><label for="prod_feature_field[' + $index + '][name]">Name:</label> \
             <input type="text" class="form-control prod-feature-name" \
@@ -480,14 +594,13 @@ setTimeout(function () {
                    name="prod_feature[' + $index + '][value]"> \
             </div></div>';
 
-        $('.product-feature-block').last().after($new_field);
+        $($btn).before($new_field);
     }
 
     $('.add-new-feature-button').on('click', function () {
-        $lastId = $('.product-feature-block').last().attr('id');
-        $split = $lastId.split('-');
-        $index = $split[$split.length - 1];
-        addProdFeatureField(parseInt($index) + 1);
+        $id = $('#max_feature_id').val();
+        addProdFeatureField(parseInt($id) + 1, this);
+        $('#max_feature_id').val(parseInt($id) + 1);
     });
 
     if ($('#has-prod-feature').prop('checked')) {
@@ -720,7 +833,7 @@ setTimeout(function () {
     $('.add-new-link').on('click', function () {
         $id = $('#max_link_id').val();
         addLinkField(parseInt($id) + 1, this);
-        $('#max_link_id').val($id+1);
+        $('#max_link_id').val(parseInt($id)+1);
     });
 
             ///////
@@ -772,6 +885,52 @@ setTimeout(function () {
     });
 
 
+})(jQuery);
+;(function ($) {
+    function addSocialField($id, $btn) {
+        $new_field = '<div class="social-item box-mid-margin"> \
+            <div class="social-alt"> \
+            <label for="social-item-alt-' + $id + '">Link alt:</label>\
+            <input type="text" id="social-item-alt-' + $id + '" class="" name="social[' + $id + '][alt]" value=""> </div>\
+            <div class="social-path"> \
+            <label for="social-item-path-'+$id+'">Link path:</label>\
+            <input type="text" id="social-item-path-'+$id+'" name="social['+$id+'][link]" value=""></div>\
+            <div class="box-small-margin social-item-image-edit social-image-item-'+$id+'">\
+            <div>\
+            <img id="social_image-'+$id+'" src="" alt="">\
+            <a class="close-social-image close-social_image-'+$id+'">\
+            <button type="button">Reset</button>\
+            </a>\
+            </div>\
+            <input type="file" class="form-control social-img" id="social_image_field-'+$id+'" name="social_image['+$id+']">\
+            <input type="hidden" name="social_image['+$id+'][id]" value="'+$id+'">\
+            </div>\
+            <input type="hidden" name="social['+$id+'][id]" value="'+$id+'"> </div>';
+
+        $($btn).prev().after($new_field);
+
+
+        $("#social_image_field-" + $id).change(function (x) {
+        return function () {
+            readURL(this, '#social_image-' + x, '.close-social_image-' + x);
+        }
+    }($id));
+
+
+            $(".close-social_image-" + $id).on('click', function (x) {
+        return function () {
+            $('#social_image-' + x).attr('src', '#');
+            $('#social_image_field-' + x).val('');
+            $(".close-social_image-" + x).css('display', 'none');
+        }
+    }($id));
+    }
+
+    $('.add-new-social-item').on('click', function () {
+        $id = $('#max_id_social').val();
+        addSocialField(parseInt($id) + 1, this);
+        $('#max_id_social').val(parseInt($id) + 1);
+    });
 })(jQuery);
 ;(function () {
     function disableSubmit(login, pass, pass_r) {
@@ -910,38 +1069,38 @@ $(".close-imgv").on('click', function () {
 });
 
 $(".close-imgm").on('click', function () {
-    $('#imagem').attr('src', '#');
+    $('#imagem').attr('src', '');
     $('#mission_img').val('');
     $('.close-imgm').css('display', 'none');
 });
 
 //  technology //
 $(".close-img-description").on('click', function () {
-    $('#imaged').attr('src', '#');
+    $('#imaged').attr('src', '');
     $('#description_image').val('');
     $('.close-img-description').css('display', 'none');
 });
 
 $(".close-img-comparison_infra").on('click', function () {
-    $('#imagecomparison_infra').attr('src', '#');
+    $('#imagecomparison_infra').attr('src', '');
     $('#comparison_infra_image').val('');
     $('.close-img-comparison_infra').css('display', 'none');
 });
 
 $(".close-img-comparison_convect").on('click', function () {
-    $('#imagecomparison_convect').attr('src', '#');
+    $('#imagecomparison_convect').attr('src', '');
     $('#comparison_convect_image').val('');
     $('.close-img-comparison_convect').css('display', 'none');
 });
 
 $(".close-img-infra_house_image").on('click', function () {
-    $('#imageinfra_house_image').attr('src', '#');
+    $('#imageinfra_house_image').attr('src', '');
     $('#infra_house_image').val('');
     $('.close-img-infra_house_image').css('display', 'none');
 });
 
 $(".close-img-convect_house_image").on('click', function () {
-    $('#imageconvect_house_image').attr('src', '#');
+    $('#imageconvect_house_image').attr('src', '');
     $('#convect_house_image').val('');
     $('.close-img-convect_house_image').css('display', 'none');
 });
@@ -951,32 +1110,52 @@ $(".close-img-convect_house_image").on('click', function () {
 ////fur handler
 
 $(".close-img-service_bg").on('click', function () {
-    $('#imageservice_bg').attr('src', '#');
+    $('#imageservice_bg').attr('src', '');
     $('#service_bg_image').val('');
     $('.close-img-service_bg').css('display', 'none');
 });
 
+
+for (var i = 1; i <= 10; i++) {
+    $("#close-carousel_image_" + i).on('click', function (x) {
+        return function () {
+            $('#imagecarousel_image_' + x).attr('src', '#');
+            $('#carousel_image_' + x).val('');
+            $("#close-carousel_image_" + x).css('display', 'none');
+            console.log("clicked .close-carousel_image_" + x);
+        }
+    }(i));
+}
+
+
 //service fur handler
 var $i;
 for ($i = 1; $i <= 6; $i++) {
-    $(".close-img-service_" + $i).on('click', function () {
-        $('#imageservice_' + $i).attr('src', '#');
-        $('#service_image_' + $i).val('');
-        $(".close-img-service_" + $i).css('display', 'none');
-    });
+    $(".close-img-service_" + $i).on('click', function (x) {
+
+        return function () {
+            $('#imageservice_' + x).attr('src', '');
+            $('#service_image_' + x).val('');
+            $(".close-img-service_" + x).css('display', 'none');
+        }
+
+    }($i));
 }
 
 //angebot
 for ($i = 1; $i <= 3; $i++) {
-    $(".close-img-ang_" + $i).on('click', function () {
-        $('#imageang_' + $i).attr('src', '#');
-        $('#service_ang_' + $i).val('');
-        $(".close-img-ang_" + $i).css('display', 'none');
-    });
+    $(".close-img-ang_" + $i).on('click', function (x) {
+        return function () {
+            $('#imageang' + x).attr('src', '');
+            $('#service_ang' + x).val('');
+            $(".close-img-ang_" + x).css('display', 'none');
+        }
+
+    }($i));
 }
 
 $(".close-img-angbg").on('click', function () {
-    $('#imageangbg').attr('src', '#');
+    $('#imageangbg').attr('src', '');
     $('#service_angbg').val('');
     $('.close-img-angbg').css('display', 'none');
 });
@@ -984,13 +1163,13 @@ $(".close-img-angbg").on('click', function () {
 
 //main
 $(".close-sign_image").on('click', function () {
-    $('#imagesign_image').attr('src', '#');
+    $('#imagesign_image').attr('src', '');
     $('#sign_image').val('');
     $('.close-sign_image').css('display', 'none');
 });
 
 $(".close-property_image").on('click', function () {
-    $('#imageproperty_image').attr('src', '#');
+    $('#imageproperty_image').attr('src', '');
     $('#property_image').val('');
     $('.close-property_image').css('display', 'none');
 });
@@ -1000,7 +1179,7 @@ $(".close-gallery_bg").on('click', function () {
     $('.close-gallery_bg').css('display', 'none');
 
     $('#gallery_bg_image').val('');
-    $('#imagegallery_bg').attr('src', '#');
+    $('#imagegallery_bg').attr('src', '');
 });
 
 //main carousel
@@ -1068,7 +1247,16 @@ $(".close-prod_image-1").on('click', function () {
     $(".close-prod_image-1").css('display', 'none');
 });
 
-
+//social links
+for (var i = 1; i <= 10; i++) {
+    $(".close-social_image-" + i).on('click', function (x) {
+        return function () {
+            $('#social_image-' + x).attr('src', '#');
+            $('#social_image_field-' + x).val('');
+            $(".close-social_image-" + x).css('display', 'none');
+        }
+    }(i));
+}
 ;(function () {
 
     var contactCol = ".contacts .contact-item-wrapper";
@@ -1129,13 +1317,14 @@ $(".close-prod_image-1").on('click', function () {
     });
 
 }());;(function () {
-
-/*    function setCookie(name, value) {
+/*
+    function setCookieV(name, value, path) {
         var date = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000);
         var updatedCookie = name + "=" + value + "; expires=" + date.toUTCString();
 
         document.cookie = updatedCookie;
         //location.reload();
+        window.location = '/faq';
     }*/
 
     function deleteCookie(name) {
@@ -1369,7 +1558,7 @@ onTextChange(12, 1000);
         }
     });
 }());
-;$('.left-panel').on('mouseenter', function(){
+;;$('.left-panel').on('mouseenter', function(){
     //$('#asideNavMenu').modal('show');
 });
 
@@ -1956,16 +2145,26 @@ $("#service_bg_image").change(function () {
 
 var $i;
 
+
+
 for ($i = 1; $i <= 6; $i++) {
 //service fur handler
-    $("#service_image" + $i).change(function () {
-        readURL(this, '#imageservice_' + $i, '.close-imgm');
-    });
+    $("#service_image_" + $i).change(function (x) {
+        return function () {
+            readURL(this, '#imageservice_' + x, '.close-img-service_' + x);
+        }
 
+    }($i));
+}
+
+for ($i = 1; $i <= 6; $i++) {
 //angebot fur handler
-    $("#service_ang" + $i).change(function () {
-        readURL(this, '#imageang_' + $i, '.close-imgm');
-    });
+    $("#service_ang" + $i).change(function (x) {
+        return function () {
+            readURL(this, '#imageang' + x, '.close-img-ang_' + x);
+        }
+
+    }($i));
 }
 
 //fur handler ang bg
@@ -2047,6 +2246,44 @@ for ($i = 1; $i <= 300; $i++) {
     }($i));
 }
 
+
+//socials
+for ($i = 1; $i <= 10; $i++) {
+    $("#social_image_field-" + $i).change(function (x) {
+        return function () {
+            readURL(this, '#social_image-' + x, '.close-social_image-' + x);
+        }
+    }($i));
+}
+;(function () {
+    function setLogoSize() {
+        $window = parseInt($(window).width());
+        $paddings = parseInt($('.header-wrapper').css('padding-left')) + parseInt($('.header-wrapper').css('padding-right'));
+        $menuButtonPadding = parseInt($('.menu-link-button').css('padding-right'));
+        $menuButtonSize = parseInt($('.menu-link').width());
+        $w = $window - $paddings - $menuButtonSize - $menuButtonPadding ;
+
+        return $w;
+    }
+
+
+    if (parseInt($(window).width()) < 460) {
+        $('.site-logo-wrapper img').css('width', setLogoSize() + 'px');
+    } else {
+        $('.site-logo-wrapper img').css('width', '360px');
+    }
+
+
+ window.onresize =  function () {
+        if (parseInt($(window).width()) < 460) {
+    console.log(parseInt($(window).width()));
+            $('.site-logo-wrapper img').css('width', setLogoSize() + 'px');
+        } else {
+            $('.site-logo-wrapper img').css('width', '360px');
+        }
+    };
+
+}());
 ;(function () {
     function setMLogoSize() {
         $window = parseInt($(window).width());

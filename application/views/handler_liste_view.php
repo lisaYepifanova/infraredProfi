@@ -6,6 +6,10 @@
         <?php echo '<img src="'.$data['list_page']['add_icon']['path'].'" alt="'.$data['list_page']['add_icon']['name'].'">'; ?>
       <p class="icon-title">Add new user</p>
     </a>
+
+    <a class="admin-page-icons" href="/user/">
+         <p class="icon-title">Back to USER INFO</p>
+    </a>
   </div>
 
   <div class="container handler-liste-wrapper box-mid-margin left-padding">

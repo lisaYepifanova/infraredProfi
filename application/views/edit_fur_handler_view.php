@@ -2,7 +2,8 @@
 
 
   <form enctype="multipart/form-data" role="form" action="" method="post">
-    <input type="hidden" name="MAX_FILE_SIZE" value="409600"/>
+    <input type="hidden" name="MAX_FILE_SIZE" value="40960000"/>
+    <input type="hidden" class="lang" name="lang" value="<?php echo getLanguage(); ?>"/>
     <h1 class="page-header container hsmall text-capitalize left-padding">
     <input type="text" value="<?php echo  $data['add']['main_info']['title']; ?>" name="title">
 
@@ -30,7 +31,7 @@
           <img id="imageservice_bg"
                src="<?php echo IMAGEPATH . '' . $data['add']['main_info']['service_bg']; ?>"
                alt=""/>
-          <a href="#" class="close-img-service_bg">
+          <a class="close-img-service_bg">
             <button type="button">Reset</button>
           </a>
         </div>
@@ -60,14 +61,14 @@
               <img id="<?php echo 'imageservice_' . $row['id'] ?>"
                    src="<?php echo IMAGEPATH . '' . $row['icon']; ?>"
                    alt=""/>
-              <a href="#" class="<?php echo 'close-img-service_' . $row['id'] ?>">
+              <a  class="<?php echo 'close-img-service_' . $row['id'] ?>">
                 <button type="button">Reset</button>
               </a>
             </div>
 
             <input type="file" class="form-control"
                    id="<?php echo 'service_image_' . $row['id'] ?>"
-                   name="<?php echo 'service_image_' . $row['id'] ?>">
+                   name="<?php echo 'service_image[' . $row['id'] .']' ?>">
             <span class="help-block"> Max filesize is 400Kb</span>
 
 
@@ -111,7 +112,7 @@
                 <img id="<?php echo 'imageangbg'; ?>"
                      src="<?php echo IMAGEPATH . '' . $data['add']['main_info']['angebot_bg']; ?>"
                      alt=""/>
-                <a href="#" class="<?php echo 'close-img-angbg' ;?>">
+                <a class="<?php echo 'close-img-angbg' ;?>">
                   <button type="button">Reset</button>
                 </a>
               </div>
@@ -141,13 +142,13 @@
                 <img id="<?php echo 'imageang'.$row['id'] ;?>"
                      src="<?php echo IMAGEPATH . '' . $row['icon']; ?>"
                      alt=""/>
-                <a href="#" class="<?php echo 'close-img-ang_'.$row['id'] ;?>">
+                <a class="<?php echo 'close-img-ang_'.$row['id'] ;?>">
                   <button type="button">Reset</button>
                 </a>
               </div>
 
               <input type="file" class="form-control" id="<?php echo 'service_ang'.$row['id'] ;?>"
-                     name="<?php echo 'ang_image'.$row['id'] ;?>">
+                     name="<?php echo 'ang_image['.$row['id'].']' ;?>">
               <span class="help-block"> Max filesize is 400Kb</span>
 
 
@@ -156,14 +157,14 @@
                 if($lang==1) {
                    echo '
               
-              <h4 class="property-item-title"><textarea class="bg-field full-textarea" name="'.'item-title_'.$row['id'].'">' . $row['title'] . '</textarea></h4>
-              <p class="property-item-description"><textarea class="bg-field full-textarea" name="'.'item-desc_'.$row['id'].'">' . $row['description'] . '</textarea></p>';
+              <h4 class="property-item-title"><textarea class="bg-field full-textarea" name="item-title['.$row['id'].']">' . $row['title'] . '</textarea></h4>
+              <p class="property-item-description"><textarea class="bg-field full-textarea" name="item-desc['.$row['id'].']">' . $row['description'] . '</textarea></p>';
 
                 } else if($lang==2) {
                    echo '
               
-              <h4 class="property-item-title"><textarea class="bg-field full-textarea" name="'.'eng_item-title_'.$row['id'].'">' . $row['eng_title'] . '</textarea></h4>
-              <p class="property-item-description"><textarea class="bg-field full-textarea" name="'.'eng_item-desc_'.$row['id'].'">' . $row['eng_description'] . '</textarea></p>';
+              <h4 class="property-item-title"><textarea class="bg-field full-textarea" name="eng_item-title['.$row['id'].']">' . $row['eng_title'] . '</textarea></h4>
+              <p class="property-item-description"><textarea class="bg-field full-textarea" name="eng_item-desc['.$row['id'].']">' . $row['eng_description'] . '</textarea></p>';
 
                 }
               echo ' </div>';
@@ -184,11 +185,15 @@
         <?php echo '<textarea name="form_title" class="full-textarea editor-area">' . $data['add']['main_info']['form_title'] . '</textarea>'; ?>
       </div>
 
-      <div class="registration-form-title registration-form-title-edit text-center">
+      <div class="registration-form-title registration-form-title-edit text-center container">
         <label>Form</label>
-        <?php echo '<textarea name="form_title" class="full-textarea editor-area">' . $data['add']['main_info']['form'] . '</textarea>'; ?>
+        <?php echo '<textarea name="form_content" class="full-textarea">' . $data['add']['main_info']['form'] . '</textarea>'; ?>
       </div>
 
+      <div class="registration-form-title registration-form-title-edit text-center container">
+        <label>Button title</label>
+        <?php echo '<textarea name="button" class="full-textarea">' . $data['add']['main_info']['button'] . '</textarea>'; ?>
+      </div>
     </div>
     <div class="btn-wrapper  box-mid-margin container left-padding">
       <button class="btn" type="submit">SAVE</button>

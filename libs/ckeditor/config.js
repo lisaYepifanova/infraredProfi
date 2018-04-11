@@ -38,6 +38,6 @@ CKEDITOR.editorConfig = function (config) {
     config.filebrowserUploadUrl = '../../upload.php';
     config.extraPlugins = 'button,panelbutton,colorbutton,panel,floatpanel,richcombo,font,justify';
 
-config.allowedContent = true;
+
 
 };

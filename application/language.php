@@ -11,11 +11,11 @@ function setLanguage() {
 
   if (isset($_COOKIE["language"])) {
     if ($_COOKIE['language'] !== $lang) {
-      setcookie('language', $lang, time() + 7 * 24 * 60 * 60);
+      setcookie('language', $lang, time() + 7 * 24 * 60 * 60, '/');
     }
   }
   else {
-    setcookie('language', $lang, time() + 7 * 24 * 60 * 60);
+    setcookie('language', $lang, time() + 7 * 24 * 60 * 60, '/');
   }
 }
 

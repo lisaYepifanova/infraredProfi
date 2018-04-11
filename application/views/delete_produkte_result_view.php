@@ -3,6 +3,15 @@
 
   <div class="container">
     <h4> deleted successfully</h4>
-    <a class="orange-link" href="/produkte">Go to Produkte page</a>
+    <?php
+      $lang = getLanguage();
+
+      if($lang == 2) {
+        echo '<a class="orange-link" href="/products">Go to Products page</a>';
+      } else {
+        echo '<a class="orange-link" href="/produkte">Go to Produkte page</a>';
+      }
+    ?>
+
   </div>
 </main>

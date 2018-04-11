@@ -1,5 +1,16 @@
 <main>
-  <h1 class="page-header container text-capitalize left-padding">EDIT DATENSCHUTZ</h1>
+  <?php
+  $lang = getLanguage();
+
+
+  if ($lang == '2') {
+    echo '<h1 class="page-header container text-capitalize left-padding">EDIT DATA PROTECTION</h1>';
+  }
+  else {
+    echo '<h1 class="page-header container text-capitalize left-padding">EDIT DATENSCHUTZ</h1>';
+  }
+
+  ?>
   <div class="container left-padding">
     <a class="admin-page-icons admin-icon-item" href="/site-settings"><img src="../img/user_pages/settings.png" alt="settings"><p class="icon-title">Site settings</p>
     </a>

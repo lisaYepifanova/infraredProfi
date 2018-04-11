@@ -1,7 +1,6 @@
 <?php
 session_start(); //Запускаем сессии
-include 'application/connection.php';
-
+include_once  'application/connection.php';
 
 /**
  * @return boolean

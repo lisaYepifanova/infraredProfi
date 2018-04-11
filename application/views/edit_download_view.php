@@ -10,6 +10,7 @@
 
         <?php
         echo '<input type="hidden" name="max_id" id="max_id" value="'.$data['add']['max_id'].'">';
+        echo '<input type="hidden" name="max_cat_id" id="max_cat_id" value="'.$data['add']['max_cat_id'].'">';
         echo '<div class="panel-group" id="accordion">';
         foreach ($data['add']['categories'] as $row) {
           echo '<div class="faq-item panel panel-default doc-category doc-category-'.$row['id'].'">
@@ -20,8 +21,12 @@
                      aria-expanded="false">
                      <span class="glyphicon glyphicon-chevron-down arrow-down"></span>
                      <input type="text" class="full-textarea" 
-                     name="category[' . $row['id'] . ']" value="' . $row['category_name'] . '"></h4>
+                     name="category[' . $row['id'] . ']" value="' . $row['category_name'] . '">
+                     
+                     <input type="hidden" name="category_old[' . $row['id'] . ']" value="' . $row['category_name'] . '"/>
+                     </h4>
                     <div  role="definition" id="answer-' . $row['id'] . '" class="faq-item-answer panel-collapse collapse" aria-expanded="false" style="height: 0px;">';
+
           foreach ($data['add']['documents'] as $doc) {
             if ($doc['category'] == $row['id']) {
               echo '<div class="doc-item doc-item-'.$doc["id"].' box-mid-margin">';
@@ -49,10 +54,14 @@
           echo '<a class="glyphicon glyphicon-plus add-new-document add-new-document-'.$row['id'].'">Add new document</a>';
           echo '</div></div>';
         }
-        ?>
 
 
-        <?php
+        echo '<a class="glyphicon glyphicon-plus add-new-doc-cat">Add new document category</a>';
+
+
+
+
+
         function modalWin($j, $name) {
           echo '<div class="modal fade" id="myModal_' . $j . '" role="dialog">
     <div class="modal-dialog">

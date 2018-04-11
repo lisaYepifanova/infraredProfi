@@ -1,8 +1,17 @@
-<?php include_once 'application/auth.php'; ?>
+<?php
+include_once 'application/auth.php';
+$lang = getLanguage();
+?>
 <!doctype html>
 <html lang="de">
 <?php
-$pageTitle = "InfraRed 24 - Infrarot Heizsysteme, Deutscher Hersteller, umweltschonend";
+if ($lang == 2) {
+  $pageTitle = "InfraRed 24 - Infrared heating systems, German manufacturer, environmentally friendly";
+}
+else {
+  $pageTitle = "InfraRed 24 - Infrarot Heizsysteme, Deutscher Hersteller, umweltschonend";
+}
+
 ?>
 <head>
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -36,8 +45,14 @@ $pageTitle = "InfraRed 24 - Infrarot Heizsysteme, Deutscher Hersteller, umweltsc
       );
     }
 
-    if ($pageTitle !== 'Produkte' and $content_view == 'product_view.php') {
-      echo $pageTitle . ' – stilvolle Infrarotheizung direkt vom Fachhändler';
+    if ($pageTitle !== 'Produkte' and $pageTitle !== 'Products' and $content_view == 'product_view.php') {
+      if ($lang == 2) {
+        echo $pageTitle . ' – stylish infrared heating directly from the dealer';
+      }
+      else {
+        echo $pageTitle . ' – stilvolle Infrarotheizung direkt vom Fachhändler';
+      }
+
     }
     else {
       echo $pageTitle;
@@ -53,20 +68,37 @@ $pageTitle = "InfraRed 24 - Infrarot Heizsysteme, Deutscher Hersteller, umweltsc
       <link rel="stylesheet" href="' . LIBPATH . 'slick/slick/slick.css">
       <link rel="stylesheet" href="' . LIBPATH . 'slick/slick/slick-theme.css">
       ';
-  ?>
-  <meta name="keywords" content="Infrared Profi, Infrarot Profi, Heizung,
+
+  if ($lang == 2) {
+    echo '<meta name="keywords" content="Infrared Profi, Infrarot Profi, Heater,
+Infrared, infrared heater, infrared heating, heating system,
+Heating system, infrared heat, infrared rays, infrared waves,
+Radiant heaters, radiant heat, radiant heat, building services,
+Electric heating, heating with electricity, electric heating, infrared bath heating,
+Towel heating, wall heating system, ceramic glass, glass heating ">';
+
+
+    if ($pageTitle !== 'Products' and $content_view == 'product_view.php') {
+      echo '<meta name="description" content="' . $pageTitle . ' from
+      InfraRed24.com: ✔ elegant ✔ economical ✔ environmentally friendly ✔ childproof. Now discover!">';
+    }
+  }
+  else {
+    echo '<meta name="keywords" content="Infrared Profi, Infrarot Profi, Heizung,
 Infrarot, Infrarotstrahler, Infrarotheizung, Heizungssystem,
 Heizsystem , Infrarotwärme, Infrarotstrahlen, Infrarot Wellen ,
 Heizstrahler, Wärmestrahlung, Strahlenwärme , Haustechnik ,
 Elektroheizung, Heizen mit Strom, Stromheizung , Infrarot Badheizung,
-Handtuchheizung , Wandheizsystem , Glaskeramik , Glasheizung ">
+Handtuchheizung , Wandheizsystem , Glaskeramik , Glasheizung ">';
 
-  <?php
-  if ($pageTitle !== 'Produkte' and $content_view == 'product_view.php') {
-    echo '<meta name="description" content="' . $pageTitle . ' von
+
+    if ($pageTitle !== 'Produkte' and $content_view == 'product_view.php') {
+      echo '<meta name="description" content="' . $pageTitle . ' von
 InfraRed24.com: ✔ elegant ✔ wirtschaftlich ✔ umweltschonend ✔ kindersicher. Jetzt
 entdecken!">';
+    }
   }
+
   ?>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -79,12 +111,13 @@ entdecken!">';
 
   ?>
   <script>
-      function setCookie(name, value) {
+      function setCookieV(value, path) {
           var date = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000);
-          var updatedCookie = name + "=" + value + "; expires=" + date.toUTCString();
+          var updatedCookie = "language=" + value + "; expires=" + date.toUTCString() + "; path=/;";
 
           document.cookie = updatedCookie;
           location.reload();
+          window.location = path;
       }
   </script>
 
@@ -94,7 +127,14 @@ entdecken!">';
 <header>
   <div class="header-top-line">
     <?php
-    echo '<div class="header-top-line-content"><div class="top-phones">Telefon: ';
+
+    if ($lang == 2) {
+      echo '<div class="header-top-line-content"><div class="top-phones">Phones: ';
+    }
+    else {
+      echo '<div class="header-top-line-content"><div class="top-phones">Telefon: ';
+    }
+
 
     $index = 0;
     if (isset($default['header_phones'])) {
@@ -112,6 +152,19 @@ entdecken!">';
     ?>
 
     <div class="top-lang">
+
+      <?php
+      $de_path = '';
+      $en_path = '';
+      if (isset($default['route'])) {
+        foreach ($default['route'] as $row) {
+          $de_path = $de_path . '/' . $row['de'];
+          $en_path = $en_path . '/' . $row['en'];
+        }
+      }
+
+      ?>
+
       <form enctype="multipart/form-data" role="form" action="" method="post"
             id="lang_form_top">
         <?php
@@ -131,6 +184,33 @@ entdecken!">';
           foreach ($default['languages'] as $row) {
             echo '<div class="lang-item ';
 
+            if ($row['id'] == 2) {
+              if (isset($en_path)) {
+                $path = $en_path;
+              }
+              else {
+                if (isset($de_path)) {
+                  $path = $de_path;
+                }
+                else {
+                  $path = "/";
+                }
+              }
+            }
+            else {
+              if (isset($de_path)) {
+                $path = $de_path;
+              }
+              else {
+                if (isset($en_path)) {
+                  $path = $en_path;
+                }
+                else {
+                  $path = "/";
+                }
+              }
+            }
+
             if ($lang == $row['id']) {
               echo ' selected ';
             }
@@ -140,10 +220,10 @@ entdecken!">';
                id="lang-' . $row['id'] . '"
                value="' . $row['id'] . '"';
             if ($lang == $row['id']) {
-              //echo ' selected ';
+              echo ' selected ';
             }
 
-            echo '  onchange="setCookie(\'language\', ' . $row['id'] . ')">';
+            echo '  onchange="setCookieV( ' . $row['id'] . ', \'' . $path . '\')">';
             echo '<label class="lang-link" for="lang-' . $row['id'] . '"><img alt=' . $row['name'] . ' src="' . IMAGEPATH . 'languages/' . $row['icon'] . '">' . $row['title'] . '</label>';
             echo '</div>';
           }
@@ -190,11 +270,9 @@ entdecken!">';
     <div class="header-social-items-wrapper">
       <div class="header-social-items">
         <?php
-        echo '<div class="social-links"><a target="_blank" href="https://www.facebook.com/infrared24" class=" social-link"><img src="' . IMAGEPATH . 'fb.png" alt="facebook link"></a>
-         <a href="https://twitter.com/@InfraRed24" target="_blank" class="social-link"><img src="' . IMAGEPATH . 'twitter.png" alt="twitter link"></a>
-<a target="_blank" href="https://www.instagram.com/infrared24gmbh/" class=" social-link"><img src="' . IMAGEPATH . 'inst.png" alt="instagram link"></a>
-         <a href="https://www.pinterest.de/infrared24/" target="_blank" class="social-link"><img src="' . IMAGEPATH . 'pinterest.png" alt="pinterest link"></a>
-</div>';
+                foreach ($default['social'] as $link) {
+          echo '<a target="_blank" href="'.$link['link'].'" class="social-link"><img src="' . IMAGEPATH . $link['img'] .'" alt="'.$link['alt'].'"></a>';
+        }
         ?>
       </div>
     </div>
@@ -266,12 +344,9 @@ include 'application/views/' . $content_view;
 
 
           <?php
-          echo '<div class="col-sm-4 footer-link">
-          <a target="_blank" href="https://www.facebook.com/infrared24" class=" social-link"><img src="' . IMAGEPATH . 'fb.png" alt="facebook link"></a>
-         <a href="https://twitter.com/@InfraRed24" target="_blank" class="social-link"><img src="' . IMAGEPATH . 'twitter.png" alt="twitter link"></a>
-         <a target="_blank" href="https://www.instagram.com/infrared24gmbh/" class=" social-link"><img src="' . IMAGEPATH . 'inst.png" alt="instagram link"></a>
-         <a href="https://www.pinterest.de/infrared24/" target="_blank" class="social-link"><img src="' . IMAGEPATH . 'pinterest.png" alt="pinterest link"></a>
-         </div>';
+                  foreach ($default['social'] as $link) {
+          echo '<a target="_blank" href="'.$link['link'].'" class="social-link"><img src="' . IMAGEPATH . $link['img'] .'" alt="'.$link['alt'].'"></a>';
+        }
           ?>
         </div>
       </div>
@@ -324,10 +399,10 @@ include 'application/views/' . $content_view;
                id="lang-' . $row['id'] . '"';
 
                 if ($lang == $row['id']) {
-                  //echo ' selected ';
+                  echo ' selected ';
                 }
 
-                echo ' value="' . $row['id'] . '"  onchange="setCookie(\'language\', ' . $row['id'] . ')">';
+                echo ' value="' . $row['id'] . '"  onchange="setCookieV(' . $row['id'] . ', \'' . $path . '\')">';
                 echo '<label class="lang-link" for="lang-' . $row['id'] . '"><img alt=' . $row['name'] . ' src="' . IMAGEPATH . 'languages/' . $row['icon'] . '">' . $row['title'] . '</label>';
                 echo '</div>';
               }
@@ -359,10 +434,9 @@ include 'application/views/' . $content_view;
       </div>
       <div class="modal-footer">
         <?php
-        echo '<a target="_blank" href="https://www.facebook.com/infrared24" class="social-link"><img src="' . IMAGEPATH . 'fb.png" alt="facebook link"></a>
-          <a href="https://twitter.com/@InfraRed24" target="_blank" class="social-link"><img src="' . IMAGEPATH . 'twitter.png" alt="twitter link"></a>
-          <a target="_blank" href="https://www.instagram.com/infrared24gmbh/" class=" social-link"><img src="' . IMAGEPATH . 'inst.png" alt="instagram link"></a>
-         <a href="https://www.pinterest.de/infrared24/" target="_blank" class="social-link"><img src="' . IMAGEPATH . 'pinterest.png" alt="pinterest link"></a>';
+        foreach ($default['social'] as $link) {
+          echo '<a target="_blank" href="'.$link['link'].'" class="social-link"><img src="' . IMAGEPATH . $link['img'] .'" alt="'.$link['alt'].'"></a>';
+        }
         ?>
 
       </div>
@@ -397,9 +471,9 @@ echo '
   <script src="' . JSPATH . 'vendor/jquery-1.12.0.min.js"></script>
   <script src="' . JSPATH . 'vendor/jquery.foggy.min.js"></script>
   
-<script src="' . LIBPATH . 'slick/slick/slick.min.js"></script>
+  <script src="' . LIBPATH . 'slick/slick/slick.min.js"></script>
   <script src="' . JSPATH . 'vendor.js"></script>
-  <script src="' . JSPATH . 'build.min.js"></script>';
+  <script src="' . JSPATH . 'build.js"></script>';
 
 ?>
 

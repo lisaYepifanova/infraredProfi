@@ -22,15 +22,27 @@
 
         $($btn).prev().after($new_field);
 
-         $("#carousel_image_" + $id).change(function (x) {
-        return function () {
-            readURL(this, '#imagecarousel_image_' + x, '#close-carousel_image_' + x);
-        }
-    }($id));
+        $("#close-carousel_image_" + $id).on('click', function (x) {
+            return function () {
+                $('#imagecarousel_image_' + x).attr('src', '#');
+                $('#carousel_image_' + x).val('');
+                $("#close-carousel_image_" + x).css('display', 'none');
+                console.log("clicked .close-carousel_image_" + x);
+            }
+        }($id));
+
+
+        $("#carousel_image_" + $id).change(function (x) {
+            return function () {
+                readURL(this, '#imagecarousel_image_' + x, '#close-carousel_image_' + x);
+            }
+        }($id));
     }
 
     $('.add-new-carousel-item').on('click', function () {
         $id = $('#max_carousel_id').val();
         addCarouselItemField(parseInt($id) + 1, this);
+
+        $('#max_carousel_id').val(parseInt($id) + 1);
     });
 })(jQuery);

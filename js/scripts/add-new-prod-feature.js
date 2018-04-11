@@ -1,5 +1,5 @@
 (function ($) {
-    function addProdFeatureField($index) {
+    function addProdFeatureField($index, $btn) {
         $new_field = '<div class="row box-small-margin product-feature-block prod-feature-block-' + $index + '" id="prod-feature-block-' + $index + '"> \
              <div class="col-sm-6"><label for="prod_feature_field[' + $index + '][name]">Name:</label> \
             <input type="text" class="form-control prod-feature-name" \
@@ -11,14 +11,13 @@
                    name="prod_feature[' + $index + '][value]"> \
             </div></div>';
 
-        $('.product-feature-block').last().after($new_field);
+        $($btn).before($new_field);
     }
 
     $('.add-new-feature-button').on('click', function () {
-        $lastId = $('.product-feature-block').last().attr('id');
-        $split = $lastId.split('-');
-        $index = $split[$split.length - 1];
-        addProdFeatureField(parseInt($index) + 1);
+        $id = $('#max_feature_id').val();
+        addProdFeatureField(parseInt($id) + 1, this);
+        $('#max_feature_id').val(parseInt($id) + 1);
     });
 
     if ($('#has-prod-feature').prop('checked')) {

@@ -9,8 +9,10 @@
 
         <?php
         $index = 1;
+        echo '<input type="hidden" name="max_id" id="max_id" value="'.$data['add']['max_id'].'">';
+
         echo '<div class="panel-group" id="accordion">';
-        foreach ($data['add'] as $row) {
+        foreach ($data['add']['main'] as $row) {
           echo '<div class="faq-item panel panel-default">
                     <h4 class="faq-item-title collapsed title-'.$row['id'].'" 
                     data-parent="#accordion" 

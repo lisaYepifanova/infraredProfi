@@ -1,10 +1,24 @@
 <main class="about-us-page">
 
-  <h1 class="page-header container hsmall text-capitalize left-padding">EDIT
-    "ÜBER UNS"</h1>
+   <?php
+  $lang = getLanguage();
+
+
+  if ($lang == '2') {
+    echo '  <h1 class="page-header container hsmall text-capitalize left-padding">EDIT
+    "ABOUT US"</h1>';
+  }
+  else {
+    echo '  <h1 class="page-header container hsmall text-capitalize left-padding">EDIT
+    "ÜBER UNS"</h1>';
+  }
+
+  ?>
+
+
   <form enctype="multipart/form-data" role="form" action="" method="post">
 
-    <input type="hidden" name="MAX_FILE_SIZE" value="409600"/>
+
     <div class="about-us-right-image container box-mid-margin left-padding">
       <a class="admin-page-icons admin-icon-item" href="/site-settings"><img
             src="../img/user_pages/settings.png" alt="settings">

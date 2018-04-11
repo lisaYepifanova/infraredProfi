@@ -41,7 +41,15 @@ class Model_Bildmotive extends Model {
 
     $res['max_id_gallery'] = max($mm['arr_of_id']);
 
-    $query = $mysqli->query("SELECT * FROM bildmotive WHERE name='" . $curr . "' AND lid='" . $lang . "'");
+    if ($lang == '2') {
+      $q_b = "SELECT * FROM bildmotive WHERE eng_name='" . $curr . "' ";
+    }
+    else {
+      $q_b = "SELECT * FROM bildmotive WHERE name='" . $curr . "' ";
+
+    }
+
+    $query = $mysqli->query($q_b);
 
     if ($query) {
       while ($r = mysqli_fetch_assoc($query)) {
@@ -49,7 +57,7 @@ class Model_Bildmotive extends Model {
       }
     }
 
-    $query = $mysqli->query("SELECT * FROM bildmotive WHERE lid='" . $lang . "' ORDER BY ord ");
+    $query = $mysqli->query("SELECT * FROM bildmotive ORDER BY ord ");
 
     if ($query) {
       while ($r = mysqli_fetch_assoc($query)) {
@@ -61,8 +69,7 @@ class Model_Bildmotive extends Model {
     $curr_id = $res[0]['id'];
 
 
-
-    $img_q = "SELECT * FROM bildmotive_images  WHERE category_id_".$lang."='" . $curr_id . "' ORDER BY name";
+    $img_q = "SELECT * FROM bildmotive_images  WHERE category_id='" . $curr_id . "' ORDER BY name";
     $query = $mysqli->query($img_q);
 
     if ($query) {
@@ -71,6 +78,14 @@ class Model_Bildmotive extends Model {
       }
     }
 
+    if ($lang == '2') {
+      $q = 'SELECT de FROM page_alias WHERE en="' . $res[0]['name'] . '"';
+      $query_de = mysqli_fetch_assoc($mysqli->query($q));
+      $res['dirname'] = $query_de['de'];
+    }
+    else {
+      $res['dirname'] = $res[0]['name'];
+    }
 
 
     $query = $mysqli->query(
@@ -106,10 +121,11 @@ class Model_Bildmotive extends Model {
   public function add_data() {
     include 'application/connection.php';
 
+    $lang = getLanguage();
     $res = [];
 
 
-    $query = $mysqli->query("SELECT * FROM bildmotive_catalog");
+    $query = $mysqli->query("SELECT * FROM bildmotive_catalog  WHERE lid='" . $lang . "'");
 
     if ($query) {
       while ($r = mysqli_fetch_assoc($query)) {
@@ -117,7 +133,7 @@ class Model_Bildmotive extends Model {
       }
     }
 
-    $query = $mysqli->query("SELECT * FROM bildmotive  ORDER BY ord");
+    $query = $mysqli->query("SELECT * FROM bildmotive ");
 
     if ($query) {
       while ($r = mysqli_fetch_assoc($query)) {
@@ -126,7 +142,7 @@ class Model_Bildmotive extends Model {
     }
 
 
-    $query = $mysqli->query("SELECT id FROM bildmotive_images");
+    $query = $mysqli->query("SELECT id FROM bildmotive_images ");
     if ($query->num_rows !== 0) {
       while ($r = mysqli_fetch_assoc($query)) {
         $mm['arr_of_id'][] = $r['id'];
@@ -146,12 +162,15 @@ class Model_Bildmotive extends Model {
     return $res;
   }
 
-
   public function update_data() {
     include 'application/connection.php';
     include 'application/menu.php';
+    include 'application/string_convertion.php';
+
     $menu = menu();
 
+    $lang = $_POST['lan'];
+    setcookie('language', $lang, time() + 7 * 24 * 60 * 60, '/');
     $res['menu'] = $menu;
     $res['type'] = 'prod';
 
@@ -159,10 +178,13 @@ class Model_Bildmotive extends Model {
     $ord = NULL;
     $id = NULL;
 
-
+    //если пришло имя, порядок и айди
     if ($_POST['category_name'] && isset($_POST['ord']) && isset($_POST['id'])) {
+
+      //имя с поля
       $name = $_POST['category_name'];
 
+      //в заглавии меняем умляуты на коды для базы
       $title = str_replace('ü', '&uuml;', $name);
       $title = str_replace('ö', '&ouml;', $title);
       $title = str_replace('ä', '&auml;', $title);
@@ -171,7 +193,7 @@ class Model_Bildmotive extends Model {
       $title = str_replace('Ö', '&Ouml;', $title);
       $title = str_replace('ß', '&szlig', $title);
 
-
+      //меняем умляуты и переводим в нижний регистр для урла
       $name = str_replace('ü', 'u', $name);
       $name = str_replace('ö', 'o', $name);
       $name = str_replace('ä', 'a', $name);
@@ -179,37 +201,86 @@ class Model_Bildmotive extends Model {
       $name = str_replace('Ü', 'U', $name);
       $name = str_replace('Ö', 'O', $name);
       $name = str_replace('ß', 'ss', $name);
+      $name = str_replace(' ', '-', mb_strtolower($name));
 
+      //порядок
       $ord = $_POST['ord'];
-      $id = $_POST['id'] - 1;
+      //айдишник
+      $id = $_POST['id'];
 
-      $add_mi = 'UPDATE bildmotive SET title="' . $title . '" WHERE id=' . $id;
+      //взяли имя записи
+      $bname = $mysqli->query("SELECT name FROM bildmotive WHERE id='" . $id . "'");
+      if ($bname) {
+        while ($r = mysqli_fetch_assoc($bname)) {
+          $bildname = $r;
+        }
+      }
+      $bildname = $bildname['name'];
+
+      //и теперь смотрим айдишник записи в алиасах
+      $al_q = "SELECT id FROM page_alias WHERE de='" . $bildname . "'";
+      $al_id = $mysqli->query($al_q);
+      if ($al_id) {
+        while ($r = mysqli_fetch_assoc($al_id)) {
+          $alias_id = $r;
+        }
+      }
+      $alias_id = $alias_id['id'];
+
+
+
+      //обновить заглавие
+      if ($lang == '2') {
+        $add_mi = 'UPDATE bildmotive SET eng_title="' . $title . '" WHERE id=' . $id;
+      }
+      else {
+        $add_mi = 'UPDATE bildmotive SET title="' . $title . '" WHERE id=' . $id;
+      }
+
       $adding_miq = $mysqli->query($add_mi);
 
 
-      if (isset($_POST['category_name'])) {
-        $old_name_query = $mysqli->query('SELECT name FROM bildmotive WHERE id=' . $id);
-        if ($old_name_query) {
-          while ($r = mysqli_fetch_assoc($old_name_query)) {
-            $old_name_arr = $r;
-          }
-        }
-
-        $old_name = $old_name_arr['name'];
-
-        $name = str_replace(' ', '-', mb_strtolower($name));
-        $add_mi = 'UPDATE bildmotive SET name = "' . $name . '" WHERE id=' . $id;
+      //если англ - просто поменять урл
+      if ($lang == 2) {
+        $add_mi = 'UPDATE bildmotive SET eng_name = "' . $name . '" WHERE id=' . $id;
         $adding_miq = $mysqli->query($add_mi);
 
+        $add_mia = 'UPDATE page_alias SET en = "' . $name . '" WHERE id=' . $alias_id;
+        $adding_miqa = $mysqli->query($add_mia);
+      }
+      else {
+        //если немецкий - еще и папку с изображениями поменять
+        if ($lang == 1) {
 
-        rename($_SERVER['DOCUMENT_ROOT'] . '/img/bildmotive/' . $old_name, $_SERVER['DOCUMENT_ROOT'] . '/img/bildmotive/' . $name);
+          $old_name_query = $mysqli->query('SELECT name FROM bildmotive WHERE id=' . $id);
+          if ($old_name_query) {
+            while ($r = mysqli_fetch_assoc($old_name_query)) {
+              $old_name_arr = $r;
+            }
+          }
 
+          $old_name = $old_name_arr['name'];
+
+          $add_mi = 'UPDATE bildmotive SET name = "' . $name . '" WHERE id=' . $id;
+          $adding_miq = $mysqli->query($add_mi);
+
+          $add_mia = 'UPDATE page_alias SET de = "' . $name . '" WHERE id=' . $alias_id;
+          $adding_miqa = $mysqli->query($add_mia);
+
+          if (!is_dir($_SERVER['DOCUMENT_ROOT'] . '/img/bildmotive/' . $name)) {
+            mkdir($_SERVER['DOCUMENT_ROOT'] . '/img/bildmotive/' . $name, 0767);
+          } else {
+             rename($_SERVER['DOCUMENT_ROOT'] . '/img/bildmotive/' . $old_name, $_SERVER['DOCUMENT_ROOT'] . '/img/bildmotive/' . $name);
+          }
+
+        }
       }
 
 
+
+      //порядок
       $add_mi = 'UPDATE bildmotive SET ord = "' . $ord . '" WHERE id=' . $id;
       $adding_miq = $mysqli->query($add_mi);
-
 
       $query = $mysqli->query(
         "SELECT * FROM bildmotive ORDER BY ord"
@@ -233,30 +304,19 @@ class Model_Bildmotive extends Model {
       }
 
 
-      $dirname = $name;
-
+      $dirname = $bildname;
 
       //загрузка главного изображения
       if (isset($_FILES)) {
         if ($_FILES['category_image']['size'] > 0) {
-          $uploaddir = IMG_PROJ_PATH . 'bildmotive/' . $name . '/';
+          $uploaddir = IMG_PROJ_PATH . 'bildmotive/' . $bildname . '/';
           if (!is_dir($uploaddir)) {
             mkdir($uploaddir, 0767);
           }
 
-          $symb_arr = [' ', '(', ')'];
 
-          $upfilename = str_replace($symb_arr, '-', basename($_FILES['category_image']['name']));
 
-          /*
-                    $upfilename = str_replace('ü', 'u', $upfilename);
-          $upfilename = str_replace('ö', 'o', $upfilename);
-          $upfilename = str_replace('ä', 'a', $upfilename);
-          $upfilename = str_replace('Ä', 'A', $upfilename);
-          $upfilename = str_replace('Ü', 'U', $upfilename);
-          $upfilename = str_replace('Ö', 'O', $upfilename);
-          $upfilename = str_replace('ß', 'ss', $upfilename);
-*/
+          $upfilename = stringConvertion(basename($_FILES['category_image']['name']));
 
           $uploadfile = $uploaddir . $upfilename;
           if ($_FILES['category_image']['size'] <= $_POST['MAX_FILE_SIZE']) {
@@ -279,19 +339,18 @@ class Model_Bildmotive extends Model {
         }
       }
 
-
+      //все изображения догрузить
       if (isset($_FILES)) {
         if (isset($_FILES['prod_image'])) {
           foreach ($_FILES['prod_image']['name'] as $name => $item) {
             if ($_FILES['prod_image']['size'][$name]['image'] > 0) {
-              $uploaddir = IMG_PROJ_PATH . 'bildmotive/' . $dirname . '/';
+              $uploaddir = IMG_PROJ_PATH . 'bildmotive/' . $bildname . '/';
               if (!is_dir($uploaddir)) {
                 mkdir($uploaddir, 0767);
               }
               $symb_arr = [' ', '(', ')'];
 
-              $upfilename = str_replace($symb_arr, '-', basename($_FILES['prod_image']['name'][$name]['image']));
-
+              $upfilename= stringConvertion($_FILES['prod_image']['name'][$name]['image']);
 
               $uploadfile = $uploaddir . $upfilename;
 
@@ -301,14 +360,8 @@ class Model_Bildmotive extends Model {
                   $result['info'][] = 'Image uploaded successfully.';
                 }
 
-                $prod_image = NULL;
-                if (isset($_FILES['prod_image']['name'][$name]['image'])) {
-                  $prod_image = $upfilename;
-                }
-
-                $add_mi = 'INSERT INTO bildmotive_images (image, category_id, name) VALUES ("' . $prod_image . '", "' . $id . '", "' . $_POST['prod_image'][$name]['name'] . '")';
+                $add_mi = 'INSERT INTO bildmotive_images (image, category_id, name) VALUES ("' . $upfilename . '", "' . $id . '", "' . $_POST['prod_image'][$name]['name'] . '")';
                 $adding_miq = $mysqli->query($add_mi);
-
               }
               else {
                 $result['info'][] = 'Image is too large.';
@@ -318,7 +371,7 @@ class Model_Bildmotive extends Model {
         }
       }
 
-
+      //прописать все картинки в базе
       if (isset($_POST['prod_image'])) {
         foreach ($_POST['prod_image'] as $item) {
           $add_mi = 'UPDATE bildmotive_images SET name ="' . $item['name'] . '" WHERE id="' . $item['id'] . '"';
@@ -326,7 +379,7 @@ class Model_Bildmotive extends Model {
         }
       }
 
-
+      //обработка del
       if (isset($_POST['del-image'])) {
         foreach ($_POST['del-image'] as $row) {
           $query = $mysqli->query("SELECT image FROM bildmotive_images WHERE id='" . $row . "'");
@@ -337,19 +390,10 @@ class Model_Bildmotive extends Model {
             }
           }
 
-          $query = $mysqli->query("SELECT name FROM bildmotive_catalog WHERE id='1'");
-
-          if ($query) {
-            while ($r = mysqli_fetch_assoc($query)) {
-              $bname = $r['name'];
-            }
-          }
-
-          $ulink = $_SERVER['DOCUMENT_ROOT'] . '/img/' . $bname . '/' . $dirname . '/' . $img;
+          $ulink = $_SERVER['DOCUMENT_ROOT'] . '/img/bildmotive/' . $dirname . '/' . $img;
           if (is_file($ulink)) {
             unlink($ulink);
           }
-
 
           $query = "DELETE FROM `bildmotive_images` WHERE id='" . $row . "'";
           if ($adding_mi = $mysqli->query($query)) {
@@ -361,8 +405,20 @@ class Model_Bildmotive extends Model {
         }
       }
     }
-    $res = TRUE;
 
+
+    $query = $mysqli->query("SELECT name FROM bildmotive_catalog WHERE lid=" . $lang);
+
+          if ($query) {
+              $bcat = $r = mysqli_fetch_assoc($query);
+
+          }
+
+          $bcat = $bcat['name'];
+
+    $res['info'] = $bcat;
+
+    //$res=true;
     return $res;
   }
 
@@ -371,18 +427,23 @@ class Model_Bildmotive extends Model {
     include 'application/menu.php';
     $menu = menu();
 
+    $lang = getLanguage();
+
     $res['menu'] = $menu;
     $res['type'] = 'prod';
 
     $name = NULL;
     $ord = NULL;
 
-
+    //если задано имя и порядок
     if ($_POST['category_name'] && isset($_POST['ord'])) {
+
+      //берем имя и порядок
       $name = $_POST['category_name'];
       $ord = $_POST['ord'];
 
-            $title = str_replace('ü', '&uuml;', $name);
+      //у заглавии переписали умляуты для базы
+      $title = str_replace('ü', '&uuml;', $name);
       $title = str_replace('ö', '&ouml;', $title);
       $title = str_replace('ä', '&auml;', $title);
       $title = str_replace('Ä', '&Auml;', $title);
@@ -390,6 +451,7 @@ class Model_Bildmotive extends Model {
       $title = str_replace('Ö', '&Ouml;', $title);
       $title = str_replace('ß', '&szlig', $title);
 
+      //меняем имя для названия в путь
       $name = str_replace('ü', 'u', $name);
       $name = str_replace('ö', 'o', $name);
       $name = str_replace('ä', 'a', $name);
@@ -397,10 +459,16 @@ class Model_Bildmotive extends Model {
       $name = str_replace('Ü', 'U', $name);
       $name = str_replace('Ö', 'O', $name);
       $name = str_replace('ß', 'ss', $name);
+      $name = str_replace(' ', '-', mb_strtolower($name));
 
 
-      $add_mi = 'INSERT INTO bildmotive  (title) VALUES ("' . $title . '")';
+      $add_mi = 'INSERT INTO bildmotive  (title, name, eng_title, eng_name, ord) VALUES ("' . $title . '", "' . $name . '", "' . $title . '", "' . $name . '", "' . $ord . '")';
+      $add_al = 'INSERT INTO page_alias (en, de) VALUES ("' . $name . '", "' . $name . '")';
+
+
       $adding_miq = $mysqli->query($add_mi);
+      $adding_al = $mysqli->query($add_al);
+
 
       $id_query = $query = $mysqli->query('SELECT id FROM bildmotive WHERE title="' . $title . '"');
       if ($id_query) {
@@ -409,20 +477,7 @@ class Model_Bildmotive extends Model {
         }
       }
 
-      if (isset($_POST['category_name'])) {
-
-        $name = str_replace(' ', '-', mb_strtolower($name));
-        $add_mi = 'UPDATE bildmotive SET name = "' . $name . '" WHERE id=' . $id;
-        $adding_miq = $mysqli->query($add_mi);
-
-
-      }
-
-
-      $add_mi = 'UPDATE bildmotive SET ord = "' . $ord . '" WHERE id=' . $id;
-      $adding_miq = $mysqli->query($add_mi);
-
-
+      //сортировка по порядку
       $query = $mysqli->query(
         "SELECT * FROM bildmotive ORDER BY ord"
       );
@@ -444,9 +499,8 @@ class Model_Bildmotive extends Model {
         $fin_ind += 10;
       }
 
-
+      //название папки для изображений
       $dirname = $name;
-
 
       //загрузка главного изображения
       if (isset($_FILES)) {
@@ -481,7 +535,7 @@ class Model_Bildmotive extends Model {
         }
       }
 
-
+      //загрузка всех изображений
       if (isset($_FILES)) {
         if (isset($_FILES['prod_image'])) {
           foreach ($_FILES['prod_image']['name'] as $name => $item) {
@@ -520,7 +574,7 @@ class Model_Bildmotive extends Model {
         }
       }
 
-
+      //запись всех названий изображений в базу
       if (isset($_POST['prod_image'])) {
         foreach ($_POST['prod_image'] as $item) {
           $add_mi = 'UPDATE bildmotive_images SET name ="' . $item['name'] . '" WHERE id=' . $item['id'];
@@ -537,6 +591,9 @@ class Model_Bildmotive extends Model {
 
   public function delete_data() {
     include 'application/connection.php';
+    include 'application/removedir.php';
+
+    $lang = getLanguage();
 
     if (substr(
         $_SERVER['REQUEST_URI'],
@@ -558,7 +615,13 @@ class Model_Bildmotive extends Model {
     $curr_name = $routes[$route_len - 2];
 
 
-    $query = $mysqli->query("SELECT * FROM bildmotive WHERE name='" . $curr_name . "'");
+    if ($lang == '2') {
+      $query = $mysqli->query("SELECT * FROM bildmotive WHERE eng_name='" . $curr_name . "'");
+    }
+    else {
+      $query = $mysqli->query("SELECT * FROM bildmotive WHERE name='" . $curr_name . "'");
+    }
+
 
     if ($query) {
       while ($r = mysqli_fetch_assoc($query)) {
@@ -578,24 +641,42 @@ class Model_Bildmotive extends Model {
       $info[] = 'cant delete info from bildmotive images';
     }
 
-    include 'application/removedir.php';
 
-    $dir = $_SERVER['DOCUMENT_ROOT'] . '/img/bildmotive/' . $res['name'];
-
-    if (is_dir($dir)) {
-      if (removeDirectory($dir)) {
-        $info[] = 'deleted dir';
-      }
-      else {
-        $info[] = 'cant delete dir';
-      }
+    if ($lang == '2') {
+      $q = 'SELECT de FROM page_alias WHERE en="' . $curr_name . '"';
+      $query_de = mysqli_fetch_assoc($mysqli->query($q));
+      $dirnamede = $query_de['de'];
     }
     else {
-      $info[] = 'this category hadnt dir';
+      $dirnamede = $curr_name;
     }
 
 
-    $query = "DELETE FROM `bildmotive` WHERE name='" . $curr_name . "'";
+    if ($dirnamede !== '') {
+      $dir = $_SERVER['DOCUMENT_ROOT'] . '/img/bildmotive/' . $dirnamede;
+
+      if (is_dir($dir)) {
+        if (removeDirectory($dir)) {
+          $info[] = 'deleted dir';
+        }
+        else {
+          $info[] = 'cant delete dir';
+        }
+      }
+      else {
+        $info[] = 'this category hadnt dir';
+      }
+    }
+
+
+    if ($lang == '2') {
+      $query = "DELETE FROM `bildmotive` WHERE eng_name='" . $curr_name . "'";
+    }
+    else {
+      $query = "DELETE FROM `bildmotive` WHERE name='" . $curr_name . "'";
+    }
+
+
     if ($adding_mi = $mysqli->query($query)) {
       $info[] = ' deleted info from bildmotive';
     }

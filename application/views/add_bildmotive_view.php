@@ -13,9 +13,14 @@
         $debug = TRUE;
         $routes = explode('/', $_SERVER['REQUEST_URI']);
         $last = end($routes);
+        $lang = getLanguage();
 
-        echo '<h4><a class="product-menu-item" href="/produkte">PRODUKTE</a></h4>';
-
+        if ($lang == '2') {
+          echo '<h4><a class="product-menu-item" href="/products">PRODUCTS</a></h4>';
+        }
+        else {
+          echo '<h4><a class="product-menu-item" href="/produkte">PRODUKTE</a></h4>';
+        }
 
         foreach ($data['menu']['root'] as $row) {
           echo '<li>';
@@ -28,11 +33,24 @@
             echo 'bold-item';
           }
 
-          echo '" href="/produkte/' . $row['name'] . '">' . $row['title'] . '</a>';
+          if ($lang == '2') {
+            echo '" href="/products/' . $row['name'] . '">' . $row['title'] . '</a>';
+          }
+          else {
+            echo '" href="/produkte/' . $row['name'] . '">' . $row['title'] . '</a>';
+          }
 
           if ($routes[2] == $row['name'] and $routes[2] !== $data['bildmotive_catalog'][0]['name']) {
             $c = $data['menu']['category'];
-            $link = "/produkte/" . $row['name'];
+
+            if ($lang == '2') {
+              $link = "/products/" . $row['name'];
+            }
+            else {
+              $link = "/produkte/" . $row['name'];
+            }
+
+
             if ($c !== "") {
               while ($c['next'] !== "") {
                 echo '<ul>';
@@ -75,13 +93,11 @@
     <form enctype="multipart/form-data" role="form" action="" method="post">
       <input type="hidden" name="MAX_FILE_SIZE" value="40960000"/>
       <input type="hidden" id="max_gallery_id" name="max_gallery_id"
-             value="<?php echo $data['max_id_gallery'] + 1 ; ?>"/>
+             value="<?php echo $data['max_id_gallery'] + 1; ?>"/>
 
       <?php
       echo '<div class="box-small-margin "><label class="bildmotive-edit-title " for="category_name">Category title</label>';
       echo '<input type="text" id="category_name" name="category_name" value=""></div>';
-
-
       ?>
 
       <!-- Place after -->

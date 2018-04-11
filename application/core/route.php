@@ -5,7 +5,7 @@ class Route {
 
     require_once 'application/language.php';
 
- include 'application/connection.php';
+    include 'application/connection.php';
     $controller_name = 'Main';
     $action_name = 'index';
     $arg = '';
@@ -22,16 +22,79 @@ class Route {
       );
     }
 
+    $row = '';
     $routes = explode('/', $_SERVER['REQUEST_URI']);
     $routes_count = count($routes);
+    $path_lang = '1';
 
-    if (!empty($routes[1])) {
-      $controller_name = $routes[1];
+    foreach ($routes as $row) {
+      if ($row !== '') {
+        $qt_de = "SELECT * FROM page_alias  WHERE de='" . $row . "'";
+        $qt_en = "SELECT * FROM page_alias  WHERE en='" . $row . "'";
+        $query_de = $mysqli->query($qt_de);
+        $query_en = $mysqli->query($qt_en);
+
+
+        if ($query_de->num_rows == 1 and $query_en->num_rows == 1) {
+          while ($r = mysqli_fetch_assoc($query_de)) {
+            $res_al[] = $r;
+            if (isset($_COOKIE['language']) && $path_lang == 1) {
+              $path_lang = $_COOKIE['language'];
+            }
+
+          }
+        }
+        else {
+          if ($query_de->num_rows !== 0) {
+            while ($r = mysqli_fetch_assoc($query_de)) {
+              $res_al[] = $r;
+            }
+          }
+          else {
+            if ($query_en->num_rows !== 0) {
+              while ($r = mysqli_fetch_assoc($query_en)) {
+                $res_al[] = $r;
+                $path_lang = '2';
+
+              }
+            }
+            else {
+
+                $res_al = [];
+                break;
+
+            }
+          }
+        }
+      }
+    }
+
+    setcookie("language", (int) $path_lang, time() + 3600 * 24 * 2, '/');
+
+    if (isset($_COOKIE['language'])) {
+      if ($path_lang !== $_COOKIE['language']) {
+        header('Location:' . $_SERVER["REQUEST_URI"]);
+      }
+    }
+    else {
+      header('Location:' . $_SERVER["REQUEST_URI"]);
+    }
+
+
+    $bild = 'SELECT name FROM bildmotive_catalog WHERE lid="1"';
+
+    $query = $mysqli->query($bild);
+
+    $bild_name = mysqli_fetch_assoc($query);
+
+
+    if (!empty($res_al[0])) {
+      $controller_name = $res_al[0]['de'];
       $last = end($routes);
 
-      if ($routes[1] == 'produkte') {
-        if (isset($routes[2])) {
-          if ($routes[2] == 'bildmotive') {
+      if ($res_al[0]['de'] == 'produkte') {
+        if (isset($res_al[1])) {
+          if ($res_al[1]['de'] == $bild_name['name']) {
             if ($routes_count == '3') {
               $action_name = 'index';
               $controller_name = 'bildmotive_catalog';
@@ -132,7 +195,7 @@ class Route {
         }
       }
       else {
-        if ($routes[1] == 'product') {
+        if ($res_al[0]['de'] == 'product') {
 
           if ($last == 'add') {
             $action_name = 'add';
@@ -147,21 +210,43 @@ class Route {
 
         }
         else {
-          if ($routes[1] == 'related-products' && $last == 'add') {
+          if ($res_al[0]['de'] == 'related-products' && $last == 'add') {
             $action_name = 'add';
             $controller_name = 'thermostat';
           }
           else {
-            if (!empty($routes[2])) {
-              $action_name = $routes[2];
-            }
-            if (!empty($routes[3])) {
-              $arg = $routes[3];
-            }
+            if ($res_al[0]['de'] == 'download' && $routes_count == 4) {
+              if ($res_al[1]['de'] == 'delete') {
+                $arg = $routes[3];
+                $action_name = "delete";
+              }
+              else {
+                if (!empty($res_al[1]['de'])) {
+                  $action_name = $res_al[1]['de'];
+                }
+                if (!empty($res_al[2]['de'])) {
+                  $arg = $res_al[2]['de'];
+                }
 
+              }
+            }
+            else {
+              if (!empty($res_al[1]['de'])) {
+                $action_name = $res_al[1]['de'];
+              }
+              if (!empty($res_al[2]['de'])) {
+                $arg = $res_al[2]['de'];
+              }
+
+            }
           }
         }
       }
+    } else if($routes_count == 1 && $routes[0] == '') {
+      $action_name = 'index';
+      $controller_name = 'main';
+    } else {
+       $controller_name = '404';
     }
 
     $action_name = strtolower(
@@ -200,13 +285,18 @@ class Route {
     $action = $action_name;
 
     if (method_exists($controller, $action)) {
-      if ($arg == '' and $action !== 'action_edit_user') {
-        $controller->$action();
-      }
-      else {
+      if ($action == 'action_delete_slider_img' || $action == 'action_delete_gallery_img') {
+        $arg = $last;
         $controller->$action($arg);
       }
-
+      else {
+        if ($arg == '' and $action !== 'action_edit_user') {
+          $controller->$action();
+        }
+        else {
+          $controller->$action($arg);
+        }
+      }
     }
     else {
       //if($controller_name == 'controller_404') {

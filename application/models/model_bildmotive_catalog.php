@@ -14,7 +14,7 @@ class Model_Bildmotive_Catalog extends Model {
       }
     }
 
-    $query = $mysqli->query("SELECT * FROM bildmotive WHERE lid='" . $lang . "' ORDER BY ord ");
+    $query = $mysqli->query("SELECT * FROM bildmotive  ORDER BY ord ");
 
     if ($query) {
       while ($r = mysqli_fetch_assoc($query)) {
@@ -65,14 +65,6 @@ class Model_Bildmotive_Catalog extends Model {
     $id = $_POST['id'];
     $ord = $_POST['ord'];
 
-
-    $add_mi = 'UPDATE bildmotive_catalog SET ord = ' . $ord . ' WHERE id = ' . $id;
-    $adding_miq = $mysqli->query($add_mi);
-
-    if (isset($_POST['description-textarea'])) {
-      $add_mi = 'UPDATE bildmotive_catalog SET description = "' . $_POST['description-textarea'] . '" WHERE id = ' . $id;
-      $adding_miq = $mysqli->query($add_mi);
-    }
     $name = NULL;
     if (isset($_POST['name'])) {
       $title = strtoupper($_POST['name']);
@@ -88,11 +80,50 @@ class Model_Bildmotive_Catalog extends Model {
     }
 
 
+    $old_name = NULL;
+    if (isset($_POST['old_name'])) {
+      $old_name = $_POST['old_name'];
+    }
+
+    if ($old_name) {
+      if ($lang == 2) {
+        $sel = 'SELECT id FROM page_alias WHERE en="' . $old_name . '"';
+      }
+      else {
+        $sel = 'SELECT id FROM page_alias WHERE de="' . $old_name . '"';
+      }
+
+      $query = $mysqli->query($sel);
+
+      $isId = mysqli_fetch_assoc($query);
+
+      if ($isId !== NULL) {
+        if ($lang == 2) {
+          $add_mi = 'UPDATE page_alias SET en = "' . $name . '" WHERE en="' . $old_name . '"';
+        }
+        else {
+          $add_mi = 'UPDATE page_alias SET de = "' . $name . '" WHERE de="' . $old_name . '"';
+        }
+
+        $adding_miq = $mysqli->query($add_mi);
+      }
+
+    }
+
+    $add_mi = 'UPDATE bildmotive_catalog SET ord = ' . $ord . ' WHERE id = ' . $id . ' AND lid="'.$lang.'"';
+    $adding_miq = $mysqli->query($add_mi);
+
+    if (isset($_POST['description-textarea'])) {
+      $add_mi = 'UPDATE bildmotive_catalog SET description = "' . $_POST['description-textarea'] . '" WHERE id = ' . $id . ' AND lid="'.$lang.'"';
+      $adding_miq = $mysqli->query($add_mi);
+    }
+
+
     $parent_id = NULL;
     if (isset($_POST['parent_id'])) {
       $parent_id = $_POST['parent_id'];
 
-      $add_mi = 'UPDATE bildmotive_catalog SET parent_id = "' . $parent_id . '" WHERE id=' . $id;
+      $add_mi = 'UPDATE bildmotive_catalog SET parent_id = "' . $parent_id . '" WHERE id=' . $id . ' AND lid="'.$lang.'"';
       $adding_miq = $mysqli->query($add_mi);
     }
 
@@ -102,10 +133,10 @@ class Model_Bildmotive_Catalog extends Model {
 
     $query = $mysqli->query(
       "SELECT id, name, ord FROM products  WHERE parent_id='" . $parent_id .
-      "' UNION SELECT id, name, ord FROM  categories WHERE parent_id='" . $parent_id .
-      "' UNION SELECT id, name, ord FROM thermostat  WHERE parent_id='" . $parent_id .
-      "' UNION SELECT id, name, ord FROM bildmotive_catalog  WHERE parent_id='" . $parent_id .
-      "' ORDER BY ord"
+      "' AND lid='" . $lang . "'  UNION SELECT id, name, ord FROM  categories WHERE parent_id='" . $parent_id .
+      "' AND lid='" . $lang . "'   UNION SELECT id, name, ord FROM thermostat  WHERE parent_id='" . $parent_id .
+      "' AND lid='" . $lang . "'   UNION SELECT id, name, ord FROM bildmotive_catalog  WHERE parent_id='" . $parent_id .
+      "' AND lid='" . $lang . "'   ORDER BY ord"
     );
 
     if ($query) {
@@ -131,10 +162,10 @@ class Model_Bildmotive_Catalog extends Model {
 
     $fin_ind = 10;
     foreach ($item as $it) {
-      $q_p = "SELECT id FROM products  WHERE name='" . $it['name'] . "'";
-      $q_c = "SELECT id FROM categories  WHERE name='" . $it['name'] . "'";
-      $q_t = "SELECT id FROM thermostat  WHERE name='" . $it['name'] . "'";
-      $q_b = "SELECT id FROM bildmotive_catalog  WHERE name='" . $it['name'] . "'";
+      $q_p = "SELECT id FROM products  WHERE name='" . $it['name'] . "' AND lid='".$lang."' ";
+      $q_c = "SELECT id FROM categories  WHERE name='" . $it['name'] . "' AND lid='".$lang."' ";
+      $q_t = "SELECT id FROM thermostat  WHERE name='" . $it['name'] . "' AND lid='".$lang."' ";
+      $q_b = "SELECT id FROM bildmotive_catalog  WHERE name='" . $it['name'] . "' AND lid='".$lang."' ";
 
       $qq_p = $mysqli->query($q_p);
       $qq_c = $mysqli->query($q_c);
@@ -142,26 +173,26 @@ class Model_Bildmotive_Catalog extends Model {
       $qq_b = $mysqli->query($q_b);
 
       if ($qq_p->num_rows !== 0) {
-        $add_mi = 'UPDATE products SET ord = "' . $fin_ind . '" WHERE name="' . $it['name'] . '"';
+        $add_mi = 'UPDATE products SET ord = "' . $fin_ind . '" WHERE name="' . $it['name'] . '" AND lid="'.$lang.'"';
         $adding_mi = $mysqli->query($add_mi);
       }
       else {
         if ($qq_c->num_rows !== 0) {
-          $add_mi = 'UPDATE categories SET ord = "' . $fin_ind . '" WHERE name="' . $it['name'] . '"';
+          $add_mi = 'UPDATE categories SET ord = "' . $fin_ind . '" WHERE name="' . $it['name'] . '" AND lid="'.$lang.'"';
           $adding_mi = $mysqli->query($add_mi);
         }
         else {
           if ($qq_t->num_rows !== 0) {
-            $add_mi = 'UPDATE thermostat SET ord = "' . $fin_ind . '" WHERE name="' . $it['name'] . '"';
+            $add_mi = 'UPDATE thermostat SET ord = "' . $fin_ind . '" WHERE name="' . $it['name'] . '"  AND lid="'.$lang.'"';
             $adding_mi = $mysqli->query($add_mi);
           }
           else {
             if ($qq_t->num_rows !== 0) {
-              $add_mi = 'UPDATE bildmotive_catalog SET ord = "' . $fin_ind . '" WHERE name="' . $it['name'] . '"';
+              $add_mi = 'UPDATE bildmotive_catalog SET ord = "' . $fin_ind . '" WHERE name="' . $it['name'] . '"  AND lid="'.$lang.'"';
               $adding_mi = $mysqli->query($add_mi);
             }
             else {
-              $add_mi = 'UPDATE products SET ord = "' . $fin_ind . '" WHERE name="' . $it['name'] . '"';
+              $add_mi = 'UPDATE products SET ord = "' . $fin_ind . '" WHERE name="' . $it['name'] . '"  AND lid="'.$lang.'"';
               $adding_mi = $mysqli->query($add_mi);
             }
           }
@@ -171,11 +202,10 @@ class Model_Bildmotive_Catalog extends Model {
 
     }
 
-    ////////////////
-    //загрузка подписи
+    ////////////////изображение каталога изображений
     if (isset($_FILES)) {
       if ($_FILES['category_image']['size'] > 0) {
-        $uploaddir = IMG_PROJ_PATH . '/' . $name . '/';
+        $uploaddir = IMG_PROJ_PATH . 'bildmotive/';
         if (!is_dir($uploaddir)) {
           mkdir($uploaddir, 0767);
         }
@@ -191,7 +221,7 @@ class Model_Bildmotive_Catalog extends Model {
             $category_image = $_FILES['category_image']['name'];
           }
 
-          $add_mi = 'UPDATE bildmotive_catalog SET image = "bildmotive/' . $category_image . '" WHERE id=' . $cid;
+          $add_mi = 'UPDATE bildmotive_catalog SET image = "bildmotive/' . $category_image . '"';
           $adding_miq = $mysqli->query($add_mi);
         }
         else {

@@ -3,7 +3,7 @@
 class Model_Edit_default_info extends Model {
   public function get_data() {
     include 'application/connection.php';
-$lang = getLanguage();
+    $lang = getLanguage();
 
     $query = $mysqli->query("SELECT id FROM footer_service_links ");
     if ($query) {
@@ -44,6 +44,16 @@ $lang = getLanguage();
     $res['max_id_phone'] = max($rp['arr_of_id']);
 
 
+    //social
+    $query = $mysqli->query("SELECT id FROM social");
+    if ($query) {
+      while ($r = mysqli_fetch_assoc($query)) {
+        $rp['arr_social_id'][] = $r['id'];
+      }
+    }
+
+    $res['max_id_social'] = max($rp['arr_social_id']);
+
     //header phones
     $query = $mysqli->query("SELECT id FROM header_phones");
     if ($query) {
@@ -81,8 +91,7 @@ $lang = getLanguage();
       if ($_FILES['logo_image']['size'] > 0) {
         $uploaddir = IMG_PROJ_PATH;
         $uploadfile = $uploaddir . basename($_FILES['logo_image']['name']);
-        if ($_FILES['logo_image']['size'] <= $_POST['MAX_FILE_SIZE']) {
-          if (move_uploaded_file($_FILES['logo_image']['tmp_name'], $uploadfile)) {
+         if (move_uploaded_file($_FILES['logo_image']['tmp_name'], $uploadfile)) {
             $result['info'][] = 'Image uploaded successfully.';
           }
 
@@ -93,10 +102,7 @@ $lang = getLanguage();
 
           $add_mi = 'UPDATE default_info SET site_logo = "' . $logo_image . '"';
           $adding_miq = $mysqli->query($add_mi);
-        }
-        else {
-          $result['info'][] = 'Image is too large.';
-        }
+
 
       }
     }
@@ -110,7 +116,7 @@ $lang = getLanguage();
           $isId = mysqli_fetch_assoc($mysqli->query("SELECT id FROM footer_service_links WHERE id='" . $item['id'] . "'"));
 
           if ($isId['id'] == NULL) {
-            $add_mi = 'INSERT INTO footer_service_links (id, title, link, lid) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['link'] . '", "'.$lang.'")';
+            $add_mi = 'INSERT INTO footer_service_links (id, title, link, lid) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['link'] . '", "' . $lang . '")';
           }
           else {
             if ($item['title'] == '' and $item['link'] == '') {
@@ -135,7 +141,7 @@ $lang = getLanguage();
           $isId = mysqli_fetch_assoc($mysqli->query("SELECT id FROM footer_links WHERE id='" . $item['id'] . "'"));
 
           if ($isId['id'] == NULL) {
-            $add_mi = 'INSERT INTO footer_links (id, title, link, lid) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['link'] . '", "'.$lang.'")';
+            $add_mi = 'INSERT INTO footer_links (id, title, link, lid) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['link'] . '", "' . $lang . '")';
           }
           else {
             if ($item['title'] == '' and $item['link'] == '') {
@@ -160,7 +166,7 @@ $lang = getLanguage();
           $isId = mysqli_fetch_assoc($mysqli->query("SELECT id FROM header_links WHERE id='" . $item['id'] . "'"));
 
           if ($isId['id'] == NULL) {
-            $add_mi = 'INSERT INTO header_links (id, title, link, lid) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['link'] . '", "'.$lang.'")';
+            $add_mi = 'INSERT INTO header_links (id, title, link, lid) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['link'] . '", "' . $lang . '")';
           }
           else {
             if ($item['title'] == '' and $item['link'] == '') {
@@ -248,7 +254,7 @@ $lang = getLanguage();
           $isId = mysqli_fetch_assoc($mysqli->query("SELECT id FROM modal_menu WHERE id='" . $item['id'] . "'"));
 
           if ($isId['id'] == NULL) {
-            $add_mi = 'INSERT INTO modal_menu (id, title, link, lid) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['link'] . '", "'.$lang.'")';
+            $add_mi = 'INSERT INTO modal_menu (id, title, link, lid) VALUES ("' . $item['id'] . '", "' . $item['title'] . '", "' . $item['link'] . '", "' . $lang . '")';
           }
           else {
             if ($item['title'] == '' and $item['link'] == '') {
@@ -263,6 +269,58 @@ $lang = getLanguage();
         }
       }
     }
+
+
+    //socials
+    if (isset($_POST['social'])) {
+      foreach ($_POST['social'] as $name => $item) {
+        if (isset($_POST['social'][$name])) {
+
+          if (isset($_POST['social'][$name]['link'])) {
+            $isId = mysqli_fetch_assoc($mysqli->query("SELECT id FROM social WHERE id='" . $item['id'] . "'"));
+
+
+            if ($isId == NULL) {
+              $add_mi = 'INSERT INTO social (id, alt, link) VALUES ("' . $item['id'] . '", "' . $item['alt'] . '", "' . $item['link'] . '")';
+            }
+            else {
+              if ($item['link'] == '' and $item['alt'] == '') {
+                $add_mi = "DELETE FROM social WHERE id='" . $item['id'] . "'";
+              }
+              else {
+                $add_mi = "UPDATE social SET alt = '" . $item['alt'] . "', link = '" . $item['link'] . "' WHERE id = '" . $item['id'] . "' ";
+              }
+            }
+
+            $adding_info_query = $mysqli->query($add_mi);
+          }
+        }
+      }
+    }
+
+    if (isset($_FILES)) {
+      if (isset($_FILES['social_image'])) {
+        foreach ($_FILES['social_image']['name'] as $id => $item) {
+          if ($_FILES['social_image']['size'][$id] > 0) {
+            $uploaddir = IMG_PROJ_PATH;
+
+            $bname = basename($_FILES['social_image']['name'][$id]);
+
+            $uploadfile = $uploaddir . $bname;
+
+              if (move_uploaded_file($_FILES['social_image']['tmp_name'][$id], $uploadfile)) {
+                $result['info'][] = 'Image uploaded successfully.';
+              }
+
+              $add_mi = 'UPDATE social SET img = "' . $bname . '" WHERE id=' . $id;
+              $adding_miq = $mysqli->query($add_mi);
+
+
+          }
+        }
+      }
+    }
+
 
     $result['res'] = TRUE;
 

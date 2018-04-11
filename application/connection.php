@@ -1,4 +1,7 @@
 <?php
+
+
+
 /*$host = 'localhost'; // адрес сервера
 $database = 'infrabase'; // имя базы данных
 $user = 'profiuser'; // имя пользователя
@@ -24,7 +27,16 @@ $database = 'db709572782'; // имя базы данных
 $user = 'dbo709572782'; // имя пользователя
 $password = 'Infrared24sql#'; // пароль
 */
+
+
+
 $mysqli = new mysqli($host, $user, $password, $database);
+
+//include_once 'backup.php';
+
 if ($mysqli->connect_errno) {
   echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
+
+
+
